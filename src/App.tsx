@@ -1,9 +1,21 @@
 import { useState } from 'react'
 import { Button } from './components/ui/button'
-import { Code2, Rocket, FileText, BookOpen, Sparkles, CheckCircle2, Dog } from 'lucide-react'
+import { Code2, Rocket, FileText, BookOpen, Sparkles, CheckCircle2, Dog, FileEdit } from 'lucide-react'
 
 export function App(): JSX.Element {
-  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'codepuppy' | 'stacks' | 'benefits'>('overview')
+  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'codepuppy' | 'stacks' | 'prd' | 'benefits'>('overview')
+
+  // PRD Generator State
+  const [prdData, setPrdData] = useState({
+    projectType: '',
+    targetUsers: '',
+    primaryGoal: '',
+    keyFeatures: '',
+    stack: '',
+    timeline: '',
+    teamSize: '',
+    budget: ''
+  })
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
@@ -104,6 +116,16 @@ export function App(): JSX.Element {
           >
             <Code2 className="w-4 h-4 mr-2" aria-hidden="true" />
             Tech Stacks
+          </Button>
+          <Button
+            onClick={(): void => setActiveTab('prd')}
+            variant={activeTab === 'prd' ? 'default' : 'outline'}
+            role="tab"
+            aria-selected={activeTab === 'prd'}
+            aria-controls="prd-panel"
+          >
+            <FileEdit className="w-4 h-4 mr-2" aria-hidden="true" />
+            Generate a PRD
           </Button>
           <Button
             onClick={(): void => setActiveTab('benefits')}
@@ -1170,6 +1192,336 @@ class MyAgent(Agent):
                     for your specific use case. Start simple, scale when needed.
                   </p>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* PRD Generator Tab */}
+          {activeTab === 'prd' && (
+            <div id="prd-panel" role="tabpanel" aria-labelledby="prd-tab">
+              <div className="flex items-center gap-3 mb-6">
+                <FileEdit className="w-10 h-10 text-green-600" aria-hidden="true" />
+                <h3 className="text-3xl font-bold">Generate a Product Requirements Document (PRD)</h3>
+              </div>
+
+              <div className="prose prose-lg max-w-none">
+                <p className="text-gray-700 mb-6">
+                  Answer the questions below to automatically generate a comprehensive PRD for your project.
+                  Choose options that best describe your needs - similar to Mad Libs, but for technical planning!
+                </p>
+
+                {/* Interactive Mad Libs Style Form */}
+                <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-300 rounded-xl p-8 mb-6">
+                  <h4 className="text-2xl font-bold text-green-900 mb-6">📝 Build Your PRD</h4>
+
+                  <div className="space-y-6 text-lg leading-relaxed">
+                    {/* Sentence 1: Project Type */}
+                    <div className="bg-white rounded-lg p-4 border-l-4 border-green-500">
+                      <p className="text-gray-800">
+                        We are building a{' '}
+                        <select
+                          value={prdData.projectType}
+                          onChange={(e): void => setPrdData({ ...prdData, projectType: e.target.value })}
+                          className="inline-block mx-1 px-3 py-1 border-2 border-green-400 rounded-lg bg-green-50 font-semibold text-green-900 focus:outline-none focus:ring-2 focus:ring-green-500"
+                        >
+                          <option value="">-- select --</option>
+                          <option value="Minimum Viable Product (MVP)">Minimum Viable Product (MVP)</option>
+                          <option value="rapid prototype">rapid prototype</option>
+                          <option value="production-ready application">production-ready application</option>
+                          <option value="proof of concept">proof of concept</option>
+                          <option value="enterprise solution">enterprise solution</option>
+                        </select>
+                        {' '}to validate our idea and gather user feedback.
+                      </p>
+                    </div>
+
+                    {/* Sentence 2: Target Users */}
+                    <div className="bg-white rounded-lg p-4 border-l-4 border-blue-500">
+                      <p className="text-gray-800">
+                        Our target users are{' '}
+                        <select
+                          value={prdData.targetUsers}
+                          onChange={(e): void => setPrdData({ ...prdData, targetUsers: e.target.value })}
+                          className="inline-block mx-1 px-3 py-1 border-2 border-blue-400 rounded-lg bg-blue-50 font-semibold text-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
+                          <option value="">-- select --</option>
+                          <option value="internal employees and teams">internal employees and teams</option>
+                          <option value="small business owners">small business owners</option>
+                          <option value="enterprise customers">enterprise customers</option>
+                          <option value="developers and technical users">developers and technical users</option>
+                          <option value="general consumers">general consumers</option>
+                          <option value="mobile-first users">mobile-first users</option>
+                        </select>
+                        {' '}who need a streamlined solution for their daily tasks.
+                      </p>
+                    </div>
+
+                    {/* Sentence 3: Primary Goal */}
+                    <div className="bg-white rounded-lg p-4 border-l-4 border-purple-500">
+                      <p className="text-gray-800">
+                        The primary goal of this project is to{' '}
+                        <select
+                          value={prdData.primaryGoal}
+                          onChange={(e): void => setPrdData({ ...prdData, primaryGoal: e.target.value })}
+                          className="inline-block mx-1 px-3 py-1 border-2 border-purple-400 rounded-lg bg-purple-50 font-semibold text-purple-900 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        >
+                          <option value="">-- select --</option>
+                          <option value="automate manual processes and increase efficiency">automate manual processes and increase efficiency</option>
+                          <option value="provide real-time data insights and analytics">provide real-time data insights and analytics</option>
+                          <option value="improve team collaboration and communication">improve team collaboration and communication</option>
+                          <option value="reduce operational costs">reduce operational costs</option>
+                          <option value="enhance customer experience">enhance customer experience</option>
+                          <option value="validate a new business idea">validate a new business idea</option>
+                        </select>
+                        {' '}while maintaining simplicity and ease of use.
+                      </p>
+                    </div>
+
+                    {/* Sentence 4: Key Features */}
+                    <div className="bg-white rounded-lg p-4 border-l-4 border-orange-500">
+                      <p className="text-gray-800">
+                        Key features must include{' '}
+                        <select
+                          value={prdData.keyFeatures}
+                          onChange={(e): void => setPrdData({ ...prdData, keyFeatures: e.target.value })}
+                          className="inline-block mx-1 px-3 py-1 border-2 border-orange-400 rounded-lg bg-orange-50 font-semibold text-orange-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        >
+                          <option value="">-- select --</option>
+                          <option value="user authentication, dashboard with real-time updates, and API integration">user authentication, dashboard with real-time updates, and API integration</option>
+                          <option value="data visualization, export functionality, and role-based access control">data visualization, export functionality, and role-based access control</option>
+                          <option value="file upload/download, search capabilities, and notifications">file upload/download, search capabilities, and notifications</option>
+                          <option value="third-party integrations, webhooks, and automated workflows">third-party integrations, webhooks, and automated workflows</option>
+                          <option value="mobile responsiveness, offline mode, and push notifications">mobile responsiveness, offline mode, and push notifications</option>
+                        </select>
+                        {' '}to meet user needs effectively.
+                      </p>
+                    </div>
+
+                    {/* Sentence 5: Technology Stack */}
+                    <div className="bg-white rounded-lg p-4 border-l-4 border-pink-500">
+                      <p className="text-gray-800">
+                        For the technology stack, we will use{' '}
+                        <select
+                          value={prdData.stack}
+                          onChange={(e): void => setPrdData({ ...prdData, stack: e.target.value })}
+                          className="inline-block mx-1 px-3 py-1 border-2 border-pink-400 rounded-lg bg-pink-50 font-semibold text-pink-900 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                        >
+                          <option value="">-- select --</option>
+                          <option value="React + Vite + Tailwind for frontend, Fastify + TypeScript for backend, and PostgreSQL + Prisma for the database (Modern SPA Stack)">React + Vite + Tailwind for frontend, Fastify + TypeScript for backend, and PostgreSQL + Prisma for the database (Modern SPA Stack)</option>
+                          <option value="Next.js 14+ with Tailwind CSS, Next.js API Routes, and PostgreSQL + Prisma (Full-Stack Framework)">Next.js 14+ with Tailwind CSS, Next.js API Routes, and PostgreSQL + Prisma (Full-Stack Framework)</option>
+                          <option value="Svelte + Vite + Tailwind for frontend, Express + TypeScript for backend, and SQLite + Prisma (Lightweight Stack)">Svelte + Vite + Tailwind for frontend, Express + TypeScript for backend, and SQLite + Prisma (Lightweight Stack)</option>
+                          <option value="Next.js + TypeScript + shadcn/ui, Azure Functions for serverless backend, and Azure SQL + Prisma (Enterprise Cloud)">Next.js + TypeScript + shadcn/ui, Azure Functions for serverless backend, and Azure SQL + Prisma (Enterprise Cloud)</option>
+                          <option value="Vue 3 + Vite + Tailwind for frontend, Hono (edge-optimized) for backend, and SQLite + Drizzle (Rapid Prototyping)">Vue 3 + Vite + Tailwind for frontend, Hono (edge-optimized) for backend, and SQLite + Drizzle (Rapid Prototyping)</option>
+                        </select>
+                        {' '}based on project requirements.
+                      </p>
+                    </div>
+
+                    {/* Sentence 6: Timeline */}
+                    <div className="bg-white rounded-lg p-4 border-l-4 border-indigo-500">
+                      <p className="text-gray-800">
+                        Our target timeline for the first release is{' '}
+                        <select
+                          value={prdData.timeline}
+                          onChange={(e): void => setPrdData({ ...prdData, timeline: e.target.value })}
+                          className="inline-block mx-1 px-3 py-1 border-2 border-indigo-400 rounded-lg bg-indigo-50 font-semibold text-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        >
+                          <option value="">-- select --</option>
+                          <option value="1-2 weeks (rapid prototype)">1-2 weeks (rapid prototype)</option>
+                          <option value="2-4 weeks (MVP)">2-4 weeks (MVP)</option>
+                          <option value="1-3 months (production-ready)">1-3 months (production-ready)</option>
+                          <option value="3-6 months (full product)">3-6 months (full product)</option>
+                          <option value="6+ months (enterprise solution)">6+ months (enterprise solution)</option>
+                        </select>
+                        {' '}with iterative improvements based on user feedback.
+                      </p>
+                    </div>
+
+                    {/* Sentence 7: Team Size */}
+                    <div className="bg-white rounded-lg p-4 border-l-4 border-yellow-500">
+                      <p className="text-gray-800">
+                        The development team consists of{' '}
+                        <select
+                          value={prdData.teamSize}
+                          onChange={(e): void => setPrdData({ ...prdData, teamSize: e.target.value })}
+                          className="inline-block mx-1 px-3 py-1 border-2 border-yellow-400 rounded-lg bg-yellow-50 font-semibold text-yellow-900 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                        >
+                          <option value="">-- select --</option>
+                          <option value="1 developer (solo project)">1 developer (solo project)</option>
+                          <option value="2-3 developers (small team)">2-3 developers (small team)</option>
+                          <option value="4-6 developers (mid-size team)">4-6 developers (mid-size team)</option>
+                          <option value="7-10 developers (large team)">7-10 developers (large team)</option>
+                          <option value="10+ developers (enterprise team)">10+ developers (enterprise team)</option>
+                        </select>
+                        {' '}with expertise in modern web technologies.
+                      </p>
+                    </div>
+
+                    {/* Sentence 8: Budget */}
+                    <div className="bg-white rounded-lg p-4 border-l-4 border-red-500">
+                      <p className="text-gray-800">
+                        Budget considerations include{' '}
+                        <select
+                          value={prdData.budget}
+                          onChange={(e): void => setPrdData({ ...prdData, budget: e.target.value })}
+                          className="inline-block mx-1 px-3 py-1 border-2 border-red-400 rounded-lg bg-red-50 font-semibold text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500"
+                        >
+                          <option value="">-- select --</option>
+                          <option value="minimal infrastructure costs (serverless, free tiers)">minimal infrastructure costs (serverless, free tiers)</option>
+                          <option value="moderate hosting and third-party service costs">moderate hosting and third-party service costs</option>
+                          <option value="enterprise-grade infrastructure with compliance requirements">enterprise-grade infrastructure with compliance requirements</option>
+                          <option value="cloud services with autoscaling capabilities">cloud services with autoscaling capabilities</option>
+                          <option value="hybrid on-premise and cloud deployment">hybrid on-premise and cloud deployment</option>
+                        </select>
+                        {' '}to ensure cost-effective delivery.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Generate PRD Button */}
+                  <div className="mt-8 text-center">
+                    <Button
+                      onClick={(): void => {
+                        const allFieldsFilled = Object.values(prdData).every(val => val !== '')
+                        if (!allFieldsFilled) {
+                          alert('Please fill in all fields to generate your PRD')
+                        } else {
+                          // Scroll to generated PRD section
+                          document.getElementById('generated-prd')?.scrollIntoView({ behavior: 'smooth' })
+                        }
+                      }}
+                      className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 text-lg font-semibold"
+                    >
+                      Generate Complete PRD
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Generated PRD Output */}
+                {Object.values(prdData).every(val => val !== '') && (
+                  <div id="generated-prd" className="bg-white border-2 border-blue-400 rounded-xl p-8 mb-6">
+                    <div className="flex items-center justify-between mb-6">
+                      <h4 className="text-2xl font-bold text-blue-900">📄 Your Generated PRD</h4>
+                      <Button
+                        onClick={(): void => {
+                          const prdText = document.getElementById('prd-content')?.innerText || ''
+                          navigator.clipboard.writeText(prdText)
+                          alert('PRD copied to clipboard!')
+                        }}
+                        variant="outline"
+                        className="text-sm"
+                      >
+                        Copy to Clipboard
+                      </Button>
+                    </div>
+
+                    <div id="prd-content" className="prose max-w-none space-y-6">
+                      <div>
+                        <h5 className="text-xl font-bold text-gray-900 mb-2">Project Overview</h5>
+                        <p className="text-gray-700 leading-relaxed">
+                          We are building a <strong>{prdData.projectType}</strong> to validate our idea and gather user feedback.
+                          Our target users are <strong>{prdData.targetUsers}</strong> who need a streamlined solution for their daily tasks.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h5 className="text-xl font-bold text-gray-900 mb-2">Goals & Objectives</h5>
+                        <p className="text-gray-700 leading-relaxed">
+                          The primary goal of this project is to <strong>{prdData.primaryGoal}</strong> while maintaining
+                          simplicity and ease of use. This will enable our users to work more efficiently and achieve better outcomes.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h5 className="text-xl font-bold text-gray-900 mb-2">Key Features</h5>
+                        <p className="text-gray-700 leading-relaxed">
+                          Key features must include <strong>{prdData.keyFeatures}</strong> to meet user needs effectively.
+                          These features are essential for delivering value and ensuring user satisfaction.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h5 className="text-xl font-bold text-gray-900 mb-2">Technical Stack</h5>
+                        <p className="text-gray-700 leading-relaxed">
+                          For the technology stack, we will use <strong>{prdData.stack}</strong> based on project requirements.
+                          This stack has been chosen for its reliability, performance, and developer experience.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h5 className="text-xl font-bold text-gray-900 mb-2">Timeline & Resources</h5>
+                        <p className="text-gray-700 leading-relaxed">
+                          Our target timeline for the first release is <strong>{prdData.timeline}</strong> with iterative
+                          improvements based on user feedback. The development team consists of <strong>{prdData.teamSize}</strong> with
+                          expertise in modern web technologies.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h5 className="text-xl font-bold text-gray-900 mb-2">Budget & Infrastructure</h5>
+                        <p className="text-gray-700 leading-relaxed">
+                          Budget considerations include <strong>{prdData.budget}</strong> to ensure cost-effective delivery.
+                          Infrastructure choices will be made to balance performance, scalability, and cost efficiency.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h5 className="text-xl font-bold text-gray-900 mb-2">Success Metrics</h5>
+                        <ul className="text-gray-700 space-y-2">
+                          <li>✓ User adoption rate and engagement metrics</li>
+                          <li>✓ Performance benchmarks (load time, response time, uptime)</li>
+                          <li>✓ User satisfaction scores and feedback</li>
+                          <li>✓ Feature completion and bug resolution rates</li>
+                          <li>✓ Cost efficiency and ROI measurements</li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h5 className="text-xl font-bold text-gray-900 mb-2">Next Steps</h5>
+                        <ol className="text-gray-700 space-y-2 list-decimal list-inside">
+                          <li>Finalize requirements and get stakeholder approval</li>
+                          <li>Set up development environment and repository</li>
+                          <li>Create AGENTS.md file for AI agent collaboration</li>
+                          <li>Begin iterative development with sprint planning</li>
+                          <li>Establish testing and CI/CD pipeline</li>
+                          <li>Schedule regular demo sessions and collect feedback</li>
+                        </ol>
+                      </div>
+                    </div>
+
+                    <div className="mt-8 p-4 bg-green-50 border border-green-300 rounded-lg">
+                      <p className="text-sm text-green-900">
+                        <strong>💡 Pro Tip:</strong> Use this PRD as a starting point for your project planning.
+                        Share it with your team, stakeholders, and AI coding assistants (like Code Puppy) to ensure
+                        everyone is aligned on the project goals and technical approach.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Reset Button */}
+                {Object.values(prdData).some(val => val !== '') && (
+                  <div className="text-center mb-6">
+                    <Button
+                      onClick={(): void => {
+                        setPrdData({
+                          projectType: '',
+                          targetUsers: '',
+                          primaryGoal: '',
+                          keyFeatures: '',
+                          stack: '',
+                          timeline: '',
+                          teamSize: '',
+                          budget: ''
+                        })
+                      }}
+                      variant="outline"
+                      className="text-red-600 border-red-400 hover:bg-red-50"
+                    >
+                      Reset and Start Over
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           )}
