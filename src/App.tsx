@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Button } from './components/ui/button'
-import { Code2, Rocket, FileText, BookOpen, Sparkles, CheckCircle2, Dog, FileEdit, FileCode } from 'lucide-react'
+import { Code2, Rocket, FileText, BookOpen, Sparkles, CheckCircle2, Dog, FileEdit, FileCode, Lightbulb } from 'lucide-react'
 
 export function App(): JSX.Element {
-  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'codepuppy' | 'stacks' | 'prd' | 'myagents'>('overview')
+  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'codepuppy' | 'stacks' | 'examples' | 'prd' | 'myagents'>('overview')
 
   // PRD Generator State
   const [prdData, setPrdData] = useState({
@@ -116,6 +116,16 @@ export function App(): JSX.Element {
           >
             <Code2 className="w-4 h-4 mr-2" aria-hidden="true" />
             Tech Stacks
+          </Button>
+          <Button
+            onClick={(): void => setActiveTab('examples')}
+            variant={activeTab === 'examples' ? 'default' : 'outline'}
+            role="tab"
+            aria-selected={activeTab === 'examples'}
+            aria-controls="examples-panel"
+          >
+            <Lightbulb className="w-4 h-4 mr-2" aria-hidden="true" />
+            AI Examples
           </Button>
           <Button
             onClick={(): void => setActiveTab('prd')}
@@ -1225,6 +1235,317 @@ class MyAgent(Agent):
                     team expertise, and constraints. Don't chase trends—choose technologies that solve real problems
                     for your specific use case. Start simple, scale when needed.
                   </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* AI Examples Tab */}
+          {activeTab === 'examples' && (
+            <div id="examples-panel" role="tabpanel" aria-labelledby="examples-tab">
+              <div className="flex items-center gap-3 mb-6">
+                <Lightbulb className="w-10 h-10 text-yellow-600" aria-hidden="true" />
+                <h3 className="text-3xl font-bold">Amazing AI-Powered Projects</h3>
+              </div>
+              <div className="prose prose-lg max-w-none">
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  Real-world examples of applications built with AI assistance using <strong>AGENTS.md</strong> and modern AI tools.
+                  These projects were "vibe coded" - rapidly prototyped from concept to production with AI pair programming.
+                </p>
+
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-300 rounded-lg p-6 mb-8">
+                  <h4 className="text-2xl font-semibold text-purple-900 mb-3">
+                    🚀 What is "Vibe Coding"?
+                  </h4>
+                  <p className="text-purple-800 mb-4">
+                    <strong>Vibe coding</strong> is the practice of rapidly building applications by collaborating with AI agents.
+                    Instead of spending weeks on boilerplate and configuration, you describe what you want, and AI helps you build it—fast.
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-white rounded-lg p-4">
+                      <p className="font-semibold text-purple-900 mb-2">Traditional Development</p>
+                      <ul className="text-sm text-gray-700 space-y-1">
+                        <li>• Weeks of setup and configuration</li>
+                        <li>• Manual boilerplate coding</li>
+                        <li>• Repetitive CRUD operations</li>
+                        <li>• Documentation hunting</li>
+                        <li>• Trial and error debugging</li>
+                      </ul>
+                    </div>
+                    <div className="bg-white rounded-lg p-4">
+                      <p className="font-semibold text-green-900 mb-2">AI-Powered "Vibe Coding"</p>
+                      <ul className="text-sm text-gray-700 space-y-1">
+                        <li>• ✨ Minutes to functional prototype</li>
+                        <li>• 🤖 AI generates boilerplate</li>
+                        <li>• ⚡ Instant CRUD scaffolding</li>
+                        <li>• 📚 AI knows the docs</li>
+                        <li>• 🔍 AI helps debug instantly</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <h4 className="text-2xl font-semibold mb-4">🌟 Real-World Examples</h4>
+
+                {/* Example 1: Team Onboarding Portal */}
+                <div className="bg-white border-2 border-blue-300 rounded-lg p-6 mb-6">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-blue-100 rounded-full p-3 flex-shrink-0">
+                      <Rocket className="w-8 h-8 text-blue-600" aria-hidden="true" />
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="text-xl font-semibold text-blue-900 mb-2">
+                        Team Onboarding Portal (Azure VDI)
+                      </h5>
+                      <p className="text-sm text-gray-600 mb-3">
+                        <strong>Built in:</strong> 2-3 days with AI assistance | <strong>Stack:</strong> React + TypeScript + Fastify + SQLite
+                      </p>
+                      <p className="text-gray-700 mb-4">
+                        A comprehensive Azure Virtual Desktop provisioning platform with hierarchical organization structure,
+                        dynamic pricing calculator, and admin portal. Features a 5-step wizard for VDI configuration with
+                        real-time cost estimation and auto-approval workflows.
+                      </p>
+                      <div className="grid md:grid-cols-3 gap-3 text-sm">
+                        <div className="bg-blue-50 rounded p-2">
+                          <p className="font-semibold text-blue-800">Key Features</p>
+                          <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                            <li>• 5-step intake wizard</li>
+                            <li>• Real-time pricing calc</li>
+                            <li>• Admin approval workflow</li>
+                            <li>• Audit trail logging</li>
+                          </ul>
+                        </div>
+                        <div className="bg-green-50 rounded p-2">
+                          <p className="font-semibold text-green-800">AI Contributions</p>
+                          <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                            <li>• Form validation logic</li>
+                            <li>• Pricing algorithms</li>
+                            <li>• Database schema design</li>
+                            <li>• API endpoint generation</li>
+                          </ul>
+                        </div>
+                        <div className="bg-purple-50 rounded p-2">
+                          <p className="font-semibold text-purple-800">Time Saved</p>
+                          <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                            <li>• Setup: 2 hours vs 2 days</li>
+                            <li>• CRUD ops: 30 min vs 3 days</li>
+                            <li>• UI polish: 1 hour vs 1 week</li>
+                            <li>• <strong>Total: 80% faster</strong></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Example 2: Network Performance Tester */}
+                <div className="bg-white border-2 border-green-300 rounded-lg p-6 mb-6">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-green-100 rounded-full p-3 flex-shrink-0">
+                      <CheckCircle2 className="w-8 h-8 text-green-600" aria-hidden="true" />
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="text-xl font-semibold text-green-900 mb-2">
+                        Agnostic Network Performance Tester
+                      </h5>
+                      <p className="text-sm text-gray-600 mb-3">
+                        <strong>Built in:</strong> 1-2 days with AI assistance | <strong>Stack:</strong> Node.js + Express + Real-time WebSockets
+                      </p>
+                      <p className="text-gray-700 mb-4">
+                        A comprehensive network testing tool optimized for H.264 multimedia and virtual desktop environments.
+                        Tests network performance across 30+ Azure regions with protocol-specific packet sizes (RDP, Citrix HDX, VMware Blast).
+                        Provides real-time visualization of latency, jitter, packet loss, and bandwidth.
+                      </p>
+                      <div className="grid md:grid-cols-3 gap-3 text-sm">
+                        <div className="bg-green-50 rounded p-2">
+                          <p className="font-semibold text-green-800">Key Features</p>
+                          <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                            <li>• 30+ Azure regions</li>
+                            <li>• VDI protocol optimization</li>
+                            <li>• Real-time metrics</li>
+                            <li>• MTU discovery</li>
+                          </ul>
+                        </div>
+                        <div className="bg-blue-50 rounded p-2">
+                          <p className="font-semibold text-blue-800">AI Contributions</p>
+                          <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                            <li>• WebSocket implementation</li>
+                            <li>• Chart.js visualization</li>
+                            <li>• Packet size algorithms</li>
+                            <li>• System info detection</li>
+                          </ul>
+                        </div>
+                        <div className="bg-purple-50 rounded p-2">
+                          <p className="font-semibold text-purple-800">Complexity</p>
+                          <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                            <li>• Real-time data streaming</li>
+                            <li>• Multi-region testing</li>
+                            <li>• Performance optimization</li>
+                            <li>• <strong>Built solo in days</strong></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Example 3: Remote Training App */}
+                <div className="bg-white border-2 border-purple-300 rounded-lg p-6 mb-6">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-purple-100 rounded-full p-3 flex-shrink-0">
+                      <Dog className="w-8 h-8 text-purple-600" aria-hidden="true" />
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="text-xl font-semibold text-purple-900 mb-2">
+                        Puppy Trainer (Windows Remote Training)
+                      </h5>
+                      <p className="text-sm text-gray-600 mb-3">
+                        <strong>Built in:</strong> 1 week with AI assistance | <strong>Stack:</strong> React + TypeScript + Electron + PowerShell
+                      </p>
+                      <p className="text-gray-700 mb-4">
+                        A unified Windows application for remote technical training. Consolidates terminal, video streaming, chat,
+                        and web browsing into one WCAG 2.2 AA-compliant interface. Features secure PowerShell/CMD integration,
+                        Zoom webinar embedding, and real-time Q&A chat.
+                      </p>
+                      <div className="grid md:grid-cols-3 gap-3 text-sm">
+                        <div className="bg-purple-50 rounded p-2">
+                          <p className="font-semibold text-purple-800">Key Features</p>
+                          <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                            <li>• Integrated terminal</li>
+                            <li>• Video streaming embed</li>
+                            <li>• Real-time chat (Socket.io)</li>
+                            <li>• Accessibility (WCAG 2.2 AA)</li>
+                          </ul>
+                        </div>
+                        <div className="bg-blue-50 rounded p-2">
+                          <p className="font-semibold text-blue-800">AI Contributions</p>
+                          <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                            <li>• Electron setup</li>
+                            <li>• PowerShell integration</li>
+                            <li>• Socket.io chat logic</li>
+                            <li>• A11y compliance</li>
+                          </ul>
+                        </div>
+                        <div className="bg-green-50 rounded p-2">
+                          <p className="font-semibold text-green-800">Innovation</p>
+                          <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                            <li>• All-in-one training app</li>
+                            <li>• Cross-platform (Electron)</li>
+                            <li>• Secure terminal access</li>
+                            <li>• <strong>Zero fragmentation</strong></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Example 4: Command Center Dashboard */}
+                <div className="bg-white border-2 border-orange-300 rounded-lg p-6 mb-6">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-orange-100 rounded-full p-3 flex-shrink-0">
+                      <Sparkles className="w-8 h-8 text-orange-600" aria-hidden="true" />
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="text-xl font-semibold text-orange-900 mb-2">
+                        Claude Command Center (Project Management Dashboard)
+                      </h5>
+                      <p className="text-sm text-gray-600 mb-3">
+                        <strong>Built in:</strong> 2 days with AI assistance | <strong>Stack:</strong> React + Node.js + Socket.io + PM2
+                      </p>
+                      <p className="text-gray-700 mb-4">
+                        A comprehensive web-based management interface for Claude Code projects. Features real-time system monitoring
+                        (CPU, RAM, disk, network), project management, session tracking, and integrated terminal—all accessible
+                        through a beautiful web UI running on port 9090.
+                      </p>
+                      <div className="grid md:grid-cols-3 gap-3 text-sm">
+                        <div className="bg-orange-50 rounded p-2">
+                          <p className="font-semibold text-orange-800">Key Features</p>
+                          <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                            <li>• Real-time monitoring</li>
+                            <li>• Project dashboard</li>
+                            <li>• Session tracking</li>
+                            <li>• Built-in terminal</li>
+                          </ul>
+                        </div>
+                        <div className="bg-blue-50 rounded p-2">
+                          <p className="font-semibold text-blue-800">AI Contributions</p>
+                          <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                            <li>• WebSocket setup</li>
+                            <li>• System info APIs</li>
+                            <li>• Dashboard UI design</li>
+                            <li>• PM2 integration</li>
+                          </ul>
+                        </div>
+                        <div className="bg-purple-50 rounded p-2">
+                          <p className="font-semibold text-purple-800">Impact</p>
+                          <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                            <li>• Centralized management</li>
+                            <li>• Auto-start with PM2</li>
+                            <li>• Real-time updates</li>
+                            <li>• <strong>Single pane of glass</strong></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-400 rounded-lg p-6 mt-8">
+                  <h4 className="text-xl font-semibold text-green-900 mb-3">
+                    💡 Common Patterns in AI-Powered Development
+                  </h4>
+                  <div className="grid md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <p className="font-semibold text-green-800 mb-2">What AI Excels At:</p>
+                      <ul className="text-gray-700 space-y-1">
+                        <li>• ⚡ Boilerplate code generation</li>
+                        <li>• 🎨 UI component scaffolding</li>
+                        <li>• 🔌 API endpoint creation</li>
+                        <li>• 📊 Database schema design</li>
+                        <li>• 🔍 Debugging and error fixing</li>
+                        <li>• 📚 Documentation writing</li>
+                        <li>• ♿ Accessibility implementation</li>
+                        <li>• 🧪 Test case generation</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-blue-800 mb-2">What You Still Own:</p>
+                      <ul className="text-gray-700 space-y-1">
+                        <li>• 🎯 Product vision & requirements</li>
+                        <li>• 🏗️ Architecture decisions</li>
+                        <li>• 🎨 UX/UI design direction</li>
+                        <li>• 🔒 Security policy enforcement</li>
+                        <li>• ✅ Code review & quality gates</li>
+                        <li>• 🚀 Deployment strategy</li>
+                        <li>• 📈 Performance optimization</li>
+                        <li>• 🤝 Stakeholder communication</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-6 mt-6">
+                  <h4 className="text-xl font-semibold text-yellow-900 mb-3">
+                    🚀 Ready to "Vibe Code" Your Own Project?
+                  </h4>
+                  <p className="text-yellow-800 mb-4">
+                    Start by creating an <strong>AGENTS.md</strong> file in your repository. Define your project structure,
+                    tech stack, code style, and security rules. Then fire up your favorite AI tool (Cursor, GitHub Copilot,
+                    Claude Code, etc.) and start building!
+                  </p>
+                  <div className="bg-white rounded-lg p-4">
+                    <p className="font-semibold text-gray-800 mb-2">Quick Start Checklist:</p>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• ✅ Create <code className="bg-gray-200 px-1 rounded">AGENTS.md</code> file (use examples from this site)</li>
+                      <li>• ✅ Choose your tech stack (React/Vue/Next + Fastify/Express + PostgreSQL/SQLite)</li>
+                      <li>• ✅ Define code style rules (TypeScript strict, ESLint, Prettier)</li>
+                      <li>• ✅ Set security standards (Zod validation, no secrets in code)</li>
+                      <li>• ✅ Start coding with AI assistance</li>
+                      <li>• ✅ Use AI for boilerplate, you focus on business logic</li>
+                      <li>• ✅ Ship fast, iterate faster!</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
