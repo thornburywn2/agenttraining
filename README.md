@@ -1,6 +1,6 @@
-# AGENTS.md Demo Project
+# AGENTS.md Framework Demo
 
-A modern full-stack TypeScript application showcasing **AGENTS.md** framework integration with **CLAUDE.md** development standards.
+A modern full-stack TypeScript application showcasing the **AGENTS.md** framework - a comprehensive system for AI agent collaboration with built-in enterprise development standards.
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
@@ -141,7 +141,7 @@ The application will be available at:
 
 ## 🎨 Design Principles
 
-This project follows the **CLAUDE.md** philosophy:
+This project follows the **AGENTS.md** framework's core philosophy:
 
 > **BEAUTY IS MANDATORY**
 >
@@ -154,7 +154,9 @@ This project follows the **CLAUDE.md** philosophy:
 3. 🔒 **Security by Default** - Input validation, no secrets in code
 4. 📚 **Documentation** - Clear, comprehensive, up-to-date
 5. 🧪 **Test Coverage** - 80%+ coverage requirement
-6. 🤖 **AI-Friendly** - AGENTS.md framework for optimal AI collaboration
+6. 🤖 **AI-Friendly** - Standardized instructions for 20+ AI tools
+
+> **Note:** These development standards were derived from CLAUDE.md methodology and are now built directly into the AGENTS.md framework.
 
 ---
 
@@ -329,12 +331,12 @@ We welcome contributions! Please follow these guidelines:
 
 ## 📚 Resources
 
-- [WCAG 2.2 Guidelines](https://www.w3.org/TR/WCAG22/)
-- [React Documentation](https://react.dev)
-- [Fastify Documentation](https://fastify.dev)
-- [Prisma Documentation](https://www.prisma.io/docs)
-- [AGENTS.md Framework](https://agents.md/)
-- [CLAUDE.md Standards](/root/CLAUDE.md)
+- [AGENTS.md Framework](https://agents.md/) - Official AGENTS.md documentation
+- [WCAG 2.2 Guidelines](https://www.w3.org/TR/WCAG22/) - Accessibility standards
+- [React Documentation](https://react.dev) - React library
+- [Fastify Documentation](https://fastify.dev) - Fastify framework
+- [Prisma Documentation](https://www.prisma.io/docs) - Prisma ORM
+- [shadcn/ui](https://ui.shadcn.com/) - Component library
 
 ---
 
@@ -346,13 +348,13 @@ MIT License - see [LICENSE](LICENSE) file for details
 
 ## 🙏 Acknowledgments
 
-- **AGENTS.md** - AI agent instruction framework
-- **CLAUDE.md** - Development lifecycle standards
+- **AGENTS.md** - Comprehensive AI agent framework
 - **shadcn/ui** - Beautiful accessible components
 - **Open Source Community** - All the amazing tools and libraries
+- **CLAUDE.md** - Source of development standards methodology
 
 ---
 
-**Built with ❤️ following AGENTS.md + CLAUDE.md standards**
+**Built with ❤️ following the AGENTS.md framework**
 
 **Questions?** Check [AGENTS.md](./AGENTS.md) for detailed instructions or open an issue.

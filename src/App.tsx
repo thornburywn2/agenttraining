@@ -3,7 +3,7 @@ import { Button } from './components/ui/button'
 import { Code2, Rocket, FileText, Workflow, BookOpen, Sparkles } from 'lucide-react'
 
 export function App(): JSX.Element {
-  const [activeTab, setActiveTab] = useState<'overview' | 'agents' | 'claude' | 'workflow'>('overview')
+  const [activeTab, setActiveTab] = useState<'overview' | 'framework' | 'standards' | 'workflow'>('overview')
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
@@ -22,7 +22,7 @@ export function App(): JSX.Element {
             <div className="flex items-center gap-3">
               <Code2 className="w-8 h-8 text-primary" aria-hidden="true" />
               <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                AGENTS.md + CLAUDE.md Integration Demo
+                AGENTS.md Framework Demo
               </h1>
             </div>
             <div className="flex items-center gap-2 text-sm text-gray-600">
@@ -42,12 +42,14 @@ export function App(): JSX.Element {
             id="hero-heading"
             className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
           >
-            AI Agent Development Framework
+            AGENTS.md Framework
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            This project demonstrates the integration of <strong className="text-blue-600">AGENTS.md</strong>{' '}
-            (AI agent instructions) with <strong className="text-purple-600">CLAUDE.md</strong>{' '}
-            (development lifecycle standards) to create AI-optimized, production-ready applications.
+            A comprehensive framework for AI agent collaboration with built-in development standards
+            for <strong className="text-blue-600">beautiful design</strong>,{' '}
+            <strong className="text-purple-600">accessibility</strong>,{' '}
+            <strong className="text-pink-600">security</strong>, and{' '}
+            <strong className="text-green-600">production readiness</strong>.
           </p>
         </section>
 
@@ -64,24 +66,24 @@ export function App(): JSX.Element {
             Overview
           </Button>
           <Button
-            onClick={(): void => setActiveTab('agents')}
-            variant={activeTab === 'agents' ? 'default' : 'outline'}
+            onClick={(): void => setActiveTab('framework')}
+            variant={activeTab === 'framework' ? 'default' : 'outline'}
             role="tab"
-            aria-selected={activeTab === 'agents'}
-            aria-controls="agents-panel"
+            aria-selected={activeTab === 'framework'}
+            aria-controls="framework-panel"
           >
             <FileText className="w-4 h-4 mr-2" aria-hidden="true" />
-            AGENTS.md
+            Framework Structure
           </Button>
           <Button
-            onClick={(): void => setActiveTab('claude')}
-            variant={activeTab === 'claude' ? 'default' : 'outline'}
+            onClick={(): void => setActiveTab('standards')}
+            variant={activeTab === 'standards' ? 'default' : 'outline'}
             role="tab"
-            aria-selected={activeTab === 'claude'}
-            aria-controls="claude-panel"
+            aria-selected={activeTab === 'standards'}
+            aria-controls="standards-panel"
           >
             <BookOpen className="w-4 h-4 mr-2" aria-hidden="true" />
-            CLAUDE.md
+            Development Standards
           </Button>
           <Button
             onClick={(): void => setActiveTab('workflow')}
@@ -100,55 +102,59 @@ export function App(): JSX.Element {
           {/* Overview Tab */}
           {activeTab === 'overview' && (
             <div id="overview-panel" role="tabpanel" aria-labelledby="overview-tab">
-              <h3 className="text-3xl font-bold mb-6">What is This?</h3>
+              <h3 className="text-3xl font-bold mb-6">What is AGENTS.md?</h3>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  This is a reference implementation showing how to structure projects for optimal
-                  <strong> AI coding agent collaboration</strong> while maintaining <strong>enterprise-grade quality standards</strong>.
+                  <strong>AGENTS.md</strong> is a comprehensive framework for AI agent collaboration that combines
+                  standardized AI instructions with enterprise-grade development standards. This single framework
+                  provides everything AI agents need to build production-ready applications.
                 </p>
 
-                <div className="grid md:grid-cols-2 gap-6 my-8">
-                  <div className="bg-blue-50 p-6 rounded-lg">
-                    <h4 className="text-xl font-semibold text-blue-900 mb-3 flex items-center gap-2">
-                      <FileText className="w-5 h-5" aria-hidden="true" />
-                      AGENTS.md Framework
-                    </h4>
-                    <p className="text-blue-800">
-                      Open standard for providing AI agents with project-specific instructions,
-                      code style guidelines, testing procedures, and security requirements.
-                    </p>
-                    <ul className="mt-3 space-y-1 text-sm text-blue-700">
-                      <li>✓ Standardized AI instructions</li>
-                      <li>✓ Supported by 20+ tools</li>
-                      <li>✓ Living documentation</li>
-                    </ul>
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg border border-blue-200 my-6">
+                  <h4 className="text-xl font-semibold text-blue-900 mb-3 flex items-center gap-2">
+                    <FileText className="w-5 h-5" aria-hidden="true" />
+                    The AGENTS.md Framework Includes:
+                  </h4>
+                  <div className="grid md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <p className="font-semibold text-blue-900 mb-2">AI Agent Instructions:</p>
+                      <ul className="text-blue-800 space-y-1">
+                        <li>✓ Project overview and tech stack</li>
+                        <li>✓ Quick start commands</li>
+                        <li>✓ Code style guidelines</li>
+                        <li>✓ Testing procedures</li>
+                        <li>✓ Supported by 20+ AI tools</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-purple-900 mb-2">Development Standards:</p>
+                      <ul className="text-purple-800 space-y-1">
+                        <li>✓ Beautiful, modern UI/UX (mandatory)</li>
+                        <li>✓ WCAG 2.2 AA accessibility compliance</li>
+                        <li>✓ Security best practices</li>
+                        <li>✓ Production-ready quality gates</li>
+                        <li>✓ 7-phase development lifecycle</li>
+                      </ul>
+                    </div>
                   </div>
+                </div>
 
-                  <div className="bg-purple-50 p-6 rounded-lg">
-                    <h4 className="text-xl font-semibold text-purple-900 mb-3 flex items-center gap-2">
-                      <BookOpen className="w-5 h-5" aria-hidden="true" />
-                      CLAUDE.md Standards
-                    </h4>
-                    <p className="text-purple-800">
-                      Comprehensive development lifecycle framework with mandatory standards for
-                      beauty, accessibility (WCAG 2.2 AA), security, and quality.
-                    </p>
-                    <ul className="mt-3 space-y-1 text-sm text-purple-700">
-                      <li>✓ 7-phase lifecycle (Plan → Optimize)</li>
-                      <li>✓ Beauty is mandatory</li>
-                      <li>✓ WCAG 2.2 AA compliance</li>
-                    </ul>
-                  </div>
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+                  <p className="text-sm text-yellow-900">
+                    <strong>📝 Note:</strong> This framework incorporates development standards
+                    derived from CLAUDE.md methodology. AGENTS.md serves as the single source of
+                    truth for both AI agents and developers.
+                  </p>
                 </div>
 
                 <h4 className="text-2xl font-semibold mb-4 mt-8">Generated Project Structure</h4>
                 <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
 {`agents-md-demo/
-├── AGENTS.md           ← AI agent instructions
-├── CLAUDE.md           ← Development standards (source)
+├── AGENTS.md           ← Comprehensive framework (AI + standards)
 ├── PORT_MANAGEMENT.md  ← Port allocation docs
 ├── README.md           ← Human documentation
 ├── TODO.md             ← Task tracking (MVP checklist)
+├── CHANGELOG.md        ← Version history
 ├── src/                ← React + TypeScript frontend
 ├── server/             ← Fastify + TypeScript backend
 ├── prisma/             ← Database (PostgreSQL)
@@ -159,17 +165,19 @@ export function App(): JSX.Element {
             </div>
           )}
 
-          {/* AGENTS.md Tab */}
-          {activeTab === 'agents' && (
-            <div id="agents-panel" role="tabpanel" aria-labelledby="agents-tab">
-              <h3 className="text-3xl font-bold mb-6">AGENTS.md Framework</h3>
+          {/* Framework Structure Tab */}
+          {activeTab === 'framework' && (
+            <div id="framework-panel" role="tabpanel" aria-labelledby="framework-tab">
+              <h3 className="text-3xl font-bold mb-6">Framework Structure</h3>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed mb-6">
                   The <code className="bg-blue-100 text-blue-800 px-2 py-1 rounded">AGENTS.md</code> file
-                  provides AI coding agents with everything they need to work on your project effectively.
+                  is the single source of truth for your project. It combines AI agent instructions with
+                  comprehensive development standards, ensuring both AI agents and human developers work
+                  to the same high-quality standards.
                 </p>
 
-                <h4 className="text-xl font-semibold mb-3">Key Sections in Our AGENTS.md:</h4>
+                <h4 className="text-xl font-semibold mb-3">Key Sections in AGENTS.md:</h4>
                 <div className="space-y-4">
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h5 className="font-semibold">📋 Project Overview</h5>
@@ -229,15 +237,16 @@ Before starting services:
             </div>
           )}
 
-          {/* CLAUDE.md Tab */}
-          {activeTab === 'claude' && (
-            <div id="claude-panel" role="tabpanel" aria-labelledby="claude-tab">
-              <h3 className="text-3xl font-bold mb-6">CLAUDE.md Development Standards</h3>
+          {/* Development Standards Tab */}
+          {activeTab === 'standards' && (
+            <div id="standards-panel" role="tabpanel" aria-labelledby="standards-tab">
+              <h3 className="text-3xl font-bold mb-6">Development Standards</h3>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  The <code className="bg-purple-100 text-purple-800 px-2 py-1 rounded">CLAUDE.md</code> file
-                  defines comprehensive development lifecycle standards that ensure every project is beautiful,
-                  accessible, secure, and production-ready.
+                  The AGENTS.md framework incorporates comprehensive development standards
+                  that ensure every project is beautiful, accessible, secure, and production-ready.
+                  These standards were derived from CLAUDE.md methodology and are now built directly
+                  into the AGENTS.md framework.
                 </p>
 
                 <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mb-6">
@@ -369,8 +378,9 @@ Before starting services:
               <h3 className="text-3xl font-bold mb-6">How This Project Was Built</h3>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  This project was created by an AI agent (Claude) following both AGENTS.md and CLAUDE.md
-                  standards. Here&apos;s the exact workflow that was followed:
+                  This project was created by an AI agent (Claude) using the AGENTS.md framework,
+                  which incorporates development standards sourced from CLAUDE.md methodology.
+                  Here&apos;s the exact workflow that was followed:
                 </p>
 
                 <div className="space-y-6">
@@ -389,26 +399,29 @@ Before starting services:
                   </div>
 
                   <div className="border-l-4 border-purple-500 bg-purple-50 p-6 rounded-r-lg">
-                    <h4 className="text-xl font-semibold text-purple-900 mb-3">Step 2: Review CLAUDE.md Standards</h4>
+                    <h4 className="text-xl font-semibold text-purple-900 mb-3">Step 2: Extract Development Standards</h4>
                     <p className="text-purple-800 mb-3">
-                      Read /root/CLAUDE.md v5.9.0 to understand mandatory requirements
+                      Reviewed CLAUDE.md v5.9.0 as source material to define comprehensive development standards
+                      for incorporation into AGENTS.md framework
                     </p>
                     <pre className="bg-purple-900 text-purple-100 p-3 rounded text-xs overflow-x-auto">
-{`Read → /root/CLAUDE.md
-✓ Beauty is mandatory
+{`Source: /root/CLAUDE.md → Extracted standards:
+✓ Beauty is mandatory (core principle)
 ✓ WCAG 2.2 AA accessibility (18 checkpoints)
 ✓ 7-phase lifecycle (Plan → Optimize)
 ✓ Port management (/root/PORTS.md)
 ✓ No mock data in code (use DB seeds)
 ✓ TypeScript strict mode
-✓ 80%+ test coverage`}
+✓ 80%+ test coverage
+
+→ Integrated into AGENTS.md framework`}
                     </pre>
                   </div>
 
                   <div className="border-l-4 border-green-500 bg-green-50 p-6 rounded-r-lg">
                     <h4 className="text-xl font-semibold text-green-900 mb-3">Step 3: Create Project Structure</h4>
                     <p className="text-green-800 mb-3">
-                      Generated complete project following both frameworks
+                      Generated complete project following the AGENTS.md framework with integrated development standards
                     </p>
                     <div className="grid md:grid-cols-2 gap-3 text-xs">
                       <div>
@@ -478,14 +491,15 @@ Before starting services:
                     <pre className="bg-indigo-900 text-indigo-100 p-3 rounded text-xs overflow-x-auto">
 {`git init
 git add .
-git commit -m "feat: Initial project setup with AGENTS.md + CLAUDE.md integration
+git commit -m "feat: Initial project setup with AGENTS.md framework
 
-Project follows:
-✅ AGENTS.md framework for AI agent optimization
-✅ CLAUDE.md development standards
+Project follows comprehensive AGENTS.md framework including:
+✅ AI agent optimization and instructions
+✅ Development standards (sourced from CLAUDE.md)
 ✅ WCAG 2.2 Level AA compliance
 ✅ TypeScript strict mode
 ✅ Beautiful, modern UI design
+✅ Security best practices
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
@@ -539,27 +553,27 @@ Co-Authored-By: Claude <noreply@anthropic.com>"`}
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <FileText className="w-8 h-8" aria-hidden="true" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">AGENTS.md</h3>
+              <h3 className="text-xl font-semibold mb-2">Comprehensive Framework</h3>
               <p className="text-blue-100">
-                Standardized AI agent instructions make projects accessible to 20+ AI tools
+                AGENTS.md combines AI agent instructions with development standards in a single, unified framework
               </p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <BookOpen className="w-8 h-8" aria-hidden="true" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">CLAUDE.md</h3>
+              <h3 className="text-xl font-semibold mb-2">Enterprise Standards</h3>
               <p className="text-purple-100">
-                7-phase lifecycle with mandatory beauty, accessibility, and security standards
+                Built-in standards for beauty, WCAG 2.2 AA accessibility, security, and 7-phase lifecycle
               </p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Rocket className="w-8 h-8" aria-hidden="true" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Together</h3>
+              <h3 className="text-xl font-semibold mb-2">Production Ready</h3>
               <p className="text-pink-100">
-                AI-optimized development with enterprise-grade quality and production readiness
+                AI-optimized development with enterprise-grade quality, supported by 20+ AI tools
               </p>
             </div>
           </div>
@@ -571,7 +585,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>"`}
         <div className="container mx-auto px-4 py-12">
           <div className="text-center">
             <p className="text-lg mb-4">
-              Built with ❤️ following{' '}
+              Built with ❤️ following the{' '}
               <a
                 href="https://agents.md"
                 className="text-blue-400 hover:text-blue-300 underline"
@@ -580,16 +594,12 @@ Co-Authored-By: Claude <noreply@anthropic.com>"`}
               >
                 AGENTS.md
               </a>{' '}
-              +{' '}
-              <a
-                href="/CLAUDE.md"
-                className="text-purple-400 hover:text-purple-300 underline"
-              >
-                CLAUDE.md
-              </a>{' '}
-              standards
+              framework
             </p>
-            <p className="text-gray-400">
+            <p className="text-gray-400 text-sm">
+              Development standards derived from CLAUDE.md methodology
+            </p>
+            <p className="text-gray-400 mt-2">
               © 2025 AGENTS.md Demo. Licensed under MIT.
             </p>
           </div>

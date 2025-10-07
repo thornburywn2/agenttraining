@@ -9,9 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **Refactored framework consolidation** (2025-10-07)
+  - Eliminated CLAUDE.md as separate framework
+  - Positioned AGENTS.md as single comprehensive framework
+  - Incorporated development standards from CLAUDE.md methodology into AGENTS.md
+  - Updated all UI components and documentation to reflect unified framework
+  - Renamed tabs: "AGENTS.md" → "Framework Structure", "CLAUDE.md" → "Development Standards"
+  - Updated README.md, App.tsx, and footer references
+  - CLAUDE.md now acknowledged as source material for standards, not co-equal framework
+
 ### Added
 - Initial project setup with AGENTS.md framework
-- CLAUDE.md compliance standards integration
+- Development standards derived from CLAUDE.md methodology
 - Project structure following best practices
 - Comprehensive documentation (AGENTS.md, README.md, TODO.md)
 
@@ -117,8 +127,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Version History
 
-- **[1.0.0]** - TBD - Initial release with AGENTS.md + CLAUDE.md integration
-- **[Unreleased]** - 2025-10-07 - Project setup and documentation
+- **[1.0.0]** - TBD - Initial release with AGENTS.md framework (including development standards)
+- **[Unreleased]** - 2025-10-07 - Project setup, framework consolidation, and documentation
 
 ---
 
@@ -141,13 +151,13 @@ This project uses [Conventional Commits](https://www.conventionalcommits.org/):
 
 ## Links
 
-- [AGENTS.md](./AGENTS.md) - AI agent instructions
+- [AGENTS.md](./AGENTS.md) - Comprehensive framework (AI instructions + development standards)
 - [README.md](./README.md) - Project documentation
 - [TODO.md](./TODO.md) - Project tasks
-- [CLAUDE.md](/root/CLAUDE.md) - Development standards
+- [PORT_MANAGEMENT.md](./PORT_MANAGEMENT.md) - Port allocation
 
 ---
 
 **Maintained By:** Development Team + AI Coding Agents
-**Framework:** AGENTS.md + CLAUDE.md
+**Framework:** AGENTS.md (standards derived from CLAUDE.md methodology)
 **License:** MIT
