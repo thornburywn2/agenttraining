@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { Button } from './components/ui/button'
-import { Code2, Rocket, FileText, BookOpen, Sparkles, CheckCircle2, Dog, FileEdit, FileCode, Lightbulb } from 'lucide-react'
+import { Code2, Rocket, FileText, BookOpen, Sparkles, CheckCircle2, Dog, FileEdit, FileCode, Lightbulb, Copy, Check, Network } from 'lucide-react'
 
 export function App(): JSX.Element {
-  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'codepuppy' | 'stacks' | 'examples' | 'prd' | 'myagents'>('overview')
+  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'codepuppy' | 'stacks' | 'examples' | 'prd' | 'myagents' | 'mcp'>('overview')
+  const [copied, setCopied] = useState(false)
 
   // PRD Generator State
   const [prdData, setPrdData] = useState({
@@ -146,6 +147,16 @@ export function App(): JSX.Element {
           >
             <FileCode className="w-4 h-4 mr-2" aria-hidden="true" />
             My AGENTS.md
+          </Button>
+          <Button
+            onClick={(): void => setActiveTab('mcp')}
+            variant={activeTab === 'mcp' ? 'default' : 'outline'}
+            role="tab"
+            aria-selected={activeTab === 'mcp'}
+            aria-controls="mcp-panel"
+          >
+            <Network className="w-4 h-4 mr-2" aria-hidden="true" />
+            MCP Servers
           </Button>
         </div>
 
@@ -1491,6 +1502,271 @@ class MyAgent(Agent):
                   </div>
                 </div>
 
+                {/* Infrastructure & Automation Examples Section */}
+                <div className="mt-10 mb-8">
+                  <h4 className="text-2xl font-bold text-gray-900 mb-4">
+                    🔧 Infrastructure Automation & PowerShell Examples
+                  </h4>
+                  <p className="text-gray-700 mb-6">
+                    AI excels at infrastructure automation, system integrations, and enterprise tooling.
+                    Here are real-world examples of PowerShell-based tools built with AI assistance:
+                  </p>
+
+                  {/* Example 1: VMware Horizon Integration */}
+                  <div className="bg-white border-2 border-orange-300 rounded-lg p-6 mb-6">
+                    <div className="flex items-start gap-4">
+                      <div className="bg-orange-100 rounded-full p-3 flex-shrink-0">
+                        <Rocket className="w-8 h-8 text-orange-600" aria-hidden="true" />
+                      </div>
+                      <div className="flex-1">
+                        <h5 className="text-xl font-semibold text-orange-900 mb-2">
+                          VMware Horizon PowerShell Integration
+                        </h5>
+                        <p className="text-sm text-gray-600 mb-3">
+                          <strong>Use Case:</strong> Automate VDI desktop provisioning and management
+                        </p>
+                        <p className="text-gray-700 mb-4">
+                          Build PowerShell scripts to interact with <a href="https://docs.omnissa.com/category/Horizon_8" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">VMware Horizon 8</a> APIs.
+                          Automate desktop pool management, user session monitoring, and resource allocation.
+                          AI can generate REST API calls, handle authentication, and parse responses.
+                        </p>
+                        <div className="grid md:grid-cols-3 gap-3 text-sm">
+                          <div className="bg-orange-50 rounded p-2">
+                            <p className="font-semibold text-orange-800">Key Tasks</p>
+                            <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                              <li>• Create desktop pools</li>
+                              <li>• Monitor user sessions</li>
+                              <li>• Provision VMs</li>
+                              <li>• Resource health checks</li>
+                            </ul>
+                          </div>
+                          <div className="bg-blue-50 rounded p-2">
+                            <p className="font-semibold text-blue-800">AI Helps With</p>
+                            <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                              <li>• API authentication logic</li>
+                              <li>• JSON parsing/formatting</li>
+                              <li>• Error handling patterns</li>
+                              <li>• PowerShell cmdlet structure</li>
+                            </ul>
+                          </div>
+                          <div className="bg-purple-50 rounded p-2">
+                            <p className="font-semibold text-purple-800">Example Output</p>
+                            <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                              <li>• Automated provisioning script</li>
+                              <li>• Session report generator</li>
+                              <li>• Health dashboard data</li>
+                              <li>• <strong>Hours → Minutes</strong></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Example 2: Broadcom Log Insight Frontend */}
+                  <div className="bg-white border-2 border-teal-300 rounded-lg p-6 mb-6">
+                    <div className="flex items-start gap-4">
+                      <div className="bg-teal-100 rounded-full p-3 flex-shrink-0">
+                        <FileText className="w-8 h-8 text-teal-600" aria-hidden="true" />
+                      </div>
+                      <div className="flex-1">
+                        <h5 className="text-xl font-semibold text-teal-900 mb-2">
+                          Broadcom Log Insight Custom Frontend
+                        </h5>
+                        <p className="text-sm text-gray-600 mb-3">
+                          <strong>Use Case:</strong> Build intuitive UI for log analysis and visualization
+                        </p>
+                        <p className="text-gray-700 mb-4">
+                          Create a React/Vue frontend that connects to Broadcom Log Insight APIs. Display logs in real-time dashboards,
+                          create custom queries, and visualize trends. AI generates API integration code, chart components, and query builders.
+                        </p>
+                        <div className="grid md:grid-cols-3 gap-3 text-sm">
+                          <div className="bg-teal-50 rounded p-2">
+                            <p className="font-semibold text-teal-800">Features</p>
+                            <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                              <li>• Real-time log streaming</li>
+                              <li>• Custom query builder</li>
+                              <li>• Chart visualizations</li>
+                              <li>• Alert configuration</li>
+                            </ul>
+                          </div>
+                          <div className="bg-blue-50 rounded p-2">
+                            <p className="font-semibold text-blue-800">AI Contributions</p>
+                            <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                              <li>• REST API client setup</li>
+                              <li>• WebSocket log streaming</li>
+                              <li>• Chart.js/Recharts integration</li>
+                              <li>• Query DSL generator</li>
+                            </ul>
+                          </div>
+                          <div className="bg-purple-50 rounded p-2">
+                            <p className="font-semibold text-purple-800">Time Saved</p>
+                            <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                              <li>• UI: 2 days → 4 hours</li>
+                              <li>• API integration: 1 week → 1 day</li>
+                              <li>• Charts: 3 days → 2 hours</li>
+                              <li>• <strong>90% faster</strong></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Example 3: Log Analysis & Trend Detection */}
+                  <div className="bg-white border-2 border-indigo-300 rounded-lg p-6 mb-6">
+                    <div className="flex items-start gap-4">
+                      <div className="bg-indigo-100 rounded-full p-3 flex-shrink-0">
+                        <Sparkles className="w-8 h-8 text-indigo-600" aria-hidden="true" />
+                      </div>
+                      <div className="flex-1">
+                        <h5 className="text-xl font-semibold text-indigo-900 mb-2">
+                          Intelligent Log Analysis & Pattern Detection
+                        </h5>
+                        <p className="text-sm text-gray-600 mb-3">
+                          <strong>Use Case:</strong> Automatically detect anomalies and trends in system logs
+                        </p>
+                        <p className="text-gray-700 mb-4">
+                          Build PowerShell or Python scripts that parse log files, detect patterns, and identify anomalies.
+                          AI helps with regex patterns, statistical analysis, and ML-based anomaly detection.
+                          Generate visual reports and automated alerts for critical events.
+                        </p>
+                        <div className="grid md:grid-cols-3 gap-3 text-sm">
+                          <div className="bg-indigo-50 rounded p-2">
+                            <p className="font-semibold text-indigo-800">Capabilities</p>
+                            <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                              <li>• Regex pattern matching</li>
+                              <li>• Anomaly detection</li>
+                              <li>• Trend analysis</li>
+                              <li>• Automated alerting</li>
+                            </ul>
+                          </div>
+                          <div className="bg-blue-50 rounded p-2">
+                            <p className="font-semibold text-blue-800">AI Helps With</p>
+                            <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                              <li>• Complex regex generation</li>
+                              <li>• Statistical algorithms</li>
+                              <li>• Data aggregation logic</li>
+                              <li>• Report formatting</li>
+                            </ul>
+                          </div>
+                          <div className="bg-purple-50 rounded p-2">
+                            <p className="font-semibold text-purple-800">Results</p>
+                            <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                              <li>• 99% pattern accuracy</li>
+                              <li>• Real-time alerts</li>
+                              <li>• Trend visualization</li>
+                              <li>• <strong>Proactive monitoring</strong></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Example 4: Capacity Trending Dashboard */}
+                  <div className="bg-white border-2 border-pink-300 rounded-lg p-6 mb-6">
+                    <div className="flex items-start gap-4">
+                      <div className="bg-pink-100 rounded-full p-3 flex-shrink-0">
+                        <CheckCircle2 className="w-8 h-8 text-pink-600" aria-hidden="true" />
+                      </div>
+                      <div className="flex-1">
+                        <h5 className="text-xl font-semibold text-pink-900 mb-2">
+                          Infrastructure Capacity Trending & Forecasting
+                        </h5>
+                        <p className="text-sm text-gray-600 mb-3">
+                          <strong>Use Case:</strong> Predict capacity needs before resources run out
+                        </p>
+                        <p className="text-gray-700 mb-4">
+                          Collect metrics from multiple systems (CPU, memory, disk, network), analyze historical trends,
+                          and forecast future capacity needs. AI generates data collection scripts, time-series analysis,
+                          and predictive models with visualizations.
+                        </p>
+                        <div className="grid md:grid-cols-3 gap-3 text-sm">
+                          <div className="bg-pink-50 rounded p-2">
+                            <p className="font-semibold text-pink-800">Data Sources</p>
+                            <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                              <li>• Performance counters</li>
+                              <li>• WMI queries (Windows)</li>
+                              <li>• SNMP (network devices)</li>
+                              <li>• vCenter/Horizon APIs</li>
+                            </ul>
+                          </div>
+                          <div className="bg-blue-50 rounded p-2">
+                            <p className="font-semibold text-blue-800">AI Contributions</p>
+                            <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                              <li>• Data collection scripts</li>
+                              <li>• Time-series analysis</li>
+                              <li>• Forecasting algorithms</li>
+                              <li>• Dashboard visualizations</li>
+                            </ul>
+                          </div>
+                          <div className="bg-purple-50 rounded p-2">
+                            <p className="font-semibold text-purple-800">Business Value</p>
+                            <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                              <li>• Prevent outages</li>
+                              <li>• Optimize spending</li>
+                              <li>• Plan expansions</li>
+                              <li>• <strong>Proactive planning</strong></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Example 5: Remote Machine Inventory & Troubleshooting */}
+                  <div className="bg-white border-2 border-cyan-300 rounded-lg p-6 mb-6">
+                    <div className="flex items-start gap-4">
+                      <div className="bg-cyan-100 rounded-full p-3 flex-shrink-0">
+                        <Code2 className="w-8 h-8 text-cyan-600" aria-hidden="true" />
+                      </div>
+                      <div className="flex-1">
+                        <h5 className="text-xl font-semibold text-cyan-900 mb-2">
+                          Remote Machine Inventory & Diagnostic Tool
+                        </h5>
+                        <p className="text-sm text-gray-600 mb-3">
+                          <strong>Use Case:</strong> Gather system info from remote machines for troubleshooting
+                        </p>
+                        <p className="text-gray-700 mb-4">
+                          PowerShell script that connects to remote Windows/Linux machines, gathers comprehensive system information
+                          (hardware, software, network, services, events), and generates troubleshooting reports.
+                          AI helps with WMI queries, SSH connections, error handling, and report formatting.
+                        </p>
+                        <div className="grid md:grid-cols-3 gap-3 text-sm">
+                          <div className="bg-cyan-50 rounded p-2">
+                            <p className="font-semibold text-cyan-800">Collected Data</p>
+                            <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                              <li>• Hardware specs</li>
+                              <li>• Installed software</li>
+                              <li>• Network config</li>
+                              <li>• Event logs (errors)</li>
+                            </ul>
+                          </div>
+                          <div className="bg-blue-50 rounded p-2">
+                            <p className="font-semibold text-blue-800">AI Helps With</p>
+                            <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                              <li>• PowerShell remoting</li>
+                              <li>• WMI/CIM queries</li>
+                              <li>• SSH connection logic</li>
+                              <li>• HTML/CSV report gen</li>
+                            </ul>
+                          </div>
+                          <div className="bg-purple-50 rounded p-2">
+                            <p className="font-semibold text-purple-800">Impact</p>
+                            <ul className="text-gray-700 text-xs mt-1 space-y-1">
+                              <li>• Troubleshooting: hours → minutes</li>
+                              <li>• Comprehensive reports</li>
+                              <li>• Batch processing</li>
+                              <li>• <strong>Support efficiency +300%</strong></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-400 rounded-lg p-6 mt-8">
                   <h4 className="text-xl font-semibold text-green-900 mb-3">
                     💡 Common Patterns in AI-Powered Development
@@ -1827,11 +2103,127 @@ class MyAgent(Agent):
                       </div>
                     </div>
 
-                    <div className="mt-8 p-4 bg-green-50 border border-green-300 rounded-lg">
+                    {/* AGENTS.md Integration Section */}
+                    <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-400 rounded-lg">
+                      <h5 className="text-xl font-bold text-blue-900 mb-3 flex items-center gap-2">
+                        <FileCode className="w-6 h-6" aria-hidden="true" />
+                        📋 Next Step: Create Your AGENTS.md File
+                      </h5>
+                      <p className="text-gray-700 mb-4">
+                        Now that you have your PRD, transform it into an <strong>AGENTS.md</strong> file to enable AI-powered development.
+                        Your AGENTS.md should mirror your PRD structure while adding AI-specific instructions.
+                      </p>
+                      <div className="bg-white rounded-lg p-4 mb-4">
+                        <p className="font-semibold text-blue-900 mb-2">AGENTS.md Structure (Based on Your PRD):</p>
+                        <div className="space-y-2 text-sm text-gray-700">
+                          <div className="bg-blue-50 rounded p-2">
+                            <strong>📋 Project Overview</strong> → From "Project Type" and "Target Users"
+                            <br />
+                            <span className="text-xs">Describe what you're building and who it's for</span>
+                          </div>
+                          <div className="bg-green-50 rounded p-2">
+                            <strong>🎯 Primary Goal</strong> → From "Primary Goal"
+                            <br />
+                            <span className="text-xs">The main objective and value proposition</span>
+                          </div>
+                          <div className="bg-purple-50 rounded p-2">
+                            <strong>⚙️ Tech Stack</strong> → From "Technology Stack"
+                            <br />
+                            <span className="text-xs">Specify frameworks, libraries, and tools</span>
+                          </div>
+                          <div className="bg-orange-50 rounded p-2">
+                            <strong>✨ Key Features</strong> → From "Key Features"
+                            <br />
+                            <span className="text-xs">List features with acceptance criteria</span>
+                          </div>
+                          <div className="bg-pink-50 rounded p-2">
+                            <strong>🚀 Getting Started</strong> → Installation commands, dev environment
+                            <br />
+                            <span className="text-xs">npm install, environment setup, database migrations</span>
+                          </div>
+                          <div className="bg-teal-50 rounded p-2">
+                            <strong>📁 Project Structure</strong> → Folder layout
+                            <br />
+                            <span className="text-xs">src/, tests/, docs/, scripts/</span>
+                          </div>
+                          <div className="bg-indigo-50 rounded p-2">
+                            <strong>🎨 Code Style</strong> → TypeScript, ESLint, Prettier rules
+                            <br />
+                            <span className="text-xs">Define coding standards for AI agents</span>
+                          </div>
+                          <div className="bg-yellow-50 rounded p-2">
+                            <strong>🧪 Testing</strong> → Test requirements (80%+ coverage)
+                            <br />
+                            <span className="text-xs">Unit, integration, e2e testing strategies</span>
+                          </div>
+                          <div className="bg-red-50 rounded p-2">
+                            <strong>🔒 Security</strong> → No secrets in code, input validation
+                            <br />
+                            <span className="text-xs">Security guidelines for AI agents</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bg-gray-900 text-white rounded-lg p-4">
+                        <p className="text-sm mb-2">Example AGENTS.md header (copy this template):</p>
+                        <pre className="text-xs font-mono whitespace-pre-wrap">
+{`# AGENTS.md
+
+**Project:** ${prdData.projectType || 'Your Project Name'}
+**Target Users:** ${prdData.targetUsers || 'Target User Group'}
+**Primary Goal:** ${prdData.primaryGoal || 'Main Objective'}
+
+> **🎯 Purpose**: This file provides AI agents with everything they need
+> to build and maintain this project following the AGENTS.md standard.
+
+---
+
+## 📋 Project Overview
+
+${prdData.projectType ? `We are building a ${prdData.projectType}` : 'Describe your project here'}...
+
+**Tech Stack:**
+- Frontend: ${prdData.stack?.includes('React') ? 'React 18 + TypeScript' : 'Your Framework'}
+- Backend: ${prdData.stack?.includes('Fastify') ? 'Fastify + TypeScript' : 'Your Backend'}
+- Database: ${prdData.stack?.includes('PostgreSQL') ? 'PostgreSQL + Prisma' : 'Your Database'}
+
+**Key Features:**
+${prdData.keyFeatures ? `- ${prdData.keyFeatures.split(',').join('\n- ')}` : '- Feature 1\n- Feature 2\n- Feature 3'}
+
+---
+
+## 🚀 Getting Started
+
+\`\`\`bash
+# Installation
+npm install
+
+# Development
+npm run dev
+\`\`\`
+
+---
+
+## 🎨 Code Style & Standards
+
+- TypeScript strict mode (no 'any' types)
+- ESLint + Prettier for formatting
+- 80%+ test coverage required
+- No secrets in code (use environment variables)
+
+[... see ~/AGENTS.md for complete structure]`}
+                        </pre>
+                      </div>
+                      <p className="text-sm text-blue-900 mt-4">
+                        <strong>💡 View the complete AGENTS.md template in the "My AGENTS.md" tab above!</strong>
+                      </p>
+                    </div>
+
+                    <div className="mt-6 p-4 bg-green-50 border border-green-300 rounded-lg">
                       <p className="text-sm text-green-900">
                         <strong>💡 Pro Tip:</strong> Use this PRD as a starting point for your project planning.
-                        Share it with your team, stakeholders, and AI coding assistants (like Code Puppy) to ensure
-                        everyone is aligned on the project goals and technical approach.
+                        Then create an AGENTS.md file based on the structure above to enable AI-powered development.
+                        Share both documents with your team, stakeholders, and AI coding assistants to ensure
+                        everyone (humans and AI) is aligned on the project goals and technical approach.
                       </p>
                     </div>
                   </div>
@@ -1870,13 +2262,13 @@ class MyAgent(Agent):
               <h3 className="text-3xl font-bold mb-6">My AGENTS.md File</h3>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  This is the actual <strong>AGENTS.md</strong> file from my Claude Code instance at <code className="bg-gray-100 px-2 py-1 rounded text-sm">/root/AGENTS.md</code>.
+                  This is the actual <strong>AGENTS.md</strong> file from my Claude Code instance at <code className="bg-gray-100 px-2 py-1 rounded text-sm">~/AGENTS.md</code>.
                   It demonstrates a real-world implementation of the AGENTS.md standard.
                 </p>
 
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-300 rounded-lg p-6 mb-6">
                   <h4 className="text-xl font-semibold text-blue-900 mb-3">
-                    📂 File Location: /root/AGENTS.md
+                    📂 File Location: ~/AGENTS.md
                   </h4>
                   <p className="text-sm text-blue-800 mb-3">
                     Version: 1.0.0 | Last Updated: 2025-10-07 | Framework: AGENTS.md Standard
@@ -1900,7 +2292,618 @@ class MyAgent(Agent):
                 <div className="bg-white border-2 border-gray-300 rounded-lg overflow-hidden">
                   <div className="bg-gray-800 text-white px-4 py-2 flex items-center justify-between">
                     <span className="font-mono text-sm">AGENTS.md</span>
-                    <span className="text-xs text-gray-400">Markdown</span>
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs text-gray-400">Markdown</span>
+                      <Button
+                        onClick={async (): Promise<void> => {
+                          const agentsContent = `# AGENTS.md
+
+**Project:** Modern Full-Stack Application
+**Version:** 1.0.0
+**Last Updated:** 2025-10-07
+**Framework:** AGENTS.md Standard
+
+> **🎯 Purpose**: This file provides AI agents with everything they need to understand, build, and maintain this project. Following the [AGENTS.md](https://agents.md) open standard for AI agent instructions.
+
+---
+
+## 📋 Project Overview
+
+### What is This Project?
+
+A modern full-stack application built with enterprise-grade development standards. This project demonstrates professional software development practices optimized for AI agent collaboration.
+
+**Key Features:**
+- ✨ Beautiful, modern UI/UX
+- 🔒 Security best practices (input validation, authentication)
+- 🧪 Comprehensive testing (80%+ coverage)
+- 📚 Production-ready code quality
+- 🤖 AI agent optimized (supported by 20+ AI tools)
+
+### Tech Stack (Choose Your Tools)
+
+**Frontend Options:**
+- React 18+ with TypeScript (recommended)
+- Next.js 14+ for SSR/SSG needs
+- Vue 3+ for simpler learning curve
+- Svelte for minimal bundle size
+
+**Styling Options:**
+- Tailwind CSS (utility-first, recommended)
+- CSS Modules
+- Styled Components
+- Material-UI / shadcn/ui component libraries
+
+**Backend Options:**
+- Fastify (fast, TypeScript-friendly, recommended)
+- Express (popular, mature ecosystem)
+- Hono (edge-optimized, lightweight)
+- Next.js API routes (full-stack in one framework)
+
+**Database Options:**
+- PostgreSQL (relational, production-ready)
+- SQLite (simple, embedded)
+- MongoDB (document-based, flexible schema)
+- Prisma ORM (recommended for TypeScript)
+
+**Current Implementation:**
+- Frontend: React 18 + TypeScript + Vite + Tailwind CSS
+- Backend: Fastify + TypeScript + Prisma
+- Database: PostgreSQL 15
+- Testing: Vitest + React Testing Library
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ and npm
+- PostgreSQL 15+
+- Git
+
+### Installation
+
+\`\`\`bash
+# Clone the repository
+git clone <repository-url>
+cd <project-name>
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your database credentials
+
+# Run database migrations
+npm run db:migrate
+
+# Seed database with demo data (optional)
+npm run db:seed
+
+# Start development server
+npm run dev:all  # Starts both frontend and backend
+\`\`\`
+
+### Available Commands
+
+\`\`\`bash
+# Development
+npm run dev              # Start frontend dev server
+npm run dev:backend      # Start backend dev server
+npm run dev:all          # Start both frontend and backend
+
+# Build
+npm run build            # Build for production
+npm run preview          # Preview production build
+
+# Testing
+npm test                 # Run all tests
+npm run test:coverage    # Run tests with coverage report
+npm run test:watch       # Run tests in watch mode
+
+# Code Quality
+npm run lint             # Run ESLint
+npm run lint:fix         # Fix linting issues
+npm run format           # Format code with Prettier
+npm run type-check       # Check TypeScript types
+
+# Database
+npm run db:migrate       # Run database migrations
+npm run db:seed          # Seed database
+npm run db:studio        # Open Prisma Studio
+\`\`\`
+
+---
+
+## 📁 Project Structure
+
+\`\`\`
+project-root/
+├── src/                  # Frontend source code
+│   ├── components/       # React components
+│   │   ├── ui/          # shadcn/ui components
+│   │   └── ...          # Feature components
+│   ├── services/         # API clients
+│   ├── utils/            # Helper functions
+│   ├── types/            # TypeScript types
+│   └── App.tsx           # Root component
+│
+├── server/               # Backend source code
+│   ├── routes/           # API routes
+│   ├── middleware/       # Middleware functions
+│   ├── services/         # Business logic
+│   └── index.ts          # Server entry point
+│
+├── prisma/               # Database
+│   ├── schema.prisma     # Database schema
+│   ├── migrations/       # Migration files
+│   └── seed.ts           # Seed data
+│
+├── tests/                # Test files
+│   ├── unit/             # Unit tests
+│   ├── integration/      # Integration tests
+│   └── e2e/              # End-to-end tests
+│
+├── docs/                 # Documentation
+│   ├── API.md            # API documentation
+│   └── ARCHITECTURE.md   # System architecture
+│
+├── .env.example          # Environment variables template
+├── package.json          # Dependencies and scripts
+├── tsconfig.json         # TypeScript configuration
+├── vite.config.ts        # Vite configuration
+├── eslint.config.js      # ESLint configuration
+└── AGENTS.md             # This file (AI agent instructions)
+\`\`\`
+
+---
+
+## 🎨 Code Style & Standards
+
+### TypeScript
+
+**ALWAYS use TypeScript strict mode:**
+
+\`\`\`typescript
+// ✅ Good: Explicit types
+interface User {
+  id: string
+  email: string
+  name: string
+}
+
+function getUser(id: string): Promise<User> {
+  // implementation
+}
+
+// ❌ Bad: Using 'any'
+function getUser(id: any): any {
+  // implementation
+}
+\`\`\`
+
+### React Components
+
+**Use functional components with TypeScript:**
+
+\`\`\`tsx
+// ✅ Good: Typed props
+interface ButtonProps {
+  label: string
+  onClick: () => void
+  variant?: 'primary' | 'secondary'
+}
+
+export function Button({ label, onClick, variant = 'primary' }: ButtonProps): JSX.Element {
+  return (
+    <button
+      onClick={onClick}
+      className={\`btn btn-\${variant}\`}
+    >
+      {label}
+    </button>
+  )
+}
+
+// ❌ Bad: No types
+export function Button({ label, onClick, variant }) {
+  return <button onClick={onClick}>{label}</button>
+}
+\`\`\`
+
+### API Routes
+
+**Use Zod for input validation:**
+
+\`\`\`typescript
+import { z } from 'zod'
+import { FastifyRequest, FastifyReply } from 'fastify'
+
+// Define validation schema
+const createUserSchema = z.object({
+  email: z.string().email(),
+  name: z.string().min(2),
+  password: z.string().min(8)
+})
+
+// Use in route handler
+async function createUser(
+  request: FastifyRequest,
+  reply: FastifyReply
+): Promise<void> {
+  try {
+    // Validate input
+    const data = createUserSchema.parse(request.body)
+
+    // Business logic
+    const user = await prisma.user.create({
+      data: {
+        email: data.email,
+        name: data.name,
+        passwordHash: await hashPassword(data.password)
+      }
+    })
+
+    reply.code(201).send({ user })
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      reply.code(400).send({ error: 'Validation failed', details: error.errors })
+    }
+    throw error
+  }
+}
+\`\`\`
+
+### Error Handling
+
+**Always handle errors gracefully:**
+
+\`\`\`typescript
+// ✅ Good: Proper error handling
+try {
+  const data = await fetchData()
+  return { success: true, data }
+} catch (error) {
+  if (error instanceof ApiError) {
+    return { success: false, error: error.message }
+  }
+  throw error
+}
+
+// ❌ Bad: Silent failures
+try {
+  const data = await fetchData()
+  return data
+} catch {
+  return null
+}
+\`\`\`
+
+---
+
+## 🧪 Testing
+
+### Test Coverage Requirements
+
+**REQUIRED: Minimum 80% code coverage**
+
+\`\`\`bash
+# Run tests with coverage
+npm run test:coverage
+
+# Coverage should show:
+# Statements: 80% or higher
+# Branches: 80% or higher
+# Functions: 80% or higher
+# Lines: 80% or higher
+\`\`\`
+
+### Writing Tests
+
+**Unit Tests:**
+
+\`\`\`typescript
+import { describe, it, expect } from 'vitest'
+import { formatDate } from '../utils/formatDate'
+
+describe('formatDate', () => {
+  it('should format date correctly', () => {
+    const date = new Date('2025-10-07')
+    expect(formatDate(date)).toBe('October 7, 2025')
+  })
+
+  it('should handle invalid dates', () => {
+    expect(() => formatDate(null)).toThrow()
+  })
+})
+\`\`\`
+
+**Component Tests:**
+
+\`\`\`tsx
+import { render, screen, fireEvent } from '@testing-library/react'
+import { describe, it, expect, vi } from 'vitest'
+import { Button } from '../components/Button'
+
+describe('Button', () => {
+  it('should call onClick when clicked', () => {
+    const handleClick = vi.fn()
+    render(<Button label="Click me" onClick={handleClick} />)
+
+    const button = screen.getByRole('button', { name: /click me/i })
+    fireEvent.click(button)
+
+    expect(handleClick).toHaveBeenCalledTimes(1)
+  })
+})
+\`\`\`
+
+**API Tests:**
+
+\`\`\`typescript
+import { describe, it, expect, beforeAll, afterAll } from 'vitest'
+import { build } from '../server'
+
+describe('User API', () => {
+  let app
+
+  beforeAll(async () => {
+    app = await build()
+  })
+
+  afterAll(async () => {
+    await app.close()
+  })
+
+  it('should create a user', async () => {
+    const response = await app.inject({
+      method: 'POST',
+      url: '/api/users',
+      payload: {
+        email: 'test@example.com',
+        name: 'Test User',
+        password: 'password123'
+      }
+    })
+
+    expect(response.statusCode).toBe(201)
+    expect(response.json()).toHaveProperty('user')
+  })
+})
+\`\`\`
+
+---
+
+## 🔒 Security Best Practices
+
+### Environment Variables
+
+**NEVER hardcode secrets in code:**
+
+\`\`\`typescript
+// ✅ Good: Use environment variables
+const JWT_SECRET = process.env.JWT_SECRET
+const DATABASE_URL = process.env.DATABASE_URL
+
+// ❌ Bad: Hardcoded secrets
+const JWT_SECRET = 'my-secret-key-123'
+const DATABASE_URL = 'postgresql://user:password@localhost:5432/db'
+\`\`\`
+
+### Input Validation
+
+**ALWAYS validate user input:**
+
+\`\`\`typescript
+// ✅ Good: Validate with Zod
+const schema = z.object({
+  email: z.string().email(),
+  age: z.number().min(0).max(120)
+})
+
+const data = schema.parse(userInput)
+
+// ❌ Bad: No validation
+const data = userInput
+\`\`\`
+
+### SQL Injection Prevention
+
+**Use Prisma ORM (parameterized queries):**
+
+\`\`\`typescript
+// ✅ Good: Prisma (safe)
+const user = await prisma.user.findUnique({
+  where: { email: userEmail }
+})
+
+// ❌ Bad: Raw SQL with string concatenation
+const user = await prisma.$queryRaw\`
+  SELECT * FROM users WHERE email = '\${userEmail}'
+\`
+\`\`\`
+
+### Authentication
+
+**Use JWT with proper expiration:**
+
+\`\`\`typescript
+import jwt from 'jsonwebtoken'
+
+// ✅ Good: JWT with expiration
+const token = jwt.sign(
+  { userId: user.id },
+  process.env.JWT_SECRET,
+  { expiresIn: '24h' }
+)
+
+// ❌ Bad: No expiration
+const token = jwt.sign(
+  { userId: user.id },
+  process.env.JWT_SECRET
+)
+\`\`\`
+
+---
+
+## 🚀 Deployment
+
+### Environment Setup
+
+**Production environment variables:**
+
+\`\`\`bash
+# Database
+DATABASE_URL=postgresql://user:password@host:5432/production_db
+
+# JWT
+JWT_SECRET=your-production-secret-min-32-characters
+
+# Server
+PORT=3001
+NODE_ENV=production
+
+# Frontend
+VITE_API_URL=https://api.yourapp.com
+\`\`\`
+
+### Build Process
+
+\`\`\`bash
+# 1. Install dependencies
+npm ci
+
+# 2. Run tests
+npm test
+
+# 3. Build frontend and backend
+npm run build
+
+# 4. Run database migrations
+npm run db:migrate
+
+# 5. Start production server
+npm start
+\`\`\`
+
+### Performance Checklist
+
+- ✅ Bundle size < 250KB gzipped
+- ✅ First Contentful Paint < 1.8s
+- ✅ Lighthouse score ≥90 (all categories)
+- ✅ Database queries optimized (indexes, proper joins)
+- ✅ API response time < 200ms
+- ✅ Caching strategy implemented (Redis/in-memory)
+
+---
+
+## 📚 Additional Resources
+
+- [AGENTS.md Standard](https://agents.md) - Open standard for AI agent instructions
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+- [React Documentation](https://react.dev)
+- [Fastify Documentation](https://fastify.dev)
+- [Prisma Documentation](https://www.prisma.io/docs)
+- [Zod Documentation](https://zod.dev)
+
+---
+
+## 🤝 Contributing
+
+### Pull Request Checklist
+
+Before submitting a PR, ensure:
+
+- ✅ All tests pass (\`npm test\`)
+- ✅ Code coverage ≥80% (\`npm run test:coverage\`)
+- ✅ No linting errors (\`npm run lint\`)
+- ✅ Code is formatted (\`npm run format\`)
+- ✅ TypeScript compiles (\`npm run type-check\`)
+- ✅ All new features have tests
+- ✅ Documentation is updated (if needed)
+
+### Commit Message Format
+
+Use [Conventional Commits](https://www.conventionalcommits.org/):
+
+\`\`\`
+feat: add user authentication
+fix: resolve memory leak in API routes
+docs: update README with new commands
+test: add tests for user service
+chore: update dependencies
+\`\`\`
+
+---
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Issue: "Cannot connect to database"**
+- Check \`.env\` file exists and has correct \`DATABASE_URL\`
+- Ensure PostgreSQL is running: \`pg_isready\`
+- Run migrations: \`npm run db:migrate\`
+
+**Issue: "Module not found" errors**
+- Clear node_modules: \`rm -rf node_modules && npm install\`
+- Check TypeScript paths in \`tsconfig.json\`
+
+**Issue: "Tests failing unexpectedly"**
+- Clear test cache: \`npm test -- --clearCache\`
+- Check for stale mocks or fixtures
+
+**Issue: "Build fails on production"**
+- Verify all environment variables are set
+- Check for missing dependencies in \`package.json\`
+- Run \`npm run type-check\` to catch TypeScript errors
+
+---
+
+## 📞 Support
+
+- **Documentation:** \`/docs\` directory
+- **Issues:** GitHub Issues (if applicable)
+- **AI Agents:** This AGENTS.md file is your primary reference
+
+---
+
+**Supported AI Tools:** GitHub Copilot, Cursor, Cline, Windsurf, Zed, Continue, Sourcegraph Cody, Code Puppy, Azure AI Code Assist, Google Gemini Code Assist, and 10+ more.
+
+---
+
+**Last Updated:** 2025-10-07
+**Version:** 1.0.0
+**Maintained By:** Development Team + AI Agents
+**Framework:** AGENTS.md Open Standard`
+                          try {
+                            await navigator.clipboard.writeText(agentsContent)
+                            setCopied(true)
+                            setTimeout(() => setCopied(false), 2000)
+                          } catch (err) {
+                            console.error('Failed to copy:', err)
+                          }
+                        }}
+                        variant="ghost"
+                        size="sm"
+                        className="h-7 px-2 text-gray-300 hover:text-white hover:bg-gray-700"
+                        aria-label={copied ? 'Copied to clipboard' : 'Copy AGENTS.md to clipboard'}
+                      >
+                        {copied ? (
+                          <>
+                            <Check className="w-3 h-3 mr-1" aria-hidden="true" />
+                            <span className="text-xs">Copied!</span>
+                          </>
+                        ) : (
+                          <>
+                            <Copy className="w-3 h-3 mr-1" aria-hidden="true" />
+                            <span className="text-xs">Copy</span>
+                          </>
+                        )}
+                      </Button>
+                    </div>
                   </div>
                   <div className="p-6 overflow-x-auto max-h-[800px] overflow-y-auto">
                     <pre className="text-sm font-mono leading-relaxed whitespace-pre-wrap">
@@ -2338,6 +3341,511 @@ This project follows the **AGENTS.md** open standard for AI agent instructions:
                     <div className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
                       <p><strong>Quality Enforcement:</strong> Testing requirements (80%+ coverage), code style rules, and PR checklists are clearly defined.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* MCP Servers Tab */}
+          {activeTab === 'mcp' && (
+            <div id="mcp-panel" role="tabpanel" aria-labelledby="mcp-tab">
+              <div className="flex items-center gap-3 mb-6">
+                <Network className="w-10 h-10 text-blue-600" aria-hidden="true" />
+                <h3 className="text-3xl font-bold">Model Context Protocol (MCP) Servers</h3>
+              </div>
+
+              <div className="prose prose-lg max-w-none">
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-400 rounded-lg p-6 mb-8">
+                  <h4 className="text-2xl font-semibold text-blue-900 mb-3">
+                    🚀 What is the Model Context Protocol (MCP)?
+                  </h4>
+                  <p className="text-gray-700 mb-4">
+                    The <strong>Model Context Protocol (MCP)</strong> is an open-source standard that enables AI applications (like Claude Code, chatbots, and AI agents) to seamlessly connect with external data sources and tools. Think of it as a universal adapter that lets AI systems safely access your databases, APIs, file systems, and enterprise tools.
+                  </p>
+                  <p className="text-gray-700 mb-4">
+                    <strong>Official Documentation:</strong>{' '}
+                    <a href="https://modelcontextprotocol.io/docs/getting-started/intro" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                      modelcontextprotocol.io
+                    </a>
+                  </p>
+                  <div className="bg-white rounded-lg p-4">
+                    <p className="font-semibold text-gray-800 mb-2">Key Benefits:</p>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• <strong>Universal Integration:</strong> Connect AI to any data source (databases, APIs, filesystems)</li>
+                      <li>• <strong>Secure by Design:</strong> Built-in permission controls and user approval flows</li>
+                      <li>• <strong>Standardized:</strong> Works with all MCP-compatible AI tools (Claude Code, Desktop, etc.)</li>
+                      <li>• <strong>Extensible:</strong> Build custom servers for proprietary systems and tools</li>
+                      <li>• <strong>Production-Ready:</strong> Used by Anthropic's Claude and other AI platforms</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* How MCP Works Section */}
+                <div className="mb-8">
+                  <h4 className="text-2xl font-bold text-gray-900 mb-4">
+                    🏗️ How MCP Works: Client-Server Architecture
+                  </h4>
+                  <div className="bg-white border-2 border-gray-300 rounded-lg p-6 mb-6">
+                    <div className="mb-6">
+                      <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg p-6 mb-4">
+                        <pre className="text-sm font-mono whitespace-pre">
+{`┌─────────────────────────────────────────────────────────────┐
+│                     MCP ARCHITECTURE                         │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  ┌──────────────┐    MCP Protocol    ┌──────────────────┐  │
+│  │              │ ◄─────────────────► │                  │  │
+│  │  MCP Client  │                     │   MCP Server     │  │
+│  │ (Claude Code)│                     │ (Your Tool/API)  │  │
+│  │              │                     │                  │  │
+│  └──────────────┘                     └──────────────────┘  │
+│         │                                      │            │
+│         │                                      │            │
+│         ▼                                      ▼            │
+│  ┌──────────────┐                     ┌──────────────────┐  │
+│  │   AI Model   │                     │  External System │  │
+│  │   (Claude)   │                     │ (DB, API, Files) │  │
+│  └──────────────┘                     └──────────────────┘  │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘`}
+                        </pre>
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-4 text-sm">
+                        <div className="bg-blue-50 rounded-lg p-4">
+                          <h5 className="font-semibold text-blue-900 mb-2">MCP Client (Host Application)</h5>
+                          <p className="text-gray-700 mb-2">Examples: Claude Code, Claude Desktop, custom AI apps</p>
+                          <ul className="text-gray-700 space-y-1">
+                            <li>• Connects to MCP servers</li>
+                            <li>• Sends AI requests</li>
+                            <li>• Manages user permissions</li>
+                            <li>• Displays results to users</li>
+                          </ul>
+                        </div>
+                        <div className="bg-purple-50 rounded-lg p-4">
+                          <h5 className="font-semibold text-purple-900 mb-2">MCP Server (Data/Tool Provider)</h5>
+                          <p className="text-gray-700 mb-2">Examples: PostgreSQL connector, GitHub integration, file system</p>
+                          <ul className="text-gray-700 space-y-1">
+                            <li>• Exposes tools/resources</li>
+                            <li>• Handles AI requests</li>
+                            <li>• Executes operations safely</li>
+                            <li>• Returns data to client</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Core Concepts Section */}
+                <div className="mb-8">
+                  <h4 className="text-2xl font-bold text-gray-900 mb-4">
+                    📚 Core MCP Concepts
+                  </h4>
+
+                  {/* Prompts */}
+                  <div className="bg-white border-2 border-green-300 rounded-lg p-6 mb-4">
+                    <h5 className="text-xl font-semibold text-green-900 mb-3">1. Prompts (AI Instructions)</h5>
+                    <p className="text-gray-700 mb-3">
+                      <strong>What:</strong> Pre-defined instructions/templates that the AI model can use to perform specific tasks.
+                    </p>
+                    <p className="text-gray-700 mb-3">
+                      <strong>Example:</strong> A "generate-sql-query" prompt that helps the AI write database queries based on user questions.
+                    </p>
+                    <div className="bg-green-50 rounded p-3">
+                      <pre className="text-xs font-mono text-gray-800">
+{`// MCP Server exposes a prompt
+{
+  "name": "generate-sql-query",
+  "description": "Convert natural language to SQL",
+  "arguments": [
+    { "name": "question", "description": "User's question", "required": true }
+  ]
+}`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  {/* Resources */}
+                  <div className="bg-white border-2 border-blue-300 rounded-lg p-6 mb-4">
+                    <h5 className="text-xl font-semibold text-blue-900 mb-3">2. Resources (Data Access)</h5>
+                    <p className="text-gray-700 mb-3">
+                      <strong>What:</strong> Data sources that the AI can read from (databases, files, APIs, web pages).
+                    </p>
+                    <p className="text-gray-700 mb-3">
+                      <strong>Example:</strong> A "file://users.csv" resource that lets the AI read user data from a CSV file.
+                    </p>
+                    <div className="bg-blue-50 rounded p-3">
+                      <pre className="text-xs font-mono text-gray-800">
+{`// MCP Server exposes a resource
+{
+  "uri": "file://data/users.csv",
+  "name": "User Database",
+  "description": "CSV file containing user records",
+  "mimeType": "text/csv"
+}`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  {/* Tools */}
+                  <div className="bg-white border-2 border-purple-300 rounded-lg p-6 mb-4">
+                    <h5 className="text-xl font-semibold text-purple-900 mb-3">3. Tools (Actions & Operations)</h5>
+                    <p className="text-gray-700 mb-3">
+                      <strong>What:</strong> Executable functions that the AI can call to perform actions (create records, send emails, run scripts).
+                    </p>
+                    <p className="text-gray-700 mb-3">
+                      <strong>Example:</strong> A "create-github-issue" tool that lets the AI create issues in GitHub repositories.
+                    </p>
+                    <div className="bg-purple-50 rounded p-3">
+                      <pre className="text-xs font-mono text-gray-800">
+{`// MCP Server exposes a tool
+{
+  "name": "create-github-issue",
+  "description": "Create a new GitHub issue",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "title": { "type": "string" },
+      "body": { "type": "string" },
+      "labels": { "type": "array", "items": { "type": "string" } }
+    },
+    "required": ["title", "body"]
+  }
+}`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+
+                {/* How to Use MCP Section */}
+                <div className="mb-8">
+                  <h4 className="text-2xl font-bold text-gray-900 mb-4">
+                    🛠️ How to Use MCP with Claude Code
+                  </h4>
+
+                  <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-400 rounded-lg p-6 mb-6">
+                    <h5 className="text-xl font-semibold text-yellow-900 mb-3">Step 1: Install an MCP Server</h5>
+                    <p className="text-gray-700 mb-3">
+                      MCP servers are Node.js packages or Python scripts that expose tools/resources. You can use pre-built servers or create your own.
+                    </p>
+                    <div className="bg-white rounded p-4">
+                      <p className="font-semibold text-gray-800 mb-2">Popular MCP Servers:</p>
+                      <ul className="text-sm text-gray-700 space-y-1">
+                        <li>• <strong>@modelcontextprotocol/server-filesystem</strong> - Access local files and directories</li>
+                        <li>• <strong>@modelcontextprotocol/server-postgres</strong> - Connect to PostgreSQL databases</li>
+                        <li>• <strong>@modelcontextprotocol/server-github</strong> - Interact with GitHub repositories</li>
+                        <li>• <strong>@modelcontextprotocol/server-sqlite</strong> - Query SQLite databases</li>
+                        <li>• <strong>@modelcontextprotocol/server-slack</strong> - Send messages to Slack</li>
+                      </ul>
+                    </div>
+                    <div className="bg-gray-900 text-white rounded-lg p-4 mt-4">
+                      <pre className="text-sm font-mono">
+{`# Install an MCP server (example: filesystem)
+npm install -g @modelcontextprotocol/server-filesystem
+
+# Or for PostgreSQL
+npm install -g @modelcontextprotocol/server-postgres`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-r from-blue-50 to-teal-50 border-2 border-blue-400 rounded-lg p-6 mb-6">
+                    <h5 className="text-xl font-semibold text-blue-900 mb-3">Step 2: Configure Claude Code to Use the Server</h5>
+                    <p className="text-gray-700 mb-3">
+                      Add the MCP server to your Claude Code configuration file. This tells Claude Code where to find the server and what permissions to use.
+                    </p>
+                    <div className="bg-gray-900 text-white rounded-lg p-4">
+                      <pre className="text-sm font-mono">
+{`# Edit Claude Code config file
+# Location: ~/.config/claude-code/config.json (Linux/Mac)
+# Location: %APPDATA%\\claude-code\\config.json (Windows)
+
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/allowed/directory"],
+      "env": {}
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "POSTGRES_CONNECTION": "postgresql://user:pass@localhost:5432/mydb"
+      }
+    }
+  }
+}`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-400 rounded-lg p-6 mb-6">
+                    <h5 className="text-xl font-semibold text-green-900 mb-3">Step 3: Use the Server in Claude Code</h5>
+                    <p className="text-gray-700 mb-3">
+                      Once configured, Claude Code will automatically detect available MCP tools and resources. You can ask Claude to use them in natural language.
+                    </p>
+                    <div className="bg-white rounded-lg p-4">
+                      <p className="font-semibold text-gray-800 mb-2">Example Prompts:</p>
+                      <ul className="text-sm text-gray-700 space-y-2">
+                        <li className="bg-gray-50 rounded p-2">
+                          💬 <strong>Filesystem:</strong> "List all TypeScript files in the src/ directory"
+                        </li>
+                        <li className="bg-gray-50 rounded p-2">
+                          💬 <strong>PostgreSQL:</strong> "Show me all users in the database who signed up this month"
+                        </li>
+                        <li className="bg-gray-50 rounded p-2">
+                          💬 <strong>GitHub:</strong> "Create a GitHub issue titled 'Fix login bug' with labels 'bug' and 'priority:high'"
+                        </li>
+                        <li className="bg-gray-50 rounded p-2">
+                          💬 <strong>Slack:</strong> "Send a message to #general channel: 'Deployment complete!'"
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Build Your Own MCP Server Section */}
+                <div className="mb-8">
+                  <h4 className="text-2xl font-bold text-gray-900 mb-4">
+                    🔨 Build Your Own MCP Server
+                  </h4>
+                  <p className="text-gray-700 mb-4">
+                    Creating a custom MCP server lets you connect Claude to proprietary systems, internal APIs, or specialized tools.
+                    MCP servers can be built in TypeScript/JavaScript or Python.
+                  </p>
+
+                  <div className="bg-white border-2 border-indigo-300 rounded-lg p-6 mb-6">
+                    <h5 className="text-xl font-semibold text-indigo-900 mb-3">TypeScript/Node.js Example</h5>
+                    <div className="bg-gray-900 text-white rounded-lg p-4">
+                      <pre className="text-sm font-mono whitespace-pre-wrap">
+{`import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+
+// Create MCP server
+const server = new Server(
+  {
+    name: "my-custom-server",
+    version: "1.0.0",
+  },
+  {
+    capabilities: {
+      tools: {},
+      resources: {},
+    },
+  }
+);
+
+// Define a tool: Get weather for a city
+server.setRequestHandler("tools/list", async () => ({
+  tools: [
+    {
+      name: "get_weather",
+      description: "Get current weather for a city",
+      inputSchema: {
+        type: "object",
+        properties: {
+          city: { type: "string", description: "City name" },
+        },
+        required: ["city"],
+      },
+    },
+  ],
+}));
+
+// Handle tool execution
+server.setRequestHandler("tools/call", async (request) => {
+  if (request.params.name === "get_weather") {
+    const city = request.params.arguments.city;
+
+    // Call weather API (example)
+    const response = await fetch(\`https://api.weather.com/\${city}\`);
+    const data = await response.json();
+
+    return {
+      content: [
+        {
+          type: "text",
+          text: \`Weather in \${city}: \${data.temperature}°F, \${data.condition}\`,
+        },
+      ],
+    };
+  }
+});
+
+// Start server
+const transport = new StdioServerTransport();
+await server.connect(transport);`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-white border-2 border-pink-300 rounded-lg p-6 mb-6">
+                    <h5 className="text-xl font-semibold text-pink-900 mb-3">Python Example</h5>
+                    <div className="bg-gray-900 text-white rounded-lg p-4">
+                      <pre className="text-sm font-mono whitespace-pre-wrap">
+{`from mcp.server import Server
+from mcp.server.stdio import stdio_server
+import httpx
+
+# Create MCP server
+app = Server("my-custom-server")
+
+# Define a tool
+@app.list_tools()
+async def list_tools():
+    return [
+        {
+            "name": "get_weather",
+            "description": "Get current weather for a city",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "city": {"type": "string", "description": "City name"}
+                },
+                "required": ["city"]
+            }
+        }
+    ]
+
+# Handle tool execution
+@app.call_tool()
+async def call_tool(name: str, arguments: dict):
+    if name == "get_weather":
+        city = arguments["city"]
+
+        # Call weather API (example)
+        async with httpx.AsyncClient() as client:
+            response = await client.get(f"https://api.weather.com/{city}")
+            data = response.json()
+
+        return {
+            "content": [
+                {
+                    "type": "text",
+                    "text": f"Weather in {city}: {data['temperature']}°F, {data['condition']}"
+                }
+            ]
+        }
+
+# Run server
+if __name__ == "__main__":
+    import asyncio
+    asyncio.run(stdio_server(app))`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Security & Best Practices */}
+                <div className="mb-8">
+                  <h4 className="text-2xl font-bold text-gray-900 mb-4">
+                    🔒 Security & Best Practices
+                  </h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4">
+                      <h5 className="font-semibold text-red-900 mb-2">Security Considerations</h5>
+                      <ul className="text-sm text-gray-700 space-y-1">
+                        <li>• ⚠️ MCP servers run with your user permissions</li>
+                        <li>• ⚠️ Only connect trusted servers</li>
+                        <li>• ⚠️ Limit filesystem access to specific directories</li>
+                        <li>• ⚠️ Never expose sensitive credentials in config</li>
+                        <li>• ⚠️ Use environment variables for secrets</li>
+                        <li>• ⚠️ Review tool permissions before granting access</li>
+                      </ul>
+                    </div>
+                    <div className="bg-green-50 border-2 border-green-300 rounded-lg p-4">
+                      <h5 className="font-semibold text-green-900 mb-2">Best Practices</h5>
+                      <ul className="text-sm text-gray-700 space-y-1">
+                        <li>• ✅ Use read-only resources when possible</li>
+                        <li>• ✅ Implement input validation in tools</li>
+                        <li>• ✅ Add descriptive tool/resource documentation</li>
+                        <li>• ✅ Log all tool executions for audit trails</li>
+                        <li>• ✅ Use TypeScript for type safety</li>
+                        <li>• ✅ Test servers thoroughly before production</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Real-World Use Cases */}
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-400 rounded-lg p-6 mb-8">
+                  <h4 className="text-2xl font-semibold text-purple-900 mb-4">
+                    🌟 Real-World MCP Use Cases
+                  </h4>
+                  <div className="grid md:grid-cols-2 gap-4 text-sm">
+                    <div className="bg-white rounded-lg p-4">
+                      <p className="font-semibold text-purple-800 mb-2">Internal Tools</p>
+                      <ul className="text-gray-700 space-y-1">
+                        <li>• Connect to internal databases (user data, analytics)</li>
+                        <li>• Query enterprise APIs (CRM, ticketing systems)</li>
+                        <li>• Access knowledge bases (Confluence, SharePoint)</li>
+                        <li>• Automate workflows (Jira, ServiceNow)</li>
+                      </ul>
+                    </div>
+                    <div className="bg-white rounded-lg p-4">
+                      <p className="font-semibold text-purple-800 mb-2">Development Workflows</p>
+                      <ul className="text-gray-700 space-y-1">
+                        <li>• Read/write project files and codebases</li>
+                        <li>• Execute tests and view results</li>
+                        <li>• Create GitHub issues/PRs automatically</li>
+                        <li>• Query deployment logs and metrics</li>
+                      </ul>
+                    </div>
+                    <div className="bg-white rounded-lg p-4">
+                      <p className="font-semibold text-purple-800 mb-2">Data Analysis</p>
+                      <ul className="text-gray-700 space-y-1">
+                        <li>• Query SQL/NoSQL databases in natural language</li>
+                        <li>• Generate reports from business data</li>
+                        <li>• Visualize trends and patterns</li>
+                        <li>• Export data to various formats (CSV, JSON, PDF)</li>
+                      </ul>
+                    </div>
+                    <div className="bg-white rounded-lg p-4">
+                      <p className="font-semibold text-purple-800 mb-2">DevOps & Infrastructure</p>
+                      <ul className="text-gray-700 space-y-1">
+                        <li>• Monitor server health and logs</li>
+                        <li>• Deploy applications via CI/CD</li>
+                        <li>• Manage cloud resources (AWS, Azure, GCP)</li>
+                        <li>• Troubleshoot production issues</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Resources & Next Steps */}
+                <div className="bg-blue-50 border-2 border-blue-400 rounded-lg p-6">
+                  <h4 className="text-xl font-semibold text-blue-900 mb-3">
+                    📚 Learn More & Get Started
+                  </h4>
+                  <div className="space-y-3 text-sm">
+                    <div className="bg-white rounded-lg p-3">
+                      <p className="font-semibold text-blue-800 mb-1">Official Documentation</p>
+                      <a href="https://modelcontextprotocol.io/docs/getting-started/intro" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                        https://modelcontextprotocol.io/docs/getting-started/intro
+                      </a>
+                    </div>
+                    <div className="bg-white rounded-lg p-3">
+                      <p className="font-semibold text-blue-800 mb-1">GitHub Repository</p>
+                      <a href="https://github.com/modelcontextprotocol" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                        https://github.com/modelcontextprotocol
+                      </a>
+                    </div>
+                    <div className="bg-white rounded-lg p-3">
+                      <p className="font-semibold text-blue-800 mb-1">Pre-built MCP Servers</p>
+                      <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                        https://github.com/modelcontextprotocol/servers
+                      </a>
+                    </div>
+                    <div className="bg-white rounded-lg p-3">
+                      <p className="font-semibold text-blue-800 mb-1">Quick Start Guide</p>
+                      <p className="text-gray-700">
+                        1. Install an MCP server: <code className="bg-gray-100 px-1 rounded">npm install -g @modelcontextprotocol/server-filesystem</code><br />
+                        2. Configure Claude Code (add to config.json)<br />
+                        3. Start using: "List files in my project directory"
+                      </p>
                     </div>
                   </div>
                 </div>
