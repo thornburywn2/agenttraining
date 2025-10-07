@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Button } from './components/ui/button'
-import { Code2, Rocket, FileText, BookOpen, Sparkles, CheckCircle2, Dog, FileEdit } from 'lucide-react'
+import { Code2, Rocket, FileText, BookOpen, Sparkles, CheckCircle2, Dog, FileEdit, FileCode } from 'lucide-react'
 
 export function App(): JSX.Element {
-  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'codepuppy' | 'stacks' | 'prd' | 'benefits'>('overview')
+  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'codepuppy' | 'stacks' | 'prd' | 'myagents'>('overview')
 
   // PRD Generator State
   const [prdData, setPrdData] = useState({
@@ -128,14 +128,14 @@ export function App(): JSX.Element {
             Generate a PRD
           </Button>
           <Button
-            onClick={(): void => setActiveTab('benefits')}
-            variant={activeTab === 'benefits' ? 'default' : 'outline'}
+            onClick={(): void => setActiveTab('myagents')}
+            variant={activeTab === 'myagents' ? 'default' : 'outline'}
             role="tab"
-            aria-selected={activeTab === 'benefits'}
-            aria-controls="benefits-panel"
+            aria-selected={activeTab === 'myagents'}
+            aria-controls="myagents-panel"
           >
-            <BookOpen className="w-4 h-4 mr-2" aria-hidden="true" />
-            Why Use It?
+            <FileCode className="w-4 h-4 mr-2" aria-hidden="true" />
+            My AGENTS.md
           </Button>
         </div>
 
@@ -181,56 +181,7 @@ export function App(): JSX.Element {
 
                 <div className="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-300 rounded-lg p-6 mb-6">
                   <h4 className="text-xl font-semibold text-purple-900 mb-3">
-                    🐶 Primary Training Tool: Code Puppy
-                  </h4>
-                  <div className="bg-white rounded-lg p-4 mb-4">
-                    <p className="text-sm text-purple-900 mb-3">
-                      <strong>Code Puppy</strong> is our AI-powered CLI tool for code generation and understanding.
-                      It supports AGENTS.md and can work with multiple AI models simultaneously.
-                    </p>
-                    <div className="space-y-3 text-xs">
-                      <div>
-                        <p className="font-semibold text-purple-900 mb-2">Key Features:</p>
-                        <div className="grid grid-cols-2 gap-2">
-                          <div className="text-purple-800">✓ Interactive CLI interface</div>
-                          <div className="text-purple-800">✓ Multi-language code generation</div>
-                          <div className="text-purple-800">✓ Round-robin model distribution</div>
-                          <div className="text-purple-800">✓ Customizable agents via AGENTS.md</div>
-                        </div>
-                      </div>
-
-                      <div>
-                        <p className="font-semibold text-purple-900 mb-2">Installation:</p>
-
-                        <div className="space-y-2">
-                          <div>
-                            <p className="text-purple-800 font-medium mb-1">🐧 Linux / macOS:</p>
-                            <pre className="bg-gray-900 text-green-400 p-2 rounded text-xs">
-{`pip install code-puppy
-code-puppy --interactive`}
-                            </pre>
-                          </div>
-
-                          <div>
-                            <p className="text-purple-800 font-medium mb-1">🪟 Windows (PowerShell):</p>
-                            <pre className="bg-blue-900 text-blue-200 p-2 rounded text-xs">
-{`# Installation command will be provided
-# Simple PowerShell one-liner coming soon`}
-                            </pre>
-                          </div>
-                        </div>
-
-                        <p className="text-purple-800 mt-2">
-                          <a href="https://github.com/mpfaffenberger/code_puppy" className="underline text-blue-600" target="_blank" rel="noopener noreferrer">
-                            📚 GitHub: mpfaffenberger/code_puppy
-                          </a>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <h4 className="text-lg font-semibold text-purple-900 mb-2">
-                    Other Supported AI Tools (20+)
+                    🤖 Supported AI Tools (20+)
                   </h4>
                   <div className="grid md:grid-cols-3 gap-3 text-sm">
                     <div>
@@ -246,7 +197,7 @@ code-puppy --interactive`}
                     <div>
                       <p className="font-semibold text-purple-900 mb-2">CLI Tools:</p>
                       <ul className="text-purple-800 space-y-1">
-                        <li>• Code Puppy ⭐ (primary)</li>
+                        <li>• Code Puppy</li>
                         <li>• Claude Code</li>
                         <li>• Cline</li>
                         <li>• Aider</li>
@@ -298,6 +249,89 @@ code-puppy --interactive`}
                     <span className="bg-pink-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-semibold">4</span>
                     <div>
                       <strong>Enjoy consistent AI behavior</strong> across all tools and team members
+                    </div>
+                  </div>
+                </div>
+
+                <h4 className="text-2xl font-semibold mb-4 mt-8">What Goes in AGENTS.md?</h4>
+                <div className="grid md:grid-cols-2 gap-4 mb-6">
+                  <div className="bg-white border-2 border-green-300 rounded-lg p-4">
+                    <h5 className="font-semibold text-green-800 mb-2 flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5" aria-hidden="true" />
+                      ✅ ALWAYS Include
+                    </h5>
+                    <ul className="text-sm space-y-1 text-gray-700">
+                      <li>• Project overview and tech stack</li>
+                      <li>• Setup and build commands</li>
+                      <li>• Code style rules (TypeScript, React, etc.)</li>
+                      <li>• Testing instructions and coverage goals</li>
+                      <li>• Security rules (validation, no secrets in code)</li>
+                      <li>• Development environment tips</li>
+                      <li>• Deployment procedures</li>
+                      <li>• Common development tasks</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white border-2 border-red-300 rounded-lg p-4">
+                    <h5 className="font-semibold text-red-800 mb-2">❌ NEVER Include</h5>
+                    <ul className="text-sm space-y-1 text-gray-700">
+                      <li>• API keys or secrets</li>
+                      <li>• Hardcoded credentials</li>
+                      <li>• Personal information</li>
+                      <li>• Production database URLs</li>
+                      <li>• Private implementation details</li>
+                      <li>• Business-sensitive information</li>
+                      <li>• Customer data</li>
+                      <li>• Mock/test data arrays</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-300 rounded-lg p-6 mb-6">
+                  <h4 className="text-xl font-semibold text-blue-900 mb-3">
+                    🎯 Core Principles of AGENTS.md
+                  </h4>
+                  <div className="space-y-3 text-sm">
+                    <div className="bg-white rounded-lg p-3">
+                      <p className="font-semibold text-blue-800 mb-1">📝 Clear & Specific</p>
+                      <p className="text-gray-700">Write explicit instructions. AI agents follow exactly what you say, so be precise about data types, validation rules, and error handling.</p>
+                    </div>
+                    <div className="bg-white rounded-lg p-3">
+                      <p className="font-semibold text-blue-800 mb-1">🔒 Security-First</p>
+                      <p className="text-gray-700">Define mandatory security rules: input validation with Zod, no secrets in code, use environment variables, SQL injection prevention.</p>
+                    </div>
+                    <div className="bg-white rounded-lg p-3">
+                      <p className="font-semibold text-blue-800 mb-1">🧪 Quality Standards</p>
+                      <p className="text-gray-700">Set clear quality gates: 80%+ test coverage, TypeScript strict mode, no linting errors, proper error handling.</p>
+                    </div>
+                    <div className="bg-white rounded-lg p-3">
+                      <p className="font-semibold text-blue-800 mb-1">📚 Examples Over Theory</p>
+                      <p className="text-gray-700">Show code examples of what TO do and what NOT to do. AI agents learn better from examples than descriptions.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-green-50 border-2 border-green-400 rounded-lg p-6">
+                  <h4 className="text-xl font-semibold text-green-900 mb-3">
+                    💡 Real-World Benefits
+                  </h4>
+                  <div className="grid md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <p className="font-semibold text-green-800 mb-2">For Developers:</p>
+                      <ul className="text-gray-700 space-y-1">
+                        <li>• ⚡ Faster onboarding (minutes vs. days)</li>
+                        <li>• 🎯 Consistent code across team</li>
+                        <li>• 🤖 AI agents that "get" your project</li>
+                        <li>• 📖 Single source of truth</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-green-800 mb-2">For Teams:</p>
+                      <ul className="text-gray-700 space-y-1">
+                        <li>• ✅ Enforced best practices</li>
+                        <li>• 🔄 Easier code reviews</li>
+                        <li>• 🛡️ Better security by default</li>
+                        <li>• 🚀 Ship quality code faster</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -1378,23 +1412,6 @@ class MyAgent(Agent):
                     </div>
                   </div>
 
-                  {/* Generate PRD Button */}
-                  <div className="mt-8 text-center">
-                    <Button
-                      onClick={(): void => {
-                        const allFieldsFilled = Object.values(prdData).every(val => val !== '')
-                        if (!allFieldsFilled) {
-                          alert('Please fill in all fields to generate your PRD')
-                        } else {
-                          // Scroll to generated PRD section
-                          document.getElementById('generated-prd')?.scrollIntoView({ behavior: 'smooth' })
-                        }
-                      }}
-                      className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 text-lg font-semibold"
-                    >
-                      Generate Complete PRD
-                    </Button>
-                  </div>
                 </div>
 
                 {/* Generated PRD Output */}
@@ -1526,150 +1543,482 @@ class MyAgent(Agent):
             </div>
           )}
 
-          {/* Benefits Tab */}
-          {activeTab === 'benefits' && (
-            <div id="benefits-panel" role="tabpanel" aria-labelledby="benefits-tab">
-              <h3 className="text-3xl font-bold mb-6">Why Use AGENTS.md?</h3>
+          {/* My AGENTS.md Tab */}
+          {activeTab === 'myagents' && (
+            <div id="myagents-panel" role="tabpanel" aria-labelledby="myagents-tab">
+              <h3 className="text-3xl font-bold mb-6">My AGENTS.md File</h3>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  Adopting AGENTS.md brings immediate benefits to your development workflow,
-                  whether you&apos;re working solo or on a large team.
+                  This is the actual <strong>AGENTS.md</strong> file from my Claude Code instance at <code className="bg-gray-100 px-2 py-1 rounded text-sm">/root/AGENTS.md</code>.
+                  It demonstrates a real-world implementation of the AGENTS.md standard.
                 </p>
 
-                <h4 className="text-2xl font-semibold mb-4">For Individual Developers</h4>
-                <div className="grid md:grid-cols-2 gap-4 mb-6">
-                  <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                    <h5 className="font-semibold text-blue-900 mb-2">🚀 Faster Development</h5>
-                    <p className="text-sm text-blue-800">
-                      AI agents can immediately start helping without asking basic questions
-                      about your setup, code style, or how to run tests.
-                    </p>
-                  </div>
-
-                  <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                    <h5 className="font-semibold text-green-900 mb-2">✅ Consistent Quality</h5>
-                    <p className="text-sm text-green-800">
-                      AI suggestions follow your documented standards, reducing code review
-                      comments and rework.
-                    </p>
-                  </div>
-
-                  <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-                    <h5 className="font-semibold text-purple-900 mb-2">📚 Self-Documenting</h5>
-                    <p className="text-sm text-purple-800">
-                      AGENTS.md serves as living documentation that stays in sync with your
-                      actual project structure and commands.
-                    </p>
-                  </div>
-
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <h5 className="font-semibold text-orange-900 mb-2">🔄 Tool Flexibility</h5>
-                    <p className="text-sm text-orange-800">
-                      Switch between GitHub Copilot, Cursor, Claude Code, or any other AI tool
-                      without re-explaining your project each time.
-                    </p>
-                  </div>
-                </div>
-
-                <h4 className="text-2xl font-semibold mb-4">For Engineering Teams</h4>
-                <div className="space-y-4 mb-6">
-                  <div className="border-l-4 border-blue-500 pl-4 bg-blue-50 p-4 rounded-r">
-                    <h5 className="font-semibold text-blue-900 mb-2">👥 Faster Onboarding</h5>
-                    <p className="text-sm text-blue-800">
-                      New team members (human and AI) can get up to speed faster. AGENTS.md provides
-                      a single source of truth for project conventions and workflows.
-                    </p>
-                  </div>
-
-                  <div className="border-l-4 border-green-500 pl-4 bg-green-50 p-4 rounded-r">
-                    <h5 className="font-semibold text-green-900 mb-2">📏 Standardization</h5>
-                    <p className="text-sm text-green-800">
-                      All developers use AI tools that follow the same guidelines, reducing
-                      inconsistencies across the codebase.
-                    </p>
-                  </div>
-
-                  <div className="border-l-4 border-purple-500 pl-4 bg-purple-50 p-4 rounded-r">
-                    <h5 className="font-semibold text-purple-900 mb-2">🔒 Security Compliance</h5>
-                    <p className="text-sm text-purple-800">
-                      Document security rules once in AGENTS.md (no secrets in code, input validation,
-                      etc.) and AI agents will follow them consistently.
-                    </p>
-                  </div>
-
-                  <div className="border-l-4 border-orange-500 pl-4 bg-orange-50 p-4 rounded-r">
-                    <h5 className="font-semibold text-orange-900 mb-2">💰 Cost Efficiency</h5>
-                    <p className="text-sm text-orange-800">
-                      Reduce time spent in code review, onboarding, and debugging inconsistent code.
-                      AI agents that understand your project make fewer mistakes.
-                    </p>
-                  </div>
-
-                  <div className="border-l-4 border-pink-500 pl-4 bg-pink-50 p-4 rounded-r">
-                    <h5 className="font-semibold text-pink-900 mb-2">📊 Knowledge Preservation</h5>
-                    <p className="text-sm text-pink-800">
-                      Project knowledge lives in the repository, not just in senior developers&apos; heads.
-                      When team members leave, the knowledge remains in AGENTS.md.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-300 rounded-lg p-6 mb-6">
-                  <h4 className="text-xl font-semibold text-yellow-900 mb-3">📈 Real-World Impact</h4>
-                  <div className="space-y-3 text-sm text-yellow-900">
-                    <div className="flex items-start gap-3">
-                      <span className="bg-yellow-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">1</span>
-                      <p><strong>Reduced onboarding time:</strong> From 2 weeks to 3 days for new developers</p>
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-300 rounded-lg p-6 mb-6">
+                  <h4 className="text-xl font-semibold text-blue-900 mb-3">
+                    📂 File Location: /root/AGENTS.md
+                  </h4>
+                  <p className="text-sm text-blue-800 mb-3">
+                    Version: 1.0.0 | Last Updated: 2025-10-07 | Framework: AGENTS.md Standard
+                  </p>
+                  <div className="grid md:grid-cols-3 gap-3 text-sm">
+                    <div className="bg-white rounded-lg p-3">
+                      <p className="font-semibold text-blue-900 mb-1">Tech Stack</p>
+                      <p className="text-gray-700">React 18 + TypeScript + Vite + Fastify + PostgreSQL</p>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <span className="bg-yellow-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">2</span>
-                      <p><strong>Fewer code review cycles:</strong> 30-40% reduction in back-and-forth</p>
+                    <div className="bg-white rounded-lg p-3">
+                      <p className="font-semibold text-blue-900 mb-1">Testing</p>
+                      <p className="text-gray-700">Vitest + React Testing Library (80%+ coverage)</p>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <span className="bg-yellow-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">3</span>
-                      <p><strong>Consistent code quality:</strong> All AI-generated code follows team standards</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <span className="bg-yellow-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">4</span>
-                      <p><strong>Better security posture:</strong> AI agents follow documented security rules</p>
+                    <div className="bg-white rounded-lg p-3">
+                      <p className="font-semibold text-blue-900 mb-1">Supported Tools</p>
+                      <p className="text-gray-700">20+ AI tools (Copilot, Cursor, Claude Code, etc.)</p>
                     </div>
                   </div>
                 </div>
 
-                <h4 className="text-2xl font-semibold mb-4">Getting Started</h4>
-                <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-                  <ol className="space-y-3 text-sm text-green-900">
-                    <li className="flex items-start gap-3">
-                      <span className="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 font-bold">1</span>
-                      <div>
-                        <strong>View the example:</strong> Check out the AGENTS.md file in this project&apos;s repository
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 font-bold">2</span>
-                      <div>
-                        <strong>Copy the template:</strong> Use our AGENTS.md as a starting point
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 font-bold">3</span>
-                      <div>
-                        <strong>Customize for your project:</strong> Fill in your tech stack, commands, and standards
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 font-bold">4</span>
-                      <div>
-                        <strong>Commit and test:</strong> Start using AI tools and refine based on feedback
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 font-bold">5</span>
-                      <div>
-                        <strong>Keep it updated:</strong> Treat AGENTS.md like code - update it when project changes
-                      </div>
-                    </li>
-                  </ol>
+                <div className="bg-white border-2 border-gray-300 rounded-lg overflow-hidden">
+                  <div className="bg-gray-800 text-white px-4 py-2 flex items-center justify-between">
+                    <span className="font-mono text-sm">AGENTS.md</span>
+                    <span className="text-xs text-gray-400">Markdown</span>
+                  </div>
+                  <div className="p-6 overflow-x-auto max-h-[800px] overflow-y-auto">
+                    <pre className="text-sm font-mono leading-relaxed whitespace-pre-wrap">
+{`# AGENTS.md
+
+**Project:** Modern Full-Stack Application
+**Version:** 1.0.0
+**Last Updated:** 2025-10-07
+**Framework:** AGENTS.md Standard
+
+> **🎯 Purpose**: This file provides AI agents with everything they need to understand, build, and maintain this project. Following the [AGENTS.md](https://agents.md) open standard for AI agent instructions.
+
+---
+
+## 📋 Project Overview
+
+### What is This Project?
+
+A modern full-stack application built with enterprise-grade development standards. This project demonstrates professional software development practices optimized for AI agent collaboration.
+
+**Key Features:**
+- ✨ Beautiful, modern UI/UX
+- 🔒 Security best practices (input validation, authentication)
+- 🧪 Comprehensive testing (80%+ coverage)
+- 📚 Production-ready code quality
+- 🤖 AI agent optimized (supported by 20+ AI tools)
+
+### Tech Stack (Choose Your Tools)
+
+**Frontend Options:**
+- React 18+ with TypeScript (recommended)
+- Next.js 14+ for SSR/SSG needs
+- Vue 3+ for simpler learning curve
+- Svelte for minimal bundle size
+
+**Styling Options:**
+- Tailwind CSS (utility-first, recommended)
+- CSS Modules
+- Styled Components
+- Material-UI / shadcn/ui component libraries
+
+**Backend Options:**
+- Fastify (fast, TypeScript-friendly, recommended)
+- Express (popular, mature ecosystem)
+- Hono (edge-optimized, lightweight)
+- Next.js API routes (full-stack in one framework)
+
+**Database Options:**
+- PostgreSQL (relational, production-ready)
+- SQLite (simple, embedded)
+- MongoDB (document-based, flexible schema)
+- Prisma ORM (recommended for TypeScript)
+
+**Current Implementation:**
+- Frontend: React 18 + TypeScript + Vite + Tailwind CSS
+- Backend: Fastify + TypeScript + Prisma
+- Database: PostgreSQL
+- Testing: Vitest + React Testing Library
+
+---
+
+## 🚀 Setup Commands
+
+### Installation
+
+\`\`\`bash
+# Clone repository
+git clone https://github.com/your-username/your-project.git
+cd your-project
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your configuration
+
+# Set up database (if using Prisma)
+npm run db:migrate
+npm run db:seed
+
+# Start development server
+npm run dev:all
+\`\`\`
+
+### Development
+
+\`\`\`bash
+# Start frontend only (port 5175)
+npm run dev
+
+# Start backend only (port 5176)
+npm run dev:backend
+
+# Start both frontend and backend
+npm run dev:all
+
+# Open browser to http://localhost:5175
+\`\`\`
+
+### Build
+
+\`\`\`bash
+# Build for production
+npm run build
+
+# Build frontend only
+npm run build:frontend
+
+# Build backend only
+npm run build:backend
+
+# Preview production build
+npm run preview
+\`\`\`
+
+### Testing
+
+\`\`\`bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage
+npm run test:coverage
+
+# View coverage report
+open coverage/index.html
+\`\`\`
+
+### Code Quality
+
+\`\`\`bash
+# Lint code
+npm run lint
+
+# Fix linting issues
+npm run lint:fix
+
+# Format code
+npm run format
+
+# Type check
+npm run type-check
+\`\`\`
+
+### Database
+
+\`\`\`bash
+# Run migrations
+npm run db:migrate
+
+# Create new migration
+npm run db:migrate:create
+
+# Seed database with demo data
+npm run db:seed
+
+# Reset database (caution!)
+npm run db:reset
+
+# Open Prisma Studio (database GUI)
+npm run db:studio
+\`\`\`
+
+---
+
+## 🎨 Code Style Guidelines
+
+### TypeScript Standards
+
+**✅ ALWAYS:**
+- Use TypeScript strict mode (no \`any\` types without justification)
+- Define interfaces for all data structures
+- Use proper type annotations on function parameters and return values
+- Prefer \`interface\` over \`type\` for object shapes
+- Use \`const\` and \`let\` (never \`var\`)
+
+**❌ NEVER:**
+- Use \`any\` type without explicit comment explaining why
+- Ignore TypeScript errors or use \`@ts-ignore\` without reason
+- Mix JavaScript and TypeScript files in the same module
+
+### React/Frontend Patterns
+
+**✅ ALWAYS:**
+- Use functional components with hooks (no class components)
+- Destructure props for clarity
+- Use meaningful component and variable names
+- Keep components small and focused (single responsibility)
+- Use proper semantic HTML (\`<button>\`, \`<nav>\`, \`<main>\`, \`<label>\`)
+
+**❌ NEVER:**
+- Put business logic in components (use custom hooks or services)
+- Use inline styles (use Tailwind classes or CSS modules)
+- Forget to add \`key\` prop when rendering lists
+- Use \`<div>\` for interactive elements (use \`<button>\`)
+
+### Data Management: NO Mock Data in Code
+
+**✅ ALWAYS:**
+- Load data from database or API endpoints
+- Use database seed files for test/demo data (\`~/prisma/seed.ts\`)
+- Use environment variables for configuration (\`~/.env\`)
+- Define data schemas with Zod for validation
+
+**❌ NEVER:**
+- Hardcode mock data arrays in source code
+- Hardcode API URLs or database connections
+- Commit secrets or credentials to Git
+
+### Security Rules
+
+**✅ ALWAYS:**
+- Validate ALL user inputs with Zod schemas
+- Use Prisma ORM parameterized queries (prevents SQL injection)
+- Store secrets in environment variables (never in code)
+- Use helmet + CORS middleware on backend
+- Hash passwords with bcrypt (10+ salt rounds)
+- Use JWT tokens with expiration
+
+**❌ NEVER:**
+- Trust user input without validation
+- Use string concatenation for SQL queries
+- Commit \`.env\` files to Git (use \`.env.example\` instead)
+- Store passwords in plain text
+- Expose sensitive information in error messages
+
+---
+
+## 💻 Development Environment Tips
+
+### Recommended VSCode Extensions
+
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **Tailwind CSS IntelliSense** - Tailwind autocomplete
+- **Prisma** - Prisma schema syntax highlighting
+- **Error Lens** - Inline error display
+- **GitLens** - Git supercharged
+
+### Project Structure
+
+\`\`\`
+~/Projects/your-project/
+├── AGENTS.md           # This file (AI agent instructions)
+├── README.md           # Human documentation
+├── TODO.md             # Task tracking
+├── CHANGELOG.md        # Version history
+├── PORT_MANAGEMENT.md  # Port allocation
+├── src/                # Frontend source code
+│   ├── components/     # React components
+│   ├── services/       # API clients
+│   ├── utils/          # Helper functions
+│   ├── types/          # TypeScript types
+│   └── App.tsx         # Main app component
+├── server/             # Backend source code
+│   ├── routes/         # API routes
+│   ├── middleware/     # Middleware
+│   └── index.ts        # Server entry point
+├── prisma/             # Database schema & migrations
+│   ├── schema.prisma   # Database schema
+│   ├── migrations/     # Migration files
+│   └── seed.ts         # Demo data (NOT in src!)
+├── tests/              # Test suites
+│   ├── unit/           # Unit tests
+│   ├── integration/    # Integration tests
+│   └── e2e/            # End-to-end tests
+├── docs/               # Additional documentation
+└── .env.example        # Environment variables template
+\`\`\`
+
+---
+
+## 🧪 Testing Instructions
+
+### Testing Requirements
+
+**Minimum Standards:**
+- 80%+ code coverage (lines, statements, branches, functions)
+- All tests must pass before merging to main
+- Zero critical bugs or regressions
+- Performance benchmarks met
+
+---
+
+## 📝 Pull Request Instructions
+
+### Commit Message Convention
+
+Use [Conventional Commits](https://www.conventionalcommits.org/):
+
+\`\`\`bash
+# Format: <type>(<scope>): <description>
+
+# Types:
+feat:     # New feature
+fix:      # Bug fix
+docs:     # Documentation changes
+style:    # Code style changes (formatting, no logic changes)
+refactor: # Code refactoring
+test:     # Adding or updating tests
+chore:    # Build process or auxiliary tool changes
+perf:     # Performance improvements
+\`\`\`
+
+### Pull Request Checklist
+
+Before creating a pull request, ensure:
+
+- ✅ All tests pass (\`npm test\`)
+- ✅ Code coverage is 80%+ (\`npm run test:coverage\`)
+- ✅ No linting errors (\`npm run lint\`)
+- ✅ No TypeScript errors (\`npm run type-check\`)
+- ✅ Code is formatted (\`npm run format\`)
+- ✅ Environment variables documented in \`.env.example\`
+- ✅ Database migrations included (if schema changed)
+- ✅ README updated (if setup process changed)
+- ✅ CHANGELOG updated with changes
+
+---
+
+## 🔒 Security Considerations
+
+### Critical Security Rules
+
+**1. No Secrets in Code (MANDATORY)**
+
+✅ **DO:** Use environment variables
+❌ **DON'T:** Hardcode secrets
+
+**2. Input Validation (MANDATORY)**
+
+✅ **DO:** Use Zod schemas for all user inputs
+❌ **DON'T:** Trust user input without validation
+
+**3. SQL Injection Prevention**
+
+✅ **DO:** Use Prisma ORM with parameterized queries
+❌ **DON'T:** Use string concatenation for SQL queries
+
+---
+
+## 🤖 AI Agent Specific Instructions
+
+### What to ALWAYS Do
+
+1. **Read AGENTS.md first** - Always read this file before making changes
+2. **Validate inputs** - Use Zod schemas for all user inputs
+3. **Use environment variables** - Never hardcode secrets or configuration
+4. **Write tests** - Add tests for new features and bug fixes
+5. **Follow TypeScript strict mode** - No \`any\` types without justification
+6. **Use semantic HTML** - Proper \`<button>\`, \`<nav>\`, \`<main>\`, \`<label>\` elements
+7. **Add error handling** - Try-catch blocks, error boundaries, clear error messages
+8. **Update documentation** - Keep README, CHANGELOG, and comments up to date
+
+### What to NEVER Do
+
+1. **Never commit secrets** - No API keys, passwords, or tokens in code
+2. **Never use mock data in code** - Use database seed files instead
+3. **Never skip validation** - Always validate user inputs
+4. **Never ignore TypeScript errors** - Fix them or add proper comments
+5. **Never use \`any\` type casually** - Use proper types or \`unknown\` with type guards
+6. **Never skip tests** - Maintain 80%+ coverage requirement
+7. **Never deploy without testing** - Run full test suite before deployment
+
+---
+
+## 📚 Resources & Documentation
+
+### Official Documentation
+
+- **AGENTS.md Standard:** https://agents.md
+- **React:** https://react.dev
+- **TypeScript:** https://www.typescriptlang.org/docs
+- **Vite:** https://vitejs.dev
+- **Tailwind CSS:** https://tailwindcss.com/docs
+- **Fastify:** https://fastify.dev
+- **Prisma:** https://www.prisma.io/docs
+- **Vitest:** https://vitest.dev
+
+### Project Documentation
+
+- **README.md** - Project overview and setup
+- **TODO.md** - Task tracking and roadmap
+- **CHANGELOG.md** - Version history and changes
+- **PORT_MANAGEMENT.md** - Port allocation registry
+
+---
+
+## ✅ Compliance Summary
+
+This project follows the **AGENTS.md** open standard for AI agent instructions:
+
+✅ **Project Overview** - Clear description, tech stack, key features
+✅ **Setup Commands** - Installation, development, build, test commands
+✅ **Code Style Guidelines** - TypeScript, React, security, data management
+✅ **Development Environment Tips** - VSCode extensions, project structure, debugging
+✅ **Testing Instructions** - Requirements, running tests, writing tests
+✅ **Pull Request Instructions** - Commit conventions, PR checklist, code review
+✅ **Security Considerations** - Critical security rules and examples
+✅ **AI Agent Instructions** - What to always/never do, auto-fix workflows
+
+**Supported AI Tools:** GitHub Copilot, Cursor, Cline, Windsurf, Zed, Continue, Sourcegraph Cody, Code Puppy, Azure AI Code Assist, Google Gemini Code Assist, and 10+ more.
+
+---
+
+**Last Updated:** 2025-10-07
+**Version:** 1.0.0
+**Maintained By:** Development Team + AI Agents
+**Framework:** AGENTS.md Open Standard`}
+                    </pre>
+                  </div>
+                </div>
+
+                <div className="bg-green-50 border-2 border-green-400 rounded-lg p-6 mt-6">
+                  <h4 className="text-xl font-semibold text-green-900 mb-3">
+                    💡 How This File Helps AI Agents
+                  </h4>
+                  <div className="space-y-3 text-sm text-gray-700">
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                      <p><strong>Instant Context:</strong> AI agents read this file first to understand the entire project structure, tech stack, and development standards.</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                      <p><strong>Consistent Behavior:</strong> All AI tools follow the same guidelines, whether it's Cursor, GitHub Copilot, Claude Code, or any other tool.</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                      <p><strong>Security by Default:</strong> AI agents know to validate inputs with Zod, never hardcode secrets, and use proper TypeScript types.</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                      <p><strong>Quality Enforcement:</strong> Testing requirements (80%+ coverage), code style rules, and PR checklists are clearly defined.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
