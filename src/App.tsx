@@ -2029,7 +2029,7 @@ class MyAgent(Agent):
                     <div className="bg-pink-50 rounded p-3">
                       <p className="text-sm font-semibold text-pink-800 mb-2">Example Prompts:</p>
                       <ul className="text-sm text-gray-800 space-y-1">
-                        <li>"Refactor this function to reduce complexity (Cyclomatic < 10)"</li>
+                        <li>"Refactor this function to reduce complexity (Cyclomatic &lt; 10)"</li>
                         <li>"Optimize this database query to reduce N+1 problems"</li>
                         <li>"Extract this logic into reusable utility functions"</li>
                       </ul>
