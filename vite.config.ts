@@ -15,11 +15,11 @@ export default defineConfig({
     },
   },
   server: {
-    port: 5173,
-    strictPort: false,
+    port: 5175,
+    strictPort: true, // Enforce port 5175 (registered in /root/PORTS.md)
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: 'http://localhost:5176',
         changeOrigin: true,
       },
     },

@@ -4,8 +4,8 @@
   "description": "A modern full-stack TypeScript application showcasing AGENTS.md framework integration with CLAUDE.md development standards",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "dev:backend": "tsx watch server/index.ts",
+    "dev": "vite --port 5175",
+    "dev:backend": "PORT=5176 tsx watch server/index.ts",
     "dev:all": "concurrently \"npm run dev\" \"npm run dev:backend\"",
     "build": "npm run build:frontend && npm run build:backend",
     "build:frontend": "tsc && vite build",

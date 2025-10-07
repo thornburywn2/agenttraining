@@ -53,14 +53,17 @@ npm run dev:all
 ```
 
 The application will be available at:
-- **Frontend:** http://localhost:5173
-- **Backend:** http://localhost:3001
+- **Frontend:** http://localhost:5175
+- **Backend:** http://localhost:5176
+
+> **Note:** Ports 5175 and 5176 are registered in `/root/PORTS.md` to avoid conflicts with other projects.
 
 ---
 
 ## 📖 Documentation
 
 - **[AGENTS.md](./AGENTS.md)** - AI agent instructions (code style, testing, security)
+- **[PORT_MANAGEMENT.md](./PORT_MANAGEMENT.md)** - Port allocation and management
 - **[TODO.md](./TODO.md)** - Project tasks and roadmap
 - **[CHANGELOG.md](./CHANGELOG.md)** - Version history
 - **[docs/API.md](./docs/API.md)** - API documentation

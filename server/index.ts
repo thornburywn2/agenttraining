@@ -3,7 +3,7 @@ import cors from '@fastify/cors'
 import helmet from '@fastify/helmet'
 import rateLimit from '@fastify/rate-limit'
 
-const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3001
+const PORT = process.env.PORT ? parseInt(process.env.PORT) : 5176
 const HOST = '0.0.0.0'
 
 const server = Fastify({
@@ -72,8 +72,9 @@ async function start(): Promise<void> {
     ║                                                            ║
     ║   🚀  AGENTS.md Demo Server                                ║
     ║                                                            ║
-    ║   Server running at: http://localhost:${PORT}               ║
-    ║   Environment: ${process.env.NODE_ENV || 'development'}                      ║
+    ║   Backend API:  http://localhost:${PORT}                    ║
+    ║   Frontend UI:  http://localhost:5175                      ║
+    ║   Environment:  ${process.env.NODE_ENV || 'development'}                      ║
     ║                                                            ║
     ║   API Endpoints:                                           ║
     ║   - GET /health           Health check                     ║
@@ -84,6 +85,7 @@ async function start(): Promise<void> {
     ║   ✓ AGENTS.md framework                                    ║
     ║   ✓ CLAUDE.md compliance                                   ║
     ║   ✓ Security best practices                                ║
+    ║   ✓ Port registered in /root/PORTS.md                      ║
     ║                                                            ║
     ╚════════════════════════════════════════════════════════════╝
     `)

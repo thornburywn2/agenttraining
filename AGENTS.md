@@ -31,17 +31,37 @@ npm install
 
 # Start development (frontend + backend)
 npm run dev:all
+# Frontend: http://localhost:5175
+# Backend:  http://localhost:5176
 
 # Start frontend only
 npm run dev
+# http://localhost:5175
 
 # Start backend only
 npm run dev:backend
+# http://localhost:5176
 
 # Database setup
 npm run db:migrate
 npm run db:seed
 ```
+
+### ⚠️ Port Management (CRITICAL)
+
+**Assigned Ports (Registered in `/root/PORTS.md`):**
+- **Frontend:** 5175 (Vite Dev Server)
+- **Backend:** 5176 (Fastify API)
+
+**Before starting services:**
+1. Verify ports are available: `lsof -i :5175` and `lsof -i :5176`
+2. Check `/root/PORTS.md` for any conflicts
+3. See `PORT_MANAGEMENT.md` for detailed port management instructions
+
+**Never:**
+- Use port 5173 (permanently reserved for Team-Onboarding-Request-Form)
+- Start services without checking port availability
+- Change ports without updating `/root/PORTS.md`
 
 ### Build & Test
 ```bash
@@ -388,6 +408,7 @@ agents-md-demo/
 ├── README.md                    # Human-focused documentation
 ├── TODO.md                      # Task tracking
 ├── CHANGELOG.md                 # Version history
+├── PORT_MANAGEMENT.md           # Port allocation and management
 ├── .claude.md                   # Claude-specific instructions (optional)
 │
 ├── src/                         # Frontend source code
