@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Button } from './components/ui/button'
-import { Code2, Rocket, FileText, BookOpen, Sparkles, CheckCircle2 } from 'lucide-react'
+import { Code2, Rocket, FileText, BookOpen, Sparkles, CheckCircle2, Dog } from 'lucide-react'
 
 export function App(): JSX.Element {
-  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'stacks' | 'benefits'>('overview')
+  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'codepuppy' | 'stacks' | 'benefits'>('overview')
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
@@ -84,6 +84,16 @@ export function App(): JSX.Element {
           >
             <FileText className="w-4 h-4 mr-2" aria-hidden="true" />
             File Structure
+          </Button>
+          <Button
+            onClick={(): void => setActiveTab('codepuppy')}
+            variant={activeTab === 'codepuppy' ? 'default' : 'outline'}
+            role="tab"
+            aria-selected={activeTab === 'codepuppy'}
+            aria-controls="codepuppy-panel"
+          >
+            <Dog className="w-4 h-4 mr-2" aria-hidden="true" />
+            Code Puppy
           </Button>
           <Button
             onClick={(): void => setActiveTab('stacks')}
@@ -391,6 +401,417 @@ code-puppy --interactive`}
                     process, add new npm scripts, or update code standards, update AGENTS.md too.
                     This ensures AI agents always have accurate information.
                   </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Code Puppy Tab */}
+          {activeTab === 'codepuppy' && (
+            <div id="codepuppy-panel" role="tabpanel" aria-labelledby="codepuppy-tab">
+              <div className="flex items-center gap-3 mb-6">
+                <Dog className="w-10 h-10 text-purple-600" aria-hidden="true" />
+                <h3 className="text-3xl font-bold">Code Puppy - AI-Powered CLI Tool</h3>
+              </div>
+
+              <div className="prose prose-lg max-w-none">
+                {/* Overview */}
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-300 rounded-xl p-6 mb-6">
+                  <h4 className="text-2xl font-bold text-purple-900 mb-3">🐶 What is Code Puppy?</h4>
+                  <p className="text-purple-900 mb-4">
+                    <strong>Code Puppy</strong> is our primary AI-powered CLI tool for code generation, understanding, and multi-model orchestration.
+                    It supports the AGENTS.md standard and provides an interactive interface for working with multiple AI models simultaneously.
+                  </p>
+                  <div className="grid md:grid-cols-3 gap-3 text-sm">
+                    <div className="bg-white rounded-lg p-3">
+                      <div className="font-semibold text-purple-900 mb-1">🎯 Purpose</div>
+                      <div className="text-purple-800">Primary CLI training tool for engineering teams</div>
+                    </div>
+                    <div className="bg-white rounded-lg p-3">
+                      <div className="font-semibold text-purple-900 mb-1">📦 Type</div>
+                      <div className="text-purple-800">Interactive command-line interface</div>
+                    </div>
+                    <div className="bg-white rounded-lg p-3">
+                      <div className="font-semibold text-purple-900 mb-1">📜 License</div>
+                      <div className="text-purple-800">MIT License (Open Source)</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Installation */}
+                <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
+                  <h4 className="text-2xl font-bold text-blue-900 mb-4">📥 Installation</h4>
+
+                  <div className="mb-4">
+                    <div className="bg-white rounded-lg p-4 mb-3">
+                      <p className="font-semibold text-blue-900 mb-2">📋 Requirements:</p>
+                      <ul className="text-sm text-blue-800 space-y-1">
+                        <li>✓ Python 3.11 or higher</li>
+                        <li>✓ pip (Python package manager)</li>
+                        <li>✓ API keys for AI models (OpenAI, Gemini, Cerebras, Anthropic)</li>
+                      </ul>
+                    </div>
+
+                    <div className="space-y-3">
+                      <div>
+                        <p className="text-blue-900 font-semibold mb-2 flex items-center gap-2">
+                          <span className="text-2xl">🐧</span> Linux / macOS Installation:
+                        </p>
+                        <pre className="bg-gray-900 text-green-400 p-3 rounded text-sm">
+{`# Install via pip
+pip install code-puppy
+
+# Verify installation
+code-puppy --version`}
+                        </pre>
+                      </div>
+
+                      <div>
+                        <p className="text-blue-900 font-semibold mb-2 flex items-center gap-2">
+                          <span className="text-2xl">🪟</span> Windows PowerShell Installation:
+                        </p>
+                        <pre className="bg-blue-900 text-blue-200 p-3 rounded text-sm">
+{`# Installation command will be provided
+# Simple PowerShell one-liner coming soon
+
+# After installation, verify:
+code-puppy --version`}
+                        </pre>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-yellow-50 border border-yellow-300 rounded-lg p-3 text-sm text-yellow-900">
+                    <strong>💡 Setup Tip:</strong> Set your API keys as environment variables before using Code Puppy.
+                    See the Configuration section below for details.
+                  </div>
+                </div>
+
+                {/* Key Features */}
+                <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-6">
+                  <h4 className="text-2xl font-bold text-green-900 mb-4">✨ Key Features</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-white rounded-lg p-4 border-l-4 border-green-500">
+                      <h5 className="font-semibold text-green-900 mb-2 flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-green-600" aria-hidden="true" />
+                        Multi-Language Code Generation
+                      </h5>
+                      <p className="text-sm text-green-800">
+                        Generate code in Python, JavaScript, TypeScript, C++, Go, Rust, and more.
+                        Supports cross-language workflows.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-4 border-l-4 border-blue-500">
+                      <h5 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-blue-600" aria-hidden="true" />
+                        Interactive CLI Interface
+                      </h5>
+                      <p className="text-sm text-blue-800">
+                        Conversational mode for iterative development. Ask questions, refine code,
+                        and get detailed explanations in real-time.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-4 border-l-4 border-purple-500">
+                      <h5 className="font-semibold text-purple-900 mb-2 flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-purple-600" aria-hidden="true" />
+                        Round-Robin Model Distribution
+                      </h5>
+                      <p className="text-sm text-purple-800">
+                        Automatically distribute requests across multiple AI models.
+                        Optimize costs and leverage strengths of different models.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-4 border-l-4 border-orange-500">
+                      <h5 className="font-semibold text-orange-900 mb-2 flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-orange-600" aria-hidden="true" />
+                        Customizable Agent System
+                      </h5>
+                      <p className="text-sm text-orange-800">
+                        Define custom agents with Python or JSON. Configure system prompts,
+                        tool access, and behavior per agent.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-4 border-l-4 border-pink-500">
+                      <h5 className="font-semibold text-pink-900 mb-2 flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-pink-600" aria-hidden="true" />
+                        AGENTS.md Support
+                      </h5>
+                      <p className="text-sm text-pink-800">
+                        Automatically reads and follows AGENTS.md instructions.
+                        Ensures consistency with your project standards.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-4 border-l-4 border-indigo-500">
+                      <h5 className="font-semibold text-indigo-900 mb-2 flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-indigo-600" aria-hidden="true" />
+                        Code Quality Enforcement
+                      </h5>
+                      <p className="text-sm text-indigo-800">
+                        Built-in quality principles enforced across all generated code.
+                        Follows best practices and coding standards.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Usage Examples */}
+                <div className="bg-purple-50 border border-purple-200 rounded-xl p-6 mb-6">
+                  <h4 className="text-2xl font-bold text-purple-900 mb-4">🚀 Usage Examples</h4>
+
+                  <div className="space-y-4">
+                    <div>
+                      <h5 className="font-semibold text-purple-900 mb-2">1. Interactive Mode (Recommended for Training)</h5>
+                      <pre className="bg-gray-900 text-green-400 p-3 rounded text-sm mb-2">
+{`# Start interactive session
+code-puppy --interactive
+
+# In the interactive shell:
+> write me a Python hello world program
+> explain how async/await works in JavaScript
+> create a REST API endpoint in Express`}
+                      </pre>
+                      <p className="text-sm text-purple-800">
+                        Perfect for learning, experimentation, and iterative development.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h5 className="font-semibold text-purple-900 mb-2">2. Direct Task Execution</h5>
+                      <pre className="bg-gray-900 text-green-400 p-3 rounded text-sm mb-2">
+{`# Execute a specific task
+code-puppy "write me a C++ hello world program in /tmp/main.cpp then compile it and run it"
+
+# Generate and execute in one command
+code-puppy "create a Node.js Express server on port 3000 with a /health endpoint"`}
+                      </pre>
+                      <p className="text-sm text-purple-800">
+                        Great for automation and scripting workflows.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h5 className="font-semibold text-purple-900 mb-2">3. With Environment Variables</h5>
+                      <pre className="bg-gray-900 text-green-400 p-3 rounded text-sm mb-2">
+{`# Set your preferred model and API key
+export MODEL_NAME=gpt-4
+export OPENAI_API_KEY=your_api_key_here
+
+# Run Code Puppy
+code-puppy --interactive`}
+                      </pre>
+                      <p className="text-sm text-purple-800">
+                        Configure model selection and authentication via environment.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Interactive Commands */}
+                <div className="bg-orange-50 border border-orange-200 rounded-xl p-6 mb-6">
+                  <h4 className="text-2xl font-bold text-orange-900 mb-4">⌨️ Interactive Commands</h4>
+                  <div className="space-y-3">
+                    <div className="bg-white rounded-lg p-3 border-l-4 border-orange-400">
+                      <code className="font-semibold text-orange-900">/agent</code>
+                      <p className="text-sm text-orange-800 mt-1">
+                        Check current agent or switch to a different agent configuration.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-lg p-3 border-l-4 border-orange-400">
+                      <code className="font-semibold text-orange-900">/truncate &lt;N&gt;</code>
+                      <p className="text-sm text-orange-800 mt-1">
+                        Manage message history by truncating to last N messages. Useful for long sessions.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-lg p-3 border-l-4 border-orange-400">
+                      <code className="font-semibold text-orange-900">/mcp</code>
+                      <p className="text-sm text-orange-800 mt-1">
+                        Manage Model Context Protocol (MCP) servers for extended capabilities.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-lg p-3 border-l-4 border-orange-400">
+                      <code className="font-semibold text-orange-900">/exit</code> or <code className="font-semibold text-orange-900">/quit</code>
+                      <p className="text-sm text-orange-800 mt-1">
+                        Exit the interactive session.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Configuration */}
+                <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-6 mb-6">
+                  <h4 className="text-2xl font-bold text-indigo-900 mb-4">⚙️ Configuration</h4>
+
+                  <div className="space-y-4">
+                    <div>
+                      <h5 className="font-semibold text-indigo-900 mb-2">Environment Variables (API Keys)</h5>
+                      <pre className="bg-gray-900 text-green-400 p-3 rounded text-sm">
+{`# OpenAI (GPT-4, GPT-3.5)
+export OPENAI_API_KEY=your_openai_key
+
+# Google Gemini
+export GEMINI_API_KEY=your_gemini_key
+
+# Anthropic Claude
+export ANTHROPIC_API_KEY=your_anthropic_key
+
+# Cerebras
+export CEREBRAS_API_KEY=your_cerebras_key
+
+# Select default model
+export MODEL_NAME=gpt-4`}
+                      </pre>
+                    </div>
+
+                    <div>
+                      <h5 className="font-semibold text-indigo-900 mb-2">Custom Agents (JSON Configuration)</h5>
+                      <pre className="bg-gray-900 text-green-400 p-3 rounded text-sm overflow-x-auto">
+{`{
+  "agent_name": "my-custom-agent",
+  "system_prompt": "You are a helpful coding assistant...",
+  "tools": ["read_file", "write_file", "execute_code"],
+  "model": "gpt-4",
+  "temperature": 0.7
+}`}
+                      </pre>
+                      <p className="text-sm text-indigo-800 mt-2">
+                        Define custom agents with specific behaviors, tool access, and model preferences.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h5 className="font-semibold text-indigo-900 mb-2">Python-Based Agents</h5>
+                      <pre className="bg-gray-900 text-green-400 p-3 rounded text-sm overflow-x-auto">
+{`from code_puppy import Agent
+
+class MyAgent(Agent):
+    def __init__(self):
+        super().__init__(
+            name="my-python-agent",
+            system_prompt="Custom behavior..."
+        )
+
+    def execute(self, task):
+        # Custom logic here
+        return self.process(task)`}
+                      </pre>
+                      <p className="text-sm text-indigo-800 mt-2">
+                        Advanced: Create Python-based agents with full programmatic control.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Multi-Model Support */}
+                <div className="bg-pink-50 border border-pink-200 rounded-xl p-6 mb-6">
+                  <h4 className="text-2xl font-bold text-pink-900 mb-4">🤖 Supported AI Models</h4>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <div className="bg-white rounded-lg p-3">
+                      <div className="font-semibold text-pink-900 mb-1">OpenAI</div>
+                      <ul className="text-sm text-pink-800 space-y-1">
+                        <li>• GPT-4</li>
+                        <li>• GPT-3.5 Turbo</li>
+                        <li>• Custom models</li>
+                      </ul>
+                    </div>
+                    <div className="bg-white rounded-lg p-3">
+                      <div className="font-semibold text-pink-900 mb-1">Google</div>
+                      <ul className="text-sm text-pink-800 space-y-1">
+                        <li>• Gemini Pro</li>
+                        <li>• Gemini Flash</li>
+                        <li>• Gemini models</li>
+                      </ul>
+                    </div>
+                    <div className="bg-white rounded-lg p-3">
+                      <div className="font-semibold text-pink-900 mb-1">Anthropic</div>
+                      <ul className="text-sm text-pink-800 space-y-1">
+                        <li>• Claude 3 Opus</li>
+                        <li>• Claude 3 Sonnet</li>
+                        <li>• Claude 3 Haiku</li>
+                      </ul>
+                    </div>
+                    <div className="bg-white rounded-lg p-3">
+                      <div className="font-semibold text-pink-900 mb-1">Cerebras</div>
+                      <ul className="text-sm text-pink-800 space-y-1">
+                        <li>• Fast inference</li>
+                        <li>• Custom models</li>
+                      </ul>
+                    </div>
+                    <div className="bg-white rounded-lg p-3">
+                      <div className="font-semibold text-pink-900 mb-1">Round-Robin</div>
+                      <ul className="text-sm text-pink-800 space-y-1">
+                        <li>• Auto-distribute</li>
+                        <li>• Load balancing</li>
+                        <li>• Cost optimization</li>
+                      </ul>
+                    </div>
+                    <div className="bg-white rounded-lg p-3">
+                      <div className="font-semibold text-pink-900 mb-1">Extensible</div>
+                      <ul className="text-sm text-pink-800 space-y-1">
+                        <li>• Add custom models</li>
+                        <li>• Local models</li>
+                        <li>• API compatible</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Getting Started Guide */}
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-300 rounded-xl p-6">
+                  <h4 className="text-2xl font-bold text-blue-900 mb-4">🎓 Getting Started Guide</h4>
+                  <ol className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">1</span>
+                      <div>
+                        <strong className="text-blue-900">Install Code Puppy</strong>
+                        <p className="text-sm text-blue-800">Follow installation instructions above for your OS.</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">2</span>
+                      <div>
+                        <strong className="text-green-900">Set up API Keys</strong>
+                        <p className="text-sm text-green-800">Export your AI model API keys as environment variables.</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">3</span>
+                      <div>
+                        <strong className="text-purple-900">Start Interactive Mode</strong>
+                        <p className="text-sm text-purple-800">Run <code className="bg-purple-200 px-2 py-1 rounded">code-puppy --interactive</code> to begin.</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="bg-orange-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">4</span>
+                      <div>
+                        <strong className="text-orange-900">Try Example Tasks</strong>
+                        <p className="text-sm text-orange-800">Start with simple tasks: "write hello world in Python", "explain async/await".</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="bg-pink-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">5</span>
+                      <div>
+                        <strong className="text-pink-900">Explore Advanced Features</strong>
+                        <p className="text-sm text-pink-800">Use custom agents, multi-model distribution, and AGENTS.md integration.</p>
+                      </div>
+                    </li>
+                  </ol>
+                </div>
+
+                <div className="mt-6 text-center">
+                  <a
+                    href="https://github.com/mpfaffenberger/code_puppy"
+                    className="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Dog className="w-5 h-5" aria-hidden="true" />
+                    View Code Puppy on GitHub
+                  </a>
                 </div>
               </div>
             </div>
