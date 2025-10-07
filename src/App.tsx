@@ -156,25 +156,41 @@ export function App(): JSX.Element {
                       <strong>Code Puppy</strong> is our AI-powered CLI tool for code generation and understanding.
                       It supports AGENTS.md and can work with multiple AI models simultaneously.
                     </p>
-                    <div className="grid md:grid-cols-2 gap-3 text-xs">
+                    <div className="space-y-3 text-xs">
                       <div>
-                        <p className="font-semibold text-purple-900 mb-1">Key Features:</p>
-                        <ul className="text-purple-800 space-y-1">
-                          <li>✓ Interactive CLI interface</li>
-                          <li>✓ Multi-language code generation</li>
-                          <li>✓ Round-robin model distribution</li>
-                          <li>✓ Customizable agents via AGENTS.md</li>
-                        </ul>
+                        <p className="font-semibold text-purple-900 mb-2">Key Features:</p>
+                        <div className="grid grid-cols-2 gap-2">
+                          <div className="text-purple-800">✓ Interactive CLI interface</div>
+                          <div className="text-purple-800">✓ Multi-language code generation</div>
+                          <div className="text-purple-800">✓ Round-robin model distribution</div>
+                          <div className="text-purple-800">✓ Customizable agents via AGENTS.md</div>
+                        </div>
                       </div>
+
                       <div>
-                        <p className="font-semibold text-purple-900 mb-1">Installation:</p>
-                        <pre className="bg-gray-900 text-green-400 p-2 rounded text-xs">
+                        <p className="font-semibold text-purple-900 mb-2">Installation:</p>
+
+                        <div className="space-y-2">
+                          <div>
+                            <p className="text-purple-800 font-medium mb-1">🐧 Linux / macOS:</p>
+                            <pre className="bg-gray-900 text-green-400 p-2 rounded text-xs">
 {`pip install code-puppy
 code-puppy --interactive`}
-                        </pre>
+                            </pre>
+                          </div>
+
+                          <div>
+                            <p className="text-purple-800 font-medium mb-1">🪟 Windows (PowerShell):</p>
+                            <pre className="bg-blue-900 text-blue-200 p-2 rounded text-xs">
+{`# Installation command will be provided
+# Simple PowerShell one-liner coming soon`}
+                            </pre>
+                          </div>
+                        </div>
+
                         <p className="text-purple-800 mt-2">
                           <a href="https://github.com/mpfaffenberger/code_puppy" className="underline text-blue-600" target="_blank" rel="noopener noreferrer">
-                            GitHub: mpfaffenberger/code_puppy
+                            📚 GitHub: mpfaffenberger/code_puppy
                           </a>
                         </p>
                       </div>
