@@ -1,22 +1,10 @@
 import { useState } from 'react'
 import { Button } from './components/ui/button'
-import { Code2, Rocket, FileText, BookOpen, Sparkles, CheckCircle2, Dog, FileEdit, FileCode, Lightbulb, Copy, Check, Network } from 'lucide-react'
+import { Code2, Rocket, FileText, BookOpen, Sparkles, CheckCircle2, Dog, FileEdit, FileCode, Lightbulb, Copy, Check, Network, Brain } from 'lucide-react'
 
 export function App(): JSX.Element {
-  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'codepuppy' | 'stacks' | 'examples' | 'prd' | 'myagents' | 'mcp'>('overview')
+  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'codepuppy' | 'stacks' | 'examples' | 'patterns' | 'myagents' | 'mcp'>('overview')
   const [copied, setCopied] = useState(false)
-
-  // PRD Generator State
-  const [prdData, setPrdData] = useState({
-    projectType: '',
-    targetUsers: '',
-    primaryGoal: '',
-    keyFeatures: '',
-    stack: '',
-    timeline: '',
-    teamSize: '',
-    budget: ''
-  })
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
@@ -129,14 +117,14 @@ export function App(): JSX.Element {
             AI Examples
           </Button>
           <Button
-            onClick={(): void => setActiveTab('prd')}
-            variant={activeTab === 'prd' ? 'default' : 'outline'}
+            onClick={(): void => setActiveTab('patterns')}
+            variant={activeTab === 'patterns' ? 'default' : 'outline'}
             role="tab"
-            aria-selected={activeTab === 'prd'}
-            aria-controls="prd-panel"
+            aria-selected={activeTab === 'patterns'}
+            aria-controls="patterns-panel"
           >
-            <FileEdit className="w-4 h-4 mr-2" aria-hidden="true" />
-            Generate a PRD
+            <Brain className="w-4 h-4 mr-2" aria-hidden="true" />
+            AI Patterns
           </Button>
           <Button
             onClick={(): void => setActiveTab('myagents')}
@@ -1767,41 +1755,7 @@ class MyAgent(Agent):
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-400 rounded-lg p-6 mt-8">
-                  <h4 className="text-xl font-semibold text-green-900 mb-3">
-                    💡 Common Patterns in AI-Powered Development
-                  </h4>
-                  <div className="grid md:grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <p className="font-semibold text-green-800 mb-2">What AI Excels At:</p>
-                      <ul className="text-gray-700 space-y-1">
-                        <li>• ⚡ Boilerplate code generation</li>
-                        <li>• 🎨 UI component scaffolding</li>
-                        <li>• 🔌 API endpoint creation</li>
-                        <li>• 📊 Database schema design</li>
-                        <li>• 🔍 Debugging and error fixing</li>
-                        <li>• 📚 Documentation writing</li>
-                        <li>• ♿ Accessibility implementation</li>
-                        <li>• 🧪 Test case generation</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-blue-800 mb-2">What You Still Own:</p>
-                      <ul className="text-gray-700 space-y-1">
-                        <li>• 🎯 Product vision & requirements</li>
-                        <li>• 🏗️ Architecture decisions</li>
-                        <li>• 🎨 UX/UI design direction</li>
-                        <li>• 🔒 Security policy enforcement</li>
-                        <li>• ✅ Code review & quality gates</li>
-                        <li>• 🚀 Deployment strategy</li>
-                        <li>• 📈 Performance optimization</li>
-                        <li>• 🤝 Stakeholder communication</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-6 mt-6">
+                <div className="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-6 mt-8">
                   <h4 className="text-xl font-semibold text-yellow-900 mb-3">
                     🚀 Ready to "Vibe Code" Your Own Project?
                   </h4>
@@ -1827,431 +1781,392 @@ class MyAgent(Agent):
             </div>
           )}
 
-          {/* PRD Generator Tab */}
-          {activeTab === 'prd' && (
-            <div id="prd-panel" role="tabpanel" aria-labelledby="prd-tab">
+          {/* AI Patterns & Best Practices Tab */}
+          {activeTab === 'patterns' && (
+            <div id="patterns-panel" role="tabpanel" aria-labelledby="patterns-tab">
               <div className="flex items-center gap-3 mb-6">
-                <FileEdit className="w-10 h-10 text-green-600" aria-hidden="true" />
-                <h3 className="text-3xl font-bold">Generate a Product Requirements Document (PRD)</h3>
+                <Brain className="w-10 h-10 text-purple-600" aria-hidden="true" />
+                <h3 className="text-3xl font-bold">AI Development Patterns & Best Practices</h3>
               </div>
 
               <div className="prose prose-lg max-w-none">
-                <p className="text-gray-700 mb-6">
-                  Answer the questions below to automatically generate a comprehensive PRD for your project.
-                  Choose options that best describe your needs - similar to Mad Libs, but for technical planning!
+                <p className="text-gray-700 leading-relaxed mb-8">
+                  Understanding the patterns of AI-powered development is crucial for success. This guide shows you what AI excels at,
+                  what you should own, and how to maximize productivity with AI coding assistants like Claude Code, GitHub Copilot, and Cursor.
                 </p>
 
-                {/* Interactive Mad Libs Style Form */}
-                <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-300 rounded-xl p-8 mb-6">
-                  <h4 className="text-2xl font-bold text-green-900 mb-6">📝 Build Your PRD</h4>
-
-                  <div className="space-y-6 text-lg leading-relaxed">
-                    {/* Sentence 1: Project Type */}
+                {/* Core Division of Responsibility */}
+                <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-400 rounded-lg p-6 mb-8">
+                  <h4 className="text-2xl font-semibold text-green-900 mb-4">
+                    🎯 The Golden Rule: Division of Responsibility
+                  </h4>
+                  <div className="grid md:grid-cols-2 gap-6">
                     <div className="bg-white rounded-lg p-4 border-l-4 border-green-500">
-                      <p className="text-gray-800">
-                        We are building a{' '}
-                        <select
-                          value={prdData.projectType}
-                          onChange={(e): void => setPrdData({ ...prdData, projectType: e.target.value })}
-                          className="inline-block mx-1 px-3 py-1 border-2 border-green-400 rounded-lg bg-green-50 font-semibold text-green-900 focus:outline-none focus:ring-2 focus:ring-green-500"
-                        >
-                          <option value="">-- select --</option>
-                          <option value="Minimum Viable Product (MVP)">Minimum Viable Product (MVP)</option>
-                          <option value="rapid prototype">rapid prototype</option>
-                          <option value="production-ready application">production-ready application</option>
-                          <option value="proof of concept">proof of concept</option>
-                          <option value="enterprise solution">enterprise solution</option>
-                        </select>
-                        {' '}to validate our idea and gather user feedback.
-                      </p>
+                      <h5 className="font-semibold text-green-800 mb-3 text-lg">What AI Excels At:</h5>
+                      <ul className="text-gray-700 space-y-2">
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-600">⚡</span>
+                          <div>
+                            <strong>Boilerplate Code Generation:</strong> API routes, CRUD operations, database schemas, configuration files
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-600">🎨</span>
+                          <div>
+                            <strong>UI Component Scaffolding:</strong> React/Vue components, forms, modals, responsive layouts
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-600">🔌</span>
+                          <div>
+                            <strong>API Endpoint Creation:</strong> REST/GraphQL endpoints with validation and error handling
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-600">📊</span>
+                          <div>
+                            <strong>Database Schema Design:</strong> Prisma models, migrations, relationships, indexes
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-600">🔍</span>
+                          <div>
+                            <strong>Debugging & Error Fixing:</strong> Stack trace analysis, bug fixes, edge case handling
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-600">📚</span>
+                          <div>
+                            <strong>Documentation Writing:</strong> README files, API docs, inline comments, JSDoc
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-600">♿</span>
+                          <div>
+                            <strong>Accessibility Implementation:</strong> ARIA labels, keyboard navigation, WCAG compliance
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-600">🧪</span>
+                          <div>
+                            <strong>Test Case Generation:</strong> Unit tests, integration tests, mocks, fixtures
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-600">🔄</span>
+                          <div>
+                            <strong>Refactoring:</strong> Code cleanup, DRY principles, extract functions/components
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-600">🚀</span>
+                          <div>
+                            <strong>Configuration Files:</strong> ESLint, Prettier, TypeScript, Vite, Webpack configs
+                          </div>
+                        </li>
+                      </ul>
                     </div>
 
-                    {/* Sentence 2: Target Users */}
                     <div className="bg-white rounded-lg p-4 border-l-4 border-blue-500">
-                      <p className="text-gray-800">
-                        Our target users are{' '}
-                        <select
-                          value={prdData.targetUsers}
-                          onChange={(e): void => setPrdData({ ...prdData, targetUsers: e.target.value })}
-                          className="inline-block mx-1 px-3 py-1 border-2 border-blue-400 rounded-lg bg-blue-50 font-semibold text-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        >
-                          <option value="">-- select --</option>
-                          <option value="internal employees and teams">internal employees and teams</option>
-                          <option value="small business owners">small business owners</option>
-                          <option value="enterprise customers">enterprise customers</option>
-                          <option value="developers and technical users">developers and technical users</option>
-                          <option value="general consumers">general consumers</option>
-                          <option value="mobile-first users">mobile-first users</option>
-                        </select>
-                        {' '}who need a streamlined solution for their daily tasks.
-                      </p>
-                    </div>
-
-                    {/* Sentence 3: Primary Goal */}
-                    <div className="bg-white rounded-lg p-4 border-l-4 border-purple-500">
-                      <p className="text-gray-800">
-                        The primary goal of this project is to{' '}
-                        <select
-                          value={prdData.primaryGoal}
-                          onChange={(e): void => setPrdData({ ...prdData, primaryGoal: e.target.value })}
-                          className="inline-block mx-1 px-3 py-1 border-2 border-purple-400 rounded-lg bg-purple-50 font-semibold text-purple-900 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                        >
-                          <option value="">-- select --</option>
-                          <option value="automate manual processes and increase efficiency">automate manual processes and increase efficiency</option>
-                          <option value="provide real-time data insights and analytics">provide real-time data insights and analytics</option>
-                          <option value="improve team collaboration and communication">improve team collaboration and communication</option>
-                          <option value="reduce operational costs">reduce operational costs</option>
-                          <option value="enhance customer experience">enhance customer experience</option>
-                          <option value="validate a new business idea">validate a new business idea</option>
-                        </select>
-                        {' '}while maintaining simplicity and ease of use.
-                      </p>
-                    </div>
-
-                    {/* Sentence 4: Key Features */}
-                    <div className="bg-white rounded-lg p-4 border-l-4 border-orange-500">
-                      <p className="text-gray-800">
-                        Key features must include{' '}
-                        <select
-                          value={prdData.keyFeatures}
-                          onChange={(e): void => setPrdData({ ...prdData, keyFeatures: e.target.value })}
-                          className="inline-block mx-1 px-3 py-1 border-2 border-orange-400 rounded-lg bg-orange-50 font-semibold text-orange-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                        >
-                          <option value="">-- select --</option>
-                          <option value="user authentication, dashboard with real-time updates, and API integration">user authentication, dashboard with real-time updates, and API integration</option>
-                          <option value="data visualization, export functionality, and role-based access control">data visualization, export functionality, and role-based access control</option>
-                          <option value="file upload/download, search capabilities, and notifications">file upload/download, search capabilities, and notifications</option>
-                          <option value="third-party integrations, webhooks, and automated workflows">third-party integrations, webhooks, and automated workflows</option>
-                          <option value="mobile responsiveness, offline mode, and push notifications">mobile responsiveness, offline mode, and push notifications</option>
-                        </select>
-                        {' '}to meet user needs effectively.
-                      </p>
-                    </div>
-
-                    {/* Sentence 5: Technology Stack */}
-                    <div className="bg-white rounded-lg p-4 border-l-4 border-pink-500">
-                      <p className="text-gray-800">
-                        For the technology stack, we will use{' '}
-                        <select
-                          value={prdData.stack}
-                          onChange={(e): void => setPrdData({ ...prdData, stack: e.target.value })}
-                          className="inline-block mx-1 px-3 py-1 border-2 border-pink-400 rounded-lg bg-pink-50 font-semibold text-pink-900 focus:outline-none focus:ring-2 focus:ring-pink-500"
-                        >
-                          <option value="">-- select --</option>
-                          <option value="React + Vite + Tailwind for frontend, Fastify + TypeScript for backend, and PostgreSQL + Prisma for the database (Modern SPA Stack)">React + Vite + Tailwind for frontend, Fastify + TypeScript for backend, and PostgreSQL + Prisma for the database (Modern SPA Stack)</option>
-                          <option value="Next.js 14+ with Tailwind CSS, Next.js API Routes, and PostgreSQL + Prisma (Full-Stack Framework)">Next.js 14+ with Tailwind CSS, Next.js API Routes, and PostgreSQL + Prisma (Full-Stack Framework)</option>
-                          <option value="Svelte + Vite + Tailwind for frontend, Express + TypeScript for backend, and SQLite + Prisma (Lightweight Stack)">Svelte + Vite + Tailwind for frontend, Express + TypeScript for backend, and SQLite + Prisma (Lightweight Stack)</option>
-                          <option value="Next.js + TypeScript + shadcn/ui, Azure Functions for serverless backend, and Azure SQL + Prisma (Enterprise Cloud)">Next.js + TypeScript + shadcn/ui, Azure Functions for serverless backend, and Azure SQL + Prisma (Enterprise Cloud)</option>
-                          <option value="Vue 3 + Vite + Tailwind for frontend, Hono (edge-optimized) for backend, and SQLite + Drizzle (Rapid Prototyping)">Vue 3 + Vite + Tailwind for frontend, Hono (edge-optimized) for backend, and SQLite + Drizzle (Rapid Prototyping)</option>
-                        </select>
-                        {' '}based on project requirements.
-                      </p>
-                    </div>
-
-                    {/* Sentence 6: Timeline */}
-                    <div className="bg-white rounded-lg p-4 border-l-4 border-indigo-500">
-                      <p className="text-gray-800">
-                        Our target timeline for the first release is{' '}
-                        <select
-                          value={prdData.timeline}
-                          onChange={(e): void => setPrdData({ ...prdData, timeline: e.target.value })}
-                          className="inline-block mx-1 px-3 py-1 border-2 border-indigo-400 rounded-lg bg-indigo-50 font-semibold text-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        >
-                          <option value="">-- select --</option>
-                          <option value="1-2 weeks (rapid prototype)">1-2 weeks (rapid prototype)</option>
-                          <option value="2-4 weeks (MVP)">2-4 weeks (MVP)</option>
-                          <option value="1-3 months (production-ready)">1-3 months (production-ready)</option>
-                          <option value="3-6 months (full product)">3-6 months (full product)</option>
-                          <option value="6+ months (enterprise solution)">6+ months (enterprise solution)</option>
-                        </select>
-                        {' '}with iterative improvements based on user feedback.
-                      </p>
-                    </div>
-
-                    {/* Sentence 7: Team Size */}
-                    <div className="bg-white rounded-lg p-4 border-l-4 border-yellow-500">
-                      <p className="text-gray-800">
-                        The development team consists of{' '}
-                        <select
-                          value={prdData.teamSize}
-                          onChange={(e): void => setPrdData({ ...prdData, teamSize: e.target.value })}
-                          className="inline-block mx-1 px-3 py-1 border-2 border-yellow-400 rounded-lg bg-yellow-50 font-semibold text-yellow-900 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                        >
-                          <option value="">-- select --</option>
-                          <option value="1 developer (solo project)">1 developer (solo project)</option>
-                          <option value="2-3 developers (small team)">2-3 developers (small team)</option>
-                          <option value="4-6 developers (mid-size team)">4-6 developers (mid-size team)</option>
-                          <option value="7-10 developers (large team)">7-10 developers (large team)</option>
-                          <option value="10+ developers (enterprise team)">10+ developers (enterprise team)</option>
-                        </select>
-                        {' '}with expertise in modern web technologies.
-                      </p>
-                    </div>
-
-                    {/* Sentence 8: Budget */}
-                    <div className="bg-white rounded-lg p-4 border-l-4 border-red-500">
-                      <p className="text-gray-800">
-                        Budget considerations include{' '}
-                        <select
-                          value={prdData.budget}
-                          onChange={(e): void => setPrdData({ ...prdData, budget: e.target.value })}
-                          className="inline-block mx-1 px-3 py-1 border-2 border-red-400 rounded-lg bg-red-50 font-semibold text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500"
-                        >
-                          <option value="">-- select --</option>
-                          <option value="minimal infrastructure costs (serverless, free tiers)">minimal infrastructure costs (serverless, free tiers)</option>
-                          <option value="moderate hosting and third-party service costs">moderate hosting and third-party service costs</option>
-                          <option value="enterprise-grade infrastructure with compliance requirements">enterprise-grade infrastructure with compliance requirements</option>
-                          <option value="cloud services with autoscaling capabilities">cloud services with autoscaling capabilities</option>
-                          <option value="hybrid on-premise and cloud deployment">hybrid on-premise and cloud deployment</option>
-                        </select>
-                        {' '}to ensure cost-effective delivery.
-                      </p>
+                      <h5 className="font-semibold text-blue-800 mb-3 text-lg">What You Still Own:</h5>
+                      <ul className="text-gray-700 space-y-2">
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-600">🎯</span>
+                          <div>
+                            <strong>Product Vision & Requirements:</strong> What to build, why it matters, success criteria
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-600">🏗️</span>
+                          <div>
+                            <strong>Architecture Decisions:</strong> Tech stack choices, system design, scalability planning
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-600">🎨</span>
+                          <div>
+                            <strong>UX/UI Design Direction:</strong> User flows, wireframes, design systems, branding
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-600">🔒</span>
+                          <div>
+                            <strong>Security Policy Enforcement:</strong> Authentication strategy, data privacy, compliance
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-600">✅</span>
+                          <div>
+                            <strong>Code Review & Quality Gates:</strong> PR reviews, standards enforcement, acceptance criteria
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-600">🚀</span>
+                          <div>
+                            <strong>Deployment Strategy:</strong> CI/CD pipelines, staging/production environments, rollback plans
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-600">📈</span>
+                          <div>
+                            <strong>Performance Optimization:</strong> Profiling, bottleneck identification, caching strategy
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-600">🤝</span>
+                          <div>
+                            <strong>Stakeholder Communication:</strong> Status updates, demos, requirement clarification
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-600">🧠</span>
+                          <div>
+                            <strong>Business Logic:</strong> Complex algorithms, domain-specific rules, workflow orchestration
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-600">🔬</span>
+                          <div>
+                            <strong>Innovation & Creativity:</strong> Novel solutions, competitive advantages, unique features
+                          </div>
+                        </li>
+                      </ul>
                     </div>
                   </div>
-
                 </div>
 
-                {/* Generated PRD Output */}
-                {Object.values(prdData).every(val => val !== '') && (
-                  <div id="generated-prd" className="bg-white border-2 border-blue-400 rounded-xl p-8 mb-6">
-                    <div className="flex items-center justify-between mb-6">
-                      <h4 className="text-2xl font-bold text-blue-900">📄 Your Generated PRD</h4>
-                      <Button
-                        onClick={(): void => {
-                          const prdText = document.getElementById('prd-content')?.innerText || ''
-                          navigator.clipboard.writeText(prdText)
-                          alert('PRD copied to clipboard!')
-                        }}
-                        variant="outline"
-                        className="text-sm"
-                      >
-                        Copy to Clipboard
-                      </Button>
+                {/* Effective AI Collaboration Patterns */}
+                <div className="mb-8">
+                  <h4 className="text-2xl font-bold text-gray-900 mb-4">
+                    🤖 Effective AI Collaboration Patterns
+                  </h4>
+
+                  {/* Pattern 1 */}
+                  <div className="bg-white border-2 border-purple-300 rounded-lg p-6 mb-4">
+                    <h5 className="text-xl font-semibold text-purple-900 mb-3">
+                      1. Start with Clear Requirements (AGENTS.md)
+                    </h5>
+                    <p className="text-gray-700 mb-3">
+                      Before writing any code, create an <strong>AGENTS.md</strong> file that defines your project structure, tech stack, code style, and security rules.
+                      This gives AI consistent context and reduces hallucinations.
+                    </p>
+                    <div className="bg-purple-50 rounded p-3">
+                      <p className="text-sm font-semibold text-purple-800 mb-2">Example Prompt:</p>
+                      <code className="text-sm text-gray-800">
+                        "Following the AGENTS.md file, create a user authentication API with email/password login using Fastify, Prisma, and JWT."
+                      </code>
                     </div>
+                  </div>
 
-                    <div id="prd-content" className="prose max-w-none space-y-6">
-                      <div>
-                        <h5 className="text-xl font-bold text-gray-900 mb-2">Project Overview</h5>
-                        <p className="text-gray-700 leading-relaxed">
-                          We are building a <strong>{prdData.projectType}</strong> to validate our idea and gather user feedback.
-                          Our target users are <strong>{prdData.targetUsers}</strong> who need a streamlined solution for their daily tasks.
-                        </p>
-                      </div>
-
-                      <div>
-                        <h5 className="text-xl font-bold text-gray-900 mb-2">Goals & Objectives</h5>
-                        <p className="text-gray-700 leading-relaxed">
-                          The primary goal of this project is to <strong>{prdData.primaryGoal}</strong> while maintaining
-                          simplicity and ease of use. This will enable our users to work more efficiently and achieve better outcomes.
-                        </p>
-                      </div>
-
-                      <div>
-                        <h5 className="text-xl font-bold text-gray-900 mb-2">Key Features</h5>
-                        <p className="text-gray-700 leading-relaxed">
-                          Key features must include <strong>{prdData.keyFeatures}</strong> to meet user needs effectively.
-                          These features are essential for delivering value and ensuring user satisfaction.
-                        </p>
-                      </div>
-
-                      <div>
-                        <h5 className="text-xl font-bold text-gray-900 mb-2">Technical Stack</h5>
-                        <p className="text-gray-700 leading-relaxed">
-                          For the technology stack, we will use <strong>{prdData.stack}</strong> based on project requirements.
-                          This stack has been chosen for its reliability, performance, and developer experience.
-                        </p>
-                      </div>
-
-                      <div>
-                        <h5 className="text-xl font-bold text-gray-900 mb-2">Timeline & Resources</h5>
-                        <p className="text-gray-700 leading-relaxed">
-                          Our target timeline for the first release is <strong>{prdData.timeline}</strong> with iterative
-                          improvements based on user feedback. The development team consists of <strong>{prdData.teamSize}</strong> with
-                          expertise in modern web technologies.
-                        </p>
-                      </div>
-
-                      <div>
-                        <h5 className="text-xl font-bold text-gray-900 mb-2">Budget & Infrastructure</h5>
-                        <p className="text-gray-700 leading-relaxed">
-                          Budget considerations include <strong>{prdData.budget}</strong> to ensure cost-effective delivery.
-                          Infrastructure choices will be made to balance performance, scalability, and cost efficiency.
-                        </p>
-                      </div>
-
-                      <div>
-                        <h5 className="text-xl font-bold text-gray-900 mb-2">Success Metrics</h5>
-                        <ul className="text-gray-700 space-y-2">
-                          <li>✓ User adoption rate and engagement metrics</li>
-                          <li>✓ Performance benchmarks (load time, response time, uptime)</li>
-                          <li>✓ User satisfaction scores and feedback</li>
-                          <li>✓ Feature completion and bug resolution rates</li>
-                          <li>✓ Cost efficiency and ROI measurements</li>
-                        </ul>
-                      </div>
-
-                      <div>
-                        <h5 className="text-xl font-bold text-gray-900 mb-2">Next Steps</h5>
-                        <ol className="text-gray-700 space-y-2 list-decimal list-inside">
-                          <li>Finalize requirements and get stakeholder approval</li>
-                          <li>Set up development environment and repository</li>
-                          <li>Create AGENTS.md file for AI agent collaboration</li>
-                          <li>Begin iterative development with sprint planning</li>
-                          <li>Establish testing and CI/CD pipeline</li>
-                          <li>Schedule regular demo sessions and collect feedback</li>
-                        </ol>
-                      </div>
+                  {/* Pattern 2 */}
+                  <div className="bg-white border-2 border-indigo-300 rounded-lg p-6 mb-4">
+                    <h5 className="text-xl font-semibold text-indigo-900 mb-3">
+                      2. Iterate Incrementally
+                    </h5>
+                    <p className="text-gray-700 mb-3">
+                      Build features in small, testable chunks. Ask AI to generate one component/endpoint at a time, test it, then move to the next.
+                      This prevents overwhelming complexity and makes debugging easier.
+                    </p>
+                    <div className="bg-indigo-50 rounded p-3 space-y-2">
+                      <p className="text-sm font-semibold text-indigo-800">Good Sequence:</p>
+                      <ol className="text-sm text-gray-800 list-decimal list-inside space-y-1">
+                        <li>Create database schema → Test migrations</li>
+                        <li>Build API endpoint → Test with Postman/curl</li>
+                        <li>Create UI component → Test in isolation</li>
+                        <li>Integrate components → Test end-to-end</li>
+                      </ol>
                     </div>
+                  </div>
 
-                    {/* AGENTS.md Integration Section */}
-                    <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-400 rounded-lg">
-                      <h5 className="text-xl font-bold text-blue-900 mb-3 flex items-center gap-2">
-                        <FileCode className="w-6 h-6" aria-hidden="true" />
-                        📋 Next Step: Create Your AGENTS.md File
-                      </h5>
-                      <p className="text-gray-700 mb-4">
-                        Now that you have your PRD, transform it into an <strong>AGENTS.md</strong> file to enable AI-powered development.
-                        Your AGENTS.md should mirror your PRD structure while adding AI-specific instructions.
-                      </p>
-                      <div className="bg-white rounded-lg p-4 mb-4">
-                        <p className="font-semibold text-blue-900 mb-2">AGENTS.md Structure (Based on Your PRD):</p>
-                        <div className="space-y-2 text-sm text-gray-700">
-                          <div className="bg-blue-50 rounded p-2">
-                            <strong>📋 Project Overview</strong> → From "Project Type" and "Target Users"
-                            <br />
-                            <span className="text-xs">Describe what you're building and who it's for</span>
-                          </div>
-                          <div className="bg-green-50 rounded p-2">
-                            <strong>🎯 Primary Goal</strong> → From "Primary Goal"
-                            <br />
-                            <span className="text-xs">The main objective and value proposition</span>
-                          </div>
-                          <div className="bg-purple-50 rounded p-2">
-                            <strong>⚙️ Tech Stack</strong> → From "Technology Stack"
-                            <br />
-                            <span className="text-xs">Specify frameworks, libraries, and tools</span>
-                          </div>
-                          <div className="bg-orange-50 rounded p-2">
-                            <strong>✨ Key Features</strong> → From "Key Features"
-                            <br />
-                            <span className="text-xs">List features with acceptance criteria</span>
-                          </div>
-                          <div className="bg-pink-50 rounded p-2">
-                            <strong>🚀 Getting Started</strong> → Installation commands, dev environment
-                            <br />
-                            <span className="text-xs">npm install, environment setup, database migrations</span>
-                          </div>
-                          <div className="bg-teal-50 rounded p-2">
-                            <strong>📁 Project Structure</strong> → Folder layout
-                            <br />
-                            <span className="text-xs">src/, tests/, docs/, scripts/</span>
-                          </div>
-                          <div className="bg-indigo-50 rounded p-2">
-                            <strong>🎨 Code Style</strong> → TypeScript, ESLint, Prettier rules
-                            <br />
-                            <span className="text-xs">Define coding standards for AI agents</span>
-                          </div>
-                          <div className="bg-yellow-50 rounded p-2">
-                            <strong>🧪 Testing</strong> → Test requirements (80%+ coverage)
-                            <br />
-                            <span className="text-xs">Unit, integration, e2e testing strategies</span>
-                          </div>
-                          <div className="bg-red-50 rounded p-2">
-                            <strong>🔒 Security</strong> → No secrets in code, input validation
-                            <br />
-                            <span className="text-xs">Security guidelines for AI agents</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="bg-gray-900 text-white rounded-lg p-4">
-                        <p className="text-sm mb-2">Example AGENTS.md header (copy this template):</p>
-                        <pre className="text-xs font-mono whitespace-pre-wrap">
-{`# AGENTS.md
-
-**Project:** ${prdData.projectType || 'Your Project Name'}
-**Target Users:** ${prdData.targetUsers || 'Target User Group'}
-**Primary Goal:** ${prdData.primaryGoal || 'Main Objective'}
-
-> **🎯 Purpose**: This file provides AI agents with everything they need
-> to build and maintain this project following the AGENTS.md standard.
-
----
-
-## 📋 Project Overview
-
-${prdData.projectType ? `We are building a ${prdData.projectType}` : 'Describe your project here'}...
-
-**Tech Stack:**
-- Frontend: ${prdData.stack?.includes('React') ? 'React 18 + TypeScript' : 'Your Framework'}
-- Backend: ${prdData.stack?.includes('Fastify') ? 'Fastify + TypeScript' : 'Your Backend'}
-- Database: ${prdData.stack?.includes('PostgreSQL') ? 'PostgreSQL + Prisma' : 'Your Database'}
-
-**Key Features:**
-${prdData.keyFeatures ? `- ${prdData.keyFeatures.split(',').join('\n- ')}` : '- Feature 1\n- Feature 2\n- Feature 3'}
-
----
-
-## 🚀 Getting Started
-
-\`\`\`bash
-# Installation
-npm install
-
-# Development
-npm run dev
-\`\`\`
-
----
-
-## 🎨 Code Style & Standards
-
-- TypeScript strict mode (no 'any' types)
-- ESLint + Prettier for formatting
-- 80%+ test coverage required
-- No secrets in code (use environment variables)
-
-[... see ~/AGENTS.md for complete structure]`}
-                        </pre>
-                      </div>
-                      <p className="text-sm text-blue-900 mt-4">
-                        <strong>💡 View the complete AGENTS.md template in the "My AGENTS.md" tab above!</strong>
-                      </p>
-                    </div>
-
-                    <div className="mt-6 p-4 bg-green-50 border border-green-300 rounded-lg">
-                      <p className="text-sm text-green-900">
-                        <strong>💡 Pro Tip:</strong> Use this PRD as a starting point for your project planning.
-                        Then create an AGENTS.md file based on the structure above to enable AI-powered development.
-                        Share both documents with your team, stakeholders, and AI coding assistants to ensure
-                        everyone (humans and AI) is aligned on the project goals and technical approach.
+                  {/* Pattern 3 */}
+                  <div className="bg-white border-2 border-teal-300 rounded-lg p-6 mb-4">
+                    <h5 className="text-xl font-semibold text-teal-900 mb-3">
+                      3. Let AI Handle Boilerplate, You Focus on Logic
+                    </h5>
+                    <p className="text-gray-700 mb-3">
+                      Use AI to generate scaffolding (routes, components, types), then add your business logic and domain-specific rules.
+                      AI is great at structure, you're better at strategy.
+                    </p>
+                    <div className="bg-teal-50 rounded p-3">
+                      <p className="text-sm font-semibold text-teal-800 mb-2">Example:</p>
+                      <p className="text-sm text-gray-800">
+                        <strong>AI generates:</strong> REST API with CRUD endpoints<br />
+                        <strong>You add:</strong> Custom pricing logic, discount rules, inventory checks
                       </p>
                     </div>
                   </div>
-                )}
 
-                {/* Reset Button */}
-                {Object.values(prdData).some(val => val !== '') && (
-                  <div className="text-center mb-6">
-                    <Button
-                      onClick={(): void => {
-                        setPrdData({
-                          projectType: '',
-                          targetUsers: '',
-                          primaryGoal: '',
-                          keyFeatures: '',
-                          stack: '',
-                          timeline: '',
-                          teamSize: '',
-                          budget: ''
-                        })
-                      }}
-                      variant="outline"
-                      className="text-red-600 border-red-400 hover:bg-red-50"
-                    >
-                      Reset and Start Over
-                    </Button>
+                  {/* Pattern 4 */}
+                  <div className="bg-white border-2 border-orange-300 rounded-lg p-6 mb-4">
+                    <h5 className="text-xl font-semibold text-orange-900 mb-3">
+                      4. Always Validate & Test AI Output
+                    </h5>
+                    <p className="text-gray-700 mb-3">
+                      AI can make mistakes. Always run tests, check for edge cases, and validate security implications.
+                      Never blindly accept generated code, especially for authentication, payments, or data handling.
+                    </p>
+                    <div className="bg-orange-50 rounded p-3">
+                      <p className="text-sm font-semibold text-orange-800 mb-2">Validation Checklist:</p>
+                      <ul className="text-sm text-gray-800 space-y-1">
+                        <li>✓ Does it compile/run without errors?</li>
+                        <li>✓ Does it handle edge cases (null, empty, invalid input)?</li>
+                        <li>✓ Is it secure (no SQL injection, XSS, secrets in code)?</li>
+                        <li>✓ Does it follow project standards (AGENTS.md)?</li>
+                        <li>✓ Are there tests covering critical paths?</li>
+                      </ul>
+                    </div>
                   </div>
-                )}
+
+                  {/* Pattern 5 */}
+                  <div className="bg-white border-2 border-pink-300 rounded-lg p-6 mb-4">
+                    <h5 className="text-xl font-semibold text-pink-900 mb-3">
+                      5. Use AI for Refactoring & Optimization
+                    </h5>
+                    <p className="text-gray-700 mb-3">
+                      After building a working feature, ask AI to refactor for better performance, readability, or maintainability.
+                      AI excels at identifying code smells and suggesting improvements.
+                    </p>
+                    <div className="bg-pink-50 rounded p-3">
+                      <p className="text-sm font-semibold text-pink-800 mb-2">Example Prompts:</p>
+                      <ul className="text-sm text-gray-800 space-y-1">
+                        <li>"Refactor this function to reduce complexity (Cyclomatic < 10)"</li>
+                        <li>"Optimize this database query to reduce N+1 problems"</li>
+                        <li>"Extract this logic into reusable utility functions"</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Common Pitfalls to Avoid */}
+                <div className="mb-8">
+                  <h4 className="text-2xl font-bold text-gray-900 mb-4">
+                    ⚠️ Common Pitfalls to Avoid
+                  </h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4">
+                      <h5 className="font-semibold text-red-900 mb-2">❌ Don't Do This:</h5>
+                      <ul className="text-sm text-gray-700 space-y-2">
+                        <li>• Accepting AI code without reviewing it</li>
+                        <li>• Building entire features in one AI prompt</li>
+                        <li>• Skipping tests because "AI wrote it"</li>
+                        <li>• Using AI for complex business logic without validation</li>
+                        <li>• Ignoring security best practices</li>
+                        <li>• Not providing context (no AGENTS.md file)</li>
+                        <li>• Asking AI to make architectural decisions</li>
+                        <li>• Blindly copying AI-generated secrets/credentials</li>
+                      </ul>
+                    </div>
+                    <div className="bg-green-50 border-2 border-green-300 rounded-lg p-4">
+                      <h5 className="font-semibold text-green-900 mb-2">✅ Do This Instead:</h5>
+                      <ul className="text-sm text-gray-700 space-y-2">
+                        <li>• Review every line of AI-generated code</li>
+                        <li>• Break features into small, testable chunks</li>
+                        <li>• Write comprehensive tests (80%+ coverage)</li>
+                        <li>• Validate business logic with domain experts</li>
+                        <li>• Follow security checklists (OWASP, SANS)</li>
+                        <li>• Create AGENTS.md for consistent context</li>
+                        <li>• Make architecture decisions yourself</li>
+                        <li>• Use environment variables for all secrets</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Productivity Multipliers */}
+                <div className="bg-gradient-to-r from-purple-50 to-blue-50 border-2 border-purple-400 rounded-lg p-6 mb-8">
+                  <h4 className="text-2xl font-semibold text-purple-900 mb-4">
+                    🚀 Productivity Multipliers
+                  </h4>
+                  <div className="grid md:grid-cols-3 gap-4 text-sm">
+                    <div className="bg-white rounded-lg p-4">
+                      <h5 className="font-semibold text-purple-800 mb-2">Speed Gains</h5>
+                      <ul className="text-gray-700 space-y-1">
+                        <li>• Boilerplate: <strong>80% faster</strong></li>
+                        <li>• CRUD APIs: <strong>70% faster</strong></li>
+                        <li>• UI components: <strong>60% faster</strong></li>
+                        <li>• Tests: <strong>50% faster</strong></li>
+                        <li>• Documentation: <strong>90% faster</strong></li>
+                      </ul>
+                    </div>
+                    <div className="bg-white rounded-lg p-4">
+                      <h5 className="font-semibold text-purple-800 mb-2">Quality Improvements</h5>
+                      <ul className="text-gray-700 space-y-1">
+                        <li>• Fewer bugs (AI catches edge cases)</li>
+                        <li>• Better accessibility (AI knows WCAG)</li>
+                        <li>• Consistent code style</li>
+                        <li>• Comprehensive error handling</li>
+                        <li>• Up-to-date best practices</li>
+                      </ul>
+                    </div>
+                    <div className="bg-white rounded-lg p-4">
+                      <h5 className="font-semibold text-purple-800 mb-2">Learning Acceleration</h5>
+                      <ul className="text-gray-700 space-y-1">
+                        <li>• Learn new frameworks faster</li>
+                        <li>• Understand unfamiliar codebases</li>
+                        <li>• Discover new patterns/techniques</li>
+                        <li>• Get instant explanations</li>
+                        <li>• Stay current with tech trends</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Real-World Workflow */}
+                <div className="bg-blue-50 border-2 border-blue-400 rounded-lg p-6">
+                  <h4 className="text-xl font-semibold text-blue-900 mb-3">
+                    📝 Real-World Workflow Example
+                  </h4>
+                  <ol className="space-y-3 text-gray-700">
+                    <li className="flex items-start gap-3">
+                      <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-sm font-bold">1</span>
+                      <div>
+                        <strong>Define Requirements:</strong> Create AGENTS.md with project structure, tech stack, and standards
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-sm font-bold">2</span>
+                      <div>
+                        <strong>AI Generates Scaffold:</strong> "Create a Fastify server with TypeScript, Prisma, and auth routes"
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-sm font-bold">3</span>
+                      <div>
+                        <strong>You Add Business Logic:</strong> Implement domain-specific rules, validations, workflows
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-sm font-bold">4</span>
+                      <div>
+                        <strong>AI Generates Tests:</strong> "Write unit tests for the authentication service with 80%+ coverage"
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-sm font-bold">5</span>
+                      <div>
+                        <strong>You Review & Validate:</strong> Run tests, check security, verify edge cases
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-sm font-bold">6</span>
+                      <div>
+                        <strong>AI Refactors:</strong> "Optimize this code for performance and readability"
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-sm font-bold">7</span>
+                      <div>
+                        <strong>AI Documents:</strong> "Generate API documentation and update README with setup instructions"
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-sm font-bold">8</span>
+                      <div>
+                        <strong>Ship It:</strong> Deploy with confidence knowing AI handled tedious work, you handled critical logic
+                      </div>
+                    </li>
+                  </ol>
+                </div>
               </div>
             </div>
           )}
