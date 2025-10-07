@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Button } from './components/ui/button'
-import { Code2, Accessibility, Shield, Rocket, FileText, Workflow, BookOpen, Sparkles } from 'lucide-react'
+import { Code2, Rocket, FileText, Workflow, BookOpen, Sparkles } from 'lucide-react'
 
 export function App(): JSX.Element {
   const [activeTab, setActiveTab] = useState<'overview' | 'agents' | 'claude' | 'workflow'>('overview')
@@ -243,8 +243,8 @@ Before starting services:
                 <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mb-6">
                   <h4 className="text-xl font-semibold text-purple-900 mb-3">✨ Core Philosophy</h4>
                   <blockquote className="border-l-4 border-purple-600 pl-4 italic text-purple-800">
-                    "BEAUTY IS MANDATORY. Every application, every interface, every piece of content must be
-                    visually stunning and engaging. Ugly applications are unacceptable, regardless of functionality."
+                    &ldquo;BEAUTY IS MANDATORY. Every application, every interface, every piece of content must be
+                    visually stunning and engaging. Ugly applications are unacceptable, regardless of functionality.&rdquo;
                   </blockquote>
                 </div>
 
@@ -370,7 +370,7 @@ Before starting services:
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed mb-6">
                   This project was created by an AI agent (Claude) following both AGENTS.md and CLAUDE.md
-                  standards. Here's the exact workflow that was followed:
+                  standards. Here&apos;s the exact workflow that was followed:
                 </p>
 
                 <div className="space-y-6">
