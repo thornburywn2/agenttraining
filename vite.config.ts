@@ -17,6 +17,13 @@ export default defineConfig({
   server: {
     port: 5175,
     strictPort: true, // Enforce port 5175 (registered in /root/PORTS.md)
+    host: '0.0.0.0', // Allow external access
+    allowedHosts: [
+      'localhost',
+      '127.0.0.1',
+      'readme.wbtlabs.com',
+      '.wbtlabs.com', // Allow all wbtlabs.com subdomains
+    ],
     proxy: {
       '/api': {
         target: 'http://localhost:5176',
