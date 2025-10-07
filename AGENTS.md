@@ -949,7 +949,7 @@ This project follows the **AGENTS.md** open standard for AI agent instructions:
 ✅ **Deployment Steps** - Environment config, deployment process, rollback
 ✅ **AI Agent Instructions** - What to always/never do, auto-fix workflows
 
-**Supported AI Tools:** GitHub Copilot, Cursor, Cline, Windsurf, Zed, Continue, Sourcegraph Cody, Amazon Q, Google Gemini Code Assist, and 10+ more.
+**Supported AI Tools:** GitHub Copilot, Cursor, Cline, Windsurf, Zed, Continue, Sourcegraph Cody, Code Puppy, Azure AI Code Assist, Google Gemini Code Assist, and 10+ more.
 
 ---
 
