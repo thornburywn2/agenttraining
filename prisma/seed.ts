@@ -6,8 +6,16 @@ const prisma = new PrismaClient()
 async function main(): Promise<void> {
   console.log('🌱 Seeding database...')
 
-  // Get seed password from environment or use default for development
-  const seedPassword = process.env.SEED_PASSWORD || 'DemoPassword2024!'
+  // Get seed password from environment (required for security)
+  const seedPassword = process.env.SEED_PASSWORD
+
+  if (!seedPassword) {
+    console.error('❌ Error: SEED_PASSWORD environment variable is required')
+    console.error('💡 Set it before running seed:')
+    console.error('   SEED_PASSWORD="YourSecurePassword123!" npm run seed')
+    process.exit(1)
+  }
+
   const hashedPassword = await bcrypt.hash(seedPassword, 10)
 
   // Create demo users
