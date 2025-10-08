@@ -3437,8 +3437,13 @@ This project follows the **AGENTS.md** open standard for AI agent instructions:
                 {/* How to Use MCP Section */}
                 <div className="mb-8">
                   <h4 className="text-2xl font-bold text-gray-900 mb-4">
-                    🛠️ How to Use MCP with Claude Code
+                    🛠️ How to Use MCP with CodePuppy (and AGENTS.md)
                   </h4>
+                  <p className="text-gray-700 mb-4">
+                    MCP servers extend your AI coding assistant's capabilities by connecting to external data sources and tools.
+                    This guide shows you how to integrate MCP servers with <strong>CodePuppy</strong> (or any MCP-compatible AI assistant)
+                    and document them in your <strong>AGENTS.md</strong> file for consistent team usage.
+                  </p>
 
                   <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-400 rounded-lg p-6 mb-6">
                     <h5 className="text-xl font-semibold text-yellow-900 mb-3">Step 1: Install an MCP Server</h5>
@@ -3467,15 +3472,15 @@ npm install -g @modelcontextprotocol/server-postgres`}
                   </div>
 
                   <div className="bg-gradient-to-r from-blue-50 to-teal-50 border-2 border-blue-400 rounded-lg p-6 mb-6">
-                    <h5 className="text-xl font-semibold text-blue-900 mb-3">Step 2: Configure Claude Code to Use the Server</h5>
+                    <h5 className="text-xl font-semibold text-blue-900 mb-3">Step 2: Configure CodePuppy to Use the Server</h5>
                     <p className="text-gray-700 mb-3">
-                      Add the MCP server to your Claude Code configuration file. This tells Claude Code where to find the server and what permissions to use.
+                      Add the MCP server to your CodePuppy configuration file. This tells CodePuppy where to find the server and what permissions to use.
                     </p>
                     <div className="bg-gray-900 text-white rounded-lg p-4">
                       <pre className="text-sm font-mono">
-{`# Edit Claude Code config file
-# Location: ~/.config/claude-code/config.json (Linux/Mac)
-# Location: %APPDATA%\\claude-code\\config.json (Windows)
+{`# Edit CodePuppy config file
+# Location: ~/.codepuppy/config.json (Linux/Mac)
+# Location: %APPDATA%\\codepuppy\\config.json (Windows)
 
 {
   "mcpServers": {
@@ -3497,10 +3502,103 @@ npm install -g @modelcontextprotocol/server-postgres`}
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-400 rounded-lg p-6 mb-6">
-                    <h5 className="text-xl font-semibold text-green-900 mb-3">Step 3: Use the Server in Claude Code</h5>
+                  <div className="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-400 rounded-lg p-6 mb-6">
+                    <h5 className="text-xl font-semibold text-purple-900 mb-3">Step 3: Document MCP Servers in AGENTS.md</h5>
                     <p className="text-gray-700 mb-3">
-                      Once configured, Claude Code will automatically detect available MCP tools and resources. You can ask Claude to use them in natural language.
+                      Add MCP server configurations to your <strong>AGENTS.md</strong> file so your team (and AI assistants) know what tools are available.
+                      This ensures consistent usage across your organization.
+                    </p>
+                    <div className="bg-gray-900 text-white rounded-lg p-4">
+                      <pre className="text-sm font-mono whitespace-pre-wrap">
+{`# AGENTS.md - MCP Servers Section
+
+## 🔌 Available MCP Servers
+
+### ServiceNow Server
+**Purpose:** Query incidents, create tickets, update change requests
+**Config:** ~/.codepuppy/config.json
+**Connection:** ServiceNow instance at https://yourcompany.service-now.com
+
+\`\`\`json
+{
+  "servicenow": {
+    "command": "npx",
+    "args": ["-y", "@your-org/mcp-servicenow"],
+    "env": {
+      "SERVICENOW_INSTANCE": "yourcompany.service-now.com",
+      "SERVICENOW_USERNAME": "api_user",
+      "SERVICENOW_PASSWORD": "\${SERVICENOW_PASSWORD}"
+    }
+  }
+}
+\`\`\`
+
+**Example Prompts:**
+- "Show me all P1 incidents from the last 24 hours"
+- "Create a ServiceNow ticket for database outage"
+- "Update change request CHG0030123 status to 'Approved'"
+
+---
+
+### Confluence Server
+**Purpose:** Search documentation, create pages, update content
+**Config:** ~/.codepuppy/config.json
+**Connection:** Confluence at https://yourcompany.atlassian.net
+
+\`\`\`json
+{
+  "confluence": {
+    "command": "npx",
+    "args": ["-y", "@your-org/mcp-confluence"],
+    "env": {
+      "CONFLUENCE_URL": "https://yourcompany.atlassian.net",
+      "CONFLUENCE_EMAIL": "api@yourcompany.com",
+      "CONFLUENCE_API_TOKEN": "\${CONFLUENCE_API_TOKEN}"
+    }
+  }
+}
+\`\`\`
+
+**Example Prompts:**
+- "Search Confluence for 'API authentication guide'"
+- "Create a new Confluence page in 'Engineering' space titled 'Deployment Process'"
+- "Update the 'Runbook' page with latest troubleshooting steps"
+
+---
+
+### Microsoft Ecosystem Server
+**Purpose:** Interact with Microsoft Graph API (Teams, Outlook, OneDrive, SharePoint)
+**Config:** ~/.codepuppy/config.json
+**Connection:** Microsoft Graph API
+
+\`\`\`json
+{
+  "microsoft": {
+    "command": "npx",
+    "args": ["-y", "@your-org/mcp-microsoft-graph"],
+    "env": {
+      "MICROSOFT_TENANT_ID": "\${MICROSOFT_TENANT_ID}",
+      "MICROSOFT_CLIENT_ID": "\${MICROSOFT_CLIENT_ID}",
+      "MICROSOFT_CLIENT_SECRET": "\${MICROSOFT_CLIENT_SECRET}"
+    }
+  }
+}
+\`\`\`
+
+**Example Prompts:**
+- "Send a Teams message to #engineering channel: 'Deployment complete'"
+- "Search my OneDrive for files containing 'Q4 roadmap'"
+- "Create an Outlook calendar event for 'Sprint Planning' tomorrow at 10am"
+- "List all SharePoint sites I have access to"
+`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-400 rounded-lg p-6 mb-6">
+                    <h5 className="text-xl font-semibold text-green-900 mb-3">Step 4: Use the Server in CodePuppy</h5>
+                    <p className="text-gray-700 mb-3">
+                      Once configured, CodePuppy will automatically detect available MCP tools and resources. You can ask CodePuppy to use them in natural language.
                     </p>
                     <div className="bg-white rounded-lg p-4">
                       <p className="font-semibold text-gray-800 mb-2">Example Prompts:</p>
@@ -3512,12 +3610,95 @@ npm install -g @modelcontextprotocol/server-postgres`}
                           💬 <strong>PostgreSQL:</strong> "Show me all users in the database who signed up this month"
                         </li>
                         <li className="bg-gray-50 rounded p-2">
-                          💬 <strong>GitHub:</strong> "Create a GitHub issue titled 'Fix login bug' with labels 'bug' and 'priority:high'"
+                          💬 <strong>ServiceNow:</strong> "What are the open P1 incidents assigned to the database team?"
                         </li>
                         <li className="bg-gray-50 rounded p-2">
-                          💬 <strong>Slack:</strong> "Send a message to #general channel: 'Deployment complete!'"
+                          💬 <strong>Confluence:</strong> "Find the deployment runbook and summarize the rollback procedure"
+                        </li>
+                        <li className="bg-gray-50 rounded p-2">
+                          💬 <strong>Microsoft Teams:</strong> "Send a message to the #devops channel that the build passed"
+                        </li>
+                        <li className="bg-gray-50 rounded p-2">
+                          💬 <strong>GitHub:</strong> "Create a GitHub issue titled 'Fix login bug' with labels 'bug' and 'priority:high'"
                         </li>
                       </ul>
+                    </div>
+                  </div>
+
+                  {/* Enterprise MCP Server Examples */}
+                  <div className="bg-gradient-to-r from-indigo-50 to-blue-50 border-2 border-indigo-400 rounded-lg p-6 mb-6">
+                    <h5 className="text-xl font-semibold text-indigo-900 mb-3">
+                      🏢 Enterprise MCP Server Examples
+                    </h5>
+                    <p className="text-gray-700 mb-4">
+                      Real-world examples of MCP servers for enterprise systems:
+                    </p>
+
+                    <div className="space-y-4">
+                      {/* ServiceNow */}
+                      <div className="bg-white rounded-lg p-4 border-l-4 border-red-500">
+                        <h6 className="font-semibold text-gray-900 mb-2">🎫 ServiceNow MCP Server</h6>
+                        <p className="text-sm text-gray-700 mb-3">
+                          Connect to ServiceNow for incident management, change requests, and CMDB queries.
+                        </p>
+                        <div className="bg-gray-900 text-white rounded p-3 text-xs font-mono">
+{`// Available Tools:
+- servicenow_query_incidents
+- servicenow_create_incident
+- servicenow_update_incident
+- servicenow_create_change_request
+- servicenow_query_cmdb
+
+// Example Usage:
+"Show all critical incidents assigned to me"
+"Create incident: Database server DB-PROD-01 is down"
+"Update INC0010123 status to 'Resolved'"`}
+                        </div>
+                      </div>
+
+                      {/* Confluence */}
+                      <div className="bg-white rounded-lg p-4 border-l-4 border-blue-500">
+                        <h6 className="font-semibold text-gray-900 mb-2">📚 Confluence MCP Server</h6>
+                        <p className="text-sm text-gray-700 mb-3">
+                          Search, create, and update Confluence documentation programmatically.
+                        </p>
+                        <div className="bg-gray-900 text-white rounded p-3 text-xs font-mono">
+{`// Available Tools:
+- confluence_search
+- confluence_get_page
+- confluence_create_page
+- confluence_update_page
+- confluence_list_spaces
+
+// Example Usage:
+"Search Confluence for API authentication docs"
+"Create a page in 'Engineering' space with deployment steps"
+"Update the 'Runbook' page with new troubleshooting steps"`}
+                        </div>
+                      </div>
+
+                      {/* Microsoft Graph */}
+                      <div className="bg-white rounded-lg p-4 border-l-4 border-green-500">
+                        <h6 className="font-semibold text-gray-900 mb-2">🪟 Microsoft Graph MCP Server</h6>
+                        <p className="text-sm text-gray-700 mb-3">
+                          Integrate with Teams, Outlook, OneDrive, and SharePoint via Microsoft Graph API.
+                        </p>
+                        <div className="bg-gray-900 text-white rounded p-3 text-xs font-mono">
+{`// Available Tools:
+- teams_send_message
+- outlook_send_email
+- onedrive_search_files
+- onedrive_upload_file
+- sharepoint_list_sites
+- calendar_create_event
+
+// Example Usage:
+"Send Teams message to #engineering: 'Build successful'"
+"Email john@company.com with deployment summary"
+"Search OneDrive for 'Q4 roadmap' files"
+"Create calendar event 'Sprint Planning' tomorrow at 10am"`}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
