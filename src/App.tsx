@@ -87,7 +87,7 @@ export function App(): JSX.Element {
               ✅ Open Standard
             </div>
             <div className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full font-semibold text-sm">
-              🤖 20+ AI Tools Supported
+              🧠 AI-Powered Development
             </div>
             <div className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-4 py-2 rounded-full font-semibold text-sm">
               🚀 Production-Ready
@@ -4697,25 +4697,25 @@ if __name__ == "__main__":
                     📚 Learn More & Get Started
                   </h4>
                   <div className="space-y-3 text-sm">
-                    <div className="bg-blue-100 dark:bg-blue-900/30 rounded-lg p-3">
+                    <div className="bg-blue-100 dark:bg-blue-800/30 rounded-lg p-3">
                       <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Official Documentation</p>
-                      <a href="https://modelcontextprotocol.io/docs/getting-started/intro" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                      <a href="https://modelcontextprotocol.io/docs/getting-started/intro" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
                         https://modelcontextprotocol.io/docs/getting-started/intro
                       </a>
                     </div>
-                    <div className="bg-blue-100 dark:bg-blue-900/30 rounded-lg p-3">
+                    <div className="bg-blue-100 dark:bg-blue-800/30 rounded-lg p-3">
                       <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">GitHub Repository</p>
-                      <a href="https://github.com/modelcontextprotocol" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                      <a href="https://github.com/modelcontextprotocol" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
                         https://github.com/modelcontextprotocol
                       </a>
                     </div>
-                    <div className="bg-blue-100 dark:bg-blue-900/30 rounded-lg p-3">
+                    <div className="bg-blue-100 dark:bg-blue-800/30 rounded-lg p-3">
                       <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Pre-built MCP Servers</p>
-                      <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                      <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
                         https://github.com/modelcontextprotocol/servers
                       </a>
                     </div>
-                    <div className="bg-blue-100 dark:bg-blue-900/30 rounded-lg p-3">
+                    <div className="bg-blue-100 dark:bg-blue-800/30 rounded-lg p-3">
                       <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Quick Start Guide</p>
                       <p className="text-gray-700 dark:text-gray-300">
                         1. Install an MCP server: <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">npm install -g @modelcontextprotocol/server-filesystem</code><br />
