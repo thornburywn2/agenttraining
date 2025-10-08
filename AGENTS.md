@@ -69,7 +69,15 @@ cd your-project
 npm install
 
 # Set up environment variables
+# Unix/Linux/macOS:
 cp .env.example .env
+
+# Windows (PowerShell):
+Copy-Item .env.example .env
+
+# Windows (CMD):
+copy .env.example .env
+
 # Edit .env with your configuration
 
 # Set up database (if using Prisma)
@@ -124,7 +132,11 @@ npm run test:watch
 npm run test:coverage
 
 # View coverage report
+# Unix/Linux/macOS:
 open coverage/index.html
+
+# Windows:
+start coverage/index.html
 ```
 
 ### Code Quality
@@ -367,7 +379,11 @@ npm run test:watch
 npm run test:coverage
 
 # Open coverage report in browser
+# Unix/Linux/macOS:
 open coverage/index.html
+
+# Windows:
+start coverage/index.html
 ```
 
 ### Writing Tests
@@ -702,7 +718,16 @@ npm run lint:fix
 npm run format
 
 # Fix dependency issues
+# Unix/Linux/macOS:
 rm -rf node_modules package-lock.json
+
+# Windows (PowerShell):
+Remove-Item -Recurse -Force node_modules, package-lock.json
+
+# Windows (CMD):
+rmdir /s /q node_modules
+del package-lock.json
+
 npm install
 
 # Reset database (development only!)
@@ -710,7 +735,15 @@ npm run db:reset
 npm run db:seed
 
 # Clear build cache
+# Unix/Linux/macOS:
 rm -rf dist .vite node_modules/.vite
+
+# Windows (PowerShell):
+Remove-Item -Recurse -Force dist, .vite, node_modules\.vite
+
+# Windows (CMD):
+rmdir /s /q dist .vite node_modules\.vite
+
 npm run build
 ```
 
@@ -878,13 +911,34 @@ it('should not have accessibility violations', async () => {
 **Port Already in Use:**
 ```bash
 # Find process using port 5175
+# Unix/Linux/macOS:
 lsof -i :5175
 
+# Windows (PowerShell):
+Get-NetTCPConnection -LocalPort 5175
+
+# Windows (CMD):
+netstat -ano | findstr :5175
+
 # Kill process
+# Unix/Linux/macOS:
 kill -9 <PID>
 
-# Or use different port
+# Windows (PowerShell):
+Stop-Process -Id <PID> -Force
+
+# Windows (CMD):
+taskkill /PID <PID> /F
+
+# Or use different port (all platforms):
+# Unix/Linux/macOS:
 PORT=5180 npm run dev
+
+# Windows (PowerShell):
+$env:PORT=5180; npm run dev
+
+# Windows (CMD):
+set PORT=5180 && npm run dev
 ```
 
 **Database Connection Error:**
@@ -902,10 +956,19 @@ npm run db:reset
 **Module Not Found:**
 ```bash
 # Reinstall dependencies
+# Unix/Linux/macOS:
 rm -rf node_modules package-lock.json
+
+# Windows (PowerShell):
+Remove-Item -Recurse -Force node_modules, package-lock.json
+
+# Windows (CMD):
+rmdir /s /q node_modules
+del package-lock.json
+
 npm install
 
-# Clear cache
+# Clear cache (all platforms):
 npm cache clean --force
 ```
 

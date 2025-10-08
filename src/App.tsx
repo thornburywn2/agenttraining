@@ -2602,526 +2602,966 @@ A modern full-stack application built with enterprise-grade development standard
 **Current Implementation:**
 - Frontend: React 18 + TypeScript + Vite + Tailwind CSS
 - Backend: Fastify + TypeScript + Prisma
-- Database: PostgreSQL 15
+- Database: PostgreSQL
 - Testing: Vitest + React Testing Library
 
 ---
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+ and npm
-- PostgreSQL 15+
-- Git
+## 🚀 Setup Commands
 
 ### Installation
 
 \`\`\`bash
-# Clone the repository
-git clone <repository-url>
-cd <project-name>
+# Clone repository
+git clone https://github.com/your-username/your-project.git
+cd your-project
 
 # Install dependencies
 npm install
 
 # Set up environment variables
+# Unix/Linux/macOS:
 cp .env.example .env
-# Edit .env with your database credentials
 
-# Run database migrations
+# Windows (PowerShell):
+Copy-Item .env.example .env
+
+# Windows (CMD):
+copy .env.example .env
+
+# Edit .env with your configuration
+
+# Set up database (if using Prisma)
 npm run db:migrate
-
-# Seed database with demo data (optional)
 npm run db:seed
 
 # Start development server
-npm run dev:all  # Starts both frontend and backend
+npm run dev:all
 \`\`\`
 
-### Available Commands
+### Development
 
 \`\`\`bash
-# Development
-npm run dev              # Start frontend dev server
-npm run dev:backend      # Start backend dev server
-npm run dev:all          # Start both frontend and backend
+# Start frontend only (port 5175)
+npm run dev
 
-# Build
-npm run build            # Build for production
-npm run preview          # Preview production build
+# Start backend only (port 5176)
+npm run dev:backend
 
-# Testing
-npm test                 # Run all tests
-npm run test:coverage    # Run tests with coverage report
-npm run test:watch       # Run tests in watch mode
+# Start both frontend and backend
+npm run dev:all
 
-# Code Quality
-npm run lint             # Run ESLint
-npm run lint:fix         # Fix linting issues
-npm run format           # Format code with Prettier
-npm run type-check       # Check TypeScript types
+# Open browser to http://localhost:5175
+\`\`\`
 
-# Database
-npm run db:migrate       # Run database migrations
-npm run db:seed          # Seed database
-npm run db:studio        # Open Prisma Studio
+### Build
+
+\`\`\`bash
+# Build for production
+npm run build
+
+# Build frontend only
+npm run build:frontend
+
+# Build backend only
+npm run build:backend
+
+# Preview production build
+npm run preview
+\`\`\`
+
+### Testing
+
+\`\`\`bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage
+npm run test:coverage
+
+# View coverage report
+# Unix/Linux/macOS:
+open coverage/index.html
+
+# Windows:
+start coverage/index.html
+\`\`\`
+
+### Code Quality
+
+\`\`\`bash
+# Lint code
+npm run lint
+
+# Fix linting issues
+npm run lint:fix
+
+# Format code
+npm run format
+
+# Type check
+npm run type-check
+\`\`\`
+
+### Database
+
+\`\`\`bash
+# Run migrations
+npm run db:migrate
+
+# Create new migration
+npm run db:migrate:create
+
+# Seed database with demo data
+npm run db:seed
+
+# Reset database (caution!)
+npm run db:reset
+
+# Open Prisma Studio (database GUI)
+npm run db:studio
 \`\`\`
 
 ---
 
-## 📁 Project Structure
+## 🎨 Code Style Guidelines
 
-\`\`\`
-project-root/
-├── src/                  # Frontend source code
-│   ├── components/       # React components
-│   │   ├── ui/          # shadcn/ui components
-│   │   └── ...          # Feature components
-│   ├── services/         # API clients
-│   ├── utils/            # Helper functions
-│   ├── types/            # TypeScript types
-│   └── App.tsx           # Root component
-│
-├── server/               # Backend source code
-│   ├── routes/           # API routes
-│   ├── middleware/       # Middleware functions
-│   ├── services/         # Business logic
-│   └── index.ts          # Server entry point
-│
-├── prisma/               # Database
-│   ├── schema.prisma     # Database schema
-│   ├── migrations/       # Migration files
-│   └── seed.ts           # Seed data
-│
-├── tests/                # Test files
-│   ├── unit/             # Unit tests
-│   ├── integration/      # Integration tests
-│   └── e2e/              # End-to-end tests
-│
-├── docs/                 # Documentation
-│   ├── API.md            # API documentation
-│   └── ARCHITECTURE.md   # System architecture
-│
-├── .env.example          # Environment variables template
-├── package.json          # Dependencies and scripts
-├── tsconfig.json         # TypeScript configuration
-├── vite.config.ts        # Vite configuration
-├── eslint.config.js      # ESLint configuration
-└── AGENTS.md             # This file (AI agent instructions)
-\`\`\`
+### TypeScript Standards
 
----
+**✅ ALWAYS:**
+- Use TypeScript strict mode (no \`any\` types without justification)
+- Define interfaces for all data structures
+- Use proper type annotations on function parameters and return values
+- Prefer \`interface\` over \`type\` for object shapes
+- Use \`const\` and \`let\` (never \`var\`)
 
-## 🎨 Code Style & Standards
+**❌ NEVER:**
+- Use \`any\` type without explicit comment explaining why
+- Ignore TypeScript errors or use \`@ts-ignore\` without reason
+- Mix JavaScript and TypeScript files in the same module
 
-### TypeScript
-
-**ALWAYS use TypeScript strict mode:**
-
+**Example (Good):**
 \`\`\`typescript
-// ✅ Good: Explicit types
+// ✅ Good: Clear types, proper interfaces
 interface User {
   id: string
   email: string
   name: string
+  role: 'admin' | 'user'
 }
 
-function getUser(id: string): Promise<User> {
-  // implementation
-}
-
-// ❌ Bad: Using 'any'
-function getUser(id: any): any {
-  // implementation
+async function getUser(id: string): Promise<User | null> {
+  return await prisma.user.findUnique({ where: { id } })
 }
 \`\`\`
 
-### React Components
-
-**Use functional components with TypeScript:**
-
-\`\`\`tsx
-// ✅ Good: Typed props
-interface ButtonProps {
-  label: string
-  onClick: () => void
-  variant?: 'primary' | 'secondary'
-}
-
-export function Button({ label, onClick, variant = 'primary' }: ButtonProps): JSX.Element {
-  return (
-    <button
-      onClick={onClick}
-      className={\`btn btn-\${variant}\`}
-    >
-      {label}
-    </button>
-  )
-}
-
-// ❌ Bad: No types
-export function Button({ label, onClick, variant }) {
-  return <button onClick={onClick}>{label}</button>
-}
-\`\`\`
-
-### API Routes
-
-**Use Zod for input validation:**
-
+**Example (Bad):**
 \`\`\`typescript
-import { z } from 'zod'
-import { FastifyRequest, FastifyReply } from 'fastify'
+// ❌ Bad: Using any, unclear types
+function getUser(id: any): any {
+  return prisma.user.findUnique({ where: { id } })
+}
+\`\`\`
 
-// Define validation schema
-const createUserSchema = z.object({
+### React/Frontend Patterns
+
+**✅ ALWAYS:**
+- Use functional components with hooks (no class components)
+- Destructure props for clarity
+- Use meaningful component and variable names
+- Keep components small and focused (single responsibility)
+- Use proper semantic HTML (\`<button>\`, \`<nav>\`, \`<main>\`, \`<label>\`)
+
+**❌ NEVER:**
+- Put business logic in components (use custom hooks or services)
+- Use inline styles (use Tailwind classes or CSS modules)
+- Forget to add \`key\` prop when rendering lists
+- Use \`<div>\` for interactive elements (use \`<button>\`)
+
+### Data Management: NO Mock Data in Code
+
+**✅ ALWAYS:**
+- Load data from database or API endpoints
+- Use database seed files for test/demo data (\`~/prisma/seed.ts\`)
+- Use environment variables for configuration (\`~/.env\`)
+- Define data schemas with Zod for validation
+
+**❌ NEVER:**
+- Hardcode mock data arrays in source code
+- Hardcode API URLs or database connections
+- Commit secrets or credentials to Git
+
+**Example (Correct):**
+\`\`\`typescript
+// ✅ Good: Load from database
+const users = await prisma.user.findMany()
+
+// ✅ Good: Environment variables
+const API_URL = process.env.VITE_API_URL || 'http://localhost:5176'
+
+// ✅ Good: Zod validation
+import { z } from 'zod'
+const userSchema = z.object({
   email: z.string().email(),
   name: z.string().min(2),
-  password: z.string().min(8)
 })
-
-// Use in route handler
-async function createUser(
-  request: FastifyRequest,
-  reply: FastifyReply
-): Promise<void> {
-  try {
-    // Validate input
-    const data = createUserSchema.parse(request.body)
-
-    // Business logic
-    const user = await prisma.user.create({
-      data: {
-        email: data.email,
-        name: data.name,
-        passwordHash: await hashPassword(data.password)
-      }
-    })
-
-    reply.code(201).send({ user })
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      reply.code(400).send({ error: 'Validation failed', details: error.errors })
-    }
-    throw error
-  }
-}
 \`\`\`
 
-### Error Handling
-
-**Always handle errors gracefully:**
-
+**Example (Incorrect):**
 \`\`\`typescript
-// ✅ Good: Proper error handling
-try {
-  const data = await fetchData()
-  return { success: true, data }
-} catch (error) {
-  if (error instanceof ApiError) {
-    return { success: false, error: error.message }
-  }
-  throw error
-}
+// ❌ Bad: Mock data in code
+const users = [
+  { id: '1', email: 'test@example.com', name: 'Test User' },
+  { id: '2', email: 'admin@example.com', name: 'Admin User' }
+]
 
-// ❌ Bad: Silent failures
-try {
-  const data = await fetchData()
-  return data
-} catch {
-  return null
-}
+// ❌ Bad: Hardcoded URLs
+const API_URL = 'http://localhost:3001'
 \`\`\`
+
+### Security Rules
+
+**✅ ALWAYS:**
+- Validate ALL user inputs with Zod schemas
+- Use Prisma ORM parameterized queries (prevents SQL injection)
+- Store secrets in environment variables (never in code)
+- Use helmet + CORS middleware on backend
+- Hash passwords with bcrypt (10+ salt rounds)
+- Use JWT tokens with expiration
+
+**❌ NEVER:**
+- Trust user input without validation
+- Use string concatenation for SQL queries
+- Commit \`.env\` files to Git (use \`.env.example\` instead)
+- Store passwords in plain text
+- Expose sensitive information in error messages
 
 ---
 
-## 🧪 Testing
+## 💻 Development Environment Tips
 
-### Test Coverage Requirements
+### Recommended VSCode Extensions
 
-**REQUIRED: Minimum 80% code coverage**
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **Tailwind CSS IntelliSense** - Tailwind autocomplete
+- **Prisma** - Prisma schema syntax highlighting
+- **Error Lens** - Inline error display
+- **GitLens** - Git supercharged
+
+### Project Structure
+
+\`\`\`
+~/Projects/your-project/
+├── AGENTS.md           # This file (AI agent instructions)
+├── README.md           # Human documentation
+├── TODO.md             # Task tracking
+├── CHANGELOG.md        # Version history
+├── PORT_MANAGEMENT.md  # Port allocation
+├── src/                # Frontend source code
+│   ├── components/     # React components
+│   ├── services/       # API clients
+│   ├── utils/          # Helper functions
+│   ├── types/          # TypeScript types
+│   └── App.tsx         # Main app component
+├── server/             # Backend source code
+│   ├── routes/         # API routes
+│   ├── middleware/     # Middleware
+│   └── index.ts        # Server entry point
+├── prisma/             # Database schema & migrations
+│   ├── schema.prisma   # Database schema
+│   ├── migrations/     # Migration files
+│   └── seed.ts         # Demo data (NOT in src!)
+├── tests/              # Test suites
+│   ├── unit/           # Unit tests
+│   ├── integration/    # Integration tests
+│   └── e2e/            # End-to-end tests
+├── docs/               # Additional documentation
+└── .env.example        # Environment variables template
+\`\`\`
+
+### Debugging
+
+**Frontend:**
+- Use React DevTools browser extension
+- Use \`console.log()\` for quick debugging (remove before commit)
+- Use browser DevTools debugger with breakpoints
+- Check Network tab for API call issues
+
+**Backend:**
+- Use \`console.log()\` for quick debugging (remove before commit)
+- Use Node debugger: \`node --inspect server/index.ts\`
+- Check server logs for errors
+- Use Prisma Studio to inspect database
+
+### Hot Reload
+
+- **Frontend:** Vite provides instant hot module replacement (HMR)
+- **Backend:** Use \`tsx watch\` or \`nodemon\` for auto-restart on changes
+
+---
+
+## 🧪 Testing Instructions
+
+### Testing Requirements
+
+**Minimum Standards:**
+- 80%+ code coverage (lines, statements, branches, functions)
+- All tests must pass before merging to main
+- Zero critical bugs or regressions
+- Performance benchmarks met
+
+### Running Tests
 
 \`\`\`bash
-# Run tests with coverage
+# Run all tests
+npm test
+
+# Run specific test file
+npm test src/components/Button.test.tsx
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run with coverage report
 npm run test:coverage
 
-# Coverage should show:
-# Statements: 80% or higher
-# Branches: 80% or higher
-# Functions: 80% or higher
-# Lines: 80% or higher
+# Open coverage report in browser
+# Unix/Linux/macOS:
+open coverage/index.html
+
+# Windows:
+start coverage/index.html
 \`\`\`
 
 ### Writing Tests
 
 **Unit Tests:**
-
 \`\`\`typescript
+// Example: Testing a utility function
 import { describe, it, expect } from 'vitest'
-import { formatDate } from '../utils/formatDate'
+import { formatDate } from './utils'
 
 describe('formatDate', () => {
-  it('should format date correctly', () => {
-    const date = new Date('2025-10-07')
-    expect(formatDate(date)).toBe('October 7, 2025')
+  it('formats date correctly', () => {
+    const date = new Date('2025-01-15')
+    expect(formatDate(date)).toBe('January 15, 2025')
   })
 
-  it('should handle invalid dates', () => {
-    expect(() => formatDate(null)).toThrow()
+  it('handles invalid dates', () => {
+    expect(formatDate(null)).toBe('Invalid date')
   })
 })
 \`\`\`
 
 **Component Tests:**
-
-\`\`\`tsx
+\`\`\`typescript
+// Example: Testing a React component
 import { render, screen, fireEvent } from '@testing-library/react'
-import { describe, it, expect, vi } from 'vitest'
-import { Button } from '../components/Button'
+import { describe, it, expect } from 'vitest'
+import { Button } from './Button'
 
 describe('Button', () => {
-  it('should call onClick when clicked', () => {
+  it('renders button text', () => {
+    render(<Button>Click Me</Button>)
+    expect(screen.getByText('Click Me')).toBeInTheDocument()
+  })
+
+  it('calls onClick when clicked', () => {
     const handleClick = vi.fn()
-    render(<Button label="Click me" onClick={handleClick} />)
-
-    const button = screen.getByRole('button', { name: /click me/i })
-    fireEvent.click(button)
-
-    expect(handleClick).toHaveBeenCalledTimes(1)
+    render(<Button onClick={handleClick}>Click</Button>)
+    fireEvent.click(screen.getByText('Click'))
+    expect(handleClick).toHaveBeenCalledOnce()
   })
 })
 \`\`\`
 
-**API Tests:**
+### Test Coverage Goals
 
-\`\`\`typescript
-import { describe, it, expect, beforeAll, afterAll } from 'vitest'
-import { build } from '../server'
-
-describe('User API', () => {
-  let app
-
-  beforeAll(async () => {
-    app = await build()
-  })
-
-  afterAll(async () => {
-    await app.close()
-  })
-
-  it('should create a user', async () => {
-    const response = await app.inject({
-      method: 'POST',
-      url: '/api/users',
-      payload: {
-        email: 'test@example.com',
-        name: 'Test User',
-        password: 'password123'
-      }
-    })
-
-    expect(response.statusCode).toBe(201)
-    expect(response.json()).toHaveProperty('user')
-  })
-})
-\`\`\`
+- **Functions:** 80%+ covered
+- **Statements:** 80%+ covered
+- **Branches:** 80%+ covered
+- **Lines:** 80%+ covered
 
 ---
 
-## 🔒 Security Best Practices
+## 📝 Pull Request Instructions
 
-### Environment Variables
-
-**NEVER hardcode secrets in code:**
-
-\`\`\`typescript
-// ✅ Good: Use environment variables
-const JWT_SECRET = process.env.JWT_SECRET
-const DATABASE_URL = process.env.DATABASE_URL
-
-// ❌ Bad: Hardcoded secrets
-const JWT_SECRET = 'my-secret-key-123'
-const DATABASE_URL = 'postgresql://user:password@localhost:5432/db'
-\`\`\`
-
-### Input Validation
-
-**ALWAYS validate user input:**
-
-\`\`\`typescript
-// ✅ Good: Validate with Zod
-const schema = z.object({
-  email: z.string().email(),
-  age: z.number().min(0).max(120)
-})
-
-const data = schema.parse(userInput)
-
-// ❌ Bad: No validation
-const data = userInput
-\`\`\`
-
-### SQL Injection Prevention
-
-**Use Prisma ORM (parameterized queries):**
-
-\`\`\`typescript
-// ✅ Good: Prisma (safe)
-const user = await prisma.user.findUnique({
-  where: { email: userEmail }
-})
-
-// ❌ Bad: Raw SQL with string concatenation
-const user = await prisma.$queryRaw\`
-  SELECT * FROM users WHERE email = '\${userEmail}'
-\`
-\`\`\`
-
-### Authentication
-
-**Use JWT with proper expiration:**
-
-\`\`\`typescript
-import jwt from 'jsonwebtoken'
-
-// ✅ Good: JWT with expiration
-const token = jwt.sign(
-  { userId: user.id },
-  process.env.JWT_SECRET,
-  { expiresIn: '24h' }
-)
-
-// ❌ Bad: No expiration
-const token = jwt.sign(
-  { userId: user.id },
-  process.env.JWT_SECRET
-)
-\`\`\`
-
----
-
-## 🚀 Deployment
-
-### Environment Setup
-
-**Production environment variables:**
-
-\`\`\`bash
-# Database
-DATABASE_URL=postgresql://user:password@host:5432/production_db
-
-# JWT
-JWT_SECRET=your-production-secret-min-32-characters
-
-# Server
-PORT=3001
-NODE_ENV=production
-
-# Frontend
-VITE_API_URL=https://api.yourapp.com
-\`\`\`
-
-### Build Process
-
-\`\`\`bash
-# 1. Install dependencies
-npm ci
-
-# 2. Run tests
-npm test
-
-# 3. Build frontend and backend
-npm run build
-
-# 4. Run database migrations
-npm run db:migrate
-
-# 5. Start production server
-npm start
-\`\`\`
-
-### Performance Checklist
-
-- ✅ Bundle size < 250KB gzipped
-- ✅ First Contentful Paint < 1.8s
-- ✅ Lighthouse score ≥90 (all categories)
-- ✅ Database queries optimized (indexes, proper joins)
-- ✅ API response time < 200ms
-- ✅ Caching strategy implemented (Redis/in-memory)
-
----
-
-## 📚 Additional Resources
-
-- [AGENTS.md Standard](https://agents.md) - Open standard for AI agent instructions
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
-- [React Documentation](https://react.dev)
-- [Fastify Documentation](https://fastify.dev)
-- [Prisma Documentation](https://www.prisma.io/docs)
-- [Zod Documentation](https://zod.dev)
-
----
-
-## 🤝 Contributing
-
-### Pull Request Checklist
-
-Before submitting a PR, ensure:
-
-- ✅ All tests pass (\`npm test\`)
-- ✅ Code coverage ≥80% (\`npm run test:coverage\`)
-- ✅ No linting errors (\`npm run lint\`)
-- ✅ Code is formatted (\`npm run format\`)
-- ✅ TypeScript compiles (\`npm run type-check\`)
-- ✅ All new features have tests
-- ✅ Documentation is updated (if needed)
-
-### Commit Message Format
+### Commit Message Convention
 
 Use [Conventional Commits](https://www.conventionalcommits.org/):
 
+\`\`\`bash
+# Format: <type>(<scope>): <description>
+
+# Types:
+feat:     # New feature
+fix:      # Bug fix
+docs:     # Documentation changes
+style:    # Code style changes (formatting, no logic changes)
+refactor: # Code refactoring
+test:     # Adding or updating tests
+chore:    # Build process or auxiliary tool changes
+perf:     # Performance improvements
+
+# Examples:
+git commit -m "feat(auth): add JWT authentication"
+git commit -m "fix(api): handle null user in getProfile"
+git commit -m "docs: update setup instructions in README"
 \`\`\`
-feat: add user authentication
-fix: resolve memory leak in API routes
-docs: update README with new commands
-test: add tests for user service
-chore: update dependencies
+
+### Pull Request Checklist
+
+Before creating a pull request, ensure:
+
+- ✅ All tests pass (\`npm test\`)
+- ✅ Code coverage is 80%+ (\`npm run test:coverage\`)
+- ✅ No linting errors (\`npm run lint\`)
+- ✅ No TypeScript errors (\`npm run type-check\`)
+- ✅ Code is formatted (\`npm run format\`)
+- ✅ Environment variables documented in \`.env.example\`
+- ✅ Database migrations included (if schema changed)
+- ✅ README updated (if setup process changed)
+- ✅ CHANGELOG updated with changes
+
+### Code Review Guidelines
+
+**Reviewers should check:**
+- Code follows style guidelines
+- TypeScript types are correct
+- No security vulnerabilities
+- Tests are comprehensive
+- Documentation is updated
+- Performance is acceptable
+
+---
+
+## 🔒 Security Considerations
+
+### Critical Security Rules
+
+**1. No Secrets in Code (MANDATORY)**
+
+✅ **DO:**
+\`\`\`typescript
+// Good: Use environment variables
+const JWT_SECRET = process.env.JWT_SECRET
+const DATABASE_URL = process.env.DATABASE_URL
+\`\`\`
+
+❌ **DON'T:**
+\`\`\`typescript
+// Bad: Hardcoded secrets
+const JWT_SECRET = 'my-secret-key-12345'
+const DATABASE_URL = 'postgresql://user:password@localhost/db'
+\`\`\`
+
+**2. Input Validation (MANDATORY)**
+
+✅ **DO:**
+\`\`\`typescript
+import { z } from 'zod'
+
+const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+})
+
+// Validate before using
+const result = loginSchema.safeParse(req.body)
+if (!result.success) {
+  return res.status(400).send({ error: result.error })
+}
+\`\`\`
+
+❌ **DON'T:**
+\`\`\`typescript
+// Bad: No validation
+const { email, password } = req.body
+// Use directly without validation
+\`\`\`
+
+**3. SQL Injection Prevention**
+
+✅ **DO:**
+\`\`\`typescript
+// Good: Use Prisma ORM with parameterized queries
+const user = await prisma.user.findUnique({
+  where: { email: userEmail }
+})
+\`\`\`
+
+❌ **DON'T:**
+\`\`\`typescript
+// Bad: String concatenation (SQL injection risk!)
+const query = \`SELECT * FROM users WHERE email = '\${userEmail}'\`
+\`\`\`
+
+**4. XSS Prevention**
+
+- React automatically escapes output (prevents XSS by default)
+- NEVER use \`dangerouslySetInnerHTML\` without sanitization
+- Use DOMPurify library if you must render HTML
+
+**5. Authentication & Authorization**
+
+\`\`\`typescript
+// JWT authentication example
+import jwt from 'jsonwebtoken'
+
+// Generate token
+const token = jwt.sign(
+  { userId: user.id, role: user.role },
+  process.env.JWT_SECRET!,
+  { expiresIn: '7d' }
+)
+
+// Verify token middleware
+async function authenticateJWT(req, res, next) {
+  const token = req.headers.authorization?.split(' ')[1]
+  if (!token) return res.status(401).send({ error: 'Unauthorized' })
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!)
+    req.user = decoded
+    next()
+  } catch {
+    res.status(403).send({ error: 'Invalid token' })
+  }
+}
+\`\`\`
+
+**6. CORS & Security Headers**
+
+\`\`\`typescript
+// Fastify example
+import helmet from '@fastify/helmet'
+import cors from '@fastify/cors'
+
+await server.register(helmet)
+await server.register(cors, {
+  origin: process.env.ALLOWED_ORIGINS?.split(',') || 'http://localhost:5175'
+})
 \`\`\`
 
 ---
 
-## 🐛 Troubleshooting
+## 🚀 Deployment Steps
+
+### Environment Configuration
+
+Create environment-specific \`.env\` files:
+
+**Development (\`.env.development\`):**
+\`\`\`bash
+NODE_ENV=development
+PORT=5176
+DATABASE_URL=postgresql://user:pass@localhost:5432/myapp_dev
+JWT_SECRET=dev-secret-change-in-production
+VITE_API_URL=http://localhost:5176
+\`\`\`
+
+**Production (\`.env.production\`):**
+\`\`\`bash
+NODE_ENV=production
+PORT=8080
+DATABASE_URL=postgresql://user:pass@prod-host:5432/myapp_prod
+JWT_SECRET=STRONG-RANDOM-SECRET-HERE
+VITE_API_URL=https://api.yourapp.com
+\`\`\`
+
+### Deployment Process
+
+**1. Pre-deployment Checks:**
+\`\`\`bash
+# Run all tests
+npm test
+
+# Check code quality
+npm run lint
+npm run type-check
+
+# Build for production
+npm run build
+
+# Verify build works
+npm run preview
+\`\`\`
+
+**2. Database Migration:**
+\`\`\`bash
+# Run migrations on production database
+npm run db:migrate
+\`\`\`
+
+**3. Deploy to Production:**
+\`\`\`bash
+# Build application
+npm run build
+
+# Start production server
+npm start
+
+# Or use PM2 for process management
+pm2 start npm --name "your-app" -- start
+pm2 save
+\`\`\`
+
+**4. Verify Deployment:**
+- Check application health endpoint: \`GET /api/health\`
+- Verify all critical workflows
+- Check logs for errors
+- Monitor performance metrics
+
+### Rollback Procedure
+
+\`\`\`bash
+# Stop current version
+pm2 stop your-app
+
+# Revert to previous version (from Git)
+git checkout previous-version-tag
+
+# Rebuild
+npm run build
+
+# Restart
+pm2 restart your-app
+\`\`\`
+
+---
+
+## 🤖 AI Agent Specific Instructions
+
+### What to ALWAYS Do
+
+1. **Read AGENTS.md first** - Always read this file before making changes
+2. **Validate inputs** - Use Zod schemas for all user inputs
+3. **Use environment variables** - Never hardcode secrets or configuration
+4. **Write tests** - Add tests for new features and bug fixes
+5. **Follow TypeScript strict mode** - No \`any\` types without justification
+6. **Use semantic HTML** - Proper \`<button>\`, \`<nav>\`, \`<main>\`, \`<label>\` elements
+7. **Add error handling** - Try-catch blocks, error boundaries, clear error messages
+8. **Update documentation** - Keep README, CHANGELOG, and comments up to date
+
+### What to NEVER Do
+
+1. **Never commit secrets** - No API keys, passwords, or tokens in code
+2. **Never use mock data in code** - Use database seed files instead
+3. **Never skip validation** - Always validate user inputs
+4. **Never ignore TypeScript errors** - Fix them or add proper comments
+5. **Never use \`any\` type casually** - Use proper types or \`unknown\` with type guards
+6. **Never skip tests** - Maintain 80%+ coverage requirement
+7. **Never deploy without testing** - Run full test suite before deployment
+
+### Auto-Fix Workflows
+
+When you encounter issues, try these auto-fix commands:
+
+\`\`\`bash
+# Fix linting issues automatically
+npm run lint:fix
+
+# Format all code
+npm run format
+
+# Fix dependency issues
+# Unix/Linux/macOS:
+rm -rf node_modules package-lock.json
+
+# Windows (PowerShell):
+Remove-Item -Recurse -Force node_modules, package-lock.json
+
+# Windows (CMD):
+rmdir /s /q node_modules
+del package-lock.json
+
+npm install
+
+# Reset database (development only!)
+npm run db:reset
+npm run db:seed
+
+# Clear build cache
+# Unix/Linux/macOS:
+rm -rf dist .vite node_modules/.vite
+
+# Windows (PowerShell):
+Remove-Item -Recurse -Force dist, .vite, node_modules\\.vite
+
+# Windows (CMD):
+rmdir /s /q dist .vite node_modules\\.vite
+
+npm run build
+\`\`\`
+
+---
+
+## 🎯 Common Development Tasks
+
+### Adding a New API Endpoint
+
+1. Create route handler in \`~/server/routes/\`
+2. Add Zod validation schema
+3. Add TypeScript types
+4. Write tests for endpoint
+5. Update API documentation
+
+**Example:**
+\`\`\`typescript
+// ~/server/routes/users.ts
+import { z } from 'zod'
+
+const createUserSchema = z.object({
+  email: z.string().email(),
+  name: z.string().min(2),
+  password: z.string().min(8),
+})
+
+server.post('/api/users', async (req, res) => {
+  const result = createUserSchema.safeParse(req.body)
+  if (!result.success) {
+    return res.status(400).send({ error: result.error })
+  }
+
+  const user = await prisma.user.create({
+    data: result.data
+  })
+
+  res.send({ user })
+})
+\`\`\`
+
+### Adding a New React Component
+
+1. Create component file in \`~/src/components/\`
+2. Add TypeScript props interface
+3. Use proper semantic HTML
+4. Add tests
+5. Export from index file
+
+**Example:**
+\`\`\`typescript
+// ~/src/components/UserCard.tsx
+interface UserCardProps {
+  name: string
+  email: string
+  role: 'admin' | 'user'
+}
+
+export function UserCard({ name, email, role }: UserCardProps): JSX.Element {
+  return (
+    <div className="rounded-lg border p-4">
+      <h3 className="text-lg font-semibold">{name}</h3>
+      <p className="text-sm text-gray-600">{email}</p>
+      <span className="text-xs text-blue-600">{role}</span>
+    </div>
+  )
+}
+\`\`\`
+
+### Database Schema Changes
+
+1. Update \`~/prisma/schema.prisma\`
+2. Create migration: \`npm run db:migrate:create\`
+3. Review generated migration SQL
+4. Apply migration: \`npm run db:migrate\`
+5. Update TypeScript types (Prisma auto-generates)
+6. Update seed file if needed
+
+---
+
+## 🎨 Optional Enhancements
+
+### Accessibility Improvements (Recommended)
+
+While basic accessibility is built-in (semantic HTML, keyboard navigation), consider these enhancements:
+
+**Install Accessibility Tools:**
+\`\`\`bash
+npm install --save-dev eslint-plugin-jsx-a11y jest-axe
+\`\`\`
+
+**ESLint Configuration (\`.eslintrc.cjs\`):**
+\`\`\`javascript
+module.exports = {
+  extends: ['plugin:jsx-a11y/recommended'],
+  plugins: ['jsx-a11y'],
+  rules: {
+    'jsx-a11y/label-has-associated-control': 'warn',
+    'jsx-a11y/alt-text': 'warn',
+  }
+}
+\`\`\`
+
+**Accessibility Checklist:**
+- ✅ Form labels properly associated (\`htmlFor\` + \`id\`)
+- ✅ Icon-only buttons have \`aria-label\`
+- ✅ Color contrast meets 4.5:1 ratio for text
+- ✅ Keyboard navigation works (Tab, Enter, Escape)
+- ✅ Skip links for main content
+- ✅ \`prefers-reduced-motion\` support for animations
+
+**Testing Accessibility:**
+\`\`\`typescript
+import { axe, toHaveNoViolations } from 'jest-axe'
+expect.extend(toHaveNoViolations)
+
+it('should not have accessibility violations', async () => {
+  const { container } = render(<MyComponent />)
+  const results = await axe(container)
+  expect(results).toHaveNoViolations()
+})
+\`\`\`
+
+### Performance Optimizations
+
+- Code splitting with React.lazy()
+- Image optimization (WebP, lazy loading)
+- Caching strategies (Redis, HTTP caching)
+- Database indexing
+- Bundle size monitoring
+
+### Advanced Features
+
+- Real-time updates (WebSockets, Server-Sent Events)
+- File upload handling (Multer, cloud storage)
+- Email notifications (Nodemailer, SendGrid)
+- Background jobs (Bull, Redis)
+- Logging & monitoring (Winston, Datadog)
+
+---
+
+## 📊 Performance & Quality Targets
+
+### Performance Metrics
+
+- **First Contentful Paint (FCP):** < 1.8s
+- **Largest Contentful Paint (LCP):** < 2.5s
+- **Time to Interactive (TTI):** < 3.9s
+- **Cumulative Layout Shift (CLS):** < 0.1
+- **Bundle Size:** < 250KB gzipped
+
+### Quality Metrics
+
+- **Test Coverage:** ≥ 80%
+- **TypeScript Strict:** Enabled
+- **Linting Errors:** 0
+- **Build Time:** < 30s
+- **API Response Time:** < 200ms (p95)
+
+---
+
+## 🐛 Debugging & Troubleshooting
 
 ### Common Issues
 
-**Issue: "Cannot connect to database"**
-- Check \`.env\` file exists and has correct \`DATABASE_URL\`
-- Ensure PostgreSQL is running: \`pg_isready\`
-- Run migrations: \`npm run db:migrate\`
+**Port Already in Use:**
+\`\`\`bash
+# Find process using port 5175
+# Unix/Linux/macOS:
+lsof -i :5175
 
-**Issue: "Module not found" errors**
-- Clear node_modules: \`rm -rf node_modules && npm install\`
-- Check TypeScript paths in \`tsconfig.json\`
+# Windows (PowerShell):
+Get-NetTCPConnection -LocalPort 5175
 
-**Issue: "Tests failing unexpectedly"**
-- Clear test cache: \`npm test -- --clearCache\`
-- Check for stale mocks or fixtures
+# Windows (CMD):
+netstat -ano | findstr :5175
 
-**Issue: "Build fails on production"**
-- Verify all environment variables are set
-- Check for missing dependencies in \`package.json\`
-- Run \`npm run type-check\` to catch TypeScript errors
+# Kill process
+# Unix/Linux/macOS:
+kill -9 <PID>
+
+# Windows (PowerShell):
+Stop-Process -Id <PID> -Force
+
+# Windows (CMD):
+taskkill /PID <PID> /F
+
+# Or use different port (all platforms):
+# Unix/Linux/macOS:
+PORT=5180 npm run dev
+
+# Windows (PowerShell):
+\$env:PORT=5180; npm run dev
+
+# Windows (CMD):
+set PORT=5180 && npm run dev
+\`\`\`
+
+**Database Connection Error:**
+\`\`\`bash
+# Check database is running
+docker ps
+
+# Verify DATABASE_URL in .env
+echo \$DATABASE_URL
+
+# Reset database (development only!)
+npm run db:reset
+\`\`\`
+
+**Module Not Found:**
+\`\`\`bash
+# Reinstall dependencies
+# Unix/Linux/macOS:
+rm -rf node_modules package-lock.json
+
+# Windows (PowerShell):
+Remove-Item -Recurse -Force node_modules, package-lock.json
+
+# Windows (CMD):
+rmdir /s /q node_modules
+del package-lock.json
+
+npm install
+
+# Clear cache (all platforms):
+npm cache clean --force
+\`\`\`
 
 ---
 
-## 📞 Support
+## 📚 Resources & Documentation
 
-- **Documentation:** \`/docs\` directory
-- **Issues:** GitHub Issues (if applicable)
-- **AI Agents:** This AGENTS.md file is your primary reference
+### Official Documentation
+
+- **AGENTS.md Standard:** https://agents.md
+- **React:** https://react.dev
+- **TypeScript:** https://www.typescriptlang.org/docs
+- **Vite:** https://vitejs.dev
+- **Tailwind CSS:** https://tailwindcss.com/docs
+- **Fastify:** https://fastify.dev
+- **Prisma:** https://www.prisma.io/docs
+- **Vitest:** https://vitest.dev
+
+### Project Documentation
+
+- **README.md** - Project overview and setup
+- **TODO.md** - Task tracking and roadmap
+- **CHANGELOG.md** - Version history and changes
+- **PORT_MANAGEMENT.md** - Port allocation registry
+- **~/docs/API.md** - API endpoints documentation
+- **~/docs/ARCHITECTURE.md** - System architecture
 
 ---
+
+## ✅ Compliance Summary
+
+This project follows the **AGENTS.md** open standard for AI agent instructions:
+
+✅ **Project Overview** - Clear description, tech stack, key features
+✅ **Setup Commands** - Installation, development, build, test commands
+✅ **Code Style Guidelines** - TypeScript, React, security, data management
+✅ **Development Environment Tips** - VSCode extensions, project structure, debugging
+✅ **Testing Instructions** - Requirements, running tests, writing tests
+✅ **Pull Request Instructions** - Commit conventions, PR checklist, code review
+✅ **Security Considerations** - Critical security rules and examples
+✅ **Deployment Steps** - Environment config, deployment process, rollback
+✅ **AI Agent Instructions** - What to always/never do, auto-fix workflows
 
 **Supported AI Tools:** GitHub Copilot, Cursor, Cline, Windsurf, Zed, Continue, Sourcegraph Cody, Code Puppy, Azure AI Code Assist, Google Gemini Code Assist, and 10+ more.
 
@@ -3130,7 +3570,9 @@ chore: update dependencies
 **Last Updated:** 2025-10-07
 **Version:** 1.0.0
 **Maintained By:** Development Team + AI Agents
-**Framework:** AGENTS.md Open Standard`
+**Framework:** AGENTS.md Open Standard
+`
+                          
                           try {
                             await navigator.clipboard.writeText(agentsContent)
                             setCopied(true)
