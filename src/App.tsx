@@ -2006,7 +2006,7 @@ class MyAgent(Agent):
                       Use AI to generate scaffolding (routes, components, types), then add your business logic and domain-specific rules.
                       AI is great at structure, you're better at strategy.
                     </p>
-                    <div className="bg-teal-50 rounded p-3">
+                    <div className="bg-teal-50 dark:bg-teal-900/20 rounded p-3">
                       <p className="text-sm font-semibold text-teal-800 dark:text-teal-300 mb-2">Example:</p>
                       <p className="text-sm text-gray-800 dark:text-gray-200">
                         <strong>AI generates:</strong> REST API with CRUD endpoints<br />
@@ -2131,7 +2131,7 @@ class MyAgent(Agent):
                 </div>
 
                 {/* Real-World Workflow */}
-                <div className="bg-blue-50 border-2 border-blue-400 dark:border-blue-600 rounded-lg p-6">
+                <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-400 dark:border-blue-600 rounded-lg p-6">
                   <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 mb-3">
                     📝 Real-World Workflow Example
                   </h4>
