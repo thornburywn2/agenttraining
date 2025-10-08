@@ -289,30 +289,146 @@ export function App(): JSX.Element {
                 <div className="space-y-4">
                   <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 dark:border-red-400 p-4 rounded">
                     <h5 className="font-semibold text-red-900 dark:text-red-300 mb-2">⚠️ The Problem of Hallucinations</h5>
-                    <p className="text-sm text-red-800 dark:text-red-300">
+                    <p className="text-sm text-red-800 dark:text-red-300 mb-3">
                       LLMs are trained to produce plausible-sounding text, but this doesn&apos;t guarantee accuracy. They can generate incorrect, nonsensical, or biased information, a phenomenon known as &quot;hallucination.&quot; It&apos;s crucial to treat their output as a starting point, not as unassailable truth, and to verify critical information.
                     </p>
+
+                    <div className="mt-3 overflow-x-auto">
+                      <table className="min-w-full text-xs border border-red-300 dark:border-red-600">
+                        <thead className="bg-red-100 dark:bg-red-900/30">
+                          <tr>
+                            <th className="border border-red-300 dark:border-red-600 px-3 py-2 text-left text-red-900 dark:text-red-300 font-semibold">Example</th>
+                            <th className="border border-red-300 dark:border-red-600 px-3 py-2 text-left text-red-900 dark:text-red-300 font-semibold">Hallucination Type</th>
+                            <th className="border border-red-300 dark:border-red-600 px-3 py-2 text-left text-red-900 dark:text-red-300 font-semibold">Why It Happens</th>
+                          </tr>
+                        </thead>
+                        <tbody className="bg-red-50/50 dark:bg-red-900/10">
+                          <tr>
+                            <td className="border border-red-300 dark:border-red-600 px-3 py-2 text-red-800 dark:text-red-300">Inventing citations or research papers that don&apos;t exist</td>
+                            <td className="border border-red-300 dark:border-red-600 px-3 py-2 text-red-800 dark:text-red-300">Factual Fabrication</td>
+                            <td className="border border-red-300 dark:border-red-600 px-3 py-2 text-red-800 dark:text-red-300">Pattern matching from training data creates plausible but false references</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-red-300 dark:border-red-600 px-3 py-2 text-red-800 dark:text-red-300">Confidently stating incorrect dates or historical events</td>
+                            <td className="border border-red-300 dark:border-red-600 px-3 py-2 text-red-800 dark:text-red-300">Temporal Confusion</td>
+                            <td className="border border-red-300 dark:border-red-600 px-3 py-2 text-red-800 dark:text-red-300">Training data conflicts or knowledge cutoff limitations</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-red-300 dark:border-red-600 px-3 py-2 text-red-800 dark:text-red-300">Creating code that looks correct but contains subtle bugs</td>
+                            <td className="border border-red-300 dark:border-red-600 px-3 py-2 text-red-800 dark:text-red-300">Logical Inconsistency</td>
+                            <td className="border border-red-300 dark:border-red-600 px-3 py-2 text-red-800 dark:text-red-300">Statistical prediction without true semantic understanding</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
 
                   <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 dark:border-blue-400 p-4 rounded">
                     <h5 className="font-semibold text-blue-900 dark:text-blue-300 mb-2">🎯 Context is Everything</h5>
-                    <p className="text-sm text-blue-800 dark:text-blue-300">
+                    <p className="text-sm text-blue-800 dark:text-blue-300 mb-3">
                       The quality of an LLM&apos;s output is directly tied to the quality and clarity of the input, or &quot;context.&quot; Vague or poorly structured prompts often lead to suboptimal results. A well-designed system prompt that is clear, specific, and provides examples can drastically improve performance.
                     </p>
+
+                    <div className="mt-3 overflow-x-auto">
+                      <table className="min-w-full text-xs border border-blue-300 dark:border-blue-600">
+                        <thead className="bg-blue-100 dark:bg-blue-900/30">
+                          <tr>
+                            <th className="border border-blue-300 dark:border-blue-600 px-3 py-2 text-left text-blue-900 dark:text-blue-300 font-semibold">Poor Context</th>
+                            <th className="border border-blue-300 dark:border-blue-600 px-3 py-2 text-left text-blue-900 dark:text-blue-300 font-semibold">Rich Context</th>
+                            <th className="border border-blue-300 dark:border-blue-600 px-3 py-2 text-left text-blue-900 dark:text-blue-300 font-semibold">Outcome Difference</th>
+                          </tr>
+                        </thead>
+                        <tbody className="bg-blue-50/50 dark:bg-blue-900/10">
+                          <tr>
+                            <td className="border border-blue-300 dark:border-blue-600 px-3 py-2 text-blue-800 dark:text-blue-300">&quot;Write a function&quot;</td>
+                            <td className="border border-blue-300 dark:border-blue-600 px-3 py-2 text-blue-800 dark:text-blue-300">&quot;Write a TypeScript function that validates email addresses using regex, returns boolean&quot;</td>
+                            <td className="border border-blue-300 dark:border-blue-600 px-3 py-2 text-blue-800 dark:text-blue-300">Specific context yields production-ready code vs. ambiguous generic code</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-blue-300 dark:border-blue-600 px-3 py-2 text-blue-800 dark:text-blue-300">&quot;Summarize this article&quot;</td>
+                            <td className="border border-blue-300 dark:border-blue-600 px-3 py-2 text-blue-800 dark:text-blue-300">&quot;Summarize this article in 3 bullet points for a technical audience, focusing on implementation details&quot;</td>
+                            <td className="border border-blue-300 dark:border-blue-600 px-3 py-2 text-blue-800 dark:text-blue-300">Targeted summary vs. generic overview</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-blue-300 dark:border-blue-600 px-3 py-2 text-blue-800 dark:text-blue-300">&quot;Help me debug this&quot;</td>
+                            <td className="border border-blue-300 dark:border-blue-600 px-3 py-2 text-blue-800 dark:text-blue-300">&quot;This React component throws &#39;Cannot read property of undefined&#39;. Here&apos;s the code, error stack, and what I&apos;ve tried&quot;</td>
+                            <td className="border border-blue-300 dark:border-blue-600 px-3 py-2 text-blue-800 dark:text-blue-300">Precise diagnosis vs. generic troubleshooting suggestions</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
 
                   <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 dark:border-yellow-400 p-4 rounded">
                     <h5 className="font-semibold text-yellow-900 dark:text-yellow-300 mb-2">📊 Performance is Not Universal</h5>
-                    <p className="text-sm text-yellow-800 dark:text-yellow-300">
+                    <p className="text-sm text-yellow-800 dark:text-yellow-300 mb-3">
                       The &quot;truthfulness&quot; of an LLM&apos;s internal representations can be task-specific. What works for one type of task (e.g., factual question-answering) may not generalize to another (e.g., creative writing).
                     </p>
+
+                    <div className="mt-3 overflow-x-auto">
+                      <table className="min-w-full text-xs border border-yellow-300 dark:border-yellow-600">
+                        <thead className="bg-yellow-100 dark:bg-yellow-900/30">
+                          <tr>
+                            <th className="border border-yellow-300 dark:border-yellow-600 px-3 py-2 text-left text-yellow-900 dark:text-yellow-300 font-semibold">Task Type</th>
+                            <th className="border border-yellow-300 dark:border-yellow-600 px-3 py-2 text-left text-yellow-900 dark:text-yellow-300 font-semibold">Strong Performance</th>
+                            <th className="border border-yellow-300 dark:border-yellow-600 px-3 py-2 text-left text-yellow-900 dark:text-yellow-300 font-semibold">Weak Performance</th>
+                          </tr>
+                        </thead>
+                        <tbody className="bg-yellow-50/50 dark:bg-yellow-900/10">
+                          <tr>
+                            <td className="border border-yellow-300 dark:border-yellow-600 px-3 py-2 text-yellow-800 dark:text-yellow-300">Mathematical Reasoning</td>
+                            <td className="border border-yellow-300 dark:border-yellow-600 px-3 py-2 text-yellow-800 dark:text-yellow-300">GPT-4 with chain-of-thought prompting excels at multi-step algebra</td>
+                            <td className="border border-yellow-300 dark:border-yellow-600 px-3 py-2 text-yellow-800 dark:text-yellow-300">Same model struggles with complex geometric proofs requiring spatial reasoning</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-yellow-300 dark:border-yellow-600 px-3 py-2 text-yellow-800 dark:text-yellow-300">Code Generation</td>
+                            <td className="border border-yellow-300 dark:border-yellow-600 px-3 py-2 text-yellow-800 dark:text-yellow-300">Models trained on code (Codex, CodeLlama) generate accurate Python/JavaScript</td>
+                            <td className="border border-yellow-300 dark:border-yellow-600 px-3 py-2 text-yellow-800 dark:text-yellow-300">Same models underperform on rare languages (COBOL, Fortran) with limited training data</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-yellow-300 dark:border-yellow-600 px-3 py-2 text-yellow-800 dark:text-yellow-300">Medical Diagnosis</td>
+                            <td className="border border-yellow-300 dark:border-yellow-600 px-3 py-2 text-yellow-800 dark:text-yellow-300">Domain-fine-tuned models (Med-PaLM) excel at textbook medical questions</td>
+                            <td className="border border-yellow-300 dark:border-yellow-600 px-3 py-2 text-yellow-800 dark:text-yellow-300">General LLMs fail at rare diseases or cases requiring multimodal imaging analysis</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
 
                   <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 dark:border-green-400 p-4 rounded">
                     <h5 className="font-semibold text-green-900 dark:text-green-300 mb-2">✅ Start Simple</h5>
-                    <p className="text-sm text-green-800 dark:text-green-300">
+                    <p className="text-sm text-green-800 dark:text-green-300 mb-3">
                       When building with LLMs, the best practice is to begin with the simplest possible solution, such as a basic prompt, and only add complexity (like multi-step agentic systems) when it is absolutely necessary to meet a specific goal.
                     </p>
+
+                    <div className="mt-3 overflow-x-auto">
+                      <table className="min-w-full text-xs border border-green-300 dark:border-green-600">
+                        <thead className="bg-green-100 dark:bg-green-900/30">
+                          <tr>
+                            <th className="border border-green-300 dark:border-green-600 px-3 py-2 text-left text-green-900 dark:text-green-300 font-semibold">Use Case</th>
+                            <th className="border border-green-300 dark:border-green-600 px-3 py-2 text-left text-green-900 dark:text-green-300 font-semibold">Simple Approach (Start Here)</th>
+                            <th className="border border-green-300 dark:border-green-600 px-3 py-2 text-left text-green-900 dark:text-green-300 font-semibold">Complex Approach (Only If Needed)</th>
+                          </tr>
+                        </thead>
+                        <tbody className="bg-green-50/50 dark:bg-green-900/10">
+                          <tr>
+                            <td className="border border-green-300 dark:border-green-600 px-3 py-2 text-green-800 dark:text-green-300">Text Classification</td>
+                            <td className="border border-green-300 dark:border-green-600 px-3 py-2 text-green-800 dark:text-green-300">Single prompt: &quot;Classify this email as spam/not spam&quot; with few-shot examples</td>
+                            <td className="border border-green-300 dark:border-green-600 px-3 py-2 text-green-800 dark:text-green-300">Multi-agent system with separate models for feature extraction, classification, and verification</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-green-300 dark:border-green-600 px-3 py-2 text-green-800 dark:text-green-300">Data Extraction</td>
+                            <td className="border border-green-300 dark:border-green-600 px-3 py-2 text-green-800 dark:text-green-300">Direct prompt: &quot;Extract name, date, amount from this invoice as JSON&quot;</td>
+                            <td className="border border-green-300 dark:border-green-600 px-3 py-2 text-green-800 dark:text-green-300">Chain-of-thought reasoning with validation loops, error correction, and database lookups</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-green-300 dark:border-green-600 px-3 py-2 text-green-800 dark:text-green-300">Code Review</td>
+                            <td className="border border-green-300 dark:border-green-600 px-3 py-2 text-green-800 dark:text-green-300">Single call: &quot;Review this code for bugs and style issues&quot;</td>
+                            <td className="border border-green-300 dark:border-green-600 px-3 py-2 text-green-800 dark:text-green-300">Agentic workflow with linters, test generators, security scanners, and iterative refinement</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -468,44 +584,6 @@ export function App(): JSX.Element {
                       <li>✅ Consistent AI behavior across GitHub Copilot, Cursor, Cline, etc.</li>
                       <li>✅ Onboarding new team members becomes faster</li>
                     </ul>
-                  </div>
-                </div>
-
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-300 rounded-lg p-6 mb-6">
-                  <h4 className="text-xl font-semibold text-purple-900 dark:text-purple-300 mb-3">
-                    🤖 Supported AI Tools (20+)
-                  </h4>
-                  <div className="grid md:grid-cols-3 gap-3 text-sm">
-                    <div>
-                      <p className="font-semibold text-purple-900 dark:text-purple-300 mb-2">Editor Integrations:</p>
-                      <ul className="text-purple-800 dark:text-purple-300 space-y-1">
-                        <li>• GitHub Copilot</li>
-                        <li>• Cursor</li>
-                        <li>• Windsurf (Codeium)</li>
-                        <li>• Zed AI</li>
-                        <li>• Continue</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-purple-900 dark:text-purple-300 mb-2">CLI Tools:</p>
-                      <ul className="text-purple-800 dark:text-purple-300 space-y-1">
-                        <li>• Code Puppy</li>
-                        <li>• Claude Code</li>
-                        <li>• Cline</li>
-                        <li>• Aider</li>
-                        <li>• GPT Engineer</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-purple-900 dark:text-purple-300 mb-2">Enterprise:</p>
-                      <ul className="text-purple-800 dark:text-purple-300 space-y-1">
-                        <li>• Sourcegraph Cody</li>
-                        <li>• Azure AI Code Assist</li>
-                        <li>• Google Gemini Code Assist</li>
-                        <li>• Tabnine</li>
-                        <li>• And many more...</li>
-                      </ul>
-                    </div>
                   </div>
                 </div>
 
