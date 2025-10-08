@@ -204,11 +204,11 @@ export function App(): JSX.Element {
                   work effectively on your codebase.
                 </p>
 
-                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-6 mb-6">
-                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-3">
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                  <h4 className="text-xl font-semibold text-blue-900 mb-3">
                     📝 The Problem AGENTS.md Solves
                   </h4>
-                  <div className="space-y-3 text-sm text-blue-800 dark:text-blue-300">
+                  <div className="space-y-3 text-sm text-blue-800">
                     <p><strong>Without AGENTS.md:</strong></p>
                     <ul className="list-disc list-inside space-y-2 ml-4">
                       <li>AI agents don&apos;t know your project structure</li>
@@ -231,13 +231,13 @@ export function App(): JSX.Element {
                 </div>
 
                 <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-300 rounded-lg p-6 mb-6">
-                  <h4 className="text-xl font-semibold text-purple-900 dark:text-purple-300 dark:text-purple-300 mb-3">
+                  <h4 className="text-xl font-semibold text-purple-900 mb-3">
                     🤖 Supported AI Tools (20+)
                   </h4>
                   <div className="grid md:grid-cols-3 gap-3 text-sm">
                     <div>
-                      <p className="font-semibold text-purple-900 dark:text-purple-300 mb-2">Editor Integrations:</p>
-                      <ul className="text-purple-800 dark:text-purple-300 space-y-1">
+                      <p className="font-semibold text-purple-900 mb-2">Editor Integrations:</p>
+                      <ul className="text-purple-800 space-y-1">
                         <li>• GitHub Copilot</li>
                         <li>• Cursor</li>
                         <li>• Windsurf (Codeium)</li>
@@ -246,8 +246,8 @@ export function App(): JSX.Element {
                       </ul>
                     </div>
                     <div>
-                      <p className="font-semibold text-purple-900 dark:text-purple-300 mb-2">CLI Tools:</p>
-                      <ul className="text-purple-800 dark:text-purple-300 space-y-1">
+                      <p className="font-semibold text-purple-900 mb-2">CLI Tools:</p>
+                      <ul className="text-purple-800 space-y-1">
                         <li>• Code Puppy</li>
                         <li>• Claude Code</li>
                         <li>• Cline</li>
@@ -256,8 +256,8 @@ export function App(): JSX.Element {
                       </ul>
                     </div>
                     <div>
-                      <p className="font-semibold text-purple-900 dark:text-purple-300 mb-2">Enterprise:</p>
-                      <ul className="text-purple-800 dark:text-purple-300 space-y-1">
+                      <p className="font-semibold text-purple-900 mb-2">Enterprise:</p>
+                      <ul className="text-purple-800 space-y-1">
                         <li>• Sourcegraph Cody</li>
                         <li>• Azure AI Code Assist</li>
                         <li>• Google Gemini Code Assist</li>
@@ -268,8 +268,8 @@ export function App(): JSX.Element {
                   </div>
                 </div>
 
-                <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-lg p-4 mb-6">
-                  <p className="text-sm text-yellow-900 dark:text-yellow-300">
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+                  <p className="text-sm text-yellow-900">
                     <strong>💡 Key Insight:</strong> AGENTS.md is like a README.md file, but specifically
                     designed for AI agents. While README.md explains the project to humans, AGENTS.md
                     provides structured instructions that AI tools can parse and follow consistently.
@@ -307,7 +307,7 @@ export function App(): JSX.Element {
                 <h4 className="text-2xl font-semibold mb-4 mt-8">What Goes in AGENTS.md?</h4>
                 <div className="grid md:grid-cols-2 gap-4 mb-6">
                   <div className="bg-white dark:bg-gray-800 border-2 border-green-300 rounded-lg p-4">
-                    <h5 className="font-semibold text-green-800 dark:text-green-300 mb-2 flex items-center gap-2">
+                    <h5 className="font-semibold text-green-800 mb-2 flex items-center gap-2">
                       <CheckCircle2 className="w-5 h-5" aria-hidden="true" />
                       ✅ ALWAYS Include
                     </h5>
@@ -322,8 +322,8 @@ export function App(): JSX.Element {
                       <li>• Common development tasks</li>
                     </ul>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 border-2 border-red-300 dark:border-red-600 rounded-lg p-4">
-                    <h5 className="font-semibold text-red-800 dark:text-red-300 mb-2">❌ NEVER Include</h5>
+                  <div className="bg-white dark:bg-gray-800 border-2 border-red-300 rounded-lg p-4">
+                    <h5 className="font-semibold text-red-800 mb-2">❌ NEVER Include</h5>
                     <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                       <li>• API keys or secrets</li>
                       <li>• Hardcoded credentials</li>
@@ -338,7 +338,7 @@ export function App(): JSX.Element {
                 </div>
 
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border-2 border-blue-300 rounded-lg p-6 mb-6">
-                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-3">
+                  <h4 className="text-xl font-semibold text-blue-900 mb-3">
                     🎯 Core Principles of AGENTS.md
                   </h4>
                   <div className="space-y-3 text-sm">
@@ -361,13 +361,13 @@ export function App(): JSX.Element {
                   </div>
                 </div>
 
-                <div className="bg-green-50 dark:bg-green-900/20 border-2 border-green-400 dark:border-green-600 dark:border-green-600 rounded-lg p-6">
-                  <h4 className="text-xl font-semibold text-green-900 dark:text-green-300 mb-3">
+                <div className="bg-green-50 border-2 border-green-400 rounded-lg p-6">
+                  <h4 className="text-xl font-semibold text-green-900 mb-3">
                     💡 Real-World Benefits
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4 text-sm">
                     <div>
-                      <p className="font-semibold text-green-800 dark:text-green-300 mb-2">For Developers:</p>
+                      <p className="font-semibold text-green-800 mb-2">For Developers:</p>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• ⚡ Faster onboarding (minutes vs. days)</li>
                         <li>• 🎯 Consistent code across team</li>
@@ -376,7 +376,7 @@ export function App(): JSX.Element {
                       </ul>
                     </div>
                     <div>
-                      <p className="font-semibold text-green-800 dark:text-green-300 mb-2">For Teams:</p>
+                      <p className="font-semibold text-green-800 mb-2">For Teams:</p>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• ✅ Enforced best practices</li>
                         <li>• 🔄 Easier code reviews</li>
@@ -402,9 +402,9 @@ export function App(): JSX.Element {
 
                 <h4 className="text-xl font-semibold mb-3">Required Sections:</h4>
                 <div className="space-y-3 mb-6">
-                  <div className="border-l-4 border-blue-500 dark:border-blue-600 pl-4 bg-blue-50 dark:bg-blue-900/20 p-3 rounded-r">
+                  <div className="border-l-4 border-blue-500 pl-4 bg-blue-50 p-3 rounded-r">
                     <h5 className="font-semibold flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+                      <CheckCircle2 className="w-5 h-5 text-blue-600" aria-hidden="true" />
                       📋 Project Overview
                     </h5>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
@@ -412,9 +412,9 @@ export function App(): JSX.Element {
                     </p>
                   </div>
 
-                  <div className="border-l-4 border-green-500 dark:border-green-600 pl-4 bg-green-50 dark:bg-green-900/20 p-3 rounded-r">
+                  <div className="border-l-4 border-green-500 pl-4 bg-green-50 p-3 rounded-r">
                     <h5 className="font-semibold flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" aria-hidden="true" />
+                      <CheckCircle2 className="w-5 h-5 text-green-600" aria-hidden="true" />
                       🚀 Setup Commands
                     </h5>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
@@ -422,9 +422,9 @@ export function App(): JSX.Element {
                     </p>
                   </div>
 
-                  <div className="border-l-4 border-purple-500 dark:border-purple-600 pl-4 bg-purple-50 dark:bg-purple-900/20 p-3 rounded-r">
+                  <div className="border-l-4 border-purple-500 pl-4 bg-purple-50 p-3 rounded-r">
                     <h5 className="font-semibold flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-purple-600 dark:text-purple-400" aria-hidden="true" />
+                      <CheckCircle2 className="w-5 h-5 text-purple-600" aria-hidden="true" />
                       🎨 Code Style Guidelines
                     </h5>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
@@ -432,9 +432,9 @@ export function App(): JSX.Element {
                     </p>
                   </div>
 
-                  <div className="border-l-4 border-yellow-500 dark:border-yellow-600 pl-4 bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded-r">
+                  <div className="border-l-4 border-yellow-500 pl-4 bg-yellow-50 p-3 rounded-r">
                     <h5 className="font-semibold flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-yellow-600 dark:text-yellow-400" aria-hidden="true" />
+                      <CheckCircle2 className="w-5 h-5 text-yellow-600" aria-hidden="true" />
                       💻 Development Environment Tips
                     </h5>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
@@ -442,9 +442,9 @@ export function App(): JSX.Element {
                     </p>
                   </div>
 
-                  <div className="border-l-4 border-orange-500 dark:border-orange-600 pl-4 bg-orange-50 dark:bg-orange-900/20 p-3 rounded-r">
+                  <div className="border-l-4 border-orange-500 pl-4 bg-orange-50 p-3 rounded-r">
                     <h5 className="font-semibold flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-orange-600 dark:text-orange-400" aria-hidden="true" />
+                      <CheckCircle2 className="w-5 h-5 text-orange-600" aria-hidden="true" />
                       🧪 Testing Instructions
                     </h5>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
@@ -452,9 +452,9 @@ export function App(): JSX.Element {
                     </p>
                   </div>
 
-                  <div className="border-l-4 border-red-500 dark:border-red-600 dark:border-red-600 pl-4 bg-red-50 dark:bg-red-900/20 p-3 rounded-r">
+                  <div className="border-l-4 border-red-500 pl-4 bg-red-50 p-3 rounded-r">
                     <h5 className="font-semibold flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-red-600 dark:text-red-400" aria-hidden="true" />
+                      <CheckCircle2 className="w-5 h-5 text-red-600" aria-hidden="true" />
                       📝 Pull Request Instructions
                     </h5>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
@@ -462,9 +462,9 @@ export function App(): JSX.Element {
                     </p>
                   </div>
 
-                  <div className="border-l-4 border-pink-500 dark:border-pink-600 pl-4 bg-pink-50 dark:bg-pink-900/20 p-3 rounded-r">
+                  <div className="border-l-4 border-pink-500 pl-4 bg-pink-50 p-3 rounded-r">
                     <h5 className="font-semibold flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-pink-600 dark:text-pink-400" aria-hidden="true" />
+                      <CheckCircle2 className="w-5 h-5 text-pink-600" aria-hidden="true" />
                       🔒 Security Considerations
                     </h5>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
@@ -472,9 +472,9 @@ export function App(): JSX.Element {
                     </p>
                   </div>
 
-                  <div className="border-l-4 border-indigo-500 dark:border-indigo-600 pl-4 bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-r">
+                  <div className="border-l-4 border-indigo-500 pl-4 bg-indigo-50 p-3 rounded-r">
                     <h5 className="font-semibold flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-indigo-600 dark:text-indigo-400" aria-hidden="true" />
+                      <CheckCircle2 className="w-5 h-5 text-indigo-600" aria-hidden="true" />
                       🚀 Deployment Steps
                     </h5>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
@@ -484,7 +484,7 @@ export function App(): JSX.Element {
                 </div>
 
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200 rounded-lg p-6 mb-6">
-                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-3">
+                  <h4 className="text-xl font-semibold text-blue-900 mb-3">
                     📂 Example Project Structure with AGENTS.md
                   </h4>
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded text-xs overflow-x-auto">
@@ -502,8 +502,8 @@ export function App(): JSX.Element {
                   </pre>
                 </div>
 
-                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-4">
-                  <p className="text-sm text-green-900 dark:text-green-300">
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                  <p className="text-sm text-green-900">
                     <strong>💡 Pro Tip:</strong> Keep AGENTS.md up to date! When you change your build
                     process, add new npm scripts, or update code standards, update AGENTS.md too.
                     This ensures AI agents always have accurate information.
@@ -517,42 +517,42 @@ export function App(): JSX.Element {
           {activeTab === 'codepuppy' && (
             <div id="codepuppy-panel" role="tabpanel" aria-labelledby="codepuppy-tab">
               <div className="flex items-center gap-3 mb-6">
-                <Dog className="w-10 h-10 text-purple-600 dark:text-purple-400" aria-hidden="true" />
+                <Dog className="w-10 h-10 text-purple-600" aria-hidden="true" />
                 <h3 className="text-3xl font-bold">Code Puppy - AI-Powered CLI Tool</h3>
               </div>
 
               <div className="prose prose-lg max-w-none">
                 {/* Overview */}
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-300 dark:border-purple-600 rounded-xl p-6 mb-6">
-                  <h4 className="text-2xl font-bold text-purple-900 dark:text-purple-300 mb-3">🐶 What is Code Puppy?</h4>
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-300 rounded-xl p-6 mb-6">
+                  <h4 className="text-2xl font-bold text-purple-900 mb-3">🐶 What is Code Puppy?</h4>
                   <p className="text-purple-900 mb-4">
                     <strong>Code Puppy</strong> is our primary AI-powered CLI tool for code generation, understanding, and multi-model orchestration.
                     It supports the AGENTS.md standard and provides an interactive interface for working with multiple AI models simultaneously.
                   </p>
                   <div className="grid md:grid-cols-3 gap-3 text-sm">
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <div className="font-semibold text-purple-900 dark:text-purple-300 mb-1">🎯 Purpose</div>
-                      <div className="text-purple-800 dark:text-purple-300">Primary CLI training tool for engineering teams</div>
+                      <div className="font-semibold text-purple-900 mb-1">🎯 Purpose</div>
+                      <div className="text-purple-800">Primary CLI training tool for engineering teams</div>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <div className="font-semibold text-purple-900 dark:text-purple-300 mb-1">📦 Type</div>
-                      <div className="text-purple-800 dark:text-purple-300">Interactive command-line interface</div>
+                      <div className="font-semibold text-purple-900 mb-1">📦 Type</div>
+                      <div className="text-purple-800">Interactive command-line interface</div>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <div className="font-semibold text-purple-900 dark:text-purple-300 mb-1">📜 License</div>
-                      <div className="text-purple-800 dark:text-purple-300">MIT License (Open Source)</div>
+                      <div className="font-semibold text-purple-900 mb-1">📜 License</div>
+                      <div className="text-purple-800">MIT License (Open Source)</div>
                     </div>
                   </div>
                 </div>
 
                 {/* Installation */}
-                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-xl p-6 mb-6">
-                  <h4 className="text-2xl font-bold text-blue-900 dark:text-blue-300 mb-4">📥 Installation</h4>
+                <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
+                  <h4 className="text-2xl font-bold text-blue-900 mb-4">📥 Installation</h4>
 
                   <div className="mb-4">
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4 mb-3">
-                      <p className="font-semibold text-blue-900 dark:text-blue-300 mb-2">📋 Requirements:</p>
-                      <ul className="text-sm text-blue-800 dark:text-blue-300 space-y-1">
+                      <p className="font-semibold text-blue-900 mb-2">📋 Requirements:</p>
+                      <ul className="text-sm text-blue-800 space-y-1">
                         <li>✓ Python 3.11 or higher</li>
                         <li>✓ pip (Python package manager)</li>
                         <li>✓ API keys for AI models (OpenAI, Gemini, Cerebras, Anthropic)</li>
@@ -588,77 +588,77 @@ code-puppy --version`}
                     </div>
                   </div>
 
-                  <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-300 dark:border-yellow-700 rounded-lg p-3 text-sm text-yellow-900 dark:text-yellow-300">
+                  <div className="bg-yellow-50 border border-yellow-300 rounded-lg p-3 text-sm text-yellow-900">
                     <strong>💡 Setup Tip:</strong> Set your API keys as environment variables before using Code Puppy.
                     See the Configuration section below for details.
                   </div>
                 </div>
 
                 {/* Key Features */}
-                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-xl p-6 mb-6">
-                  <h4 className="text-2xl font-bold text-green-900 dark:text-green-300 mb-4">✨ Key Features</h4>
+                <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-6">
+                  <h4 className="text-2xl font-bold text-green-900 mb-4">✨ Key Features</h4>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-green-500">
                       <h5 className="font-semibold text-green-900 mb-2 flex items-center gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" aria-hidden="true" />
+                        <CheckCircle2 className="w-5 h-5 text-green-600" aria-hidden="true" />
                         Multi-Language Code Generation
                       </h5>
-                      <p className="text-sm text-green-800 dark:text-green-300">
+                      <p className="text-sm text-green-800">
                         Generate code in Python, JavaScript, TypeScript, C++, Go, Rust, and more.
                         Supports cross-language workflows.
                       </p>
                     </div>
 
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-blue-500">
-                      <h5 className="font-semibold text-blue-900 dark:text-blue-300 mb-2 flex items-center gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+                      <h5 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-blue-600" aria-hidden="true" />
                         Interactive CLI Interface
                       </h5>
-                      <p className="text-sm text-blue-800 dark:text-blue-300">
+                      <p className="text-sm text-blue-800">
                         Conversational mode for iterative development. Ask questions, refine code,
                         and get detailed explanations in real-time.
                       </p>
                     </div>
 
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-purple-500">
-                      <h5 className="font-semibold text-purple-900 dark:text-purple-300 mb-2 flex items-center gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-purple-600 dark:text-purple-400" aria-hidden="true" />
+                      <h5 className="font-semibold text-purple-900 mb-2 flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-purple-600" aria-hidden="true" />
                         Round-Robin Model Distribution
                       </h5>
-                      <p className="text-sm text-purple-800 dark:text-purple-300">
+                      <p className="text-sm text-purple-800">
                         Automatically distribute requests across multiple AI models.
                         Optimize costs and leverage strengths of different models.
                       </p>
                     </div>
 
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-orange-500">
-                      <h5 className="font-semibold text-orange-900 dark:text-orange-300 mb-2 flex items-center gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-orange-600 dark:text-orange-400" aria-hidden="true" />
+                      <h5 className="font-semibold text-orange-900 mb-2 flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-orange-600" aria-hidden="true" />
                         Customizable Agent System
                       </h5>
-                      <p className="text-sm text-orange-800 dark:text-orange-300">
+                      <p className="text-sm text-orange-800">
                         Define custom agents with Python or JSON. Configure system prompts,
                         tool access, and behavior per agent.
                       </p>
                     </div>
 
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-pink-500">
-                      <h5 className="font-semibold text-pink-900 dark:text-pink-300 mb-2 flex items-center gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-pink-600 dark:text-pink-400" aria-hidden="true" />
+                      <h5 className="font-semibold text-pink-900 mb-2 flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-pink-600" aria-hidden="true" />
                         AGENTS.md Support
                       </h5>
-                      <p className="text-sm text-pink-800 dark:text-pink-300">
+                      <p className="text-sm text-pink-800">
                         Automatically reads and follows AGENTS.md instructions.
                         Ensures consistency with your project standards.
                       </p>
                     </div>
 
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-indigo-500">
-                      <h5 className="font-semibold text-indigo-900 dark:text-indigo-300 mb-2 flex items-center gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-indigo-600 dark:text-indigo-400" aria-hidden="true" />
+                      <h5 className="font-semibold text-indigo-900 mb-2 flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-indigo-600" aria-hidden="true" />
                         Code Quality Enforcement
                       </h5>
-                      <p className="text-sm text-indigo-800 dark:text-indigo-300">
+                      <p className="text-sm text-indigo-800">
                         Built-in quality principles enforced across all generated code.
                         Follows best practices and coding standards.
                       </p>
@@ -667,12 +667,12 @@ code-puppy --version`}
                 </div>
 
                 {/* Usage Examples */}
-                <div className="bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-700 rounded-xl p-6 mb-6">
-                  <h4 className="text-2xl font-bold text-purple-900 dark:text-purple-300 mb-4">🚀 Usage Examples</h4>
+                <div className="bg-purple-50 border border-purple-200 rounded-xl p-6 mb-6">
+                  <h4 className="text-2xl font-bold text-purple-900 mb-4">🚀 Usage Examples</h4>
 
                   <div className="space-y-4">
                     <div>
-                      <h5 className="font-semibold text-purple-900 dark:text-purple-300 mb-2">1. Interactive Mode (Recommended for Training)</h5>
+                      <h5 className="font-semibold text-purple-900 mb-2">1. Interactive Mode (Recommended for Training)</h5>
                       <pre className="bg-gray-900 text-green-400 p-3 rounded text-sm mb-2">
 {`# Start interactive session
 code-puppy --interactive
@@ -682,13 +682,13 @@ code-puppy --interactive
 > explain how async/await works in JavaScript
 > create a REST API endpoint in Express`}
                       </pre>
-                      <p className="text-sm text-purple-800 dark:text-purple-300">
+                      <p className="text-sm text-purple-800">
                         Perfect for learning, experimentation, and iterative development.
                       </p>
                     </div>
 
                     <div>
-                      <h5 className="font-semibold text-purple-900 dark:text-purple-300 mb-2">2. Direct Task Execution</h5>
+                      <h5 className="font-semibold text-purple-900 mb-2">2. Direct Task Execution</h5>
                       <pre className="bg-gray-900 text-green-400 p-3 rounded text-sm mb-2">
 {`# Execute a specific task
 code-puppy "write me a C++ hello world program in /tmp/main.cpp then compile it and run it"
@@ -696,13 +696,13 @@ code-puppy "write me a C++ hello world program in /tmp/main.cpp then compile it 
 # Generate and execute in one command
 code-puppy "create a Node.js Express server on port 3000 with a /health endpoint"`}
                       </pre>
-                      <p className="text-sm text-purple-800 dark:text-purple-300">
+                      <p className="text-sm text-purple-800">
                         Great for automation and scripting workflows.
                       </p>
                     </div>
 
                     <div>
-                      <h5 className="font-semibold text-purple-900 dark:text-purple-300 mb-2">3. With Environment Variables</h5>
+                      <h5 className="font-semibold text-purple-900 mb-2">3. With Environment Variables</h5>
                       <pre className="bg-gray-900 text-green-400 p-3 rounded text-sm mb-2">
 {`# Set your preferred model and API key
 export MODEL_NAME=gpt-4
@@ -711,7 +711,7 @@ export OPENAI_API_KEY=your_api_key_here
 # Run Code Puppy
 code-puppy --interactive`}
                       </pre>
-                      <p className="text-sm text-purple-800 dark:text-purple-300">
+                      <p className="text-sm text-purple-800">
                         Configure model selection and authentication via environment.
                       </p>
                     </div>
@@ -719,30 +719,30 @@ code-puppy --interactive`}
                 </div>
 
                 {/* Interactive Commands */}
-                <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-700 rounded-xl p-6 mb-6">
-                  <h4 className="text-2xl font-bold text-orange-900 dark:text-orange-300 mb-4">⌨️ Interactive Commands</h4>
+                <div className="bg-orange-50 border border-orange-200 rounded-xl p-6 mb-6">
+                  <h4 className="text-2xl font-bold text-orange-900 mb-4">⌨️ Interactive Commands</h4>
                   <div className="space-y-3">
-                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border-l-4 border-orange-400 dark:border-orange-600">
-                      <code className="font-semibold text-orange-900 dark:text-orange-300">/agent</code>
-                      <p className="text-sm text-orange-800 dark:text-orange-300 mt-1">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border-l-4 border-orange-400">
+                      <code className="font-semibold text-orange-900">/agent</code>
+                      <p className="text-sm text-orange-800 mt-1">
                         Check current agent or switch to a different agent configuration.
                       </p>
                     </div>
-                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border-l-4 border-orange-400 dark:border-orange-600">
-                      <code className="font-semibold text-orange-900 dark:text-orange-300">/truncate &lt;N&gt;</code>
-                      <p className="text-sm text-orange-800 dark:text-orange-300 mt-1">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border-l-4 border-orange-400">
+                      <code className="font-semibold text-orange-900">/truncate &lt;N&gt;</code>
+                      <p className="text-sm text-orange-800 mt-1">
                         Manage message history by truncating to last N messages. Useful for long sessions.
                       </p>
                     </div>
-                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border-l-4 border-orange-400 dark:border-orange-600">
-                      <code className="font-semibold text-orange-900 dark:text-orange-300">/mcp</code>
-                      <p className="text-sm text-orange-800 dark:text-orange-300 mt-1">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border-l-4 border-orange-400">
+                      <code className="font-semibold text-orange-900">/mcp</code>
+                      <p className="text-sm text-orange-800 mt-1">
                         Manage Model Context Protocol (MCP) servers for extended capabilities.
                       </p>
                     </div>
-                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border-l-4 border-orange-400 dark:border-orange-600">
-                      <code className="font-semibold text-orange-900 dark:text-orange-300">/exit</code> or <code className="font-semibold text-orange-900 dark:text-orange-300">/quit</code>
-                      <p className="text-sm text-orange-800 dark:text-orange-300 mt-1">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border-l-4 border-orange-400">
+                      <code className="font-semibold text-orange-900">/exit</code> or <code className="font-semibold text-orange-900">/quit</code>
+                      <p className="text-sm text-orange-800 mt-1">
                         Exit the interactive session.
                       </p>
                     </div>
@@ -750,12 +750,12 @@ code-puppy --interactive`}
                 </div>
 
                 {/* Configuration */}
-                <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-700 rounded-xl p-6 mb-6">
-                  <h4 className="text-2xl font-bold text-indigo-900 dark:text-indigo-300 mb-4">⚙️ Configuration</h4>
+                <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-6 mb-6">
+                  <h4 className="text-2xl font-bold text-indigo-900 mb-4">⚙️ Configuration</h4>
 
                   <div className="space-y-4">
                     <div>
-                      <h5 className="font-semibold text-indigo-900 dark:text-indigo-300 mb-2">Environment Variables (API Keys)</h5>
+                      <h5 className="font-semibold text-indigo-900 mb-2">Environment Variables (API Keys)</h5>
                       <pre className="bg-gray-900 text-green-400 p-3 rounded text-sm">
 {`# OpenAI (GPT-4, GPT-3.5)
 export OPENAI_API_KEY=your_openai_key
@@ -775,7 +775,7 @@ export MODEL_NAME=gpt-4`}
                     </div>
 
                     <div>
-                      <h5 className="font-semibold text-indigo-900 dark:text-indigo-300 mb-2">Custom Agents (JSON Configuration)</h5>
+                      <h5 className="font-semibold text-indigo-900 mb-2">Custom Agents (JSON Configuration)</h5>
                       <pre className="bg-gray-900 text-green-400 p-3 rounded text-sm overflow-x-auto">
 {`{
   "agent_name": "my-custom-agent",
@@ -785,13 +785,13 @@ export MODEL_NAME=gpt-4`}
   "temperature": 0.7
 }`}
                       </pre>
-                      <p className="text-sm text-indigo-800 dark:text-indigo-300 mt-2">
+                      <p className="text-sm text-indigo-800 mt-2">
                         Define custom agents with specific behaviors, tool access, and model preferences.
                       </p>
                     </div>
 
                     <div>
-                      <h5 className="font-semibold text-indigo-900 dark:text-indigo-300 mb-2">Python-Based Agents</h5>
+                      <h5 className="font-semibold text-indigo-900 mb-2">Python-Based Agents</h5>
                       <pre className="bg-gray-900 text-green-400 p-3 rounded text-sm overflow-x-auto">
 {`from code_puppy import Agent
 
@@ -806,7 +806,7 @@ class MyAgent(Agent):
         # Custom logic here
         return self.process(task)`}
                       </pre>
-                      <p className="text-sm text-indigo-800 dark:text-indigo-300 mt-2">
+                      <p className="text-sm text-indigo-800 mt-2">
                         Advanced: Create Python-based agents with full programmatic control.
                       </p>
                     </div>
@@ -814,51 +814,51 @@ class MyAgent(Agent):
                 </div>
 
                 {/* Multi-Model Support */}
-                <div className="bg-pink-50 dark:bg-pink-900/20 border border-pink-200 dark:border-pink-700 rounded-xl p-6 mb-6">
-                  <h4 className="text-2xl font-bold text-pink-900 dark:text-pink-300 mb-4">🤖 Supported AI Models</h4>
+                <div className="bg-pink-50 border border-pink-200 rounded-xl p-6 mb-6">
+                  <h4 className="text-2xl font-bold text-pink-900 mb-4">🤖 Supported AI Models</h4>
                   <div className="grid md:grid-cols-3 gap-4">
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <div className="font-semibold text-pink-900 dark:text-pink-300 mb-1">OpenAI</div>
-                      <ul className="text-sm text-pink-800 dark:text-pink-300 space-y-1">
+                      <div className="font-semibold text-pink-900 mb-1">OpenAI</div>
+                      <ul className="text-sm text-pink-800 space-y-1">
                         <li>• GPT-4</li>
                         <li>• GPT-3.5 Turbo</li>
                         <li>• Custom models</li>
                       </ul>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <div className="font-semibold text-pink-900 dark:text-pink-300 mb-1">Google</div>
-                      <ul className="text-sm text-pink-800 dark:text-pink-300 space-y-1">
+                      <div className="font-semibold text-pink-900 mb-1">Google</div>
+                      <ul className="text-sm text-pink-800 space-y-1">
                         <li>• Gemini Pro</li>
                         <li>• Gemini Flash</li>
                         <li>• Gemini models</li>
                       </ul>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <div className="font-semibold text-pink-900 dark:text-pink-300 mb-1">Anthropic</div>
-                      <ul className="text-sm text-pink-800 dark:text-pink-300 space-y-1">
+                      <div className="font-semibold text-pink-900 mb-1">Anthropic</div>
+                      <ul className="text-sm text-pink-800 space-y-1">
                         <li>• Claude 3 Opus</li>
                         <li>• Claude 3 Sonnet</li>
                         <li>• Claude 3 Haiku</li>
                       </ul>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <div className="font-semibold text-pink-900 dark:text-pink-300 mb-1">Cerebras</div>
-                      <ul className="text-sm text-pink-800 dark:text-pink-300 space-y-1">
+                      <div className="font-semibold text-pink-900 mb-1">Cerebras</div>
+                      <ul className="text-sm text-pink-800 space-y-1">
                         <li>• Fast inference</li>
                         <li>• Custom models</li>
                       </ul>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <div className="font-semibold text-pink-900 dark:text-pink-300 mb-1">Round-Robin</div>
-                      <ul className="text-sm text-pink-800 dark:text-pink-300 space-y-1">
+                      <div className="font-semibold text-pink-900 mb-1">Round-Robin</div>
+                      <ul className="text-sm text-pink-800 space-y-1">
                         <li>• Auto-distribute</li>
                         <li>• Load balancing</li>
                         <li>• Cost optimization</li>
                       </ul>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <div className="font-semibold text-pink-900 dark:text-pink-300 mb-1">Extensible</div>
-                      <ul className="text-sm text-pink-800 dark:text-pink-300 space-y-1">
+                      <div className="font-semibold text-pink-900 mb-1">Extensible</div>
+                      <ul className="text-sm text-pink-800 space-y-1">
                         <li>• Add custom models</li>
                         <li>• Local models</li>
                         <li>• API compatible</li>
@@ -868,42 +868,42 @@ class MyAgent(Agent):
                 </div>
 
                 {/* Getting Started Guide */}
-                <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border-2 border-blue-300 dark:border-blue-600 rounded-xl p-6">
-                  <h4 className="text-2xl font-bold text-blue-900 dark:text-blue-300 mb-4">🎓 Getting Started Guide</h4>
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border-2 border-blue-300 rounded-xl p-6">
+                  <h4 className="text-2xl font-bold text-blue-900 mb-4">🎓 Getting Started Guide</h4>
                   <ol className="space-y-3">
                     <li className="flex items-start gap-3">
                       <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">1</span>
                       <div>
                         <strong className="text-blue-900">Install Code Puppy</strong>
-                        <p className="text-sm text-blue-800 dark:text-blue-300">Follow installation instructions above for your OS.</p>
+                        <p className="text-sm text-blue-800">Follow installation instructions above for your OS.</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">2</span>
                       <div>
                         <strong className="text-green-900">Set up API Keys</strong>
-                        <p className="text-sm text-green-800 dark:text-green-300">Export your AI model API keys as environment variables.</p>
+                        <p className="text-sm text-green-800">Export your AI model API keys as environment variables.</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">3</span>
                       <div>
                         <strong className="text-purple-900">Start Interactive Mode</strong>
-                        <p className="text-sm text-purple-800 dark:text-purple-300">Run <code className="bg-purple-200 dark:bg-purple-700 px-2 py-1 rounded">code-puppy --interactive</code> to begin.</p>
+                        <p className="text-sm text-purple-800">Run <code className="bg-purple-200 px-2 py-1 rounded">code-puppy --interactive</code> to begin.</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="bg-orange-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">4</span>
                       <div>
                         <strong className="text-orange-900">Try Example Tasks</strong>
-                        <p className="text-sm text-orange-800 dark:text-orange-300">Start with simple tasks: "write hello world in Python", "explain async/await".</p>
+                        <p className="text-sm text-orange-800">Start with simple tasks: "write hello world in Python", "explain async/await".</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="bg-pink-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">5</span>
                       <div>
                         <strong className="text-pink-900">Explore Advanced Features</strong>
-                        <p className="text-sm text-pink-800 dark:text-pink-300">Use custom agents, multi-model distribution, and AGENTS.md integration.</p>
+                        <p className="text-sm text-pink-800">Use custom agents, multi-model distribution, and AGENTS.md integration.</p>
                       </div>
                     </li>
                   </ol>
@@ -935,7 +935,7 @@ class MyAgent(Agent):
                   Below are proven combinations with their strengths and ideal use cases.
                 </p>
 
-                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-4 mb-6">
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
                   <p className="text-sm text-blue-900">
                     <strong>💡 Philosophy:</strong> Choose technologies that solve YOUR specific problems.
                     Don't follow trends blindly. Each stack below has proven value in the right context.
@@ -943,27 +943,27 @@ class MyAgent(Agent):
                 </div>
 
                 {/* Stack 1: Modern SPA */}
-                <div className="bg-white dark:bg-gray-800 border-2 border-blue-300 dark:border-blue-600 rounded-xl p-6 mb-6">
+                <div className="bg-white dark:bg-gray-800 border-2 border-blue-300 rounded-xl p-6 mb-6">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="bg-blue-500 text-white rounded-lg px-3 py-1 font-semibold text-sm">
                       Stack #1
                     </div>
-                    <h4 className="text-2xl font-bold text-blue-900 dark:text-blue-300">Modern SPA Stack</h4>
+                    <h4 className="text-2xl font-bold text-blue-900">Modern SPA Stack</h4>
                   </div>
 
-                  <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 mb-4">
-                    <p className="font-semibold text-blue-900 dark:text-blue-300 mb-2">🔧 Technology Combination:</p>
+                  <div className="bg-blue-50 rounded-lg p-4 mb-4">
+                    <p className="font-semibold text-blue-900 mb-2">🔧 Technology Combination:</p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-blue-800 dark:text-blue-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-blue-800">
                         <strong>Frontend:</strong> React 18 + Vite
                       </div>
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-blue-800 dark:text-blue-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-blue-800">
                         <strong>Styling:</strong> Tailwind CSS
                       </div>
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-blue-800 dark:text-blue-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-blue-800">
                         <strong>Backend:</strong> Fastify + TypeScript
                       </div>
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-blue-800 dark:text-blue-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-blue-800">
                         <strong>Database:</strong> PostgreSQL + Prisma
                       </div>
                     </div>
@@ -993,34 +993,34 @@ class MyAgent(Agent):
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-900/10 rounded-lg p-3 text-sm text-blue-900">
+                  <div className="bg-gradient-to-r from-blue-100 to-blue-50 rounded-lg p-3 text-sm text-blue-900">
                     <strong>🎯 Best For:</strong> Admin dashboards, internal tools, data-intensive SPAs, real-time applications,
                     projects where SEO is not critical, teams familiar with React ecosystem
                   </div>
                 </div>
 
                 {/* Stack 2: Full-Stack Framework */}
-                <div className="bg-white dark:bg-gray-800 border-2 border-green-300 dark:border-green-600 rounded-xl p-6 mb-6">
+                <div className="bg-white dark:bg-gray-800 border-2 border-green-300 rounded-xl p-6 mb-6">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="bg-green-500 text-white rounded-lg px-3 py-1 font-semibold text-sm">
                       Stack #2
                     </div>
-                    <h4 className="text-2xl font-bold text-green-900 dark:text-green-300">Full-Stack Framework Stack</h4>
+                    <h4 className="text-2xl font-bold text-green-900">Full-Stack Framework Stack</h4>
                   </div>
 
-                  <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4 mb-4">
+                  <div className="bg-green-50 rounded-lg p-4 mb-4">
                     <p className="font-semibold text-green-900 mb-2">🔧 Technology Combination:</p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-green-800 dark:text-green-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-green-800">
                         <strong>Framework:</strong> Next.js 14+
                       </div>
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-green-800 dark:text-green-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-green-800">
                         <strong>Styling:</strong> Tailwind CSS
                       </div>
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-green-800 dark:text-green-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-green-800">
                         <strong>Backend:</strong> Next.js API Routes
                       </div>
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-green-800 dark:text-green-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-green-800">
                         <strong>Database:</strong> PostgreSQL + Prisma
                       </div>
                     </div>
@@ -1050,34 +1050,34 @@ class MyAgent(Agent):
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-green-100 to-green-50 dark:from-green-900/30 dark:to-green-900/10 rounded-lg p-3 text-sm text-green-900 dark:text-green-300">
+                  <div className="bg-gradient-to-r from-green-100 to-green-50 rounded-lg p-3 text-sm text-green-900">
                     <strong>🎯 Best For:</strong> Marketing websites, e-commerce, blogs, content-heavy sites,
                     projects requiring excellent SEO, full-stack apps with simple backend needs, teams wanting one framework for everything
                   </div>
                 </div>
 
                 {/* Stack 3: Lightweight */}
-                <div className="bg-white dark:bg-gray-800 border-2 border-purple-300 dark:border-purple-600 rounded-xl p-6 mb-6">
+                <div className="bg-white dark:bg-gray-800 border-2 border-purple-300 rounded-xl p-6 mb-6">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="bg-purple-500 text-white rounded-lg px-3 py-1 font-semibold text-sm">
                       Stack #3
                     </div>
-                    <h4 className="text-2xl font-bold text-purple-900 dark:text-purple-300">Lightweight Performance Stack</h4>
+                    <h4 className="text-2xl font-bold text-purple-900">Lightweight Performance Stack</h4>
                   </div>
 
-                  <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4 mb-4">
-                    <p className="font-semibold text-purple-900 dark:text-purple-300 mb-2">🔧 Technology Combination:</p>
+                  <div className="bg-purple-50 rounded-lg p-4 mb-4">
+                    <p className="font-semibold text-purple-900 mb-2">🔧 Technology Combination:</p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-purple-800 dark:text-purple-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-purple-800">
                         <strong>Frontend:</strong> Svelte + Vite
                       </div>
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-purple-800 dark:text-purple-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-purple-800">
                         <strong>Styling:</strong> Tailwind CSS
                       </div>
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-purple-800 dark:text-purple-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-purple-800">
                         <strong>Backend:</strong> Express + TypeScript
                       </div>
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-purple-800 dark:text-purple-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-purple-800">
                         <strong>Database:</strong> SQLite + Prisma
                       </div>
                     </div>
@@ -1107,34 +1107,34 @@ class MyAgent(Agent):
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-purple-100 to-purple-50 dark:from-purple-900/30 dark:to-purple-900/10 rounded-lg p-3 text-sm text-purple-900">
+                  <div className="bg-gradient-to-r from-purple-100 to-purple-50 rounded-lg p-3 text-sm text-purple-900">
                     <strong>🎯 Best For:</strong> Performance-critical apps, lightweight tools, personal projects,
                     embedded systems, single-user desktop apps, prototypes, projects prioritizing bundle size
                   </div>
                 </div>
 
                 {/* Stack 4: Enterprise */}
-                <div className="bg-white dark:bg-gray-800 border-2 border-orange-300 dark:border-orange-600 rounded-xl p-6 mb-6">
+                <div className="bg-white dark:bg-gray-800 border-2 border-orange-300 rounded-xl p-6 mb-6">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="bg-orange-500 text-white rounded-lg px-3 py-1 font-semibold text-sm">
                       Stack #4
                     </div>
-                    <h4 className="text-2xl font-bold text-orange-900 dark:text-orange-300">Enterprise Cloud Stack</h4>
+                    <h4 className="text-2xl font-bold text-orange-900">Enterprise Cloud Stack</h4>
                   </div>
 
-                  <div className="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-4 mb-4">
-                    <p className="font-semibold text-orange-900 dark:text-orange-300 mb-2">🔧 Technology Combination:</p>
+                  <div className="bg-orange-50 rounded-lg p-4 mb-4">
+                    <p className="font-semibold text-orange-900 mb-2">🔧 Technology Combination:</p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-orange-800 dark:text-orange-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-orange-800">
                         <strong>Frontend:</strong> Next.js + TypeScript
                       </div>
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-orange-800 dark:text-orange-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-orange-800">
                         <strong>Styling:</strong> Tailwind + shadcn/ui
                       </div>
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-orange-800 dark:text-orange-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-orange-800">
                         <strong>Backend:</strong> Next.js + Azure Functions
                       </div>
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-orange-800 dark:text-orange-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-orange-800">
                         <strong>Database:</strong> Azure SQL + Prisma
                       </div>
                     </div>
@@ -1164,34 +1164,34 @@ class MyAgent(Agent):
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-orange-100 to-orange-50 dark:from-orange-900/30 dark:to-orange-900/10 rounded-lg p-3 text-sm text-orange-900">
+                  <div className="bg-gradient-to-r from-orange-100 to-orange-50 rounded-lg p-3 text-sm text-orange-900">
                     <strong>🎯 Best For:</strong> Large-scale enterprise applications, government projects,
                     healthcare/finance apps requiring compliance, global applications, organizations already using Azure/Microsoft stack
                   </div>
                 </div>
 
                 {/* Stack 5: Rapid Prototype */}
-                <div className="bg-white dark:bg-gray-800 border-2 border-pink-300 dark:border-pink-600 rounded-xl p-6 mb-6">
+                <div className="bg-white dark:bg-gray-800 border-2 border-pink-300 rounded-xl p-6 mb-6">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="bg-pink-500 text-white rounded-lg px-3 py-1 font-semibold text-sm">
                       Stack #5
                     </div>
-                    <h4 className="text-2xl font-bold text-pink-900 dark:text-pink-300">Rapid Prototyping Stack</h4>
+                    <h4 className="text-2xl font-bold text-pink-900">Rapid Prototyping Stack</h4>
                   </div>
 
-                  <div className="bg-pink-50 dark:bg-pink-900/20 rounded-lg p-4 mb-4">
-                    <p className="font-semibold text-pink-900 dark:text-pink-300 mb-2">🔧 Technology Combination:</p>
+                  <div className="bg-pink-50 rounded-lg p-4 mb-4">
+                    <p className="font-semibold text-pink-900 mb-2">🔧 Technology Combination:</p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-pink-800 dark:text-pink-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-pink-800">
                         <strong>Frontend:</strong> Vue 3 + Vite
                       </div>
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-pink-800 dark:text-pink-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-pink-800">
                         <strong>Styling:</strong> Tailwind CSS
                       </div>
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-pink-800 dark:text-pink-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-pink-800">
                         <strong>Backend:</strong> Hono (Edge)
                       </div>
-                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-pink-800 dark:text-pink-300">
+                      <div className="bg-white dark:bg-gray-800 rounded px-3 py-2 text-pink-800">
                         <strong>Database:</strong> SQLite + Drizzle
                       </div>
                     </div>
@@ -1270,8 +1270,8 @@ class MyAgent(Agent):
                   </div>
                 </div>
 
-                <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-300 dark:border-yellow-700 rounded-lg p-6 mt-6">
-                  <p className="text-sm text-yellow-900 dark:text-yellow-300">
+                <div className="bg-yellow-50 border border-yellow-300 rounded-lg p-6 mt-6">
+                  <p className="text-sm text-yellow-900">
                     <strong>⚡ Remember:</strong> The "best" stack is the one that fits YOUR project requirements,
                     team expertise, and constraints. Don't chase trends—choose technologies that solve real problems
                     for your specific use case. Start simple, scale when needed.
@@ -1295,7 +1295,7 @@ class MyAgent(Agent):
                 </p>
 
                 <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-300 rounded-lg p-6 mb-8">
-                  <h4 className="text-2xl font-semibold text-purple-900 dark:text-purple-300 mb-3">
+                  <h4 className="text-2xl font-semibold text-purple-900 mb-3">
                     🚀 What is "Vibe Coding"?
                   </h4>
                   <p className="text-purple-800 mb-4">
@@ -1304,7 +1304,7 @@ class MyAgent(Agent):
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
-                      <p className="font-semibold text-purple-900 dark:text-purple-300 mb-2">Traditional Development</p>
+                      <p className="font-semibold text-purple-900 mb-2">Traditional Development</p>
                       <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Weeks of setup and configuration</li>
                         <li>• Manual boilerplate coding</li>
@@ -1331,11 +1331,11 @@ class MyAgent(Agent):
                 {/* Example 1: Team Onboarding Portal */}
                 <div className="bg-white dark:bg-gray-800 border-2 border-blue-300 rounded-lg p-6 mb-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 dark:bg-blue-900/30 rounded-full p-3 flex-shrink-0">
+                    <div className="bg-blue-100 rounded-full p-3 flex-shrink-0">
                       <Rocket className="w-8 h-8 text-blue-600" aria-hidden="true" />
                     </div>
                     <div className="flex-1">
-                      <h5 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-2">
+                      <h5 className="text-xl font-semibold text-blue-900 mb-2">
                         Team Onboarding Portal (Azure VDI)
                       </h5>
                       <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
@@ -1347,8 +1347,8 @@ class MyAgent(Agent):
                         real-time cost estimation and auto-approval workflows.
                       </p>
                       <div className="grid md:grid-cols-3 gap-3 text-sm">
-                        <div className="bg-blue-50 dark:bg-blue-900/20 rounded p-2">
-                          <p className="font-semibold text-blue-800 dark:text-blue-300">Key Features</p>
+                        <div className="bg-blue-50 rounded p-2">
+                          <p className="font-semibold text-blue-800">Key Features</p>
                           <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                             <li>• 5-step intake wizard</li>
                             <li>• Real-time pricing calc</li>
@@ -1356,8 +1356,8 @@ class MyAgent(Agent):
                             <li>• Audit trail logging</li>
                           </ul>
                         </div>
-                        <div className="bg-green-50 dark:bg-green-900/20 rounded p-2">
-                          <p className="font-semibold text-green-800 dark:text-green-300">AI Contributions</p>
+                        <div className="bg-green-50 rounded p-2">
+                          <p className="font-semibold text-green-800">AI Contributions</p>
                           <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                             <li>• Form validation logic</li>
                             <li>• Pricing algorithms</li>
@@ -1365,8 +1365,8 @@ class MyAgent(Agent):
                             <li>• API endpoint generation</li>
                           </ul>
                         </div>
-                        <div className="bg-purple-50 dark:bg-purple-900/20 rounded p-2">
-                          <p className="font-semibold text-purple-800 dark:text-purple-300">Time Saved</p>
+                        <div className="bg-purple-50 rounded p-2">
+                          <p className="font-semibold text-purple-800">Time Saved</p>
                           <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                             <li>• Setup: 2 hours vs 2 days</li>
                             <li>• CRUD ops: 30 min vs 3 days</li>
@@ -1382,11 +1382,11 @@ class MyAgent(Agent):
                 {/* Example 2: Network Performance Tester */}
                 <div className="bg-white dark:bg-gray-800 border-2 border-green-300 rounded-lg p-6 mb-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-green-100 dark:bg-green-900/30 rounded-full p-3 flex-shrink-0">
+                    <div className="bg-green-100 rounded-full p-3 flex-shrink-0">
                       <CheckCircle2 className="w-8 h-8 text-green-600" aria-hidden="true" />
                     </div>
                     <div className="flex-1">
-                      <h5 className="text-xl font-semibold text-green-900 dark:text-green-300 mb-2">
+                      <h5 className="text-xl font-semibold text-green-900 mb-2">
                         Agnostic Network Performance Tester
                       </h5>
                       <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
@@ -1398,8 +1398,8 @@ class MyAgent(Agent):
                         Provides real-time visualization of latency, jitter, packet loss, and bandwidth.
                       </p>
                       <div className="grid md:grid-cols-3 gap-3 text-sm">
-                        <div className="bg-green-50 dark:bg-green-900/20 rounded p-2">
-                          <p className="font-semibold text-green-800 dark:text-green-300">Key Features</p>
+                        <div className="bg-green-50 rounded p-2">
+                          <p className="font-semibold text-green-800">Key Features</p>
                           <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                             <li>• 30+ Azure regions</li>
                             <li>• VDI protocol optimization</li>
@@ -1407,8 +1407,8 @@ class MyAgent(Agent):
                             <li>• MTU discovery</li>
                           </ul>
                         </div>
-                        <div className="bg-blue-50 dark:bg-blue-900/20 rounded p-2">
-                          <p className="font-semibold text-blue-800 dark:text-blue-300">AI Contributions</p>
+                        <div className="bg-blue-50 rounded p-2">
+                          <p className="font-semibold text-blue-800">AI Contributions</p>
                           <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                             <li>• WebSocket implementation</li>
                             <li>• Chart.js visualization</li>
@@ -1416,8 +1416,8 @@ class MyAgent(Agent):
                             <li>• System info detection</li>
                           </ul>
                         </div>
-                        <div className="bg-purple-50 dark:bg-purple-900/20 rounded p-2">
-                          <p className="font-semibold text-purple-800 dark:text-purple-300">Complexity</p>
+                        <div className="bg-purple-50 rounded p-2">
+                          <p className="font-semibold text-purple-800">Complexity</p>
                           <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                             <li>• Real-time data streaming</li>
                             <li>• Multi-region testing</li>
@@ -1433,11 +1433,11 @@ class MyAgent(Agent):
                 {/* Example 3: Remote Training App */}
                 <div className="bg-white dark:bg-gray-800 border-2 border-purple-300 rounded-lg p-6 mb-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-purple-100 dark:bg-purple-900/30 rounded-full p-3 flex-shrink-0">
+                    <div className="bg-purple-100 rounded-full p-3 flex-shrink-0">
                       <Dog className="w-8 h-8 text-purple-600" aria-hidden="true" />
                     </div>
                     <div className="flex-1">
-                      <h5 className="text-xl font-semibold text-purple-900 dark:text-purple-300 dark:text-purple-300 mb-2">
+                      <h5 className="text-xl font-semibold text-purple-900 mb-2">
                         Puppy Trainer (Windows Remote Training)
                       </h5>
                       <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
@@ -1449,8 +1449,8 @@ class MyAgent(Agent):
                         Zoom webinar embedding, and real-time Q&A chat.
                       </p>
                       <div className="grid md:grid-cols-3 gap-3 text-sm">
-                        <div className="bg-purple-50 dark:bg-purple-900/20 rounded p-2">
-                          <p className="font-semibold text-purple-800 dark:text-purple-300">Key Features</p>
+                        <div className="bg-purple-50 rounded p-2">
+                          <p className="font-semibold text-purple-800">Key Features</p>
                           <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                             <li>• Integrated terminal</li>
                             <li>• Video streaming embed</li>
@@ -1458,8 +1458,8 @@ class MyAgent(Agent):
                             <li>• Accessibility (WCAG 2.2 AA)</li>
                           </ul>
                         </div>
-                        <div className="bg-blue-50 dark:bg-blue-900/20 rounded p-2">
-                          <p className="font-semibold text-blue-800 dark:text-blue-300">AI Contributions</p>
+                        <div className="bg-blue-50 rounded p-2">
+                          <p className="font-semibold text-blue-800">AI Contributions</p>
                           <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                             <li>• Electron setup</li>
                             <li>• PowerShell integration</li>
@@ -1467,8 +1467,8 @@ class MyAgent(Agent):
                             <li>• A11y compliance</li>
                           </ul>
                         </div>
-                        <div className="bg-green-50 dark:bg-green-900/20 rounded p-2">
-                          <p className="font-semibold text-green-800 dark:text-green-300">Innovation</p>
+                        <div className="bg-green-50 rounded p-2">
+                          <p className="font-semibold text-green-800">Innovation</p>
                           <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                             <li>• All-in-one training app</li>
                             <li>• Cross-platform (Electron)</li>
@@ -1484,11 +1484,11 @@ class MyAgent(Agent):
                 {/* Example 4: Command Center Dashboard */}
                 <div className="bg-white dark:bg-gray-800 border-2 border-orange-300 rounded-lg p-6 mb-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-orange-100 dark:bg-orange-900/30 rounded-full p-3 flex-shrink-0">
+                    <div className="bg-orange-100 rounded-full p-3 flex-shrink-0">
                       <Sparkles className="w-8 h-8 text-orange-600" aria-hidden="true" />
                     </div>
                     <div className="flex-1">
-                      <h5 className="text-xl font-semibold text-orange-900 dark:text-orange-300 mb-2">
+                      <h5 className="text-xl font-semibold text-orange-900 mb-2">
                         Claude Command Center (Project Management Dashboard)
                       </h5>
                       <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
@@ -1500,8 +1500,8 @@ class MyAgent(Agent):
                         through a beautiful web UI running on port 9090.
                       </p>
                       <div className="grid md:grid-cols-3 gap-3 text-sm">
-                        <div className="bg-orange-50 dark:bg-orange-900/20 rounded p-2">
-                          <p className="font-semibold text-orange-800 dark:text-orange-300">Key Features</p>
+                        <div className="bg-orange-50 rounded p-2">
+                          <p className="font-semibold text-orange-800">Key Features</p>
                           <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                             <li>• Real-time monitoring</li>
                             <li>• Project dashboard</li>
@@ -1509,8 +1509,8 @@ class MyAgent(Agent):
                             <li>• Built-in terminal</li>
                           </ul>
                         </div>
-                        <div className="bg-blue-50 dark:bg-blue-900/20 rounded p-2">
-                          <p className="font-semibold text-blue-800 dark:text-blue-300">AI Contributions</p>
+                        <div className="bg-blue-50 rounded p-2">
+                          <p className="font-semibold text-blue-800">AI Contributions</p>
                           <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                             <li>• WebSocket setup</li>
                             <li>• System info APIs</li>
@@ -1518,8 +1518,8 @@ class MyAgent(Agent):
                             <li>• PM2 integration</li>
                           </ul>
                         </div>
-                        <div className="bg-purple-50 dark:bg-purple-900/20 rounded p-2">
-                          <p className="font-semibold text-purple-800 dark:text-purple-300">Impact</p>
+                        <div className="bg-purple-50 rounded p-2">
+                          <p className="font-semibold text-purple-800">Impact</p>
                           <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                             <li>• Centralized management</li>
                             <li>• Auto-start with PM2</li>
@@ -1545,11 +1545,11 @@ class MyAgent(Agent):
                   {/* Example 1: VMware Horizon Integration */}
                   <div className="bg-white dark:bg-gray-800 border-2 border-orange-300 rounded-lg p-6 mb-6">
                     <div className="flex items-start gap-4">
-                      <div className="bg-orange-100 dark:bg-orange-900/30 rounded-full p-3 flex-shrink-0">
+                      <div className="bg-orange-100 rounded-full p-3 flex-shrink-0">
                         <Rocket className="w-8 h-8 text-orange-600" aria-hidden="true" />
                       </div>
                       <div className="flex-1">
-                        <h5 className="text-xl font-semibold text-orange-900 dark:text-orange-300 mb-2">
+                        <h5 className="text-xl font-semibold text-orange-900 mb-2">
                           VMware Horizon PowerShell Integration
                         </h5>
                         <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
@@ -1561,8 +1561,8 @@ class MyAgent(Agent):
                           AI can generate REST API calls, handle authentication, and parse responses.
                         </p>
                         <div className="grid md:grid-cols-3 gap-3 text-sm">
-                          <div className="bg-orange-50 dark:bg-orange-900/20 rounded p-2">
-                            <p className="font-semibold text-orange-800 dark:text-orange-300">Key Tasks</p>
+                          <div className="bg-orange-50 rounded p-2">
+                            <p className="font-semibold text-orange-800">Key Tasks</p>
                             <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                               <li>• Create desktop pools</li>
                               <li>• Monitor user sessions</li>
@@ -1570,8 +1570,8 @@ class MyAgent(Agent):
                               <li>• Resource health checks</li>
                             </ul>
                           </div>
-                          <div className="bg-blue-50 dark:bg-blue-900/20 rounded p-2">
-                            <p className="font-semibold text-blue-800 dark:text-blue-300">AI Helps With</p>
+                          <div className="bg-blue-50 rounded p-2">
+                            <p className="font-semibold text-blue-800">AI Helps With</p>
                             <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                               <li>• API authentication logic</li>
                               <li>• JSON parsing/formatting</li>
@@ -1579,8 +1579,8 @@ class MyAgent(Agent):
                               <li>• PowerShell cmdlet structure</li>
                             </ul>
                           </div>
-                          <div className="bg-purple-50 dark:bg-purple-900/20 rounded p-2">
-                            <p className="font-semibold text-purple-800 dark:text-purple-300">Example Output</p>
+                          <div className="bg-purple-50 rounded p-2">
+                            <p className="font-semibold text-purple-800">Example Output</p>
                             <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                               <li>• Automated provisioning script</li>
                               <li>• Session report generator</li>
@@ -1620,8 +1620,8 @@ class MyAgent(Agent):
                               <li>• Alert configuration</li>
                             </ul>
                           </div>
-                          <div className="bg-blue-50 dark:bg-blue-900/20 rounded p-2">
-                            <p className="font-semibold text-blue-800 dark:text-blue-300">AI Contributions</p>
+                          <div className="bg-blue-50 rounded p-2">
+                            <p className="font-semibold text-blue-800">AI Contributions</p>
                             <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                               <li>• REST API client setup</li>
                               <li>• WebSocket log streaming</li>
@@ -1629,8 +1629,8 @@ class MyAgent(Agent):
                               <li>• Query DSL generator</li>
                             </ul>
                           </div>
-                          <div className="bg-purple-50 dark:bg-purple-900/20 rounded p-2">
-                            <p className="font-semibold text-purple-800 dark:text-purple-300">Time Saved</p>
+                          <div className="bg-purple-50 rounded p-2">
+                            <p className="font-semibold text-purple-800">Time Saved</p>
                             <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                               <li>• UI: 2 days → 4 hours</li>
                               <li>• API integration: 1 week → 1 day</li>
@@ -1644,13 +1644,13 @@ class MyAgent(Agent):
                   </div>
 
                   {/* Example 3: Log Analysis & Trend Detection */}
-                  <div className="bg-white dark:bg-gray-800 border-2 border-indigo-300 dark:border-indigo-600 rounded-lg p-6 mb-6">
+                  <div className="bg-white dark:bg-gray-800 border-2 border-indigo-300 rounded-lg p-6 mb-6">
                     <div className="flex items-start gap-4">
-                      <div className="bg-indigo-100 dark:bg-indigo-900/30 rounded-full p-3 flex-shrink-0">
+                      <div className="bg-indigo-100 rounded-full p-3 flex-shrink-0">
                         <Sparkles className="w-8 h-8 text-indigo-600" aria-hidden="true" />
                       </div>
                       <div className="flex-1">
-                        <h5 className="text-xl font-semibold text-indigo-900 dark:text-indigo-300 mb-2">
+                        <h5 className="text-xl font-semibold text-indigo-900 mb-2">
                           Intelligent Log Analysis & Pattern Detection
                         </h5>
                         <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
@@ -1662,7 +1662,7 @@ class MyAgent(Agent):
                           Generate visual reports and automated alerts for critical events.
                         </p>
                         <div className="grid md:grid-cols-3 gap-3 text-sm">
-                          <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded p-2">
+                          <div className="bg-indigo-50 rounded p-2">
                             <p className="font-semibold text-indigo-800">Capabilities</p>
                             <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                               <li>• Regex pattern matching</li>
@@ -1671,8 +1671,8 @@ class MyAgent(Agent):
                               <li>• Automated alerting</li>
                             </ul>
                           </div>
-                          <div className="bg-blue-50 dark:bg-blue-900/20 rounded p-2">
-                            <p className="font-semibold text-blue-800 dark:text-blue-300">AI Helps With</p>
+                          <div className="bg-blue-50 rounded p-2">
+                            <p className="font-semibold text-blue-800">AI Helps With</p>
                             <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                               <li>• Complex regex generation</li>
                               <li>• Statistical algorithms</li>
@@ -1680,8 +1680,8 @@ class MyAgent(Agent):
                               <li>• Report formatting</li>
                             </ul>
                           </div>
-                          <div className="bg-purple-50 dark:bg-purple-900/20 rounded p-2">
-                            <p className="font-semibold text-purple-800 dark:text-purple-300">Results</p>
+                          <div className="bg-purple-50 rounded p-2">
+                            <p className="font-semibold text-purple-800">Results</p>
                             <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                               <li>• 99% pattern accuracy</li>
                               <li>• Real-time alerts</li>
@@ -1695,13 +1695,13 @@ class MyAgent(Agent):
                   </div>
 
                   {/* Example 4: Capacity Trending Dashboard */}
-                  <div className="bg-white dark:bg-gray-800 border-2 border-pink-300 dark:border-pink-600 rounded-lg p-6 mb-6">
+                  <div className="bg-white dark:bg-gray-800 border-2 border-pink-300 rounded-lg p-6 mb-6">
                     <div className="flex items-start gap-4">
-                      <div className="bg-pink-100 dark:bg-pink-900/30 rounded-full p-3 flex-shrink-0">
+                      <div className="bg-pink-100 rounded-full p-3 flex-shrink-0">
                         <CheckCircle2 className="w-8 h-8 text-pink-600" aria-hidden="true" />
                       </div>
                       <div className="flex-1">
-                        <h5 className="text-xl font-semibold text-pink-900 dark:text-pink-300 mb-2">
+                        <h5 className="text-xl font-semibold text-pink-900 mb-2">
                           Infrastructure Capacity Trending & Forecasting
                         </h5>
                         <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
@@ -1713,8 +1713,8 @@ class MyAgent(Agent):
                           and predictive models with visualizations.
                         </p>
                         <div className="grid md:grid-cols-3 gap-3 text-sm">
-                          <div className="bg-pink-50 dark:bg-pink-900/20 rounded p-2">
-                            <p className="font-semibold text-pink-800 dark:text-pink-300">Data Sources</p>
+                          <div className="bg-pink-50 rounded p-2">
+                            <p className="font-semibold text-pink-800">Data Sources</p>
                             <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                               <li>• Performance counters</li>
                               <li>• WMI queries (Windows)</li>
@@ -1722,8 +1722,8 @@ class MyAgent(Agent):
                               <li>• vCenter/Horizon APIs</li>
                             </ul>
                           </div>
-                          <div className="bg-blue-50 dark:bg-blue-900/20 rounded p-2">
-                            <p className="font-semibold text-blue-800 dark:text-blue-300">AI Contributions</p>
+                          <div className="bg-blue-50 rounded p-2">
+                            <p className="font-semibold text-blue-800">AI Contributions</p>
                             <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                               <li>• Data collection scripts</li>
                               <li>• Time-series analysis</li>
@@ -1731,8 +1731,8 @@ class MyAgent(Agent):
                               <li>• Dashboard visualizations</li>
                             </ul>
                           </div>
-                          <div className="bg-purple-50 dark:bg-purple-900/20 rounded p-2">
-                            <p className="font-semibold text-purple-800 dark:text-purple-300">Business Value</p>
+                          <div className="bg-purple-50 rounded p-2">
+                            <p className="font-semibold text-purple-800">Business Value</p>
                             <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                               <li>• Prevent outages</li>
                               <li>• Optimize spending</li>
@@ -1773,8 +1773,8 @@ class MyAgent(Agent):
                               <li>• Event logs (errors)</li>
                             </ul>
                           </div>
-                          <div className="bg-blue-50 dark:bg-blue-900/20 rounded p-2">
-                            <p className="font-semibold text-blue-800 dark:text-blue-300">AI Helps With</p>
+                          <div className="bg-blue-50 rounded p-2">
+                            <p className="font-semibold text-blue-800">AI Helps With</p>
                             <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                               <li>• PowerShell remoting</li>
                               <li>• WMI/CIM queries</li>
@@ -1782,8 +1782,8 @@ class MyAgent(Agent):
                               <li>• HTML/CSV report gen</li>
                             </ul>
                           </div>
-                          <div className="bg-purple-50 dark:bg-purple-900/20 rounded p-2">
-                            <p className="font-semibold text-purple-800 dark:text-purple-300">Impact</p>
+                          <div className="bg-purple-50 rounded p-2">
+                            <p className="font-semibold text-purple-800">Impact</p>
                             <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                               <li>• Troubleshooting: hours → minutes</li>
                               <li>• Comprehensive reports</li>
@@ -1804,7 +1804,7 @@ class MyAgent(Agent):
           {activeTab === 'patterns' && (
             <div id="patterns-panel" role="tabpanel" aria-labelledby="patterns-tab">
               <div className="flex items-center gap-3 mb-6">
-                <Brain className="w-10 h-10 text-purple-600 dark:text-purple-400" aria-hidden="true" />
+                <Brain className="w-10 h-10 text-purple-600" aria-hidden="true" />
                 <h3 className="text-3xl font-bold">AI Development Patterns & Best Practices</h3>
               </div>
 
@@ -1815,13 +1815,13 @@ class MyAgent(Agent):
                 </p>
 
                 {/* Core Division of Responsibility */}
-                <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 dark:from-green-900/20 dark:to-blue-900/20 border-2 border-green-400 dark:border-green-600 rounded-lg p-6 mb-8">
+                <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 border-2 border-green-400 rounded-lg p-6 mb-8">
                   <h4 className="text-2xl font-semibold text-green-900 mb-4">
                     🎯 The Golden Rule: Division of Responsibility
                   </h4>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-green-500">
-                      <h5 className="font-semibold text-green-800 dark:text-green-300 mb-3 text-lg">What AI Excels At:</h5>
+                      <h5 className="font-semibold text-green-800 mb-3 text-lg">What AI Excels At:</h5>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-2">
                         <li className="flex items-start gap-2">
                           <span className="text-green-600">⚡</span>
@@ -1962,14 +1962,14 @@ class MyAgent(Agent):
 
                   {/* Pattern 1 */}
                   <div className="bg-white dark:bg-gray-800 border-2 border-purple-300 rounded-lg p-6 mb-4">
-                    <h5 className="text-xl font-semibold text-purple-900 dark:text-purple-300 dark:text-purple-300 mb-3">
+                    <h5 className="text-xl font-semibold text-purple-900 mb-3">
                       1. Start with Clear Requirements (AGENTS.md)
                     </h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       Before writing any code, create an <strong>AGENTS.md</strong> file that defines your project structure, tech stack, code style, and security rules.
                       This gives AI consistent context and reduces hallucinations.
                     </p>
-                    <div className="bg-purple-50 dark:bg-purple-900/20 rounded p-3">
+                    <div className="bg-purple-50 rounded p-3">
                       <p className="text-sm font-semibold text-purple-800 mb-2">Example Prompt:</p>
                       <code className="text-sm text-gray-800 dark:text-gray-200">
                         "Following the AGENTS.md file, create a user authentication API with email/password login using Fastify, Prisma, and JWT."
@@ -1978,15 +1978,15 @@ class MyAgent(Agent):
                   </div>
 
                   {/* Pattern 2 */}
-                  <div className="bg-white dark:bg-gray-800 border-2 border-indigo-300 dark:border-indigo-600 rounded-lg p-6 mb-4">
-                    <h5 className="text-xl font-semibold text-indigo-900 dark:text-indigo-300 mb-3">
+                  <div className="bg-white dark:bg-gray-800 border-2 border-indigo-300 rounded-lg p-6 mb-4">
+                    <h5 className="text-xl font-semibold text-indigo-900 mb-3">
                       2. Iterate Incrementally
                     </h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       Build features in small, testable chunks. Ask AI to generate one component/endpoint at a time, test it, then move to the next.
                       This prevents overwhelming complexity and makes debugging easier.
                     </p>
-                    <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded p-3 space-y-2">
+                    <div className="bg-indigo-50 rounded p-3 space-y-2">
                       <p className="text-sm font-semibold text-indigo-800">Good Sequence:</p>
                       <ol className="text-sm text-gray-800 dark:text-gray-200 list-decimal list-inside space-y-1">
                         <li>Create database schema → Test migrations</li>
@@ -2017,14 +2017,14 @@ class MyAgent(Agent):
 
                   {/* Pattern 4 */}
                   <div className="bg-white dark:bg-gray-800 border-2 border-orange-300 rounded-lg p-6 mb-4">
-                    <h5 className="text-xl font-semibold text-orange-900 dark:text-orange-300 mb-3">
+                    <h5 className="text-xl font-semibold text-orange-900 mb-3">
                       4. Always Validate & Test AI Output
                     </h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       AI can make mistakes. Always run tests, check for edge cases, and validate security implications.
                       Never blindly accept generated code, especially for authentication, payments, or data handling.
                     </p>
-                    <div className="bg-orange-50 dark:bg-orange-900/20 rounded p-3">
+                    <div className="bg-orange-50 rounded p-3">
                       <p className="text-sm font-semibold text-orange-800 mb-2">Validation Checklist:</p>
                       <ul className="text-sm text-gray-800 dark:text-gray-200 space-y-1">
                         <li>✓ Does it compile/run without errors?</li>
@@ -2037,15 +2037,15 @@ class MyAgent(Agent):
                   </div>
 
                   {/* Pattern 5 */}
-                  <div className="bg-white dark:bg-gray-800 border-2 border-pink-300 dark:border-pink-600 rounded-lg p-6 mb-4">
-                    <h5 className="text-xl font-semibold text-pink-900 dark:text-pink-300 mb-3">
+                  <div className="bg-white dark:bg-gray-800 border-2 border-pink-300 rounded-lg p-6 mb-4">
+                    <h5 className="text-xl font-semibold text-pink-900 mb-3">
                       5. Use AI for Refactoring & Optimization
                     </h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       After building a working feature, ask AI to refactor for better performance, readability, or maintainability.
                       AI excels at identifying code smells and suggesting improvements.
                     </p>
-                    <div className="bg-pink-50 dark:bg-pink-900/20 rounded p-3">
+                    <div className="bg-pink-50 rounded p-3">
                       <p className="text-sm font-semibold text-pink-800 mb-2">Example Prompts:</p>
                       <ul className="text-sm text-gray-800 dark:text-gray-200 space-y-1">
                         <li>"Refactor this function to reduce complexity (Cyclomatic &lt; 10)"</li>
@@ -2062,7 +2062,7 @@ class MyAgent(Agent):
                     ⚠️ Common Pitfalls to Avoid
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4">
-                    <div className="bg-red-50 dark:bg-red-900/20 border-2 border-red-300 dark:border-red-600 dark:border-red-600 rounded-lg p-4">
+                    <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4">
                       <h5 className="font-semibold text-red-900 mb-2">❌ Don't Do This:</h5>
                       <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-2">
                         <li>• Accepting AI code without reviewing it</li>
@@ -2092,8 +2092,8 @@ class MyAgent(Agent):
                 </div>
 
                 {/* Productivity Multipliers */}
-                <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border-2 border-purple-400 dark:border-purple-600 rounded-lg p-6 mb-8">
-                  <h4 className="text-2xl font-semibold text-purple-900 dark:text-purple-300 mb-4">
+                <div className="bg-gradient-to-r from-purple-50 to-blue-50 border-2 border-purple-400 rounded-lg p-6 mb-8">
+                  <h4 className="text-2xl font-semibold text-purple-900 mb-4">
                     🚀 Productivity Multipliers
                   </h4>
                   <div className="grid md:grid-cols-3 gap-4 text-sm">
@@ -2131,8 +2131,8 @@ class MyAgent(Agent):
                 </div>
 
                 {/* Real-World Workflow */}
-                <div className="bg-blue-50 border-2 border-blue-400 dark:border-blue-600 rounded-lg p-6">
-                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-3">
+                <div className="bg-blue-50 border-2 border-blue-400 rounded-lg p-6">
+                  <h4 className="text-xl font-semibold text-blue-900 mb-3">
                     📝 Real-World Workflow Example
                   </h4>
                   <ol className="space-y-3 text-gray-700 dark:text-gray-300">
@@ -2201,23 +2201,23 @@ class MyAgent(Agent):
                 </p>
 
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border-2 border-blue-300 rounded-lg p-6 mb-6">
-                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-3">
+                  <h4 className="text-xl font-semibold text-blue-900 mb-3">
                     📂 File Location: ~/AGENTS.md
                   </h4>
-                  <p className="text-sm text-blue-800 dark:text-blue-300 mb-3">
+                  <p className="text-sm text-blue-800 mb-3">
                     Version: 1.0.0 | Last Updated: 2025-10-07 | Framework: AGENTS.md Standard
                   </p>
                   <div className="grid md:grid-cols-3 gap-3 text-sm">
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <p className="font-semibold text-blue-900 dark:text-blue-300 mb-1">Tech Stack</p>
+                      <p className="font-semibold text-blue-900 mb-1">Tech Stack</p>
                       <p className="text-gray-700 dark:text-gray-300">React 18 + TypeScript + Vite + Fastify + PostgreSQL</p>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <p className="font-semibold text-blue-900 dark:text-blue-300 mb-1">Testing</p>
+                      <p className="font-semibold text-blue-900 mb-1">Testing</p>
                       <p className="text-gray-700 dark:text-gray-300">Vitest + React Testing Library (80%+ coverage)</p>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <p className="font-semibold text-blue-900 dark:text-blue-300 mb-1">Supported Tools</p>
+                      <p className="font-semibold text-blue-900 mb-1">Supported Tools</p>
                       <p className="text-gray-700 dark:text-gray-300">20+ AI tools (Copilot, Cursor, Claude Code, etc.)</p>
                     </div>
                   </div>
@@ -3255,8 +3255,8 @@ This project follows the **AGENTS.md** open standard for AI agent instructions:
                   </div>
                 </div>
 
-                <div className="bg-green-50 dark:bg-green-900/20 border-2 border-green-400 dark:border-green-600 dark:border-green-600 rounded-lg p-6 mt-6">
-                  <h4 className="text-xl font-semibold text-green-900 dark:text-green-300 mb-3">
+                <div className="bg-green-50 border-2 border-green-400 rounded-lg p-6 mt-6">
+                  <h4 className="text-xl font-semibold text-green-900 mb-3">
                     💡 How This File Helps AI Agents
                   </h4>
                   <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
@@ -3291,8 +3291,8 @@ This project follows the **AGENTS.md** open standard for AI agent instructions:
               </div>
 
               <div className="prose prose-lg max-w-none">
-                <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border-2 border-blue-400 dark:border-blue-600 rounded-lg p-6 mb-8">
-                  <h4 className="text-2xl font-semibold text-blue-900 dark:text-blue-300 mb-3">
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border-2 border-blue-400 rounded-lg p-6 mb-8">
+                  <h4 className="text-2xl font-semibold text-blue-900 mb-3">
                     🚀 What is the Model Context Protocol (MCP)?
                   </h4>
                   <p className="text-gray-700 dark:text-gray-300 mb-4">
@@ -3347,8 +3347,8 @@ This project follows the **AGENTS.md** open standard for AI agent instructions:
                         </pre>
                       </div>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
-                        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
-                          <h5 className="font-semibold text-blue-900 dark:text-blue-300 mb-2">MCP Client (Host Application)</h5>
+                        <div className="bg-blue-50 rounded-lg p-4">
+                          <h5 className="font-semibold text-blue-900 mb-2">MCP Client (Host Application)</h5>
                           <p className="text-gray-700 dark:text-gray-300 mb-2">Examples: Claude Code, Claude Desktop, custom AI apps</p>
                           <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                             <li>• Connects to MCP servers</li>
@@ -3357,8 +3357,8 @@ This project follows the **AGENTS.md** open standard for AI agent instructions:
                             <li>• Displays results to users</li>
                           </ul>
                         </div>
-                        <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4">
-                          <h5 className="font-semibold text-purple-900 dark:text-purple-300 mb-2">MCP Server (Data/Tool Provider)</h5>
+                        <div className="bg-purple-50 rounded-lg p-4">
+                          <h5 className="font-semibold text-purple-900 mb-2">MCP Server (Data/Tool Provider)</h5>
                           <p className="text-gray-700 dark:text-gray-300 mb-2">Examples: PostgreSQL connector, GitHub integration, file system</p>
                           <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                             <li>• Exposes tools/resources</li>
@@ -3380,14 +3380,14 @@ This project follows the **AGENTS.md** open standard for AI agent instructions:
 
                   {/* Prompts */}
                   <div className="bg-white dark:bg-gray-800 border-2 border-green-300 rounded-lg p-6 mb-4">
-                    <h5 className="text-xl font-semibold text-green-900 dark:text-green-300 mb-3">1. Prompts (AI Instructions)</h5>
+                    <h5 className="text-xl font-semibold text-green-900 mb-3">1. Prompts (AI Instructions)</h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       <strong>What:</strong> Pre-defined instructions/templates that the AI model can use to perform specific tasks.
                     </p>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       <strong>Example:</strong> A "generate-sql-query" prompt that helps the AI write database queries based on user questions.
                     </p>
-                    <div className="bg-green-50 dark:bg-green-900/20 rounded p-3">
+                    <div className="bg-green-50 rounded p-3">
                       <pre className="text-xs font-mono text-gray-800 dark:text-gray-200">
 {`// MCP Server exposes a prompt
 {
@@ -3403,14 +3403,14 @@ This project follows the **AGENTS.md** open standard for AI agent instructions:
 
                   {/* Resources */}
                   <div className="bg-white dark:bg-gray-800 border-2 border-blue-300 rounded-lg p-6 mb-4">
-                    <h5 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-3">2. Resources (Data Access)</h5>
+                    <h5 className="text-xl font-semibold text-blue-900 mb-3">2. Resources (Data Access)</h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       <strong>What:</strong> Data sources that the AI can read from (databases, files, APIs, web pages).
                     </p>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       <strong>Example:</strong> A "file://users.csv" resource that lets the AI read user data from a CSV file.
                     </p>
-                    <div className="bg-blue-50 dark:bg-blue-900/20 rounded p-3">
+                    <div className="bg-blue-50 rounded p-3">
                       <pre className="text-xs font-mono text-gray-800 dark:text-gray-200">
 {`// MCP Server exposes a resource
 {
@@ -3425,14 +3425,14 @@ This project follows the **AGENTS.md** open standard for AI agent instructions:
 
                   {/* Tools */}
                   <div className="bg-white dark:bg-gray-800 border-2 border-purple-300 rounded-lg p-6 mb-4">
-                    <h5 className="text-xl font-semibold text-purple-900 dark:text-purple-300 dark:text-purple-300 mb-3">3. Tools (Actions & Operations)</h5>
+                    <h5 className="text-xl font-semibold text-purple-900 mb-3">3. Tools (Actions & Operations)</h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       <strong>What:</strong> Executable functions that the AI can call to perform actions (create records, send emails, run scripts).
                     </p>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       <strong>Example:</strong> A "create-github-issue" tool that lets the AI create issues in GitHub repositories.
                     </p>
-                    <div className="bg-purple-50 dark:bg-purple-900/20 rounded p-3">
+                    <div className="bg-purple-50 rounded p-3">
                       <pre className="text-xs font-mono text-gray-800 dark:text-gray-200">
 {`// MCP Server exposes a tool
 {
@@ -3464,7 +3464,7 @@ This project follows the **AGENTS.md** open standard for AI agent instructions:
                     and document them in your <strong>AGENTS.md</strong> file for consistent team usage.
                   </p>
 
-                  <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 dark:from-yellow-900/20 dark:to-orange-900/20 border-2 border-yellow-400 dark:border-yellow-600 rounded-lg p-6 mb-6">
+                  <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-2 border-yellow-400 rounded-lg p-6 mb-6">
                     <h5 className="text-xl font-semibold text-yellow-900 mb-3">Step 1: Install an MCP Server</h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       MCP servers are Node.js packages or Python scripts that expose tools/resources. You can use pre-built servers or create your own.
@@ -3490,8 +3490,8 @@ npm install -g @modelcontextprotocol/server-postgres`}
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-blue-50 to-teal-50 dark:from-blue-900/20 dark:to-teal-900/20 border-2 border-blue-400 dark:border-blue-600 rounded-lg p-6 mb-6">
-                    <h5 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-3">Step 2: Configure CodePuppy to Use the Server</h5>
+                  <div className="bg-gradient-to-r from-blue-50 to-teal-50 border-2 border-blue-400 rounded-lg p-6 mb-6">
+                    <h5 className="text-xl font-semibold text-blue-900 mb-3">Step 2: Configure CodePuppy to Use the Server</h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       Add the MCP server to your CodePuppy configuration file. This tells CodePuppy where to find the server and what permissions to use.
                     </p>
@@ -3521,8 +3521,8 @@ npm install -g @modelcontextprotocol/server-postgres`}
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-400 dark:border-purple-600 rounded-lg p-6 mb-6">
-                    <h5 className="text-xl font-semibold text-purple-900 dark:text-purple-300 dark:text-purple-300 mb-3">Step 3: Document MCP Servers in AGENTS.md</h5>
+                  <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-400 rounded-lg p-6 mb-6">
+                    <h5 className="text-xl font-semibold text-purple-900 mb-3">Step 3: Document MCP Servers in AGENTS.md</h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       Add MCP server configurations to your <strong>AGENTS.md</strong> file so your team (and AI assistants) know what tools are available.
                       This ensures consistent usage across your organization.
@@ -3614,8 +3614,8 @@ npm install -g @modelcontextprotocol/server-postgres`}
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border-2 border-green-400 dark:border-green-600 rounded-lg p-6 mb-6">
-                    <h5 className="text-xl font-semibold text-green-900 dark:text-green-300 mb-3">Step 4: Use the Server in CodePuppy</h5>
+                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-400 rounded-lg p-6 mb-6">
+                    <h5 className="text-xl font-semibold text-green-900 mb-3">Step 4: Use the Server in CodePuppy</h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       Once configured, CodePuppy will automatically detect available MCP tools and resources. You can ask CodePuppy to use them in natural language.
                     </p>
@@ -3645,8 +3645,8 @@ npm install -g @modelcontextprotocol/server-postgres`}
                   </div>
 
                   {/* Enterprise MCP Server Examples */}
-                  <div className="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20 border-2 border-indigo-400 dark:border-indigo-600 rounded-lg p-6 mb-6">
-                    <h5 className="text-xl font-semibold text-indigo-900 dark:text-indigo-300 mb-3">
+                  <div className="bg-gradient-to-r from-indigo-50 to-blue-50 border-2 border-indigo-400 rounded-lg p-6 mb-6">
+                    <h5 className="text-xl font-semibold text-indigo-900 mb-3">
                       🏢 Enterprise MCP Server Examples
                     </h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-4">
@@ -3655,7 +3655,7 @@ npm install -g @modelcontextprotocol/server-postgres`}
 
                     <div className="space-y-4">
                       {/* ServiceNow */}
-                      <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-red-500 dark:border-red-600">
+                      <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-red-500">
                         <h6 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">🎫 ServiceNow MCP Server</h6>
                         <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
                           Connect to ServiceNow for incident management, change requests, and CMDB queries.
@@ -3732,8 +3732,8 @@ npm install -g @modelcontextprotocol/server-postgres`}
                     MCP servers can be built in TypeScript/JavaScript or Python.
                   </p>
 
-                  <div className="bg-white dark:bg-gray-800 border-2 border-indigo-300 dark:border-indigo-600 rounded-lg p-6 mb-6">
-                    <h5 className="text-xl font-semibold text-indigo-900 dark:text-indigo-300 mb-3">TypeScript/Node.js Example</h5>
+                  <div className="bg-white dark:bg-gray-800 border-2 border-indigo-300 rounded-lg p-6 mb-6">
+                    <h5 className="text-xl font-semibold text-indigo-900 mb-3">TypeScript/Node.js Example</h5>
                     <div className="bg-gray-900 text-white rounded-lg p-4">
                       <pre className="text-sm font-mono whitespace-pre-wrap">
 {`import { Server } from "@modelcontextprotocol/sdk/server/index.js";
@@ -3797,8 +3797,8 @@ await server.connect(transport);`}
                     </div>
                   </div>
 
-                  <div className="bg-white dark:bg-gray-800 border-2 border-pink-300 dark:border-pink-600 rounded-lg p-6 mb-6">
-                    <h5 className="text-xl font-semibold text-pink-900 dark:text-pink-300 mb-3">Python Example</h5>
+                  <div className="bg-white dark:bg-gray-800 border-2 border-pink-300 rounded-lg p-6 mb-6">
+                    <h5 className="text-xl font-semibold text-pink-900 mb-3">Python Example</h5>
                     <div className="bg-gray-900 text-white rounded-lg p-4">
                       <pre className="text-sm font-mono whitespace-pre-wrap">
 {`from mcp.server import Server
@@ -3860,7 +3860,7 @@ if __name__ == "__main__":
                     🔒 Security & Best Practices
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4">
-                    <div className="bg-red-50 dark:bg-red-900/20 border-2 border-red-300 dark:border-red-600 dark:border-red-600 rounded-lg p-4">
+                    <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4">
                       <h5 className="font-semibold text-red-900 mb-2">Security Considerations</h5>
                       <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• ⚠️ MCP servers run with your user permissions</li>
@@ -3886,8 +3886,8 @@ if __name__ == "__main__":
                 </div>
 
                 {/* Real-World Use Cases */}
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-400 dark:border-purple-600 rounded-lg p-6 mb-8">
-                  <h4 className="text-2xl font-semibold text-purple-900 dark:text-purple-300 mb-4">
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-400 rounded-lg p-6 mb-8">
+                  <h4 className="text-2xl font-semibold text-purple-900 mb-4">
                     🌟 Real-World MCP Use Cases
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4 text-sm">
@@ -3931,8 +3931,8 @@ if __name__ == "__main__":
                 </div>
 
                 {/* Resources & Next Steps */}
-                <div className="bg-blue-50 border-2 border-blue-400 dark:border-blue-600 rounded-lg p-6">
-                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-3">
+                <div className="bg-blue-50 border-2 border-blue-400 rounded-lg p-6">
+                  <h4 className="text-xl font-semibold text-blue-900 mb-3">
                     📚 Learn More & Get Started
                   </h4>
                   <div className="space-y-3 text-sm">
