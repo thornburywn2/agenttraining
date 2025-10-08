@@ -5016,42 +5016,6 @@ if __name__ == "__main__":
           )}
         </div>
 
-        {/* Key Takeaways */}
-        <section className="mt-12 bg-gradient-to-br from-blue-500 to-purple-600 dark:from-blue-600 dark:to-purple-700 rounded-2xl p-8 text-white">
-          <h2 className="text-3xl font-bold text-center mb-6">Key Takeaways</h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white/20 dark:bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FileText className="w-8 h-8" aria-hidden="true" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Open Standard</h3>
-              <p className="text-blue-100 dark:text-blue-200">
-                AGENTS.md is a community-driven standard supported by 20+ AI tools,
-                ensuring your instructions work everywhere.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white/20 dark:bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BookOpen className="w-8 h-8" aria-hidden="true" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Consistent AI Behavior</h3>
-              <p className="text-purple-100 dark:text-purple-200">
-                Document once, benefit everywhere. All AI tools follow the same guidelines,
-                reducing surprises and improving code quality.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white/20 dark:bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Rocket className="w-8 h-8" aria-hidden="true" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Production-Ready</h3>
-              <p className="text-pink-100 dark:text-pink-200">
-                Used by thousands of projects worldwide. Proven to reduce onboarding time,
-                improve code quality, and accelerate development.
-              </p>
-            </div>
-          </div>
-        </section>
       </main>
 
       {/* Footer */}
