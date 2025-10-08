@@ -3,7 +3,7 @@ import { Button } from './components/ui/button'
 import { Code2, Rocket, FileText, BookOpen, Sparkles, CheckCircle2, Dog, FileEdit, FileCode, Lightbulb, Copy, Check, Network, Brain } from 'lucide-react'
 
 export function App(): JSX.Element {
-  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'codepuppy' | 'stacks' | 'examples' | 'patterns' | 'myagents' | 'mcp'>('overview')
+  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'codepuppy' | 'stacks' | 'examples' | 'patterns' | 'myagents' | 'mcp' | 'references'>('overview')
   const [copied, setCopied] = useState(false)
 
   return (
@@ -145,6 +145,16 @@ export function App(): JSX.Element {
           >
             <Network className="w-4 h-4 mr-2" aria-hidden="true" />
             MCP Servers
+          </Button>
+          <Button
+            onClick={(): void => setActiveTab('references')}
+            variant={activeTab === 'references' ? 'default' : 'outline'}
+            role="tab"
+            aria-selected={activeTab === 'references'}
+            aria-controls="references-panel"
+          >
+            <BookOpen className="w-4 h-4 mr-2" aria-hidden="true" />
+            References
           </Button>
         </div>
 
@@ -3943,6 +3953,252 @@ if __name__ == "__main__":
                         3. Start using: "List files in my project directory"
                       </p>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* References Tab */}
+          {activeTab === 'references' && (
+            <div id="references-panel" role="tabpanel">
+              <div className="flex items-center gap-3 mb-6">
+                <BookOpen className="w-10 h-10 text-blue-600" aria-hidden="true" />
+                <h3 className="text-3xl font-bold">External References & Resources</h3>
+              </div>
+
+              <p className="text-lg text-gray-700 mb-8">
+                Comprehensive list of external resources mentioned throughout this training portal. All links open in new tabs.
+              </p>
+
+              {/* AGENTS.md Ecosystem */}
+              <div className="mb-10">
+                <h4 className="text-2xl font-bold text-blue-600 mb-4 flex items-center gap-2">
+                  <FileCode className="w-6 h-6" aria-hidden="true" />
+                  AGENTS.md Ecosystem
+                </h4>
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6">
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://agents.md" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 font-semibold underline">
+                        https://agents.md
+                      </a>
+                      <span className="text-gray-700"> - Official AGENTS.md standard website</span>
+                    </li>
+                    <li>
+                      <span className="font-semibold text-gray-800">Supported AI Tools (20+):</span>
+                      <ul className="ml-6 mt-2 space-y-2 text-gray-700">
+                        <li><a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">GitHub Copilot</a></li>
+                        <li><a href="https://cursor.sh" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Cursor IDE</a></li>
+                        <li><a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Claude AI</a></li>
+                        <li><a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Google Gemini</a></li>
+                        <li><a href="https://www.tabnine.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Tabnine</a></li>
+                        <li><a href="https://codeium.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Codeium</a></li>
+                        <li><a href="https://www.phind.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Phind</a></li>
+                        <li><a href="https://www.sourcegraph.com/cody" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Sourcegraph Cody</a></li>
+                        <li>...and 12+ more tools</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Model Context Protocol */}
+              <div className="mb-10">
+                <h4 className="text-2xl font-bold text-purple-600 mb-4 flex items-center gap-2">
+                  <Network className="w-6 h-6" aria-hidden="true" />
+                  Model Context Protocol (MCP)
+                </h4>
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6">
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 font-semibold underline">
+                        https://modelcontextprotocol.io
+                      </a>
+                      <span className="text-gray-700"> - Official MCP documentation</span>
+                    </li>
+                    <li>
+                      <a href="https://github.com/modelcontextprotocol" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 font-semibold underline">
+                        https://github.com/modelcontextprotocol
+                      </a>
+                      <span className="text-gray-700"> - MCP GitHub organization</span>
+                    </li>
+                    <li>
+                      <span className="font-semibold text-gray-800">Official SDKs:</span>
+                      <ul className="ml-6 mt-2 space-y-2 text-gray-700">
+                        <li><a href="https://github.com/modelcontextprotocol/typescript-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 underline">TypeScript SDK</a> - Node.js and browser support</li>
+                        <li><a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 underline">Python SDK</a> - Python 3.10+ support</li>
+                        <li><a href="https://github.com/modelcontextprotocol/csharp-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 underline">C# SDK</a> - .NET and Microsoft ecosystem</li>
+                        <li><a href="https://github.com/modelcontextprotocol/java-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 underline">Java SDK</a> - Java 11+ and Android</li>
+                        <li><a href="https://github.com/modelcontextprotocol/go-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 underline">Go SDK</a> - Go 1.20+ support</li>
+                        <li><a href="https://github.com/modelcontextprotocol/php-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 underline">PHP SDK</a> - PHP 8.1+ support</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 font-semibold underline">
+                        https://github.com/modelcontextprotocol/servers
+                      </a>
+                      <span className="text-gray-700"> - Official MCP reference servers</span>
+                    </li>
+                    <li>
+                      <a href="https://github.com/modelcontextprotocol/docs" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 font-semibold underline">
+                        https://github.com/modelcontextprotocol/docs
+                      </a>
+                      <span className="text-gray-700"> - MCP documentation repository</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Enterprise APIs */}
+              <div className="mb-10">
+                <h4 className="text-2xl font-bold text-green-600 mb-4 flex items-center gap-2">
+                  <Code2 className="w-6 h-6" aria-hidden="true" />
+                  Enterprise Integration APIs
+                </h4>
+                <div className="bg-gradient-to-r from-green-50 to-teal-50 rounded-lg p-6">
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://developer.servicenow.com/dev.do" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800 font-semibold underline">
+                        ServiceNow Developer Portal
+                      </a>
+                      <span className="text-gray-700"> - REST API documentation, OAuth setup, incident management</span>
+                    </li>
+                    <li>
+                      <a href="https://developer.atlassian.com/cloud/confluence/rest/v2/intro/" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800 font-semibold underline">
+                        Atlassian Confluence REST API v2
+                      </a>
+                      <span className="text-gray-700"> - Content API, search, page creation and updates</span>
+                    </li>
+                    <li>
+                      <a href="https://learn.microsoft.com/en-us/graph/" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800 font-semibold underline">
+                        Microsoft Graph API
+                      </a>
+                      <span className="text-gray-700"> - Teams, Outlook, OneDrive, SharePoint integration</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Development Frameworks & Tools */}
+              <div className="mb-10">
+                <h4 className="text-2xl font-bold text-orange-600 mb-4 flex items-center gap-2">
+                  <Rocket className="w-6 h-6" aria-hidden="true" />
+                  Development Frameworks & Tools
+                </h4>
+                <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h5 className="font-semibold text-gray-800 mb-2">Frontend Frameworks</h5>
+                      <ul className="space-y-2 text-gray-700">
+                        <li><a href="https://react.dev" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">React</a> - UI library</li>
+                        <li><a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Next.js</a> - React framework with SSR</li>
+                        <li><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Vue.js</a> - Progressive framework</li>
+                        <li><a href="https://svelte.dev" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Svelte</a> - Compiler framework</li>
+                        <li><a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Vite</a> - Build tool</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-gray-800 mb-2">Backend Frameworks</h5>
+                      <ul className="space-y-2 text-gray-700">
+                        <li><a href="https://fastify.dev" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Fastify</a> - Fast Node.js framework</li>
+                        <li><a href="https://expressjs.com" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Express</a> - Minimal Node.js framework</li>
+                        <li><a href="https://hono.dev" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Hono</a> - Ultrafast web framework</li>
+                        <li><a href="https://www.prisma.io" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Prisma</a> - Next-gen ORM</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-gray-800 mb-2">Styling & UI</h5>
+                      <ul className="space-y-2 text-gray-700">
+                        <li><a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Tailwind CSS</a> - Utility-first CSS</li>
+                        <li><a href="https://ui.shadcn.com" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">shadcn/ui</a> - Re-usable components</li>
+                        <li><a href="https://mui.com" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Material-UI</a> - React components</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-gray-800 mb-2">Databases</h5>
+                      <ul className="space-y-2 text-gray-700">
+                        <li><a href="https://www.postgresql.org" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">PostgreSQL</a> - Relational database</li>
+                        <li><a href="https://www.mongodb.com" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">MongoDB</a> - NoSQL database</li>
+                        <li><a href="https://www.sqlite.org" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">SQLite</a> - Embedded database</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* TypeScript & Language Tools */}
+              <div className="mb-10">
+                <h4 className="text-2xl font-bold text-blue-600 mb-4 flex items-center gap-2">
+                  <Code2 className="w-6 h-6" aria-hidden="true" />
+                  Language & Type Safety
+                </h4>
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6">
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 font-semibold underline">
+                        TypeScript
+                      </a>
+                      <span className="text-gray-700"> - Typed superset of JavaScript</span>
+                    </li>
+                    <li>
+                      <a href="https://zod.dev" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 font-semibold underline">
+                        Zod
+                      </a>
+                      <span className="text-gray-700"> - TypeScript-first schema validation</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Community & Learning */}
+              <div className="mb-10">
+                <h4 className="text-2xl font-bold text-pink-600 mb-4 flex items-center gap-2">
+                  <Lightbulb className="w-6 h-6" aria-hidden="true" />
+                  Community & Learning Resources
+                </h4>
+                <div className="bg-gradient-to-r from-pink-50 to-rose-50 rounded-lg p-6">
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-800 font-semibold underline">
+                        MCP Community Servers
+                      </a>
+                      <span className="text-gray-700"> - Browse and contribute MCP server implementations</span>
+                    </li>
+                    <li>
+                      <a href="https://agents.md" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-800 font-semibold underline">
+                        AGENTS.md Examples
+                      </a>
+                      <span className="text-gray-700"> - Community-contributed AGENTS.md files</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Quick Reference Card */}
+              <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl p-8 text-white">
+                <h4 className="text-2xl font-bold mb-4">📚 Quick Reference Card</h4>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div>
+                    <h5 className="font-semibold text-lg mb-2">AGENTS.md</h5>
+                    <p className="text-sm text-indigo-100">Standard for AI instructions</p>
+                    <a href="https://agents.md" target="_blank" rel="noopener noreferrer" className="text-white underline hover:text-indigo-200 text-sm">
+                      agents.md →
+                    </a>
+                  </div>
+                  <div>
+                    <h5 className="font-semibold text-lg mb-2">MCP Protocol</h5>
+                    <p className="text-sm text-purple-100">Connect AI to any system</p>
+                    <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" className="text-white underline hover:text-purple-200 text-sm">
+                      modelcontextprotocol.io →
+                    </a>
+                  </div>
+                  <div>
+                    <h5 className="font-semibold text-lg mb-2">GitHub</h5>
+                    <p className="text-sm text-pink-100">Explore MCP servers & SDKs</p>
+                    <a href="https://github.com/modelcontextprotocol" target="_blank" rel="noopener noreferrer" className="text-white underline hover:text-pink-200 text-sm">
+                      github.com/modelcontextprotocol →
+                    </a>
                   </div>
                 </div>
               </div>
