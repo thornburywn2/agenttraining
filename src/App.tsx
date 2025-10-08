@@ -3,9 +3,9 @@ import { Button } from './components/ui/button'
 import { Code2, Rocket, FileText, BookOpen, Sparkles, CheckCircle2, Dog, FileEdit, FileCode, Lightbulb, Copy, Check, Network, Brain, Moon, Sun } from 'lucide-react'
 
 export function App(): JSX.Element {
-  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'codepuppy' | 'stacks' | 'examples' | 'patterns' | 'myagents' | 'mcp' | 'references'>('overview')
+  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'codepuppy' | 'stacks' | 'examples' | 'patterns' | 'myagents' | 'mcp' | 'llms' | 'references'>('overview')
   const [copied, setCopied] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(true)
 
   // Load dark mode preference from localStorage on mount
   useEffect(() => {
@@ -177,6 +177,16 @@ export function App(): JSX.Element {
           >
             <Network className="w-4 h-4 mr-2" aria-hidden="true" />
             MCP Servers
+          </Button>
+          <Button
+            onClick={(): void => setActiveTab('llms')}
+            variant={activeTab === 'llms' ? 'default' : 'outline'}
+            role="tab"
+            aria-selected={activeTab === 'llms'}
+            aria-controls="llms-panel"
+          >
+            <Brain className="w-4 h-4 mr-2" aria-hidden="true" />
+            LLMs & AI Agents
           </Button>
           <Button
             onClick={(): void => setActiveTab('references')}
@@ -3964,6 +3974,235 @@ if __name__ == "__main__":
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* LLMs & AI Agents Tab */}
+          {activeTab === 'llms' && (
+            <div id="llms-panel" role="tabpanel">
+              <div className="flex items-center gap-3 mb-6">
+                <Brain className="w-10 h-10 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+                <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Understanding LLMs & AI Agents</h3>
+              </div>
+
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
+                Dive into the fundamentals of Large Language Models (LLMs) and AI Agents - the technology powering modern AI coding assistants.
+              </p>
+
+              {/* Introduction Section */}
+              <div className="mb-10">
+                <h4 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4">The AI Landscape: LLMs, Clients, and Agents</h4>
+                <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                  The world of artificial intelligence is rapidly evolving, with <strong className="text-blue-600 dark:text-blue-400">Large Language Models (LLMs)</strong> at the core of many recent advancements. LLMs are a type of advanced AI system that can understand, process, and generate human-like text. They are built using deep learning techniques, specifically neural networks known as transformers, and are trained on vast amounts of text data from sources like books, articles, and websites.
+                </p>
+              </div>
+
+              {/* What are LLMs? */}
+              <div className="mb-10">
+                <h4 className="text-2xl font-bold text-purple-600 dark:text-purple-400 mb-4">What are Large Language Models (LLMs)?</h4>
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-300 dark:border-purple-600 rounded-lg p-6">
+                  <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                    At their heart, LLMs are <strong className="text-purple-600 dark:text-purple-400">statistical models</strong> that learn to predict the next word in a sequence based on the words that came before it. This seemingly simple task allows them to develop a sophisticated understanding of grammar, context, and even some degree of reasoning.
+                  </p>
+
+                  <h5 className="text-lg font-semibold text-purple-900 dark:text-purple-300 mb-3">Key Characteristics & Capabilities:</h5>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <div className="bg-purple-600 dark:bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-semibold">1</div>
+                      <div>
+                        <strong className="text-purple-900 dark:text-purple-300">Scale and Capacity</strong>
+                        <p className="text-gray-700 dark:text-gray-300 text-sm mt-1">LLMs are defined by their massive size, with billions or even trillions of parameters, which enables them to capture intricate patterns in language.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="bg-purple-600 dark:bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-semibold">2</div>
+                      <div>
+                        <strong className="text-purple-900 dark:text-purple-300">Training Data</strong>
+                        <p className="text-gray-700 dark:text-gray-300 text-sm mt-1">They are trained on huge, diverse datasets to learn about various topics, writing styles, and contexts.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="bg-purple-600 dark:bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-semibold">3</div>
+                      <div>
+                        <strong className="text-purple-900 dark:text-purple-300">Versatile Capabilities</strong>
+                        <p className="text-gray-700 dark:text-gray-300 text-sm mt-1">LLMs can perform a wide range of tasks, from language translation and text summarization to creative writing and code generation. They can also power conversational agents, assist with data analysis, and support financial risk assessment.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="bg-purple-600 dark:bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-semibold">4</div>
+                      <div>
+                        <strong className="text-purple-900 dark:text-purple-300">Contextual Understanding</strong>
+                        <p className="text-gray-700 dark:text-gray-300 text-sm mt-1">A key strength of LLMs is their ability to understand and leverage context to produce coherent and relevant responses.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 bg-purple-100 dark:bg-purple-900/30 rounded-lg p-4">
+                    <p className="text-sm text-purple-900 dark:text-purple-300">
+                      <strong>💡 Examples:</strong> Well-known LLMs include the <strong>GPT series</strong> from OpenAI and <strong>BERT</strong> from Google. While the GPT series processes text in a unidirectional manner, BERT uses a bidirectional approach, analyzing context from both directions simultaneously.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* LLM Clients */}
+              <div className="mb-10">
+                <h4 className="text-2xl font-bold text-teal-600 dark:text-teal-400 mb-4">LLM Clients</h4>
+                <div className="bg-gradient-to-r from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20 border border-teal-300 dark:border-teal-600 rounded-lg p-6">
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    An <strong className="text-teal-600 dark:text-teal-400">LLM client</strong> is simply an application or website that allows a user to interact with an LLM. These can be as straightforward as a web interface or a command-line tool, or they can be integrated into larger applications like IDEs (Integrated Development Environments) for coding assistance. They act as the user&apos;s gateway to the powerful capabilities of the underlying LLM.
+                  </p>
+                </div>
+              </div>
+
+              {/* Universal Truths */}
+              <div className="mb-10">
+                <h4 className="text-2xl font-bold text-orange-600 dark:text-orange-400 mb-4">Universal Truths of Working with LLMs</h4>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  Despite their impressive capabilities, LLMs are not a magic bullet. Working with them effectively requires an understanding of their inherent limitations and a set of practical best practices.
+                </p>
+
+                <div className="space-y-4">
+                  <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 dark:border-red-400 p-4 rounded">
+                    <h5 className="font-semibold text-red-900 dark:text-red-300 mb-2">⚠️ The Problem of Hallucinations</h5>
+                    <p className="text-sm text-red-800 dark:text-red-300">
+                      LLMs are trained to produce plausible-sounding text, but this doesn&apos;t guarantee accuracy. They can generate incorrect, nonsensical, or biased information, a phenomenon known as &quot;hallucination.&quot; It&apos;s crucial to treat their output as a starting point, not as unassailable truth, and to verify critical information.
+                    </p>
+                  </div>
+
+                  <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 dark:border-blue-400 p-4 rounded">
+                    <h5 className="font-semibold text-blue-900 dark:text-blue-300 mb-2">🎯 Context is Everything</h5>
+                    <p className="text-sm text-blue-800 dark:text-blue-300">
+                      The quality of an LLM&apos;s output is directly tied to the quality and clarity of the input, or &quot;context.&quot; Vague or poorly structured prompts often lead to suboptimal results. A well-designed system prompt that is clear, specific, and provides examples can drastically improve performance.
+                    </p>
+                  </div>
+
+                  <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 dark:border-yellow-400 p-4 rounded">
+                    <h5 className="font-semibold text-yellow-900 dark:text-yellow-300 mb-2">📊 Performance is Not Universal</h5>
+                    <p className="text-sm text-yellow-800 dark:text-yellow-300">
+                      The &quot;truthfulness&quot; of an LLM&apos;s internal representations can be task-specific. What works for one type of task (e.g., factual question-answering) may not generalize to another (e.g., creative writing).
+                    </p>
+                  </div>
+
+                  <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 dark:border-green-400 p-4 rounded">
+                    <h5 className="font-semibold text-green-900 dark:text-green-300 mb-2">✅ Start Simple</h5>
+                    <p className="text-sm text-green-800 dark:text-green-300">
+                      When building with LLMs, the best practice is to begin with the simplest possible solution, such as a basic prompt, and only add complexity (like multi-step agentic systems) when it is absolutely necessary to meet a specific goal.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* The Evolution: AI Agents */}
+              <div className="mb-10">
+                <h4 className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 mb-4">The Evolution: From LLMs to AI Agents</h4>
+                <div className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 border-2 border-indigo-300 dark:border-indigo-600 rounded-lg p-6">
+                  <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                    While LLMs are the &quot;brain,&quot; <strong className="text-indigo-600 dark:text-indigo-400">AI agents</strong> are the complete, autonomous systems that use that brain to achieve complex, multi-step goals. An AI agent is a software program that can perceive its environment, reason, plan, and take action to meet predetermined objectives.
+                  </p>
+
+                  <h5 className="text-lg font-semibold text-indigo-900 dark:text-indigo-300 mb-3 mt-6">How AI Agents Work</h5>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    The core of an AI agent is an LLM, but it&apos;s the additional components that give it autonomy and power. The typical workflow involves:
+                  </p>
+
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <div className="bg-indigo-600 dark:bg-indigo-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-semibold">1</div>
+                      <div>
+                        <strong className="text-indigo-900 dark:text-indigo-300">Determining Goals</strong>
+                        <p className="text-gray-700 dark:text-gray-300 text-sm mt-1">The agent receives a high-level instruction from a user.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="bg-indigo-600 dark:bg-indigo-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-semibold">2</div>
+                      <div>
+                        <strong className="text-indigo-900 dark:text-indigo-300">Planning and Task Decomposition</strong>
+                        <p className="text-gray-700 dark:text-gray-300 text-sm mt-1">The agent uses its reasoning and planning capabilities (often with techniques like Chain-of-Thought or Tree-of-Thought) to break down the complex goal into a series of smaller, manageable steps.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="bg-indigo-600 dark:bg-indigo-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-semibold">3</div>
+                      <div>
+                        <strong className="text-indigo-900 dark:text-indigo-300">Tool Use</strong>
+                        <p className="text-gray-700 dark:text-gray-300 text-sm mt-1">To perform real-world tasks beyond just generating text, an agent connects to external software, APIs, or databases. The LLM decides which tool to use and when, and then formats the request and interprets the output. This allows the agent to, for example, search for information, send emails, or run code.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="bg-indigo-600 dark:bg-indigo-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-semibold">4</div>
+                      <div>
+                        <strong className="text-indigo-900 dark:text-indigo-300">Reflection and Looping</strong>
+                        <p className="text-gray-700 dark:text-gray-300 text-sm mt-1">The agent can analyze intermediate results and, if necessary, loop back to refine its plan or correct errors until the goal is achieved. This ability to learn and adapt from its actions is a key differentiator from simpler systems.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Best Practices */}
+              <div className="mb-10">
+                <h4 className="text-2xl font-bold text-pink-600 dark:text-pink-400 mb-4">Best Practices for Building with LLMs and AI Agents</h4>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  Building with LLMs and agents requires a thoughtful approach to engineering. Here are some key best practices:
+                </p>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/20 border border-pink-300 dark:border-pink-600 rounded-lg p-5">
+                    <h5 className="font-semibold text-pink-900 dark:text-pink-300 mb-3 flex items-center gap-2">
+                      <span className="text-2xl">📝</span> Prompt Engineering
+                    </h5>
+                    <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                      <li>• Use clear, simple language</li>
+                      <li>• Organize prompts into distinct, well-labeled sections</li>
+                      <li>• Curate a small set of diverse, high-quality examples</li>
+                      <li>• Guide the model&apos;s behavior rather than listing every edge case</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-300 dark:border-blue-600 rounded-lg p-5">
+                    <h5 className="font-semibold text-blue-900 dark:text-blue-300 mb-3 flex items-center gap-2">
+                      <span className="text-2xl">🛠️</span> Tool Design
+                    </h5>
+                    <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                      <li>• Tools should be well-documented and self-contained</li>
+                      <li>• Clear, unambiguous functionality</li>
+                      <li>• If a human can&apos;t easily decide which tool to use, the agent will struggle</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20 border border-green-300 dark:border-green-600 rounded-lg p-5">
+                    <h5 className="font-semibold text-green-900 dark:text-green-300 mb-3 flex items-center gap-2">
+                      <span className="text-2xl">🔄</span> Iterative Development
+                    </h5>
+                    <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                      <li>• Start with a simple prototype using the most capable model</li>
+                      <li>• Establish a performance baseline</li>
+                      <li>• Optimize for cost and latency by swapping in smaller models</li>
+                      <li>• Only where they can achieve acceptable results</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-300 dark:border-purple-600 rounded-lg p-5">
+                    <h5 className="font-semibold text-purple-900 dark:text-purple-300 mb-3 flex items-center gap-2">
+                      <span className="text-2xl">👁️</span> Observability
+                    </h5>
+                    <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                      <li>• High degree of observability is essential</li>
+                      <li>• Implement robust logging and monitoring</li>
+                      <li>• Track the agent&apos;s decision-making process</li>
+                      <li>• Identify points of failure and make targeted improvements</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Conclusion */}
+              <div className="bg-gradient-to-br from-blue-500 to-purple-600 dark:from-blue-600 dark:to-purple-700 rounded-xl p-8 text-white">
+                <h4 className="text-2xl font-bold mb-4">🎓 Key Takeaway</h4>
+                <p className="text-blue-50 dark:text-blue-100 leading-relaxed">
+                  By understanding these fundamental concepts and adhering to these best practices, developers can harness the power of LLMs and AI agents to build increasingly sophisticated and useful applications. Remember: LLMs are the foundation, agents are the architects, and thoughtful engineering is what brings it all together.
+                </p>
               </div>
             </div>
           )}
