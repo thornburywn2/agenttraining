@@ -58,7 +58,7 @@ export function App(): JSX.Element {
                 AGENTS.md Training
               </h1>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 dark:text-gray-300">
               <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full font-medium">
                 Ports: 5175 (UI) / 5176 (API)
               </span>
@@ -77,7 +77,7 @@ export function App(): JSX.Element {
           >
             Understanding AGENTS.md
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-gray-600 dark:text-gray-400 dark:text-gray-300 max-w-3xl mx-auto mb-8">
             An <strong className="text-blue-600 dark:text-blue-400">open standard</strong> for AI agent instructions.
             Learn how AGENTS.md enables seamless collaboration between{' '}
             <strong className="text-purple-600 dark:text-purple-400">human developers</strong> and{' '}
@@ -205,7 +205,7 @@ export function App(): JSX.Element {
                 </p>
 
                 <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-6 mb-6">
-                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 mb-3">
+                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-3">
                     📝 The Problem AGENTS.md Solves
                   </h4>
                   <div className="space-y-3 text-sm text-blue-800 dark:text-blue-300">
@@ -231,7 +231,7 @@ export function App(): JSX.Element {
                 </div>
 
                 <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-300 rounded-lg p-6 mb-6">
-                  <h4 className="text-xl font-semibold text-purple-900 dark:text-purple-300 mb-3">
+                  <h4 className="text-xl font-semibold text-purple-900 dark:text-purple-300 dark:text-purple-300 mb-3">
                     🤖 Supported AI Tools (20+)
                   </h4>
                   <div className="grid md:grid-cols-3 gap-3 text-sm">
@@ -338,24 +338,24 @@ export function App(): JSX.Element {
                 </div>
 
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border-2 border-blue-300 rounded-lg p-6 mb-6">
-                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 mb-3">
+                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-3">
                     🎯 Core Principles of AGENTS.md
                   </h4>
                   <div className="space-y-3 text-sm">
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">📝 Clear & Specific</p>
+                      <p className="font-semibold text-blue-800 mb-1">📝 Clear & Specific</p>
                       <p className="text-gray-700 dark:text-gray-300">Write explicit instructions. AI agents follow exactly what you say, so be precise about data types, validation rules, and error handling.</p>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">🔒 Security-First</p>
+                      <p className="font-semibold text-blue-800 mb-1">🔒 Security-First</p>
                       <p className="text-gray-700 dark:text-gray-300">Define mandatory security rules: input validation with Zod, no secrets in code, use environment variables, SQL injection prevention.</p>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">🧪 Quality Standards</p>
+                      <p className="font-semibold text-blue-800 mb-1">🧪 Quality Standards</p>
                       <p className="text-gray-700 dark:text-gray-300">Set clear quality gates: 80%+ test coverage, TypeScript strict mode, no linting errors, proper error handling.</p>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">📚 Examples Over Theory</p>
+                      <p className="font-semibold text-blue-800 mb-1">📚 Examples Over Theory</p>
                       <p className="text-gray-700 dark:text-gray-300">Show code examples of what TO do and what NOT to do. AI agents learn better from examples than descriptions.</p>
                     </div>
                   </div>
@@ -484,7 +484,7 @@ export function App(): JSX.Element {
                 </div>
 
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200 rounded-lg p-6 mb-6">
-                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 mb-3">
+                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-3">
                     📂 Example Project Structure with AGENTS.md
                   </h4>
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded text-xs overflow-x-auto">
@@ -971,7 +971,7 @@ class MyAgent(Agent):
 
                   <div className="grid md:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <p className="font-semibold text-green-700 dark:text-green-400 mb-2">✅ Pros (When to Use):</p>
+                      <p className="font-semibold text-green-700 mb-2">✅ Pros (When to Use):</p>
                       <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
                         <li>Lightning-fast development with Vite HMR</li>
                         <li>Large ecosystem of React components</li>
@@ -982,7 +982,7 @@ class MyAgent(Agent):
                       </ul>
                     </div>
                     <div>
-                      <p className="font-semibold text-red-700 dark:text-red-400 mb-2">❌ Cons (When NOT to Use):</p>
+                      <p className="font-semibold text-red-700 mb-2">❌ Cons (When NOT to Use):</p>
                       <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
                         <li>Client-side rendering = poor initial SEO</li>
                         <li>Not ideal for content-heavy marketing sites</li>
@@ -1028,7 +1028,7 @@ class MyAgent(Agent):
 
                   <div className="grid md:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <p className="font-semibold text-green-700 dark:text-green-400 mb-2">✅ Pros (When to Use):</p>
+                      <p className="font-semibold text-green-700 mb-2">✅ Pros (When to Use):</p>
                       <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
                         <li>Excellent SEO with server-side rendering (SSR)</li>
                         <li>Static site generation (SSG) for fast page loads</li>
@@ -1039,7 +1039,7 @@ class MyAgent(Agent):
                       </ul>
                     </div>
                     <div>
-                      <p className="font-semibold text-red-700 dark:text-red-400 mb-2">❌ Cons (When NOT to Use):</p>
+                      <p className="font-semibold text-red-700 mb-2">❌ Cons (When NOT to Use):</p>
                       <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
                         <li>More complex deployment than simple SPAs</li>
                         <li>Server costs (requires Node.js hosting)</li>
@@ -1085,7 +1085,7 @@ class MyAgent(Agent):
 
                   <div className="grid md:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <p className="font-semibold text-green-700 dark:text-green-400 mb-2">✅ Pros (When to Use):</p>
+                      <p className="font-semibold text-green-700 mb-2">✅ Pros (When to Use):</p>
                       <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
                         <li>Smallest bundle size (Svelte compiles to vanilla JS)</li>
                         <li>Blazing fast performance</li>
@@ -1096,7 +1096,7 @@ class MyAgent(Agent):
                       </ul>
                     </div>
                     <div>
-                      <p className="font-semibold text-red-700 dark:text-red-400 mb-2">❌ Cons (When NOT to Use):</p>
+                      <p className="font-semibold text-red-700 mb-2">❌ Cons (When NOT to Use):</p>
                       <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
                         <li>Smaller Svelte ecosystem vs React</li>
                         <li>SQLite not suitable for high-concurrency apps</li>
@@ -1142,7 +1142,7 @@ class MyAgent(Agent):
 
                   <div className="grid md:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <p className="font-semibold text-green-700 dark:text-green-400 mb-2">✅ Pros (When to Use):</p>
+                      <p className="font-semibold text-green-700 mb-2">✅ Pros (When to Use):</p>
                       <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
                         <li>Enterprise-grade security and compliance (Azure)</li>
                         <li>Serverless scaling (pay per use)</li>
@@ -1153,7 +1153,7 @@ class MyAgent(Agent):
                       </ul>
                     </div>
                     <div>
-                      <p className="font-semibold text-red-700 dark:text-red-400 mb-2">❌ Cons (When NOT to Use):</p>
+                      <p className="font-semibold text-red-700 mb-2">❌ Cons (When NOT to Use):</p>
                       <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
                         <li>Higher costs at scale (cloud services)</li>
                         <li>Vendor lock-in to Azure ecosystem</li>
@@ -1199,7 +1199,7 @@ class MyAgent(Agent):
 
                   <div className="grid md:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <p className="font-semibold text-green-700 dark:text-green-400 mb-2">✅ Pros (When to Use):</p>
+                      <p className="font-semibold text-green-700 mb-2">✅ Pros (When to Use):</p>
                       <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
                         <li>Fastest time to MVP (simple, intuitive APIs)</li>
                         <li>Vue is easier to learn than React</li>
@@ -1210,7 +1210,7 @@ class MyAgent(Agent):
                       </ul>
                     </div>
                     <div>
-                      <p className="font-semibold text-red-700 dark:text-red-400 mb-2">❌ Cons (When NOT to Use):</p>
+                      <p className="font-semibold text-red-700 mb-2">❌ Cons (When NOT to Use):</p>
                       <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
                         <li>Vue ecosystem smaller than React</li>
                         <li>Hono is newer with fewer resources</li>
@@ -1242,7 +1242,7 @@ class MyAgent(Agent):
                       <tbody>
                         <tr className="bg-white dark:bg-gray-800">
                           <td className="p-2 border border-gray-300 dark:border-gray-600">SEO is critical</td>
-                          <td className="p-2 border border-gray-300 dark:border-gray-600 font-semibold text-green-700 dark:text-green-400">Stack #2 (Next.js)</td>
+                          <td className="p-2 border border-gray-300 dark:border-gray-600 font-semibold text-green-700">Stack #2 (Next.js)</td>
                           <td className="p-2 border border-gray-300 dark:border-gray-600">Server-side rendering for search engines</td>
                         </tr>
                         <tr className="bg-gray-50 dark:bg-gray-800">
@@ -1298,7 +1298,7 @@ class MyAgent(Agent):
                   <h4 className="text-2xl font-semibold text-purple-900 dark:text-purple-300 mb-3">
                     🚀 What is "Vibe Coding"?
                   </h4>
-                  <p className="text-purple-800 dark:text-purple-300 mb-4">
+                  <p className="text-purple-800 mb-4">
                     <strong>Vibe coding</strong> is the practice of rapidly building applications by collaborating with AI agents.
                     Instead of spending weeks on boilerplate and configuration, you describe what you want, and AI helps you build it—fast.
                   </p>
@@ -1335,7 +1335,7 @@ class MyAgent(Agent):
                       <Rocket className="w-8 h-8 text-blue-600" aria-hidden="true" />
                     </div>
                     <div className="flex-1">
-                      <h5 className="text-xl font-semibold text-blue-900 dark:text-blue-300 mb-2">
+                      <h5 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-2">
                         Team Onboarding Portal (Azure VDI)
                       </h5>
                       <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
@@ -1437,7 +1437,7 @@ class MyAgent(Agent):
                       <Dog className="w-8 h-8 text-purple-600" aria-hidden="true" />
                     </div>
                     <div className="flex-1">
-                      <h5 className="text-xl font-semibold text-purple-900 dark:text-purple-300 mb-2">
+                      <h5 className="text-xl font-semibold text-purple-900 dark:text-purple-300 dark:text-purple-300 mb-2">
                         Puppy Trainer (Windows Remote Training)
                       </h5>
                       <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
@@ -1612,7 +1612,7 @@ class MyAgent(Agent):
                         </p>
                         <div className="grid md:grid-cols-3 gap-3 text-sm">
                           <div className="bg-teal-50 rounded p-2">
-                            <p className="font-semibold text-teal-800 dark:text-teal-300">Features</p>
+                            <p className="font-semibold text-teal-800">Features</p>
                             <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                               <li>• Real-time log streaming</li>
                               <li>• Custom query builder</li>
@@ -1663,7 +1663,7 @@ class MyAgent(Agent):
                         </p>
                         <div className="grid md:grid-cols-3 gap-3 text-sm">
                           <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded p-2">
-                            <p className="font-semibold text-indigo-800 dark:text-indigo-300">Capabilities</p>
+                            <p className="font-semibold text-indigo-800">Capabilities</p>
                             <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                               <li>• Regex pattern matching</li>
                               <li>• Anomaly detection</li>
@@ -1765,7 +1765,7 @@ class MyAgent(Agent):
                         </p>
                         <div className="grid md:grid-cols-3 gap-3 text-sm">
                           <div className="bg-cyan-50 rounded p-2">
-                            <p className="font-semibold text-cyan-800 dark:text-cyan-300">Collected Data</p>
+                            <p className="font-semibold text-cyan-800">Collected Data</p>
                             <ul className="text-gray-700 dark:text-gray-300 text-xs mt-1 space-y-1">
                               <li>• Hardware specs</li>
                               <li>• Installed software</li>
@@ -1887,7 +1887,7 @@ class MyAgent(Agent):
                     </div>
 
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-blue-500">
-                      <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-3 text-lg">What You Still Own:</h5>
+                      <h5 className="font-semibold text-blue-800 mb-3 text-lg">What You Still Own:</h5>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-2">
                         <li className="flex items-start gap-2">
                           <span className="text-blue-600">🎯</span>
@@ -1962,7 +1962,7 @@ class MyAgent(Agent):
 
                   {/* Pattern 1 */}
                   <div className="bg-white dark:bg-gray-800 border-2 border-purple-300 rounded-lg p-6 mb-4">
-                    <h5 className="text-xl font-semibold text-purple-900 dark:text-purple-300 mb-3">
+                    <h5 className="text-xl font-semibold text-purple-900 dark:text-purple-300 dark:text-purple-300 mb-3">
                       1. Start with Clear Requirements (AGENTS.md)
                     </h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
@@ -1970,7 +1970,7 @@ class MyAgent(Agent):
                       This gives AI consistent context and reduces hallucinations.
                     </p>
                     <div className="bg-purple-50 dark:bg-purple-900/20 rounded p-3">
-                      <p className="text-sm font-semibold text-purple-800 dark:text-purple-300 mb-2">Example Prompt:</p>
+                      <p className="text-sm font-semibold text-purple-800 mb-2">Example Prompt:</p>
                       <code className="text-sm text-gray-800 dark:text-gray-200">
                         "Following the AGENTS.md file, create a user authentication API with email/password login using Fastify, Prisma, and JWT."
                       </code>
@@ -1987,7 +1987,7 @@ class MyAgent(Agent):
                       This prevents overwhelming complexity and makes debugging easier.
                     </p>
                     <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded p-3 space-y-2">
-                      <p className="text-sm font-semibold text-indigo-800 dark:text-indigo-300">Good Sequence:</p>
+                      <p className="text-sm font-semibold text-indigo-800">Good Sequence:</p>
                       <ol className="text-sm text-gray-800 dark:text-gray-200 list-decimal list-inside space-y-1">
                         <li>Create database schema → Test migrations</li>
                         <li>Build API endpoint → Test with Postman/curl</li>
@@ -2007,7 +2007,7 @@ class MyAgent(Agent):
                       AI is great at structure, you're better at strategy.
                     </p>
                     <div className="bg-teal-50 rounded p-3">
-                      <p className="text-sm font-semibold text-teal-800 dark:text-teal-300 mb-2">Example:</p>
+                      <p className="text-sm font-semibold text-teal-800 mb-2">Example:</p>
                       <p className="text-sm text-gray-800 dark:text-gray-200">
                         <strong>AI generates:</strong> REST API with CRUD endpoints<br />
                         <strong>You add:</strong> Custom pricing logic, discount rules, inventory checks
@@ -2025,7 +2025,7 @@ class MyAgent(Agent):
                       Never blindly accept generated code, especially for authentication, payments, or data handling.
                     </p>
                     <div className="bg-orange-50 dark:bg-orange-900/20 rounded p-3">
-                      <p className="text-sm font-semibold text-orange-800 dark:text-orange-300 mb-2">Validation Checklist:</p>
+                      <p className="text-sm font-semibold text-orange-800 mb-2">Validation Checklist:</p>
                       <ul className="text-sm text-gray-800 dark:text-gray-200 space-y-1">
                         <li>✓ Does it compile/run without errors?</li>
                         <li>✓ Does it handle edge cases (null, empty, invalid input)?</li>
@@ -2046,7 +2046,7 @@ class MyAgent(Agent):
                       AI excels at identifying code smells and suggesting improvements.
                     </p>
                     <div className="bg-pink-50 dark:bg-pink-900/20 rounded p-3">
-                      <p className="text-sm font-semibold text-pink-800 dark:text-pink-300 mb-2">Example Prompts:</p>
+                      <p className="text-sm font-semibold text-pink-800 mb-2">Example Prompts:</p>
                       <ul className="text-sm text-gray-800 dark:text-gray-200 space-y-1">
                         <li>"Refactor this function to reduce complexity (Cyclomatic &lt; 10)"</li>
                         <li>"Optimize this database query to reduce N+1 problems"</li>
@@ -2098,7 +2098,7 @@ class MyAgent(Agent):
                   </h4>
                   <div className="grid md:grid-cols-3 gap-4 text-sm">
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
-                      <h5 className="font-semibold text-purple-800 dark:text-purple-300 mb-2">Speed Gains</h5>
+                      <h5 className="font-semibold text-purple-800 mb-2">Speed Gains</h5>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Boilerplate: <strong>80% faster</strong></li>
                         <li>• CRUD APIs: <strong>70% faster</strong></li>
@@ -2108,7 +2108,7 @@ class MyAgent(Agent):
                       </ul>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
-                      <h5 className="font-semibold text-purple-800 dark:text-purple-300 mb-2">Quality Improvements</h5>
+                      <h5 className="font-semibold text-purple-800 mb-2">Quality Improvements</h5>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Fewer bugs (AI catches edge cases)</li>
                         <li>• Better accessibility (AI knows WCAG)</li>
@@ -2118,7 +2118,7 @@ class MyAgent(Agent):
                       </ul>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
-                      <h5 className="font-semibold text-purple-800 dark:text-purple-300 mb-2">Learning Acceleration</h5>
+                      <h5 className="font-semibold text-purple-800 mb-2">Learning Acceleration</h5>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Learn new frameworks faster</li>
                         <li>• Understand unfamiliar codebases</li>
@@ -2132,7 +2132,7 @@ class MyAgent(Agent):
 
                 {/* Real-World Workflow */}
                 <div className="bg-blue-50 border-2 border-blue-400 dark:border-blue-600 rounded-lg p-6">
-                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 mb-3">
+                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-3">
                     📝 Real-World Workflow Example
                   </h4>
                   <ol className="space-y-3 text-gray-700 dark:text-gray-300">
@@ -2201,7 +2201,7 @@ class MyAgent(Agent):
                 </p>
 
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border-2 border-blue-300 rounded-lg p-6 mb-6">
-                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 mb-3">
+                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-3">
                     📂 File Location: ~/AGENTS.md
                   </h4>
                   <p className="text-sm text-blue-800 dark:text-blue-300 mb-3">
@@ -3403,7 +3403,7 @@ This project follows the **AGENTS.md** open standard for AI agent instructions:
 
                   {/* Resources */}
                   <div className="bg-white dark:bg-gray-800 border-2 border-blue-300 rounded-lg p-6 mb-4">
-                    <h5 className="text-xl font-semibold text-blue-900 dark:text-blue-300 mb-3">2. Resources (Data Access)</h5>
+                    <h5 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-3">2. Resources (Data Access)</h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       <strong>What:</strong> Data sources that the AI can read from (databases, files, APIs, web pages).
                     </p>
@@ -3425,7 +3425,7 @@ This project follows the **AGENTS.md** open standard for AI agent instructions:
 
                   {/* Tools */}
                   <div className="bg-white dark:bg-gray-800 border-2 border-purple-300 rounded-lg p-6 mb-4">
-                    <h5 className="text-xl font-semibold text-purple-900 dark:text-purple-300 mb-3">3. Tools (Actions & Operations)</h5>
+                    <h5 className="text-xl font-semibold text-purple-900 dark:text-purple-300 dark:text-purple-300 mb-3">3. Tools (Actions & Operations)</h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       <strong>What:</strong> Executable functions that the AI can call to perform actions (create records, send emails, run scripts).
                     </p>
@@ -3491,7 +3491,7 @@ npm install -g @modelcontextprotocol/server-postgres`}
                   </div>
 
                   <div className="bg-gradient-to-r from-blue-50 to-teal-50 dark:from-blue-900/20 dark:to-teal-900/20 border-2 border-blue-400 dark:border-blue-600 rounded-lg p-6 mb-6">
-                    <h5 className="text-xl font-semibold text-blue-900 dark:text-blue-300 mb-3">Step 2: Configure CodePuppy to Use the Server</h5>
+                    <h5 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-3">Step 2: Configure CodePuppy to Use the Server</h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       Add the MCP server to your CodePuppy configuration file. This tells CodePuppy where to find the server and what permissions to use.
                     </p>
@@ -3522,7 +3522,7 @@ npm install -g @modelcontextprotocol/server-postgres`}
                   </div>
 
                   <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-400 dark:border-purple-600 rounded-lg p-6 mb-6">
-                    <h5 className="text-xl font-semibold text-purple-900 dark:text-purple-300 mb-3">Step 3: Document MCP Servers in AGENTS.md</h5>
+                    <h5 className="text-xl font-semibold text-purple-900 dark:text-purple-300 dark:text-purple-300 mb-3">Step 3: Document MCP Servers in AGENTS.md</h5>
                     <p className="text-gray-700 dark:text-gray-300 mb-3">
                       Add MCP server configurations to your <strong>AGENTS.md</strong> file so your team (and AI assistants) know what tools are available.
                       This ensures consistent usage across your organization.
@@ -3892,7 +3892,7 @@ if __name__ == "__main__":
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4 text-sm">
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
-                      <p className="font-semibold text-purple-800 dark:text-purple-300 mb-2">Internal Tools</p>
+                      <p className="font-semibold text-purple-800 mb-2">Internal Tools</p>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Connect to internal databases (user data, analytics)</li>
                         <li>• Query enterprise APIs (CRM, ticketing systems)</li>
@@ -3901,7 +3901,7 @@ if __name__ == "__main__":
                       </ul>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
-                      <p className="font-semibold text-purple-800 dark:text-purple-300 mb-2">Development Workflows</p>
+                      <p className="font-semibold text-purple-800 mb-2">Development Workflows</p>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Read/write project files and codebases</li>
                         <li>• Execute tests and view results</li>
@@ -3910,7 +3910,7 @@ if __name__ == "__main__":
                       </ul>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
-                      <p className="font-semibold text-purple-800 dark:text-purple-300 mb-2">Data Analysis</p>
+                      <p className="font-semibold text-purple-800 mb-2">Data Analysis</p>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Query SQL/NoSQL databases in natural language</li>
                         <li>• Generate reports from business data</li>
@@ -3919,7 +3919,7 @@ if __name__ == "__main__":
                       </ul>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
-                      <p className="font-semibold text-purple-800 dark:text-purple-300 mb-2">DevOps & Infrastructure</p>
+                      <p className="font-semibold text-purple-800 mb-2">DevOps & Infrastructure</p>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Monitor server health and logs</li>
                         <li>• Deploy applications via CI/CD</li>
@@ -3932,30 +3932,30 @@ if __name__ == "__main__":
 
                 {/* Resources & Next Steps */}
                 <div className="bg-blue-50 border-2 border-blue-400 dark:border-blue-600 rounded-lg p-6">
-                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 mb-3">
+                  <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 dark:text-blue-300 mb-3">
                     📚 Learn More & Get Started
                   </h4>
                   <div className="space-y-3 text-sm">
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Official Documentation</p>
+                      <p className="font-semibold text-blue-800 mb-1">Official Documentation</p>
                       <a href="https://modelcontextprotocol.io/docs/getting-started/intro" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                         https://modelcontextprotocol.io/docs/getting-started/intro
                       </a>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">GitHub Repository</p>
+                      <p className="font-semibold text-blue-800 mb-1">GitHub Repository</p>
                       <a href="https://github.com/modelcontextprotocol" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                         https://github.com/modelcontextprotocol
                       </a>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Pre-built MCP Servers</p>
+                      <p className="font-semibold text-blue-800 mb-1">Pre-built MCP Servers</p>
                       <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                         https://github.com/modelcontextprotocol/servers
                       </a>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                      <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Quick Start Guide</p>
+                      <p className="font-semibold text-blue-800 mb-1">Quick Start Guide</p>
                       <p className="text-gray-700 dark:text-gray-300">
                         1. Install an MCP server: <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">npm install -g @modelcontextprotocol/server-filesystem</code><br />
                         2. Configure Claude Code (add to config.json)<br />
@@ -3989,7 +3989,7 @@ if __name__ == "__main__":
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-6">
                   <ul className="space-y-3">
                     <li>
-                      <a href="https://agents.md" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 dark:text-blue-300 font-semibold underline">
+                      <a href="https://agents.md" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 font-semibold underline">
                         https://agents.md
                       </a>
                       <span className="text-gray-700 dark:text-gray-300"> - Official AGENTS.md standard website</span>
@@ -3997,14 +3997,14 @@ if __name__ == "__main__":
                     <li>
                       <span className="font-semibold text-gray-800 dark:text-gray-200">Supported AI Tools (20+):</span>
                       <ul className="ml-6 mt-2 space-y-2 text-gray-700 dark:text-gray-300">
-                        <li><a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 dark:text-blue-300 underline">GitHub Copilot</a></li>
-                        <li><a href="https://cursor.sh" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 dark:text-blue-300 underline">Cursor IDE</a></li>
-                        <li><a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 dark:text-blue-300 underline">Claude AI</a></li>
-                        <li><a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 dark:text-blue-300 underline">Google Gemini</a></li>
-                        <li><a href="https://www.tabnine.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 dark:text-blue-300 underline">Tabnine</a></li>
-                        <li><a href="https://codeium.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 dark:text-blue-300 underline">Codeium</a></li>
-                        <li><a href="https://www.phind.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 dark:text-blue-300 underline">Phind</a></li>
-                        <li><a href="https://www.sourcegraph.com/cody" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 dark:text-blue-300 underline">Sourcegraph Cody</a></li>
+                        <li><a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">GitHub Copilot</a></li>
+                        <li><a href="https://cursor.sh" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Cursor IDE</a></li>
+                        <li><a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Claude AI</a></li>
+                        <li><a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Google Gemini</a></li>
+                        <li><a href="https://www.tabnine.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Tabnine</a></li>
+                        <li><a href="https://codeium.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Codeium</a></li>
+                        <li><a href="https://www.phind.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Phind</a></li>
+                        <li><a href="https://www.sourcegraph.com/cody" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Sourcegraph Cody</a></li>
                         <li>...and 12+ more tools</li>
                       </ul>
                     </li>
@@ -4021,13 +4021,13 @@ if __name__ == "__main__":
                 <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg p-6">
                   <ul className="space-y-3">
                     <li>
-                      <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 dark:text-purple-300 font-semibold underline">
+                      <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 font-semibold underline">
                         https://modelcontextprotocol.io
                       </a>
                       <span className="text-gray-700 dark:text-gray-300"> - Official MCP documentation</span>
                     </li>
                     <li>
-                      <a href="https://github.com/modelcontextprotocol" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 dark:text-purple-300 font-semibold underline">
+                      <a href="https://github.com/modelcontextprotocol" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 font-semibold underline">
                         https://github.com/modelcontextprotocol
                       </a>
                       <span className="text-gray-700 dark:text-gray-300"> - MCP GitHub organization</span>
@@ -4035,22 +4035,22 @@ if __name__ == "__main__":
                     <li>
                       <span className="font-semibold text-gray-800 dark:text-gray-200">Official SDKs:</span>
                       <ul className="ml-6 mt-2 space-y-2 text-gray-700 dark:text-gray-300">
-                        <li><a href="https://github.com/modelcontextprotocol/typescript-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 dark:text-purple-300 underline">TypeScript SDK</a> - Node.js and browser support</li>
-                        <li><a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 dark:text-purple-300 underline">Python SDK</a> - Python 3.10+ support</li>
-                        <li><a href="https://github.com/modelcontextprotocol/csharp-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 dark:text-purple-300 underline">C# SDK</a> - .NET and Microsoft ecosystem</li>
-                        <li><a href="https://github.com/modelcontextprotocol/java-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 dark:text-purple-300 underline">Java SDK</a> - Java 11+ and Android</li>
-                        <li><a href="https://github.com/modelcontextprotocol/go-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 dark:text-purple-300 underline">Go SDK</a> - Go 1.20+ support</li>
-                        <li><a href="https://github.com/modelcontextprotocol/php-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 dark:text-purple-300 underline">PHP SDK</a> - PHP 8.1+ support</li>
+                        <li><a href="https://github.com/modelcontextprotocol/typescript-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 underline">TypeScript SDK</a> - Node.js and browser support</li>
+                        <li><a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 underline">Python SDK</a> - Python 3.10+ support</li>
+                        <li><a href="https://github.com/modelcontextprotocol/csharp-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 underline">C# SDK</a> - .NET and Microsoft ecosystem</li>
+                        <li><a href="https://github.com/modelcontextprotocol/java-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 underline">Java SDK</a> - Java 11+ and Android</li>
+                        <li><a href="https://github.com/modelcontextprotocol/go-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 underline">Go SDK</a> - Go 1.20+ support</li>
+                        <li><a href="https://github.com/modelcontextprotocol/php-sdk" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 underline">PHP SDK</a> - PHP 8.1+ support</li>
                       </ul>
                     </li>
                     <li>
-                      <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 dark:text-purple-300 font-semibold underline">
+                      <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 font-semibold underline">
                         https://github.com/modelcontextprotocol/servers
                       </a>
                       <span className="text-gray-700 dark:text-gray-300"> - Official MCP reference servers</span>
                     </li>
                     <li>
-                      <a href="https://github.com/modelcontextprotocol/docs" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 dark:text-purple-300 font-semibold underline">
+                      <a href="https://github.com/modelcontextprotocol/docs" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 font-semibold underline">
                         https://github.com/modelcontextprotocol/docs
                       </a>
                       <span className="text-gray-700 dark:text-gray-300"> - MCP documentation repository</span>
@@ -4068,19 +4068,19 @@ if __name__ == "__main__":
                 <div className="bg-gradient-to-r from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20 rounded-lg p-6">
                   <ul className="space-y-3">
                     <li>
-                      <a href="https://developer.servicenow.com/dev.do" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800 dark:text-green-300 font-semibold underline">
+                      <a href="https://developer.servicenow.com/dev.do" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800 font-semibold underline">
                         ServiceNow Developer Portal
                       </a>
                       <span className="text-gray-700 dark:text-gray-300"> - REST API documentation, OAuth setup, incident management</span>
                     </li>
                     <li>
-                      <a href="https://developer.atlassian.com/cloud/confluence/rest/v2/intro/" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800 dark:text-green-300 font-semibold underline">
+                      <a href="https://developer.atlassian.com/cloud/confluence/rest/v2/intro/" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800 font-semibold underline">
                         Atlassian Confluence REST API v2
                       </a>
                       <span className="text-gray-700 dark:text-gray-300"> - Content API, search, page creation and updates</span>
                     </li>
                     <li>
-                      <a href="https://learn.microsoft.com/en-us/graph/" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800 dark:text-green-300 font-semibold underline">
+                      <a href="https://learn.microsoft.com/en-us/graph/" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800 font-semibold underline">
                         Microsoft Graph API
                       </a>
                       <span className="text-gray-700 dark:text-gray-300"> - Teams, Outlook, OneDrive, SharePoint integration</span>
@@ -4100,36 +4100,36 @@ if __name__ == "__main__":
                     <div>
                       <h5 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Frontend Frameworks</h5>
                       <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                        <li><a href="https://react.dev" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 dark:text-orange-300 underline">React</a> - UI library</li>
-                        <li><a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 dark:text-orange-300 underline">Next.js</a> - React framework with SSR</li>
-                        <li><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 dark:text-orange-300 underline">Vue.js</a> - Progressive framework</li>
-                        <li><a href="https://svelte.dev" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 dark:text-orange-300 underline">Svelte</a> - Compiler framework</li>
-                        <li><a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 dark:text-orange-300 underline">Vite</a> - Build tool</li>
+                        <li><a href="https://react.dev" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">React</a> - UI library</li>
+                        <li><a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Next.js</a> - React framework with SSR</li>
+                        <li><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Vue.js</a> - Progressive framework</li>
+                        <li><a href="https://svelte.dev" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Svelte</a> - Compiler framework</li>
+                        <li><a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Vite</a> - Build tool</li>
                       </ul>
                     </div>
                     <div>
                       <h5 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Backend Frameworks</h5>
                       <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                        <li><a href="https://fastify.dev" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 dark:text-orange-300 underline">Fastify</a> - Fast Node.js framework</li>
-                        <li><a href="https://expressjs.com" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 dark:text-orange-300 underline">Express</a> - Minimal Node.js framework</li>
-                        <li><a href="https://hono.dev" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 dark:text-orange-300 underline">Hono</a> - Ultrafast web framework</li>
-                        <li><a href="https://www.prisma.io" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 dark:text-orange-300 underline">Prisma</a> - Next-gen ORM</li>
+                        <li><a href="https://fastify.dev" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Fastify</a> - Fast Node.js framework</li>
+                        <li><a href="https://expressjs.com" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Express</a> - Minimal Node.js framework</li>
+                        <li><a href="https://hono.dev" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Hono</a> - Ultrafast web framework</li>
+                        <li><a href="https://www.prisma.io" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Prisma</a> - Next-gen ORM</li>
                       </ul>
                     </div>
                     <div>
                       <h5 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Styling & UI</h5>
                       <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                        <li><a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 dark:text-orange-300 underline">Tailwind CSS</a> - Utility-first CSS</li>
-                        <li><a href="https://ui.shadcn.com" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 dark:text-orange-300 underline">shadcn/ui</a> - Re-usable components</li>
-                        <li><a href="https://mui.com" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 dark:text-orange-300 underline">Material-UI</a> - React components</li>
+                        <li><a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Tailwind CSS</a> - Utility-first CSS</li>
+                        <li><a href="https://ui.shadcn.com" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">shadcn/ui</a> - Re-usable components</li>
+                        <li><a href="https://mui.com" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">Material-UI</a> - React components</li>
                       </ul>
                     </div>
                     <div>
                       <h5 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Databases</h5>
                       <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                        <li><a href="https://www.postgresql.org" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 dark:text-orange-300 underline">PostgreSQL</a> - Relational database</li>
-                        <li><a href="https://www.mongodb.com" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 dark:text-orange-300 underline">MongoDB</a> - NoSQL database</li>
-                        <li><a href="https://www.sqlite.org" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 dark:text-orange-300 underline">SQLite</a> - Embedded database</li>
+                        <li><a href="https://www.postgresql.org" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">PostgreSQL</a> - Relational database</li>
+                        <li><a href="https://www.mongodb.com" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">MongoDB</a> - NoSQL database</li>
+                        <li><a href="https://www.sqlite.org" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-800 underline">SQLite</a> - Embedded database</li>
                       </ul>
                     </div>
                   </div>
@@ -4145,13 +4145,13 @@ if __name__ == "__main__":
                 <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg p-6">
                   <ul className="space-y-3">
                     <li>
-                      <a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 dark:text-blue-300 font-semibold underline">
+                      <a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 font-semibold underline">
                         TypeScript
                       </a>
                       <span className="text-gray-700 dark:text-gray-300"> - Typed superset of JavaScript</span>
                     </li>
                     <li>
-                      <a href="https://zod.dev" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 dark:text-blue-300 font-semibold underline">
+                      <a href="https://zod.dev" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 font-semibold underline">
                         Zod
                       </a>
                       <span className="text-gray-700 dark:text-gray-300"> - TypeScript-first schema validation</span>
@@ -4169,13 +4169,13 @@ if __name__ == "__main__":
                 <div className="bg-gradient-to-r from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/20 rounded-lg p-6">
                   <ul className="space-y-3">
                     <li>
-                      <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-800 dark:text-pink-300 font-semibold underline">
+                      <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-800 font-semibold underline">
                         MCP Community Servers
                       </a>
                       <span className="text-gray-700 dark:text-gray-300"> - Browse and contribute MCP server implementations</span>
                     </li>
                     <li>
-                      <a href="https://agents.md" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-800 dark:text-pink-300 font-semibold underline">
+                      <a href="https://agents.md" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-800 font-semibold underline">
                         AGENTS.md Examples
                       </a>
                       <span className="text-gray-700 dark:text-gray-300"> - Community-contributed AGENTS.md files</span>
