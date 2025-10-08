@@ -90,7 +90,7 @@ async function start(): Promise<void> {
     ╚════════════════════════════════════════════════════════════╝
     `)
   } catch (err) {
-    server.log.error(err)
+    console.error(err)
     process.exit(1)
   }
 }

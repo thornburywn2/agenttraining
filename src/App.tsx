@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Button } from './components/ui/button'
-import { Code2, Rocket, FileText, BookOpen, Sparkles, CheckCircle2, Dog, FileEdit, FileCode, Lightbulb, Copy, Check, Network, Brain, Moon, Sun } from 'lucide-react'
+import { Code2, Rocket, FileText, BookOpen, Sparkles, CheckCircle2, Dog, FileCode, Lightbulb, Copy, Check, Network, Brain, Moon, Sun } from 'lucide-react'
 
 export function App(): JSX.Element {
   const [activeTab, setActiveTab] = useState<'foundational' | 'overview' | 'structure' | 'codepuppy' | 'stacks' | 'examples' | 'patterns' | 'myagents' | 'mcp' | 'references'>('foundational')
