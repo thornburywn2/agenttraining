@@ -50,7 +50,7 @@ This directory contains automated CI/CD workflows for code quality, security, ac
 - **npm Audit:** Checks for vulnerable dependencies (moderate+ severity)
 - **CodeQL Analysis:** Deep semantic code analysis for security issues
 - **Dependency Review:** Reviews new dependencies in PRs
-- **Secret Scanning:** Detects accidentally committed secrets (API keys, tokens)
+- **Secret Scanning:** Filesystem scan for accidentally committed secrets (API keys, tokens)
 
 **What it catches:**
 - Vulnerable npm packages (CVEs)
