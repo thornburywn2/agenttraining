@@ -1961,7 +1961,7 @@ class MyAgent(Agent):
                   </h4>
 
                   {/* Pattern 1 */}
-                  <div className="bg-purple-50 dark:bg-purple-900/20 border-2 border-purple-300 dark:border-purple-600 rounded-lg p-6 mb-4">
+                  <div className="bg-white dark:bg-gray-800 border-2 border-purple-300 rounded-lg p-6 mb-4">
                     <h5 className="text-xl font-semibold text-purple-900 dark:text-purple-300 mb-3">
                       1. Start with Clear Requirements (AGENTS.md)
                     </h5>
@@ -1978,7 +1978,7 @@ class MyAgent(Agent):
                   </div>
 
                   {/* Pattern 2 */}
-                  <div className="bg-indigo-50 dark:bg-indigo-900/20 border-2 border-indigo-300 dark:border-indigo-600 rounded-lg p-6 mb-4">
+                  <div className="bg-white dark:bg-gray-800 border-2 border-indigo-300 dark:border-indigo-600 rounded-lg p-6 mb-4">
                     <h5 className="text-xl font-semibold text-indigo-900 dark:text-indigo-300 mb-3">
                       2. Iterate Incrementally
                     </h5>
@@ -1998,7 +1998,7 @@ class MyAgent(Agent):
                   </div>
 
                   {/* Pattern 3 */}
-                  <div className="bg-teal-50 dark:bg-teal-900/20 border-2 border-teal-300 dark:border-teal-600 rounded-lg p-6 mb-4">
+                  <div className="bg-white dark:bg-gray-800 border-2 border-teal-300 rounded-lg p-6 mb-4">
                     <h5 className="text-xl font-semibold text-teal-900 dark:text-teal-300 mb-3">
                       3. Let AI Handle Boilerplate, You Focus on Logic
                     </h5>
@@ -2016,7 +2016,7 @@ class MyAgent(Agent):
                   </div>
 
                   {/* Pattern 4 */}
-                  <div className="bg-orange-50 dark:bg-orange-900/20 border-2 border-orange-300 dark:border-orange-600 rounded-lg p-6 mb-4">
+                  <div className="bg-white dark:bg-gray-800 border-2 border-orange-300 rounded-lg p-6 mb-4">
                     <h5 className="text-xl font-semibold text-orange-900 dark:text-orange-300 mb-3">
                       4. Always Validate & Test AI Output
                     </h5>
@@ -2037,7 +2037,7 @@ class MyAgent(Agent):
                   </div>
 
                   {/* Pattern 5 */}
-                  <div className="bg-pink-50 dark:bg-pink-900/20 border-2 border-pink-300 dark:border-pink-600 rounded-lg p-6 mb-4">
+                  <div className="bg-white dark:bg-gray-800 border-2 border-pink-300 dark:border-pink-600 rounded-lg p-6 mb-4">
                     <h5 className="text-xl font-semibold text-pink-900 dark:text-pink-300 mb-3">
                       5. Use AI for Refactoring & Optimization
                     </h5>
@@ -2097,7 +2097,7 @@ class MyAgent(Agent):
                     🚀 Productivity Multipliers
                   </h4>
                   <div className="grid md:grid-cols-3 gap-4 text-sm">
-                    <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
                       <h5 className="font-semibold text-purple-800 dark:text-purple-300 mb-2">Speed Gains</h5>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Boilerplate: <strong>80% faster</strong></li>
@@ -2107,7 +2107,7 @@ class MyAgent(Agent):
                         <li>• Documentation: <strong>90% faster</strong></li>
                       </ul>
                     </div>
-                    <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
                       <h5 className="font-semibold text-purple-800 dark:text-purple-300 mb-2">Quality Improvements</h5>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Fewer bugs (AI catches edge cases)</li>
@@ -2117,7 +2117,7 @@ class MyAgent(Agent):
                         <li>• Up-to-date best practices</li>
                       </ul>
                     </div>
-                    <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-4">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
                       <h5 className="font-semibold text-purple-800 dark:text-purple-300 mb-2">Learning Acceleration</h5>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Learn new frameworks faster</li>
@@ -2208,15 +2208,15 @@ class MyAgent(Agent):
                     Version: 1.0.0 | Last Updated: 2025-10-07 | Framework: AGENTS.md Standard
                   </p>
                   <div className="grid md:grid-cols-3 gap-3 text-sm">
-                    <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
                       <p className="font-semibold text-blue-900 dark:text-blue-300 mb-1">Tech Stack</p>
                       <p className="text-gray-700 dark:text-gray-300">React 18 + TypeScript + Vite + Fastify + PostgreSQL</p>
                     </div>
-                    <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-3">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
                       <p className="font-semibold text-blue-900 dark:text-blue-300 mb-1">Testing</p>
                       <p className="text-gray-700 dark:text-gray-300">Vitest + React Testing Library (80%+ coverage)</p>
                     </div>
-                    <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-3">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
                       <p className="font-semibold text-blue-900 dark:text-blue-300 mb-1">Supported Tools</p>
                       <p className="text-gray-700 dark:text-gray-300">20+ AI tools (Copilot, Cursor, Claude Code, etc.)</p>
                     </div>
@@ -3891,7 +3891,7 @@ if __name__ == "__main__":
                     🌟 Real-World MCP Use Cases
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4 text-sm">
-                    <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
                       <p className="font-semibold text-purple-800 dark:text-purple-300 mb-2">Internal Tools</p>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Connect to internal databases (user data, analytics)</li>
@@ -3900,7 +3900,7 @@ if __name__ == "__main__":
                         <li>• Automate workflows (Jira, ServiceNow)</li>
                       </ul>
                     </div>
-                    <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
                       <p className="font-semibold text-purple-800 dark:text-purple-300 mb-2">Development Workflows</p>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Read/write project files and codebases</li>
@@ -3909,7 +3909,7 @@ if __name__ == "__main__":
                         <li>• Query deployment logs and metrics</li>
                       </ul>
                     </div>
-                    <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
                       <p className="font-semibold text-purple-800 dark:text-purple-300 mb-2">Data Analysis</p>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Query SQL/NoSQL databases in natural language</li>
@@ -3918,7 +3918,7 @@ if __name__ == "__main__":
                         <li>• Export data to various formats (CSV, JSON, PDF)</li>
                       </ul>
                     </div>
-                    <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
                       <p className="font-semibold text-purple-800 dark:text-purple-300 mb-2">DevOps & Infrastructure</p>
                       <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Monitor server health and logs</li>
@@ -3936,25 +3936,25 @@ if __name__ == "__main__":
                     📚 Learn More & Get Started
                   </h4>
                   <div className="space-y-3 text-sm">
-                    <div className="bg-blue-100 dark:bg-blue-900/30 rounded-lg p-3">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
                       <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Official Documentation</p>
                       <a href="https://modelcontextprotocol.io/docs/getting-started/intro" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                         https://modelcontextprotocol.io/docs/getting-started/intro
                       </a>
                     </div>
-                    <div className="bg-blue-100 dark:bg-blue-900/30 rounded-lg p-3">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
                       <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">GitHub Repository</p>
                       <a href="https://github.com/modelcontextprotocol" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                         https://github.com/modelcontextprotocol
                       </a>
                     </div>
-                    <div className="bg-blue-100 dark:bg-blue-900/30 rounded-lg p-3">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
                       <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Pre-built MCP Servers</p>
                       <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                         https://github.com/modelcontextprotocol/servers
                       </a>
                     </div>
-                    <div className="bg-blue-100 dark:bg-blue-900/30 rounded-lg p-3">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
                       <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Quick Start Guide</p>
                       <p className="text-gray-700 dark:text-gray-300">
                         1. Install an MCP server: <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">npm install -g @modelcontextprotocol/server-filesystem</code><br />
