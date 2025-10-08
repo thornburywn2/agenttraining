@@ -54,3 +54,9 @@ prisma/*.db-journal
 # OS
 .DS_Store
 Thumbs.db
+
+# Documentation - Ignore all markdown except essential files
+*.md
+!AGENTS.md
+!README.md
+!TODO.md
