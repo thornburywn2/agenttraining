@@ -6,8 +6,9 @@ const prisma = new PrismaClient()
 async function main(): Promise<void> {
   console.log('🌱 Seeding database...')
 
-  // Hash password
-  const hashedPassword = await bcrypt.hash('password123', 10)
+  // Get seed password from environment or use default for development
+  const seedPassword = process.env.SEED_PASSWORD || 'DemoPassword2024!'
+  const hashedPassword = await bcrypt.hash(seedPassword, 10)
 
   // Create demo users
   const user1 = await prisma.user.upsert({
@@ -34,9 +35,10 @@ async function main(): Promise<void> {
 
   console.log('✅ Seed completed!')
   console.log('Created users:', { user1, admin })
-  console.log('\nDemo credentials:')
-  console.log('User: user@example.com / password123')
-  console.log('Admin: admin@example.com / password123')
+  console.log('\n📝 Demo credentials:')
+  console.log(`User: user@example.com / ${seedPassword}`)
+  console.log(`Admin: admin@example.com / ${seedPassword}`)
+  console.log('\n💡 Tip: Set SEED_PASSWORD environment variable to use a custom password')
 }
 
 main()
