@@ -8,6 +8,14 @@ A modern full-stack TypeScript application showcasing the **AGENTS.md** framewor
 [![WCAG 2.2 AA](https://img.shields.io/badge/WCAG-2.2%20AA-green.svg)](https://www.w3.org/TR/WCAG22/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
+## 🔄 CI/CD Status
+
+[![Code Quality](https://github.com/thornburywn2/agenttraining/actions/workflows/code-quality.yml/badge.svg)](https://github.com/thornburywn2/agenttraining/actions/workflows/code-quality.yml)
+[![Security](https://github.com/thornburywn2/agenttraining/actions/workflows/security.yml/badge.svg)](https://github.com/thornburywn2/agenttraining/actions/workflows/security.yml)
+[![Lighthouse CI](https://github.com/thornburywn2/agenttraining/actions/workflows/lighthouse-ci.yml/badge.svg)](https://github.com/thornburywn2/agenttraining/actions/workflows/lighthouse-ci.yml)
+[![Accessibility](https://github.com/thornburywn2/agenttraining/actions/workflows/accessibility.yml/badge.svg)](https://github.com/thornburywn2/agenttraining/actions/workflows/accessibility.yml)
+[![Bundle Size](https://github.com/thornburywn2/agenttraining/actions/workflows/bundle-analysis.yml/badge.svg)](https://github.com/thornburywn2/agenttraining/actions/workflows/bundle-analysis.yml)
+
 ---
 
 ## ✨ Features
