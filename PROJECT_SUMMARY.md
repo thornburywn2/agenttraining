@@ -20,13 +20,13 @@ The **AGENTS.md Training Portal** is a **single-page React application** designe
 
 ### 🎨 1. Beautiful User Interface
 - ✅ **Modern Design:** Gradient hero section, smooth animations, professional typography
-- ✅ **Dark Mode:** Fully functional with Moon/Sun toggle (100% complete, WCAG 2.2 AA compliant)
+- ✅ **Dark Mode:** Fully functional with Moon/Sun toggle (100% complete, WCAG 2.2 AA compliant, **DEFAULT THEME**)
 - ✅ **Responsive:** Works on desktop, tablet, mobile
 - ✅ **Tailwind CSS:** Utility-first styling with consistent design system
 - ✅ **Smooth Transitions:** Hover states, focus indicators, tab switching animations
 - ✅ **Color Harmony:** Professional color palette across all sections
 
-### 📚 2. Nine Comprehensive Educational Tabs
+### 📚 2. Ten Comprehensive Educational Tabs
 
 #### **Tab 1: Overview (What is AGENTS.md?)**
 - Explains AGENTS.md as a universal, AI-friendly project standard
@@ -78,7 +78,22 @@ The **AGENTS.md Training Portal** is a **single-page React application** designe
 - Security & Best Practices
 - Learn More & Get Started resources
 
-#### **Tab 9: References**
+#### **Tab 9: LLMs & AI Agents** ✨ NEW
+- Understanding the AI Landscape (LLMs, Clients, Agents)
+- What are Large Language Models (LLMs)?
+  - Scale and capacity, training data, versatile capabilities
+  - Contextual understanding, examples (GPT, BERT)
+- LLM Clients (applications and interfaces)
+- Universal Truths of Working with LLMs
+  - Hallucinations, context importance, performance variability
+  - Start simple principle
+- The Evolution from LLMs to AI Agents
+  - How AI Agents work (goals, planning, tool use, reflection)
+- Best Practices for Building
+  - Prompt engineering, tool design
+  - Iterative development, observability
+
+#### **Tab 10: References**
 - 10 curated external resources
 - Official documentation links
 - Community resources (Discord, GitHub)
@@ -92,7 +107,8 @@ The **AGENTS.md Training Portal** is a **single-page React application** designe
 - ✅ **Responsive Text:** Scales properly at 200% zoom
 
 ### 🎨 4. Dark Mode Implementation
-- ✅ **100% Complete:** All 9 tabs support dark mode
+- ✅ **100% Complete:** All 10 tabs support dark mode
+- ✅ **DEFAULT THEME:** Dark mode is now the default (user preference still saved)
 - ✅ **Zero Light Backgrounds:** No white or light elements in dark mode
 - ✅ **Consistent Colors:** Professional dark theme throughout
 - ✅ **Smooth Toggle:** Moon/Sun icon with instant theme switching
@@ -102,8 +118,8 @@ The **AGENTS.md Training Portal** is a **single-page React application** designe
 **Dark Mode Statistics:**
 - 1,000+ lines modified across 6 implementation phases
 - ~650+ elements fixed (backgrounds, text colors, borders)
-- 6 git commits with detailed documentation
-- 100% coverage across all 9 tabs
+- 7 git commits with detailed documentation
+- 100% coverage across all 10 tabs
 
 ### 🛠️ 5. Technical Features
 - ✅ **React 18:** Component-based architecture
@@ -192,9 +208,9 @@ npm run db:migrate       # Prisma database migrations
 ## ✅ What's Complete
 
 ### 🎯 Core Features (100%)
-- ✅ All 9 educational tabs implemented and functional
+- ✅ All 10 educational tabs implemented and functional
 - ✅ Beautiful, professional UI with Tailwind CSS
-- ✅ Dark mode fully functional and WCAG 2.2 AA compliant
+- ✅ Dark mode fully functional and WCAG 2.2 AA compliant (DEFAULT THEME)
 - ✅ Copy-to-clipboard for AGENTS.md template
 - ✅ Responsive design for all screen sizes
 - ✅ Keyboard navigation and accessibility
@@ -208,6 +224,7 @@ npm run db:migrate       # Prisma database migrations
 - ✅ Real-world examples (2 projects)
 - ✅ MCP servers overview and resources
 - ✅ CodePuppy workflow documentation
+- ✅ LLMs & AI Agents fundamentals ✨ NEW
 - ✅ References section with 10 curated links
 
 ### 🎨 Design & UX (100%)
@@ -252,10 +269,10 @@ The project evolved into a **training portal** rather than a full-stack applicat
    - Common questions about AGENTS.md
    - Troubleshooting tips for AI collaboration
    - Best practices and anti-patterns
-   - Could be added as a 10th tab or expandable sections
+   - Could be added as an 11th tab or expandable sections
 
 2. **Search Functionality** (8-12 hours)
-   - Search across all 9 tabs for keywords
+   - Search across all 10 tabs for keywords
    - Highlight matching sections
    - Jump to relevant tab/section
 
