@@ -4692,7 +4692,7 @@ if __name__ == "__main__":
                 </div>
 
                 {/* Resources & Next Steps */}
-                <div className="bg-blue-50 border-2 border-blue-400 dark:border-blue-600 rounded-lg p-6">
+                <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-400 dark:border-blue-600 rounded-lg p-6">
                   <h4 className="text-xl font-semibold text-blue-900 dark:text-blue-300 mb-3">
                     📚 Learn More & Get Started
                   </h4>
