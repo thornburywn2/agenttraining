@@ -1221,49 +1221,49 @@ class MyAgent(Agent):
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-pink-100 to-pink-50 rounded-lg p-3 text-sm text-pink-900 dark:text-pink-300">
+                  <div className="bg-gradient-to-r from-pink-100 to-pink-50 dark:from-pink-900/30 dark:to-pink-900/10 rounded-lg p-3 text-sm text-pink-900 dark:text-pink-300">
                     <strong>🎯 Best For:</strong> MVPs and prototypes, hackathon projects, landing pages,
                     simple web apps, startups validating ideas quickly, edge-optimized lightweight APIs
                   </div>
                 </div>
 
                 {/* Decision Matrix */}
-                <div className="bg-gradient-to-r from-gray-50 to-gray-100 border-2 border-gray-300 dark:border-gray-600 rounded-xl p-6 mt-8">
+                <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-xl p-6 mt-8">
                   <h4 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">📊 Quick Decision Matrix</h4>
                   <div className="overflow-x-auto">
                     <table className="w-full text-sm">
                       <thead className="bg-gray-200 dark:bg-gray-600">
                         <tr>
-                          <th className="text-left p-2 border border-gray-300 dark:border-gray-600">Your Need</th>
-                          <th className="text-left p-2 border border-gray-300 dark:border-gray-600">Recommended Stack</th>
-                          <th className="text-left p-2 border border-gray-300 dark:border-gray-600">Why?</th>
+                          <th className="text-left p-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100">Your Need</th>
+                          <th className="text-left p-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100">Recommended Stack</th>
+                          <th className="text-left p-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100">Why?</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr className="bg-white dark:bg-gray-800">
-                          <td className="p-2 border border-gray-300 dark:border-gray-600">SEO is critical</td>
+                          <td className="p-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100">SEO is critical</td>
                           <td className="p-2 border border-gray-300 dark:border-gray-600 font-semibold text-green-700 dark:text-green-400">Stack #2 (Next.js)</td>
-                          <td className="p-2 border border-gray-300 dark:border-gray-600">Server-side rendering for search engines</td>
+                          <td className="p-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100">Server-side rendering for search engines</td>
                         </tr>
-                        <tr className="bg-gray-50 dark:bg-gray-800">
-                          <td className="p-2 border border-gray-300 dark:border-gray-600">Admin dashboard (internal tool)</td>
-                          <td className="p-2 border border-gray-300 dark:border-gray-600 font-semibold text-blue-700">Stack #1 (React + Fastify)</td>
-                          <td className="p-2 border border-gray-300 dark:border-gray-600">Fast dev, SEO not needed, real-time updates</td>
-                        </tr>
-                        <tr className="bg-white dark:bg-gray-800">
-                          <td className="p-2 border border-gray-300 dark:border-gray-600">Smallest bundle size</td>
-                          <td className="p-2 border border-gray-300 dark:border-gray-600 font-semibold text-purple-700">Stack #3 (Svelte)</td>
-                          <td className="p-2 border border-gray-300 dark:border-gray-600">Compiles to vanilla JS, minimal overhead</td>
-                        </tr>
-                        <tr className="bg-gray-50 dark:bg-gray-800">
-                          <td className="p-2 border border-gray-300 dark:border-gray-600">Enterprise compliance</td>
-                          <td className="p-2 border border-gray-300 dark:border-gray-600 font-semibold text-orange-700">Stack #4 (Azure)</td>
-                          <td className="p-2 border border-gray-300 dark:border-gray-600">Built-in security, compliance, governance</td>
+                        <tr className="bg-gray-50 dark:bg-gray-700">
+                          <td className="p-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100">Admin dashboard (internal tool)</td>
+                          <td className="p-2 border border-gray-300 dark:border-gray-600 font-semibold text-blue-700 dark:text-blue-400">Stack #1 (React + Fastify)</td>
+                          <td className="p-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100">Fast dev, SEO not needed, real-time updates</td>
                         </tr>
                         <tr className="bg-white dark:bg-gray-800">
-                          <td className="p-2 border border-gray-300 dark:border-gray-600">Weekend MVP</td>
-                          <td className="p-2 border border-gray-300 dark:border-gray-600 font-semibold text-pink-700">Stack #5 (Vue + Hono)</td>
-                          <td className="p-2 border border-gray-300 dark:border-gray-600">Fastest setup, deploy to edge for free</td>
+                          <td className="p-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100">Smallest bundle size</td>
+                          <td className="p-2 border border-gray-300 dark:border-gray-600 font-semibold text-purple-700 dark:text-purple-400">Stack #3 (Svelte)</td>
+                          <td className="p-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100">Compiles to vanilla JS, minimal overhead</td>
+                        </tr>
+                        <tr className="bg-gray-50 dark:bg-gray-700">
+                          <td className="p-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100">Enterprise compliance</td>
+                          <td className="p-2 border border-gray-300 dark:border-gray-600 font-semibold text-orange-700 dark:text-orange-400">Stack #4 (Azure)</td>
+                          <td className="p-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100">Built-in security, compliance, governance</td>
+                        </tr>
+                        <tr className="bg-white dark:bg-gray-800">
+                          <td className="p-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100">Weekend MVP</td>
+                          <td className="p-2 border border-gray-300 dark:border-gray-600 font-semibold text-pink-700 dark:text-pink-400">Stack #5 (Vue + Hono)</td>
+                          <td className="p-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100">Fastest setup, deploy to edge for free</td>
                         </tr>
                       </tbody>
                     </table>
