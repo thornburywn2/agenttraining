@@ -1,0 +1,228 @@
+{
+  "totalTabs": 11,
+  "expectedSections": [
+    {
+      "tabName": "Foundational Concepts",
+      "title": "Foundational: Understanding LLMs & AI Agents",
+      "subsections": [
+        "The AI Landscape: LLMs, Clients, and Agents",
+        "What are Large Language Models (LLMs)?",
+        "LLM Clients",
+        "Universal Truths of Working with LLMs",
+        "The Problem of Hallucinations",
+        "Context is Everything",
+        "Performance is Not Universal",
+        "Start Simple",
+        "The Evolution: From LLMs to AI Agents",
+        "The Token Economy: The Core of LLM Value",
+        "Token Budgeting & Total Cost of Ownership (TCO)",
+        "Token Efficiency: Practical Optimization Strategies",
+        "User-to-LLM Integration: RAG & Function Calling",
+        "Defensive UX: Designing for Trust & Uncertainty",
+        "LLM Security: Vulnerabilities & Defense",
+        "Production Monitoring & Observability",
+        "Evaluation & Quality Metrics",
+        "Multimodal AI & Vision Language Models",
+        "Fine-Tuning vs RAG: The Strategic Decision",
+        "Prompt Versioning & A/B Testing",
+        "Best Practices for Building with LLMs and AI Agents"
+      ],
+      "expectedElements": [
+        "Table: Hallucination Examples",
+        "Table: Context Comparison",
+        "Table: Performance by Task Type",
+        "Table: Start Simple Examples",
+        "Token pricing information",
+        "Security vulnerabilities",
+        "Best practices list"
+      ]
+    },
+    {
+      "tabName": "What is AGENTS.md?",
+      "title": "What is AGENTS.md?",
+      "subsections": [
+        "Introduction to AGENTS.md",
+        "The Problem: Without AGENTS.md",
+        "The Solution: With AGENTS.md",
+        "How It Works",
+        "What Goes in AGENTS.md?"
+      ],
+      "expectedElements": [
+        "Problem/Solution comparison",
+        "Workflow steps (numbered list)",
+        "Content checklist"
+      ]
+    },
+    {
+      "tabName": "File Structure",
+      "title": "File Structure",
+      "subsections": [
+        "Recommended File Structure",
+        "Key Organizational Principles"
+      ],
+      "expectedElements": [
+        "File tree diagram",
+        "Organizational principles list"
+      ]
+    },
+    {
+      "tabName": "Code Puppy",
+      "title": "Code Puppy",
+      "subsections": [
+        "What is Code Puppy?",
+        "Installation",
+        "Key Features",
+        "Usage Examples",
+        "Interactive Commands",
+        "Configuration",
+        "Supported AI Models",
+        "Getting Started Guide"
+      ],
+      "expectedElements": [
+        "Installation commands",
+        "Feature list",
+        "Usage examples",
+        "Command reference",
+        "Model comparison"
+      ]
+    },
+    {
+      "tabName": "Tech Stacks",
+      "title": "Tech Stack Decision Matrix",
+      "subsections": [
+        "Core Concepts: Monolith vs. Microservices",
+        "Modern SPA Stack (React + Vite + Fastify)",
+        "Full-Stack Framework Stack (Next.js)",
+        "Lightweight Performance Stack (Svelte + Express)",
+        "Enterprise Cloud Stack (Next.js + Azure)",
+        "Rapid Prototyping Stack (Vue + Hono + Drizzle)",
+        "Frontend Frameworks Comparison",
+        "Backend Frameworks Comparison",
+        "Database Selection Guide"
+      ],
+      "expectedElements": [
+        "Table: Frontend Frameworks",
+        "Table: Backend Frameworks",
+        "Table: Database Options",
+        "Stack comparisons with pros/cons",
+        "Decision criteria"
+      ]
+    },
+    {
+      "tabName": "AI Examples",
+      "title": "AI Examples & Best Practices",
+      "subsections": [
+        "Example 1: Effective Code Generation Prompts",
+        "Example 2: AI-Assisted Code Review",
+        "Example 3: Automated Documentation Generation",
+        "Prompt Engineering Best Practices"
+      ],
+      "expectedElements": [
+        "Poor vs Better prompt examples",
+        "Code generation examples",
+        "Prompt engineering tips"
+      ]
+    },
+    {
+      "tabName": "AI Patterns",
+      "title": "AI Patterns",
+      "subsections": [
+        "Simple Completion",
+        "Chain-of-Thought (CoT)",
+        "Retrieval-Augmented Generation (RAG)",
+        "Agent with Tools",
+        "Multi-Agent Systems",
+        "Reflection Loop"
+      ],
+      "expectedElements": [
+        "6 AI patterns with descriptions",
+        "Use cases for each pattern"
+      ]
+    },
+    {
+      "tabName": "My Files",
+      "title": "My AGENTS.md and README.md Files",
+      "subsections": [
+        "AGENTS.md file content",
+        "README.md file content"
+      ],
+      "expectedElements": [
+        "File content display",
+        "Syntax highlighting"
+      ]
+    },
+    {
+      "tabName": "MCP Servers",
+      "title": "MCP Servers",
+      "subsections": [
+        "What is MCP?",
+        "Why Use MCP?",
+        "Popular MCP Servers"
+      ],
+      "expectedElements": [
+        "MCP benefits list",
+        "Server list with descriptions"
+      ]
+    },
+    {
+      "tabName": "AI Solutions",
+      "title": "AI Solutions & Integrations",
+      "subsections": [
+        "AI Code Assistants",
+        "AI Platforms",
+        "Development Tools"
+      ],
+      "expectedElements": [
+        "3 solution categories",
+        "Tool listings with descriptions"
+      ]
+    },
+    {
+      "tabName": "References",
+      "title": "References & Resources",
+      "subsections": [
+        "Official Documentation",
+        "Learning Resources",
+        "Communities",
+        "Tools & Utilities"
+      ],
+      "expectedElements": [
+        "4 reference categories",
+        "Links and descriptions"
+      ]
+    }
+  ],
+  "analysis": {
+    "foundational": [],
+    "overview": [],
+    "structure": [],
+    "codepuppy": [
+      "Usage Examples",
+      "Configuration"
+    ],
+    "stacks": [],
+    "examples": [],
+    "patterns": [],
+    "myagents": [],
+    "mcp": [],
+    "aisolutions": [
+      "AI Code Assistants",
+      "AI Platforms",
+      "Development Tools"
+    ],
+    "references": [
+      "Official Documentation",
+      "Learning Resources",
+      "Communities",
+      "Tools & Utilities"
+    ]
+  },
+  "recommendations": [
+    "[HIGH] Code Puppy section missing from PDF: Add Section for Code Puppy with installation, features, and usage examples",
+    "[HIGH] My Files (AGENTS.md/README.md) section missing from PDF: Add section showing the actual AGENTS.md and README.md file contents",
+    "[MEDIUM] Advanced LLM topics may be missing: Verify all subsections from Foundational tab are included (Multimodal AI, Fine-tuning vs RAG, Prompt Versioning, etc.)",
+    "[MEDIUM] Tech Stack details may be incomplete: Ensure all 5 tech stacks are documented with pros/cons and decision criteria",
+    "[LOW] WCAG 2.2 content verification needed: Verify all WCAG 2.2 new success criteria are documented with examples",
+    "[LOW] Cross-reference validation: Ensure table of contents page numbers match actual section locations"
+  ]
+}

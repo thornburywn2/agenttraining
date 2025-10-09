@@ -2,6 +2,7 @@ import Fastify from 'fastify'
 import cors from '@fastify/cors'
 import helmet from '@fastify/helmet'
 import rateLimit from '@fastify/rate-limit'
+import { pdfRoutes } from './routes/pdf.js'
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 5176
 const HOST = '0.0.0.0'
@@ -31,6 +32,9 @@ async function registerPlugins(): Promise<void> {
     max: 100,
     timeWindow: '1 minute',
   })
+
+  // Register routes
+  await server.register(pdfRoutes)
 }
 
 // Health check endpoint
@@ -77,9 +81,10 @@ async function start(): Promise<void> {
     ║   Environment:  ${process.env.NODE_ENV || 'development'}                      ║
     ║                                                            ║
     ║   API Endpoints:                                           ║
-    ║   - GET /health           Health check                     ║
-    ║   - GET /api/hello        Hello world                      ║
-    ║   - GET /api/greet/:name  Personalized greeting            ║
+    ║   - GET /health              Health check                  ║
+    ║   - GET /api/hello           Hello world                   ║
+    ║   - GET /api/greet/:name     Personalized greeting         ║
+    ║   - POST /api/generate-pdf   Generate PDF from markdown    ║
     ║                                                            ║
     ║   Standards:                                               ║
     ║   ✓ AGENTS.md framework                                    ║

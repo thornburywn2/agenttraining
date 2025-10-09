@@ -1,0 +1,2373 @@
+/**
+ * PDF Generator for AGENTS.md Training Guide
+ * Uses markdown generation and server-side PDF conversion
+ */
+
+import { generateMarkdown } from './markdownGenerator';
+import { convertMarkdownToPDF } from './pdfConverter';
+
+// Debug flag - set to true for verbose logging
+const DEBUG_PDF = true;
+
+// Debug logger
+function debugLog(section: string, message: string, data?: unknown): void {
+  if (DEBUG_PDF) {
+    console.log(`[PDF Debug] ${section}: ${message}`, data || '');
+  }
+}
+
+/**
+ * Generates a comprehensive training PDF for the AGENTS.md Framework
+ * Uses the markdown-to-PDF pipeline for better formatting and maintainability
+ */
+export async function generateTrainingPDF(): Promise<void> {
+  debugLog('Init', 'Starting PDF generation via Markdown pipeline');
+
+  const doc = new jsPDF({
+    orientation: 'portrait',
+    unit: 'mm',
+    format: 'a4',
+  });
+
+  let currentPage = 1;
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const margin = 15;
+  const contentWidth = pageWidth - 2 * margin;
+
+  debugLog('Init', 'PDF dimensions', { pageWidth, pageHeight, margin, contentWidth });
+
+  // Helper function to add header
+  const addHeader = (): void => {
+    doc.setFillColor(colors.primary);
+    doc.rect(0, 0, pageWidth, 20, 'F');
+    doc.setTextColor(colors.white);
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.text('AGENTS.md Framework Training Guide', margin, 12);
+  };
+
+  // Helper function to add footer with page numbers
+  const addFooter = (): void => {
+    const footerY = pageHeight - 10;
+    doc.setFillColor(colors.light);
+    doc.rect(0, pageHeight - 15, pageWidth, 15, 'F');
+    doc.setTextColor(colors.dark);
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'normal');
+    doc.text(
+      `Generated from agents-md-demo | ${new Date().toLocaleDateString()}`,
+      margin,
+      footerY
+    );
+    doc.text(`Page ${currentPage}`, pageWidth - margin - 10, footerY);
+  };
+
+  // Helper function to add a new page with header and footer
+  const addNewPage = (): void => {
+    doc.addPage();
+    currentPage++;
+    debugLog('Page', `Added new page ${currentPage}`);
+    addHeader();
+    addFooter();
+  };
+
+  // Helper function to check if we need a new page
+  const checkPageBreak = (neededSpace: number, currentY: number): number => {
+    if (currentY + neededSpace > pageHeight - 25) {
+      debugLog('Page', `Page break needed at Y=${currentY}, needed space=${neededSpace}`);
+      addNewPage();
+      return 30; // Return Y position after header
+    }
+    return currentY;
+  };
+
+  // ===== COVER PAGE =====
+  debugLog('Section', 'Creating cover page');
+  doc.setFillColor(colors.primary);
+  doc.rect(0, 0, pageWidth, pageHeight, 'F');
+
+  // Add gradient effect simulation with rectangles
+  doc.setFillColor('#9333EA');
+  doc.rect(0, pageHeight / 2, pageWidth, pageHeight / 2, 'F');
+
+  // Title
+  doc.setTextColor(colors.white);
+  doc.setFontSize(36);
+  doc.setFont('helvetica', 'bold');
+  const title = 'AGENTS.md';
+  doc.text(title, pageWidth / 2, 80, { align: 'center' });
+
+  doc.setFontSize(28);
+  doc.text('Framework', pageWidth / 2, 100, { align: 'center' });
+
+  doc.setFontSize(24);
+  doc.text('Training Guide', pageWidth / 2, 120, { align: 'center' });
+
+  // Subtitle
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'normal');
+  doc.text('Comprehensive AI & AGENTS.md Training', pageWidth / 2, 145, { align: 'center' });
+  doc.text('From LLM Fundamentals to Production-Ready AI Solutions', pageWidth / 2, 155, { align: 'center' });
+
+  // Version and date
+  doc.setFontSize(10);
+  doc.text(`Generated: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`, pageWidth / 2, 180, { align: 'center' });
+
+  // Tags
+  const tags = ['Open Standard', 'AI-Powered Development', 'Production-Ready'];
+  let tagY = 200;
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'bold');
+  tags.forEach((tag) => {
+    const tagWidth = doc.getTextWidth(tag) + 10;
+    const tagX = (pageWidth - tagWidth) / 2;
+    doc.setFillColor(colors.white);
+    doc.roundedRect(tagX, tagY, tagWidth, 8, 2, 2, 'F');
+    doc.setTextColor(colors.primary);
+    doc.text(tag, pageWidth / 2, tagY + 6, { align: 'center' });
+    tagY += 12;
+  });
+
+  // ===== TABLE OF CONTENTS =====
+  debugLog('Section', 'Creating Table of Contents');
+  addNewPage();
+  let yPos = 35;
+
+  doc.setFillColor(colors.secondary);
+  doc.rect(margin, yPos, contentWidth, 12, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(20);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Table of Contents', margin + 5, yPos + 8);
+
+  yPos += 20;
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(11);
+
+  const tocItems = [
+    { title: '1. Foundational Concepts: Understanding LLMs & AI Agents', page: 3 },
+    { title: '2. Advanced Concepts: Deep Technical Topics', page: 8 },
+    { title: '3. What is AGENTS.md?', page: 15 },
+    { title: '4. File Structure', page: 18 },
+    { title: '5. Tech Stack Decision Matrix', page: 22 },
+    { title: '6. AI Examples & Best Practices', page: 28 },
+    { title: '7. AI Patterns', page: 31 },
+    { title: '8. MCP Servers', page: 34 },
+    { title: '9. AI Solutions & Integrations', page: 36 },
+    { title: '10. References & Resources', page: 38 },
+    { title: '11. WCAG 2.2 Accessibility Standards', page: 40 },
+    { title: '12. Code Puppy - AI-Powered CLI Tool', page: 43 },
+    { title: '13. Project Documentation - AGENTS.md & README.md', page: 47 },
+  ];
+
+  tocItems.forEach((item) => {
+    yPos = checkPageBreak(10, yPos);
+    doc.setFont('helvetica', 'normal');
+    doc.text(item.title, margin + 5, yPos);
+    doc.setFont('helvetica', 'bold');
+    const pageNumText = `${item.page}`;
+    const pageNumWidth = doc.getTextWidth(pageNumText);
+    doc.text(pageNumText, pageWidth - margin - pageNumWidth - 5, yPos);
+
+    // Dotted line
+    doc.setDrawColor(200, 200, 200);
+    const titleWidth = doc.getTextWidth(item.title);
+    const dotsStart = margin + titleWidth + 10;
+    const dotsEnd = pageWidth - margin - pageNumWidth - 10;
+    for (let x = dotsStart; x < dotsEnd; x += 3) {
+      doc.circle(x, yPos - 1.5, 0.3, 'F');
+    }
+    yPos += 8;
+  });
+
+  // ===== SECTION 1: FOUNDATIONAL CONCEPTS =====
+  debugLog('Section', 'Starting Section 1: Foundational Concepts');
+  addNewPage();
+  yPos = 35;
+
+  // Section header
+  doc.setFillColor(colors.primary);
+  doc.rect(margin, yPos, contentWidth, 12, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.text('1. Foundational Concepts: Understanding LLMs & AI Agents', margin + 5, yPos + 8);
+
+  yPos += 20;
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+
+  const intro = 'Start here to build a solid foundation in AI fundamentals. Learn about Large Language Models (LLMs) and AI Agents before diving into AGENTS.md workflows.';
+  const introLines = doc.splitTextToSize(intro, contentWidth - 10);
+  doc.text(introLines, margin + 5, yPos);
+  yPos += introLines.length * 5 + 10;
+
+  // Subsection: What are LLMs?
+  yPos = checkPageBreak(30, yPos);
+  doc.setFillColor(colors.accent1);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'bold');
+  doc.text('What are Large Language Models (LLMs)?', margin + 3, yPos + 6);
+
+  yPos += 15;
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+
+  const aiLandscape = 'The world of artificial intelligence is rapidly evolving, with Large Language Models (LLMs) at the core of many recent advancements. LLMs are advanced AI systems that can understand, process, and generate human-like text. They are built using deep learning techniques, specifically neural networks known as transformers, and are trained on vast amounts of text data.';
+  const landscapeLines = doc.splitTextToSize(aiLandscape, contentWidth - 10);
+  doc.text(landscapeLines, margin + 5, yPos);
+  yPos += landscapeLines.length * 5 + 8;
+
+  const llmDesc = 'At their heart, LLMs are statistical models that learn to predict the next word in a sequence based on the words that came before it. This seemingly simple task allows them to develop a sophisticated understanding of grammar, context, and even some degree of reasoning.';
+  const llmLines = doc.splitTextToSize(llmDesc, contentWidth - 10);
+  doc.text(llmLines, margin + 5, yPos);
+  yPos += llmLines.length * 5 + 8;
+
+  // Key Characteristics
+  yPos = checkPageBreak(60, yPos);
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(colors.secondary);
+  doc.text('Key Characteristics & Capabilities:', margin + 5, yPos);
+  yPos += 8;
+
+  const characteristics = [
+    { num: '1', title: 'Scale and Capacity', desc: 'LLMs are defined by their massive size, with billions or even trillions of parameters, which enables them to capture intricate patterns in language.' },
+    { num: '2', title: 'Training Data', desc: 'They are trained on huge, diverse datasets to learn about various topics, writing styles, and contexts.' },
+    { num: '3', title: 'Versatile Capabilities', desc: 'LLMs can perform a wide range of tasks, from language translation and text summarization to creative writing and code generation.' },
+    { num: '4', title: 'Contextual Understanding', desc: 'A key strength of LLMs is their ability to understand and leverage context to produce coherent and relevant responses.' },
+  ];
+
+  characteristics.forEach((char) => {
+    yPos = checkPageBreak(20, yPos);
+    doc.setFillColor(colors.secondary);
+    doc.circle(margin + 8, yPos + 2, 3, 'F');
+    doc.setTextColor(colors.white);
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'bold');
+    doc.text(char.num, margin + 8, yPos + 3, { align: 'center' });
+
+    doc.setTextColor(colors.dark);
+    doc.setFontSize(10);
+    doc.text(char.title, margin + 15, yPos + 3);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    const descLines = doc.splitTextToSize(char.desc, contentWidth - 25);
+    doc.text(descLines, margin + 15, yPos + 8);
+    yPos += 8 + descLines.length * 4 + 5;
+  });
+
+  // Hallucinations Table
+  yPos = checkPageBreak(70, yPos);
+  doc.setFillColor(colors.accent2);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Universal Truths: The Problem of Hallucinations', margin + 3, yPos + 6);
+  yPos += 12;
+
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'normal');
+  const hallDesc = 'LLMs can generate incorrect, nonsensical, or biased information - a phenomenon known as "hallucination." Always verify critical information.';
+  const hallLines = doc.splitTextToSize(hallDesc, contentWidth - 10);
+  doc.text(hallLines, margin + 5, yPos);
+  yPos += hallLines.length * 4 + 8;
+
+  yPos = checkPageBreak(50, yPos);
+  autoTable(doc, {
+    startY: yPos,
+    head: [['Example', 'Hallucination Type', 'Why It Happens']],
+    body: [
+      ['Inventing citations or research papers that don\'t exist', 'Factual Fabrication', 'Pattern matching from training data creates plausible but false references'],
+      ['Confidently stating incorrect dates or historical events', 'Temporal Confusion', 'Training data conflicts or knowledge cutoff limitations'],
+      ['Creating code that looks correct but contains subtle bugs', 'Logical Inconsistency', 'Statistical prediction without true semantic understanding'],
+    ],
+    theme: 'grid',
+    headStyles: {
+      fillColor: [255, 152, 0],
+      textColor: [255, 255, 255],
+      fontStyle: 'bold',
+      fontSize: 9,
+    },
+    bodyStyles: {
+      fontSize: 8,
+      textColor: [31, 41, 55],
+    },
+    margin: { left: margin, right: margin },
+    tableWidth: contentWidth,
+  });
+
+  yPos = doc.lastAutoTable?.finalY || yPos + 40;
+  yPos += 10;
+
+  // Context is Everything Table
+  yPos = checkPageBreak(70, yPos);
+  doc.setFillColor(colors.primary);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Context is Everything', margin + 3, yPos + 6);
+  yPos += 12;
+
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'normal');
+  const contextDesc = 'The quality of an LLM\'s output is directly tied to the quality and clarity of the input. Well-designed prompts that are clear, specific, and provide examples drastically improve performance.';
+  const contextLines = doc.splitTextToSize(contextDesc, contentWidth - 10);
+  doc.text(contextLines, margin + 5, yPos);
+  yPos += contextLines.length * 4 + 8;
+
+  yPos = checkPageBreak(50, yPos);
+  autoTable(doc, {
+    startY: yPos,
+    head: [['Poor Context', 'Rich Context', 'Outcome Difference']],
+    body: [
+      ['"Write a function"', '"Write a TypeScript function that validates email addresses using regex, returns boolean"', 'Specific context yields production-ready code vs. ambiguous generic code'],
+      ['"Summarize this article"', '"Summarize this article in 3 bullet points for a technical audience, focusing on implementation details"', 'Targeted summary vs. generic overview'],
+      ['"Help me debug this"', '"This React component throws \'Cannot read property of undefined\'. Here\'s the code, error stack, and what I\'ve tried"', 'Precise diagnosis vs. generic troubleshooting suggestions'],
+    ],
+    theme: 'grid',
+    headStyles: {
+      fillColor: [59, 130, 246],
+      textColor: [255, 255, 255],
+      fontStyle: 'bold',
+      fontSize: 9,
+    },
+    bodyStyles: {
+      fontSize: 8,
+      textColor: [31, 41, 55],
+    },
+    margin: { left: margin, right: margin },
+    tableWidth: contentWidth,
+  });
+
+  yPos = doc.lastAutoTable?.finalY || yPos + 40;
+  yPos += 10;
+
+  // Best Practices
+  yPos = checkPageBreak(50, yPos);
+  doc.setFillColor(colors.accent3);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Best Practices for Building with LLMs and AI Agents', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const bestPractices = [
+    'Use clear, simple language in prompts',
+    'Organize prompts into distinct, well-labeled sections',
+    'Curate a small set of diverse, high-quality examples',
+    'Guide the model\'s behavior rather than listing every edge case',
+    'Tools should be well-documented and self-contained',
+    'Start with a simple prototype using the most capable model',
+    'Establish a performance baseline before optimizing',
+    'Implement robust logging and monitoring for observability',
+    'Track the agent\'s decision-making process to identify failure points',
+  ];
+
+  bestPractices.forEach((practice) => {
+    yPos = checkPageBreak(10, yPos);
+    doc.setTextColor(colors.accent3);
+    doc.text('•', margin + 8, yPos);
+    doc.setTextColor(colors.dark);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    const practiceLines = doc.splitTextToSize(practice, contentWidth - 20);
+    doc.text(practiceLines, margin + 13, yPos);
+    yPos += practiceLines.length * 4 + 3;
+  });
+
+  // ===== SECTION 2: ADVANCED CONCEPTS =====
+  debugLog('Section', 'Starting Section 2: Advanced Concepts');
+  addNewPage();
+  yPos = 35;
+
+  doc.setFillColor(colors.accent4);
+  doc.rect(margin, yPos, contentWidth, 12, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.text('2. Advanced Concepts: Deep Technical Topics', margin + 5, yPos + 8);
+
+  yPos += 20;
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+
+  const advancedIntro = 'Dive deeper into the technical aspects of LLMs and AI systems. Learn about token economics, integration patterns, and security considerations for production-grade applications.';
+  const advancedIntroLines = doc.splitTextToSize(advancedIntro, contentWidth - 10);
+  doc.text(advancedIntroLines, margin + 5, yPos);
+  yPos += advancedIntroLines.length * 5 + 10;
+
+  // The Token Economy
+  yPos = checkPageBreak(50, yPos);
+  doc.setFillColor(colors.accent4);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'bold');
+  doc.text('The Token Economy: The Core of LLM Value', margin + 3, yPos + 6);
+  yPos += 15;
+
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+  const tokenDesc = 'Tokens are the fundamental unit that drives API costs, latency, and contextual fidelity. Understanding tokenization is critical to building cost-effective, production-grade LLM applications.';
+  const tokenLines = doc.splitTextToSize(tokenDesc, contentWidth - 10);
+  doc.text(tokenLines, margin + 5, yPos);
+  yPos += tokenLines.length * 5 + 8;
+
+  yPos = checkPageBreak(30, yPos);
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(colors.accent4);
+  doc.text('How Tokenization Works:', margin + 5, yPos);
+  yPos += 8;
+
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'normal');
+  const tokenization = 'Modern LLMs use subword tokenization methods like Byte-Pair Encoding (BPE), which breaks words into familiar chunks (e.g., "jumping" → "jump" + "ing"). This balances vocabulary size with semantic richness.';
+  const tokenizationLines = doc.splitTextToSize(tokenization, contentWidth - 10);
+  doc.text(tokenizationLines, margin + 5, yPos);
+  yPos += tokenizationLines.length * 4 + 8;
+
+  const tokenFeatures = [
+    'Handles unknown words: Decomposes "bitcoiners" or "crayzy" into known parts',
+    'Smaller vocabulary: More efficient than storing every word form separately',
+    'Preserves semantics: Unlike character-level tokenization which is too general',
+  ];
+
+  tokenFeatures.forEach((feature) => {
+    yPos = checkPageBreak(10, yPos);
+    doc.setTextColor(colors.accent1);
+    doc.text('✓', margin + 8, yPos);
+    doc.setTextColor(colors.dark);
+    const featureLines = doc.splitTextToSize(feature, contentWidth - 20);
+    doc.text(featureLines, margin + 15, yPos);
+    yPos += featureLines.length * 4 + 3;
+  });
+
+  yPos += 5;
+
+  // Token Pricing Table
+  yPos = checkPageBreak(60, yPos);
+  doc.setFillColor(colors.primary);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Token Budgeting & Pricing Models', margin + 3, yPos + 6);
+  yPos += 12;
+
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'normal');
+  const pricingDesc = 'Output tokens are typically 3× more expensive than input tokens due to autoregressive generation costs. Strategic input optimization is key to profitability.';
+  const pricingLines = doc.splitTextToSize(pricingDesc, contentWidth - 10);
+  doc.text(pricingLines, margin + 5, yPos);
+  yPos += pricingLines.length * 4 + 8;
+
+  yPos = checkPageBreak(50, yPos);
+  autoTable(doc, {
+    startY: yPos,
+    head: [['Model Provider', 'Input (per 1M tokens)', 'Output (per 1M tokens)', 'Use Case']],
+    body: [
+      ['GPT-4o (OpenAI)', '$5.00', '$15.00', 'High quality, speed'],
+      ['Claude 3 Sonnet', '$3.00', 'Included/Varies', 'Large-scale tasks'],
+      ['DeepSeek V3', '$0.50–$1.50', 'Included/Varies', 'Budget-sensitive workflows'],
+    ],
+    theme: 'striped',
+    headStyles: {
+      fillColor: [59, 130, 246],
+      textColor: [255, 255, 255],
+      fontStyle: 'bold',
+      fontSize: 9,
+    },
+    bodyStyles: {
+      fontSize: 8,
+      textColor: [31, 41, 55],
+    },
+    margin: { left: margin, right: margin },
+    tableWidth: contentWidth,
+  });
+
+  yPos = doc.lastAutoTable?.finalY || yPos + 30;
+  yPos += 10;
+
+  // Token Efficiency Strategies
+  yPos = checkPageBreak(50, yPos);
+  doc.setFillColor(colors.accent2);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Token Efficiency: Practical Optimization Strategies', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const optimizationStrategies = [
+    {
+      title: 'Context Window Management',
+      items: [
+        'Recency window: Keep last N messages (e.g., most recent 5 turns)',
+        'Importance-based: Retain messages with keywords, user questions, critical info',
+        'Summarization: Compress old history into brief summary before threshold',
+        'Hybrid: Recent messages (full) + older summary + initial system prompt',
+      ],
+    },
+    {
+      title: 'Output Length Constraints',
+      items: [
+        'Set max_tokens to prevent runaway generation',
+        'Add explicit constraints: "Respond in 2-3 sentences" or "Max 50 words"',
+        'Use structured formats to naturally limit length (bullet lists, tables)',
+        'Remember: Output tokens cost 3× more than input — aggressive constraint pays off',
+      ],
+    },
+  ];
+
+  optimizationStrategies.forEach((strategy) => {
+    yPos = checkPageBreak(40, yPos);
+    doc.setTextColor(colors.dark);
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.text(strategy.title, margin + 5, yPos);
+    yPos += 8;
+
+    strategy.items.forEach((item) => {
+      yPos = checkPageBreak(10, yPos);
+      doc.setTextColor(colors.accent2);
+      doc.text('•', margin + 8, yPos);
+      doc.setTextColor(colors.dark);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(9);
+      const itemLines = doc.splitTextToSize(item, contentWidth - 20);
+      doc.text(itemLines, margin + 13, yPos);
+      yPos += itemLines.length * 4 + 2;
+    });
+    yPos += 5;
+  });
+
+  // RAG & Function Calling
+  yPos = checkPageBreak(50, yPos);
+  doc.setFillColor(colors.accent5);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'bold');
+  doc.text('User-to-LLM Integration: RAG & Function Calling', margin + 3, yPos + 6);
+  yPos += 15;
+
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+  const ragDesc = 'Retrieval-Augmented Generation (RAG) and Function Calling extend LLM capabilities by connecting them to external data sources and tools.';
+  const ragLines = doc.splitTextToSize(ragDesc, contentWidth - 10);
+  doc.text(ragLines, margin + 5, yPos);
+  yPos += ragLines.length * 5 + 8;
+
+  yPos = checkPageBreak(30, yPos);
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(colors.accent5);
+  doc.text('Function Calling Use Cases:', margin + 5, yPos);
+  yPos += 8;
+
+  const functionCases = [
+    'Fetch real-time weather/stock data',
+    'Schedule appointments via calendar API',
+    'Execute database queries',
+    'Send emails or notifications',
+  ];
+
+  functionCases.forEach((item) => {
+    yPos = checkPageBreak(8, yPos);
+    doc.setTextColor(colors.accent5);
+    doc.text('•', margin + 8, yPos);
+    doc.setTextColor(colors.dark);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.text(item, margin + 13, yPos);
+    yPos += 6;
+  });
+
+  yPos += 5;
+
+  // LLM Security
+  yPos = checkPageBreak(50, yPos);
+  doc.setFillColor('#EF4444');
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'bold');
+  doc.text('LLM Security: Vulnerabilities & Defense', margin + 3, yPos + 6);
+  yPos += 15;
+
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+  const securityDesc = 'LLMs face unique security challenges including prompt injection, data leakage, and adversarial attacks. Implement defense-in-depth strategies.';
+  const securityLines = doc.splitTextToSize(securityDesc, contentWidth - 10);
+  doc.text(securityLines, margin + 5, yPos);
+  yPos += securityLines.length * 5 + 8;
+
+  const securityMeasures = [
+    {
+      title: 'Input Validation',
+      items: ['Allowlist permitted characters/patterns', 'Detect instruction-like phrases ("ignore", "forget")', 'Length limits (prevent context overflow)'],
+    },
+    {
+      title: 'Output Monitoring',
+      items: ['Detect leaked system prompts', 'Redact sensitive patterns (API keys, PII)', 'Content moderation APIs'],
+    },
+  ];
+
+  securityMeasures.forEach((measure) => {
+    yPos = checkPageBreak(30, yPos);
+    doc.setTextColor(colors.dark);
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.text(measure.title, margin + 5, yPos);
+    yPos += 8;
+
+    measure.items.forEach((item) => {
+      yPos = checkPageBreak(8, yPos);
+      doc.setTextColor('#EF4444');
+      doc.text('•', margin + 8, yPos);
+      doc.setTextColor(colors.dark);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(9);
+      const itemLines = doc.splitTextToSize(item, contentWidth - 20);
+      doc.text(itemLines, margin + 13, yPos);
+      yPos += itemLines.length * 4 + 2;
+    });
+    yPos += 5;
+  });
+
+  // ===== SECTION 3: WHAT IS AGENTS.MD =====
+  debugLog('Section', 'Starting Section 3: What is AGENTS.md');
+  addNewPage();
+  yPos = 35;
+
+  doc.setFillColor(colors.secondary);
+  doc.rect(margin, yPos, contentWidth, 12, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.text('3. What is AGENTS.md?', margin + 5, yPos + 8);
+
+  yPos += 20;
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+
+  const agentsIntro = 'AGENTS.md is an open standard that provides AI agents with structured, comprehensive context about your project. It acts as a single source of truth that eliminates ambiguity and ensures consistent AI behavior across all tools.';
+  const agentsIntroLines = doc.splitTextToSize(agentsIntro, contentWidth - 10);
+  doc.text(agentsIntroLines, margin + 5, yPos);
+  yPos += agentsIntroLines.length * 5 + 10;
+
+  // The Problem
+  yPos = checkPageBreak(40, yPos);
+  doc.setFillColor('#FEE2E2');
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor('#991B1B');
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('The Problem: Without AGENTS.md', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const problems = [
+    'AI agents don\'t know your project structure',
+    'AI agents don\'t know which commands to run',
+    'AI agents don\'t know your code style preferences',
+    'AI agents make incorrect assumptions about tech stack',
+    'AI agents can\'t follow your security practices',
+    'Developers waste time explaining the same things repeatedly',
+  ];
+
+  problems.forEach((problem) => {
+    yPos = checkPageBreak(8, yPos);
+    doc.setTextColor('#EF4444');
+    doc.text('✗', margin + 8, yPos);
+    doc.setTextColor('#991B1B');
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.text(problem, margin + 15, yPos);
+    yPos += 6;
+  });
+
+  yPos += 8;
+
+  // The Solution
+  yPos = checkPageBreak(40, yPos);
+  doc.setFillColor('#D1FAE5');
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor('#065F46');
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('The Solution: With AGENTS.md', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const solutions = [
+    'AI agents know exactly how to build, test, and deploy',
+    'AI agents follow your code style and security rules',
+    'AI agents understand your project conventions',
+    'Consistent AI behavior across GitHub Copilot, Cursor, Cline, etc.',
+    'Onboarding new team members becomes faster',
+  ];
+
+  solutions.forEach((solution) => {
+    yPos = checkPageBreak(8, yPos);
+    doc.setTextColor('#10B981');
+    doc.text('✓', margin + 8, yPos);
+    doc.setTextColor('#065F46');
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.text(solution, margin + 15, yPos);
+    yPos += 6;
+  });
+
+  yPos += 10;
+
+  // How It Works
+  yPos = checkPageBreak(30, yPos);
+  doc.setFillColor(colors.primary);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('How It Works', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const workflow = [
+    { num: '1', text: 'Create AGENTS.md file in your project root' },
+    { num: '2', text: 'Document project structure, commands, and conventions' },
+    { num: '3', text: 'AI tools automatically read and follow the guidelines' },
+    { num: '4', text: 'Update AGENTS.md as your project evolves' },
+  ];
+
+  workflow.forEach((step) => {
+    yPos = checkPageBreak(12, yPos);
+    doc.setFillColor(colors.primary);
+    doc.circle(margin + 8, yPos + 2, 3, 'F');
+    doc.setTextColor(colors.white);
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'bold');
+    doc.text(step.num, margin + 8, yPos + 3, { align: 'center' });
+
+    doc.setTextColor(colors.dark);
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    const stepLines = doc.splitTextToSize(step.text, contentWidth - 25);
+    doc.text(stepLines, margin + 15, yPos + 3);
+    yPos += 10;
+  });
+
+  yPos += 8;
+
+  // What Goes in AGENTS.md
+  yPos = checkPageBreak(50, yPos);
+  doc.setFillColor(colors.accent5);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('What Goes in AGENTS.md?', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const agentsContent = [
+    'Project overview and tech stack',
+    'Setup and build commands',
+    'Code style rules (TypeScript, React, etc.)',
+    'Testing instructions and coverage goals',
+    'Security rules (validation, sanitization, auth)',
+    'Deployment process and CI/CD workflows',
+    'Database schema and migration commands',
+    'API documentation and endpoints',
+    'Environment variables and configuration',
+  ];
+
+  agentsContent.forEach((item) => {
+    yPos = checkPageBreak(8, yPos);
+    doc.setTextColor(colors.accent5);
+    doc.text('•', margin + 8, yPos);
+    doc.setTextColor(colors.dark);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    const itemLines = doc.splitTextToSize(item, contentWidth - 20);
+    doc.text(itemLines, margin + 13, yPos);
+    yPos += itemLines.length * 4 + 2;
+  });
+
+  // ===== SECTION 4: FILE STRUCTURE =====
+  debugLog('Section', 'Starting Section 4: File Structure');
+  addNewPage();
+  yPos = 35;
+
+  doc.setFillColor(colors.accent1);
+  doc.rect(margin, yPos, contentWidth, 12, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.text('4. File Structure', margin + 5, yPos + 8);
+
+  yPos += 20;
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+
+  const fileStructureIntro = 'A well-organized file structure is essential for maintainability and scalability. Here\'s the recommended structure for a full-stack TypeScript application with AGENTS.md integration.';
+  const fileStructureLines = doc.splitTextToSize(fileStructureIntro, contentWidth - 10);
+  doc.text(fileStructureLines, margin + 5, yPos);
+  yPos += fileStructureLines.length * 5 + 10;
+
+  // File tree
+  yPos = checkPageBreak(80, yPos);
+  doc.setFillColor(colors.light);
+  doc.rect(margin, yPos, contentWidth, 70, 'F');
+  doc.setFont('courier', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(colors.dark);
+
+  const fileTree = [
+    'project-root/',
+    '├── AGENTS.md              # AI agent configuration',
+    '├── README.md              # Human-readable documentation',
+    '├── package.json           # Dependencies and scripts',
+    '├── tsconfig.json          # TypeScript configuration',
+    '├── vite.config.ts         # Build tool configuration',
+    '├── .env.example           # Environment variable template',
+    '├── src/',
+    '│   ├── App.tsx            # Main application component',
+    '│   ├── main.tsx           # Entry point',
+    '│   ├── components/        # React components',
+    '│   │   └── ui/            # Reusable UI components',
+    '│   ├── services/          # API service layers',
+    '│   ├── types/             # TypeScript type definitions',
+    '│   └── utils/             # Utility functions',
+    '├── server/',
+    '│   ├── index.ts           # Server entry point',
+    '│   ├── routes/            # API routes',
+    '│   └── middleware/        # Express/Fastify middleware',
+    '├── prisma/',
+    '│   ├── schema.prisma      # Database schema',
+    '│   └── migrations/        # Database migrations',
+    '└── tests/',
+    '    ├── unit/              # Unit tests',
+    '    └── integration/       # Integration tests',
+  ];
+
+  fileTree.forEach((line, index) => {
+    doc.text(line, margin + 5, yPos + (index * 3));
+  });
+
+  yPos += fileTree.length * 3 + 10;
+
+  // Key Principles
+  yPos = checkPageBreak(40, yPos);
+  doc.setFillColor(colors.accent1);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Key Organizational Principles', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const principles = [
+    'Separation of Concerns: Keep frontend (src/), backend (server/), and database (prisma/) code separated',
+    'Consistent Naming: Use kebab-case for files, PascalCase for components, camelCase for functions',
+    'Colocation: Keep related files close together (e.g., Component.tsx, Component.test.tsx, Component.css)',
+    'Index Exports: Use index.ts files to simplify imports and create clear public APIs',
+    'Configuration Files: Keep all config files at the root for easy discovery',
+  ];
+
+  principles.forEach((principle) => {
+    yPos = checkPageBreak(12, yPos);
+    doc.setTextColor(colors.accent1);
+    doc.text('•', margin + 8, yPos);
+    doc.setTextColor(colors.dark);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    const principleLines = doc.splitTextToSize(principle, contentWidth - 20);
+    doc.text(principleLines, margin + 13, yPos);
+    yPos += principleLines.length * 4 + 3;
+  });
+
+  // ===== SECTION 5: TECH STACKS =====
+  debugLog('Section', 'Starting Section 5: Tech Stacks');
+  addNewPage();
+  yPos = 35;
+
+  doc.setFillColor(colors.accent2);
+  doc.rect(margin, yPos, contentWidth, 12, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.text('5. Tech Stack Decision Matrix', margin + 5, yPos + 8);
+
+  yPos += 20;
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+
+  const techStackIntro = 'Choosing the right technology stack is crucial for project success. Here\'s a comprehensive decision matrix for common full-stack scenarios.';
+  const techStackLines = doc.splitTextToSize(techStackIntro, contentWidth - 10);
+  doc.text(techStackLines, margin + 5, yPos);
+  yPos += techStackLines.length * 5 + 10;
+
+  // Frontend Frameworks
+  yPos = checkPageBreak(60, yPos);
+  autoTable(doc, {
+    startY: yPos,
+    head: [['Framework', 'Best For', 'Learning Curve', 'Ecosystem']],
+    body: [
+      ['React', 'Large apps, component reusability, team with React experience', 'Medium', 'Largest ecosystem'],
+      ['Vue', 'Rapid prototyping, progressive enhancement, simpler learning', 'Low', 'Growing ecosystem'],
+      ['Svelte', 'Performance-critical apps, smaller bundle sizes', 'Low', 'Smaller but quality'],
+      ['Angular', 'Enterprise apps, large teams, opinionated structure', 'High', 'Enterprise-focused'],
+    ],
+    theme: 'grid',
+    headStyles: {
+      fillColor: [245, 158, 11],
+      textColor: [255, 255, 255],
+      fontStyle: 'bold',
+      fontSize: 9,
+    },
+    bodyStyles: {
+      fontSize: 8,
+      textColor: [31, 41, 55],
+    },
+    margin: { left: margin, right: margin },
+    tableWidth: contentWidth,
+  });
+
+  yPos = doc.lastAutoTable?.finalY || yPos + 40;
+  yPos += 10;
+
+  // Backend Frameworks
+  yPos = checkPageBreak(60, yPos);
+  doc.setFillColor(colors.accent2);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Backend Framework Comparison', margin + 3, yPos + 6);
+  yPos += 12;
+
+  autoTable(doc, {
+    startY: yPos,
+    head: [['Framework', 'Language', 'Performance', 'Use Case']],
+    body: [
+      ['Express.js', 'JavaScript/TypeScript', 'Good', 'Flexible, minimal, widely adopted'],
+      ['Fastify', 'JavaScript/TypeScript', 'Excellent', 'High performance, modern features'],
+      ['NestJS', 'TypeScript', 'Good', 'Enterprise, Angular-like structure'],
+      ['Django', 'Python', 'Good', 'Rapid development, batteries included'],
+      ['FastAPI', 'Python', 'Excellent', 'Modern Python, async, auto docs'],
+    ],
+    theme: 'striped',
+    headStyles: {
+      fillColor: [245, 158, 11],
+      textColor: [255, 255, 255],
+      fontStyle: 'bold',
+      fontSize: 9,
+    },
+    bodyStyles: {
+      fontSize: 8,
+      textColor: [31, 41, 55],
+    },
+    margin: { left: margin, right: margin },
+    tableWidth: contentWidth,
+  });
+
+  yPos = doc.lastAutoTable?.finalY || yPos + 40;
+  yPos += 10;
+
+  // Database Options
+  yPos = checkPageBreak(60, yPos);
+  doc.setFillColor(colors.accent2);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Database Selection Guide', margin + 3, yPos + 6);
+  yPos += 12;
+
+  autoTable(doc, {
+    startY: yPos,
+    head: [['Database', 'Type', 'Best For', 'Scaling']],
+    body: [
+      ['PostgreSQL', 'Relational', 'Complex queries, data integrity, JSON support', 'Vertical + Horizontal'],
+      ['MySQL', 'Relational', 'Traditional web apps, read-heavy workloads', 'Vertical + Read replicas'],
+      ['MongoDB', 'Document', 'Flexible schemas, rapid iteration, JSON-like data', 'Horizontal sharding'],
+      ['Redis', 'Key-Value', 'Caching, sessions, real-time analytics', 'Horizontal clustering'],
+      ['SQLite', 'Relational', 'Embedded, prototyping, small apps', 'Single-instance'],
+    ],
+    theme: 'grid',
+    headStyles: {
+      fillColor: [245, 158, 11],
+      textColor: [255, 255, 255],
+      fontStyle: 'bold',
+      fontSize: 9,
+    },
+    bodyStyles: {
+      fontSize: 8,
+      textColor: [31, 41, 55],
+    },
+    margin: { left: margin, right: margin },
+    tableWidth: contentWidth,
+  });
+
+  yPos = doc.lastAutoTable?.finalY || yPos + 50;
+  yPos += 10;
+
+  // Detailed Stack Breakdowns
+  yPos = checkPageBreak(40, yPos);
+  doc.setFillColor(colors.accent2);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Detailed Technology Stack Analysis', margin + 3, yPos + 6);
+  yPos += 12;
+
+  const techStacks = [
+    {
+      name: 'Stack #1: Modern SPA (React + Vite + Fastify)',
+      description: 'Decoupled architecture with separate frontend and backend',
+      components: 'React 18 + Vite | Fastify (Node.js) | PostgreSQL + Prisma',
+      useCases: 'Admin dashboards, internal tools, data-intensive SPAs, real-time applications where SEO is not critical',
+    },
+    {
+      name: 'Stack #2: Full-Stack Framework (Next.js)',
+      description: 'Monolith architecture with server-side rendering',
+      components: 'Next.js 14+ (SSR/SSG) | PostgreSQL + Prisma',
+      useCases: 'Marketing websites, e-commerce platforms, blogs, content-heavy sites requiring excellent SEO',
+    },
+    {
+      name: 'Stack #3: Lightweight Performance (Svelte + Express)',
+      description: 'Minimal bundle size and high performance',
+      components: 'Svelte (compiled) | Express (Node.js) | SQLite',
+      useCases: 'Performance-critical apps, lightweight tools, embedded systems, IoT devices, offline-first applications',
+    },
+    {
+      name: 'Stack #4: Enterprise Cloud (Next.js + Azure)',
+      description: 'High-compliance cloud-native stack',
+      components: 'Next.js + Azure Functions | Azure SQL Database',
+      useCases: 'Large-scale enterprise applications, government projects, healthcare/finance apps requiring compliance (HIPAA, SOC 2)',
+    },
+    {
+      name: 'Stack #5: Rapid Prototyping (Vue + Hono + Drizzle)',
+      description: 'Fast development and low-cost deployment',
+      components: 'Vue 3 | Hono (Edge Workers) | SQLite + Drizzle',
+      useCases: 'MVPs and prototypes, hackathon projects, landing pages, startups validating ideas quickly',
+    },
+  ];
+
+  techStacks.forEach((stack) => {
+    yPos = checkPageBreak(35, yPos);
+    doc.setFillColor(colors.light);
+    doc.rect(margin, yPos, contentWidth, 30, 'F');
+
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(colors.accent2);
+    doc.text(stack.name, margin + 5, yPos + 5);
+
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'italic');
+    doc.setTextColor(colors.dark);
+    const descLines = doc.splitTextToSize(stack.description, contentWidth - 10);
+    doc.text(descLines, margin + 5, yPos + 10);
+
+    const descHeight = descLines.length * 4;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(7);
+    doc.text('Components:', margin + 5, yPos + 10 + descHeight + 3);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7);
+    const compLines = doc.splitTextToSize(stack.components, contentWidth - 25);
+    doc.text(compLines, margin + 25, yPos + 10 + descHeight + 3);
+
+    const compHeight = compLines.length * 3;
+    doc.setFont('helvetica', 'bold');
+    doc.text('Use Cases:', margin + 5, yPos + 10 + descHeight + compHeight + 6);
+    doc.setFont('helvetica', 'normal');
+    const useCaseLines = doc.splitTextToSize(stack.useCases, contentWidth - 25);
+    doc.text(useCaseLines, margin + 25, yPos + 10 + descHeight + compHeight + 6);
+
+    yPos += 35;
+  });
+
+  // ===== SECTION 6: AI EXAMPLES =====
+  debugLog('Section', 'Starting Section 6: AI Examples');
+  addNewPage();
+  yPos = 35;
+
+  doc.setFillColor(colors.accent4);
+  doc.rect(margin, yPos, contentWidth, 12, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.text('6. AI Examples & Best Practices', margin + 5, yPos + 8);
+
+  yPos += 20;
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+
+  const aiExamplesIntro = 'Real-world examples of effective AI integration patterns and prompt engineering techniques for software development.';
+  const aiExamplesLines = doc.splitTextToSize(aiExamplesIntro, contentWidth - 10);
+  doc.text(aiExamplesLines, margin + 5, yPos);
+  yPos += aiExamplesLines.length * 5 + 10;
+
+  // Example 1: Code Generation
+  yPos = checkPageBreak(40, yPos);
+  doc.setFillColor(colors.light);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Example 1: Effective Code Generation Prompts', margin + 3, yPos + 6);
+  yPos += 15;
+
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor('#EF4444');
+  doc.text('❌ Poor Prompt:', margin + 5, yPos);
+  yPos += 6;
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(colors.dark);
+  doc.text('"Create a login form"', margin + 5, yPos);
+  yPos += 10;
+
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor('#10B981');
+  doc.text('✓ Better Prompt:', margin + 5, yPos);
+  yPos += 6;
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(colors.dark);
+  const betterPrompt = '"Create a React TypeScript login form component with email/password fields, validation using Zod, accessible ARIA labels, error handling, and a submit button that calls an async login API. Follow Material Design guidelines."';
+  const betterPromptLines = doc.splitTextToSize(betterPrompt, contentWidth - 10);
+  doc.text(betterPromptLines, margin + 5, yPos);
+  yPos += betterPromptLines.length * 4 + 10;
+
+  // Example 2: Code Review
+  yPos = checkPageBreak(40, yPos);
+  doc.setFillColor(colors.light);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Example 2: AI-Assisted Code Review', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const codeReviewPrompt = 'Effective Prompt: "Review this React component for: (1) Security vulnerabilities (XSS, injection), (2) Performance issues (unnecessary re-renders, memory leaks), (3) Accessibility (WCAG 2.2 AA compliance), (4) TypeScript type safety, (5) Code style violations per our ESLint config."';
+  const codeReviewLines = doc.splitTextToSize(codeReviewPrompt, contentWidth - 10);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(9);
+  doc.text(codeReviewLines, margin + 5, yPos);
+  yPos += codeReviewLines.length * 4 + 10;
+
+  // Example 3: Documentation
+  yPos = checkPageBreak(40, yPos);
+  doc.setFillColor(colors.light);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Example 3: Automated Documentation Generation', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const docPrompt = 'Effective Prompt: "Generate comprehensive JSDoc comments for this API service class. Include: (1) Function purpose and behavior, (2) Parameter types and descriptions, (3) Return types and possible values, (4) Error conditions and exceptions, (5) Usage examples with TypeScript, (6) Performance considerations."';
+  const docLines = doc.splitTextToSize(docPrompt, contentWidth - 10);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(9);
+  doc.text(docLines, margin + 5, yPos);
+  yPos += docLines.length * 4 + 10;
+
+  // Prompt Engineering Tips
+  yPos = checkPageBreak(50, yPos);
+  doc.setFillColor(colors.accent4);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Prompt Engineering Best Practices', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const promptTips = [
+    'Be Specific: Include exact requirements, constraints, and expected output format',
+    'Provide Context: Reference your tech stack, coding standards, and project conventions',
+    'Use Examples: Show input/output pairs for complex transformations',
+    'Iterate Gradually: Start with a simple prompt and refine based on results',
+    'Include Constraints: Specify what NOT to do (e.g., "Don\'t use deprecated APIs")',
+    'Request Explanations: Ask for reasoning to verify the AI\'s understanding',
+    'Version Prompts: Track successful prompts in your AGENTS.md for consistency',
+  ];
+
+  promptTips.forEach((tip) => {
+    yPos = checkPageBreak(10, yPos);
+    doc.setTextColor(colors.accent4);
+    doc.text('•', margin + 8, yPos);
+    doc.setTextColor(colors.dark);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    const tipLines = doc.splitTextToSize(tip, contentWidth - 20);
+    doc.text(tipLines, margin + 13, yPos);
+    yPos += tipLines.length * 4 + 3;
+  });
+
+  // ===== SECTION 7: AI PATTERNS =====
+  debugLog('Section', 'Starting Section 7: AI Patterns');
+  addNewPage();
+  yPos = 35;
+
+  doc.setFillColor(colors.accent5);
+  doc.rect(margin, yPos, contentWidth, 12, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.text('7. AI Patterns', margin + 5, yPos + 8);
+
+  yPos += 20;
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+
+  const patternsIntro = 'Common architectural patterns for integrating AI capabilities into applications, from simple prompt-response to complex multi-agent systems.';
+  const patternsLines = doc.splitTextToSize(patternsIntro, contentWidth - 10);
+  doc.text(patternsLines, margin + 5, yPos);
+  yPos += patternsLines.length * 5 + 10;
+
+  const aiPatterns = [
+    {
+      title: 'Simple Completion',
+      description: 'Single prompt, single response. Best for straightforward tasks like text generation, classification, or simple Q&A.',
+      useCase: 'Content generation, sentiment analysis, basic chatbots',
+    },
+    {
+      title: 'Chain-of-Thought (CoT)',
+      description: 'Prompts the model to explicitly show its reasoning process step-by-step before arriving at a final answer. This technique dramatically improves accuracy for complex, multi-step problems by encouraging the model to decompose tasks into intermediate steps. CoT works by adding phrases like "Let\'s think step by step" or "Show your work" to prompts, which triggers the model to articulate its reasoning chain. The key benefit is that by verbalizing intermediate steps, the model catches logical errors and produces more reliable outputs. Best used when problems require sequential reasoning, calculations, or logical deduction.',
+      useCase: 'Mathematical word problems, multi-step code debugging, logical reasoning tasks, complex planning scenarios',
+      example: 'Prompt: "Calculate 23 * 47. Let\'s think step by step." Response: "Step 1: Break down 23 * 47 into (20 + 3) * 47. Step 2: Calculate 20 * 47 = 940. Step 3: Calculate 3 * 47 = 141. Step 4: Add results: 940 + 141 = 1081."',
+      whenToUse: 'When you need transparent reasoning, debugging assistance, or solving problems that benefit from explicit intermediate steps.',
+    },
+    {
+      title: 'Tree-of-Thought (ToT)',
+      description: 'An advanced extension of Chain-of-Thought that explores multiple reasoning paths simultaneously, creating a tree structure of possibilities. Unlike CoT which follows a single linear chain, ToT generates multiple candidate solutions at each step, evaluates them, and selectively explores the most promising branches. This enables the model to backtrack from dead ends and consider alternative approaches. ToT is particularly powerful for problems with multiple valid solution paths or where exploration and search are required. The model self-evaluates each branch using criteria like likelihood of success, coherence, or alignment with constraints, then prunes less promising paths.',
+      useCase: 'Complex planning problems, creative writing with multiple plot options, strategic game playing, optimization problems with constraints, architectural design decisions',
+      example: 'Prompt: "Plan a 5-day vacation itinerary. Generate 3 different approaches, evaluate each, and develop the best one." The model explores: (1) Adventure-focused, (2) Relaxation-focused, (3) Cultural-focused paths, evaluates trade-offs, then expands the optimal branch.',
+      whenToUse: 'When problems require exploration of multiple strategies, when single-path reasoning might miss better solutions, or when you need to compare alternative approaches before committing.',
+      difference: 'CoT follows one path linearly; ToT explores multiple paths in parallel and selects the best branch. CoT is faster and simpler; ToT is more thorough but requires more computation.',
+    },
+    {
+      title: 'Retrieval-Augmented Generation (RAG)',
+      description: 'Retrieves relevant context from a knowledge base before generating responses. Grounds outputs in factual data.',
+      useCase: 'Documentation Q&A, customer support, research assistance',
+    },
+    {
+      title: 'Agent with Tools',
+      description: 'LLM decides which external tools to call (APIs, databases, calculators) to accomplish tasks. Autonomous task execution.',
+      useCase: 'Data analysis, API integration, workflow automation',
+    },
+    {
+      title: 'Multi-Agent Systems',
+      description: 'Multiple specialized agents collaborate. Each agent has a specific role (researcher, coder, reviewer) and they work together.',
+      useCase: 'Complex software projects, research tasks, content pipelines',
+    },
+    {
+      title: 'Reflection Loop',
+      description: 'Agent generates output, self-critiques it, then refines. Iterative improvement until quality threshold met.',
+      useCase: 'Code optimization, essay writing, design iteration',
+    },
+  ];
+
+  aiPatterns.forEach((pattern) => {
+    const hasExtendedInfo = pattern.example || pattern.whenToUse || pattern.difference;
+    const boxHeight = hasExtendedInfo ? 'auto' : 25;
+
+    yPos = checkPageBreak(hasExtendedInfo ? 80 : 35, yPos);
+
+    // Pattern title
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(colors.accent5);
+    doc.text(pattern.title, margin + 5, yPos);
+    yPos += 8;
+
+    // Description
+    doc.setFillColor(colors.light);
+    const startY = yPos;
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(colors.dark);
+    const descLines = doc.splitTextToSize(pattern.description, contentWidth - 10);
+    doc.text(descLines, margin + 5, yPos);
+    yPos += descLines.length * 4 + 3;
+
+    // Use Case
+    doc.setFont('helvetica', 'italic');
+    doc.setTextColor('#6B7280');
+    doc.setFontSize(8);
+    const useCaseLines = doc.splitTextToSize(`Use Cases: ${pattern.useCase}`, contentWidth - 10);
+    doc.text(useCaseLines, margin + 5, yPos);
+    yPos += useCaseLines.length * 3.5 + 3;
+
+    // Example (if present)
+    if (pattern.example) {
+      yPos = checkPageBreak(15, yPos);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(colors.accent5);
+      doc.setFontSize(8);
+      doc.text('Example:', margin + 5, yPos);
+      yPos += 4;
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor('#374151');
+      const exampleLines = doc.splitTextToSize(pattern.example, contentWidth - 10);
+      doc.text(exampleLines, margin + 5, yPos);
+      yPos += exampleLines.length * 3.5 + 3;
+    }
+
+    // When to Use (if present)
+    if (pattern.whenToUse) {
+      yPos = checkPageBreak(12, yPos);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(colors.accent1);
+      doc.setFontSize(8);
+      doc.text('When to Use:', margin + 5, yPos);
+      yPos += 4;
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor('#374151');
+      const whenLines = doc.splitTextToSize(pattern.whenToUse, contentWidth - 10);
+      doc.text(whenLines, margin + 5, yPos);
+      yPos += whenLines.length * 3.5 + 3;
+    }
+
+    // Key Difference (if present)
+    if (pattern.difference) {
+      yPos = checkPageBreak(12, yPos);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(colors.accent2);
+      doc.setFontSize(8);
+      doc.text('Key Difference:', margin + 5, yPos);
+      yPos += 4;
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor('#374151');
+      const diffLines = doc.splitTextToSize(pattern.difference, contentWidth - 10);
+      doc.text(diffLines, margin + 5, yPos);
+      yPos += diffLines.length * 3.5 + 3;
+    }
+
+    // Draw background box
+    const boxEndY = yPos;
+    doc.setFillColor(colors.light);
+    doc.rect(margin, startY - 3, contentWidth, boxEndY - startY + 3, 'F');
+
+    // Re-draw all content on top of the box
+    let redrawY = startY;
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(colors.dark);
+    doc.text(descLines, margin + 5, redrawY);
+    redrawY += descLines.length * 4 + 3;
+
+    doc.setFont('helvetica', 'italic');
+    doc.setTextColor('#6B7280');
+    doc.setFontSize(8);
+    doc.text(useCaseLines, margin + 5, redrawY);
+    redrawY += useCaseLines.length * 3.5 + 3;
+
+    if (pattern.example) {
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(colors.accent5);
+      doc.text('Example:', margin + 5, redrawY);
+      redrawY += 4;
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor('#374151');
+      const exampleLines = doc.splitTextToSize(pattern.example, contentWidth - 10);
+      doc.text(exampleLines, margin + 5, redrawY);
+      redrawY += exampleLines.length * 3.5 + 3;
+    }
+
+    if (pattern.whenToUse) {
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(colors.accent1);
+      doc.text('When to Use:', margin + 5, redrawY);
+      redrawY += 4;
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor('#374151');
+      const whenLines = doc.splitTextToSize(pattern.whenToUse, contentWidth - 10);
+      doc.text(whenLines, margin + 5, redrawY);
+      redrawY += whenLines.length * 3.5 + 3;
+    }
+
+    if (pattern.difference) {
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(colors.accent2);
+      doc.text('Key Difference:', margin + 5, redrawY);
+      redrawY += 4;
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor('#374151');
+      const diffLines = doc.splitTextToSize(pattern.difference, contentWidth - 10);
+      doc.text(diffLines, margin + 5, redrawY);
+    }
+
+    yPos += 8;
+  });
+
+  // ===== SECTION 8: MCP SERVERS =====
+  debugLog('Section', 'Starting Section 8: MCP Servers');
+  addNewPage();
+  yPos = 35;
+
+  doc.setFillColor(colors.primary);
+  doc.rect(margin, yPos, contentWidth, 12, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.text('8. MCP Servers', margin + 5, yPos + 8);
+
+  yPos += 20;
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+
+  const mcpIntro = 'Model Context Protocol (MCP) is an open standard that enables seamless integration between AI applications and external data sources. MCP servers provide AI agents with access to tools, data, and capabilities beyond their training.';
+  const mcpLines = doc.splitTextToSize(mcpIntro, contentWidth - 10);
+  doc.text(mcpLines, margin + 5, yPos);
+  yPos += mcpLines.length * 5 + 10;
+
+  // Why MCP?
+  yPos = checkPageBreak(30, yPos);
+  doc.setFillColor(colors.light);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Why Use MCP?', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const mcpBenefits = [
+    'Standardized Protocol: One integration works across all MCP-compatible AI tools',
+    'Secure Access: Controlled permissions and authentication for sensitive data',
+    'Real-Time Data: Connect to live databases, APIs, and services',
+    'Extensible: Build custom MCP servers for your specific needs',
+    'Ecosystem: Growing library of pre-built MCP servers for common services',
+  ];
+
+  mcpBenefits.forEach((benefit) => {
+    yPos = checkPageBreak(10, yPos);
+    doc.setTextColor(colors.primary);
+    doc.text('•', margin + 8, yPos);
+    doc.setTextColor(colors.dark);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    const benefitLines = doc.splitTextToSize(benefit, contentWidth - 20);
+    doc.text(benefitLines, margin + 13, yPos);
+    yPos += benefitLines.length * 4 + 3;
+  });
+
+  yPos += 5;
+
+  // Popular MCP Servers
+  yPos = checkPageBreak(30, yPos);
+  doc.setFillColor(colors.light);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Popular MCP Servers', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const mcpServers = [
+    { name: 'Filesystem MCP', desc: 'Read/write files, navigate directory structures' },
+    { name: 'GitHub MCP', desc: 'Access repositories, issues, pull requests, code search' },
+    { name: 'Database MCP', desc: 'Query SQL databases, inspect schemas, run migrations' },
+    { name: 'Web Search MCP', desc: 'Perform web searches, scrape content, fetch URLs' },
+    { name: 'Slack MCP', desc: 'Send messages, read channels, manage workspace' },
+    { name: 'Google Drive MCP', desc: 'Access documents, spreadsheets, presentations' },
+  ];
+
+  mcpServers.forEach((server) => {
+    yPos = checkPageBreak(12, yPos);
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(colors.primary);
+    doc.text(server.name, margin + 8, yPos);
+    yPos += 5;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.setTextColor(colors.dark);
+    const descLines = doc.splitTextToSize(server.desc, contentWidth - 20);
+    doc.text(descLines, margin + 12, yPos);
+    yPos += descLines.length * 4 + 5;
+  });
+
+  // ===== SECTION 9: AI SOLUTIONS =====
+  debugLog('Section', 'Starting Section 9: AI Solutions');
+  addNewPage();
+  yPos = 35;
+
+  doc.setFillColor(colors.accent3);
+  doc.rect(margin, yPos, contentWidth, 12, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.text('9. AI Solutions & Integrations', margin + 5, yPos + 8);
+
+  yPos += 20;
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+
+  const solutionsIntro = 'Modern AI development tools and platforms that integrate with the AGENTS.md framework for enhanced productivity.';
+  const solutionsLines = doc.splitTextToSize(solutionsIntro, contentWidth - 10);
+  doc.text(solutionsLines, margin + 5, yPos);
+  yPos += solutionsLines.length * 5 + 10;
+
+  const aiSolutions = [
+    {
+      category: 'AI Code Assistants',
+      tools: [
+        'GitHub Copilot: Inline code suggestions, chat interface, CLI integration',
+        'Cursor: AI-first code editor with codebase understanding',
+        'Cline: Autonomous coding agent for complex tasks',
+        'Continue: Open-source AI assistant for VS Code',
+      ],
+    },
+    {
+      category: 'AI Platforms',
+      tools: [
+        'OpenAI: GPT-4, GPT-4o, DALL-E, Whisper APIs',
+        'Anthropic: Claude 3 family (Opus, Sonnet, Haiku)',
+        'Google AI: Gemini models, PaLM, Vertex AI',
+        'Hugging Face: Open-source models and datasets',
+      ],
+    },
+    {
+      category: 'Development Tools',
+      tools: [
+        'LangChain: Framework for building LLM applications',
+        'LlamaIndex: Data framework for LLM applications',
+        'Vercel AI SDK: React hooks and utilities for AI',
+        'Pinecone: Vector database for RAG systems',
+      ],
+    },
+  ];
+
+  aiSolutions.forEach((solution) => {
+    yPos = checkPageBreak(40, yPos);
+    doc.setFillColor(colors.light);
+    doc.rect(margin, yPos, contentWidth, 8, 'F');
+    doc.setTextColor(colors.dark);
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'bold');
+    doc.text(solution.category, margin + 3, yPos + 6);
+    yPos += 15;
+
+    solution.tools.forEach((tool) => {
+      yPos = checkPageBreak(10, yPos);
+      doc.setTextColor(colors.accent3);
+      doc.text('•', margin + 8, yPos);
+      doc.setTextColor(colors.dark);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(9);
+      const toolLines = doc.splitTextToSize(tool, contentWidth - 20);
+      doc.text(toolLines, margin + 13, yPos);
+      yPos += toolLines.length * 4 + 2;
+    });
+    yPos += 8;
+  });
+
+  // ===== SECTION 10: REFERENCES =====
+  debugLog('Section', 'Starting Section 10: References');
+  addNewPage();
+  yPos = 35;
+
+  doc.setFillColor(colors.secondary);
+  doc.rect(margin, yPos, contentWidth, 12, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.text('10. References & Resources', margin + 5, yPos + 8);
+
+  yPos += 20;
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+
+  const referencesIntro = 'Essential resources, documentation, and communities for continuing your AI development journey.';
+  const referencesLines = doc.splitTextToSize(referencesIntro, contentWidth - 10);
+  doc.text(referencesLines, margin + 5, yPos);
+  yPos += referencesLines.length * 5 + 10;
+
+  const references = [
+    {
+      category: 'Official Documentation',
+      links: [
+        'AGENTS.md Standard: https://github.com/ai-agents-team/agents.md',
+        'OpenAI API Docs: https://platform.openai.com/docs',
+        'Anthropic Claude Docs: https://docs.anthropic.com',
+        'LangChain Docs: https://docs.langchain.com',
+      ],
+    },
+    {
+      category: 'Learning Resources',
+      links: [
+        'Prompt Engineering Guide: https://promptingguide.ai',
+        'Deep Learning AI Courses: https://deeplearning.ai',
+        'Hugging Face Learn: https://huggingface.co/learn',
+        'Fast.ai Practical Deep Learning: https://course.fast.ai',
+      ],
+    },
+    {
+      category: 'Communities',
+      links: [
+        'r/LocalLLaMA (Reddit): Open-source LLM community',
+        'AI Stack Exchange: Q&A for AI developers',
+        'Discord: LangChain, Anthropic, OpenAI servers',
+        'Twitter: Follow @karpathy, @sama, @danielgross',
+      ],
+    },
+    {
+      category: 'Tools & Utilities',
+      links: [
+        'OpenAI Tokenizer: https://platform.openai.com/tokenizer',
+        'Anthropic Workbench: https://console.anthropic.com',
+        'Hugging Face Spaces: https://huggingface.co/spaces',
+        'Weights & Biases: https://wandb.ai (experiment tracking)',
+      ],
+    },
+  ];
+
+  references.forEach((ref) => {
+    yPos = checkPageBreak(40, yPos);
+    doc.setFillColor(colors.light);
+    doc.rect(margin, yPos, contentWidth, 8, 'F');
+    doc.setTextColor(colors.dark);
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'bold');
+    doc.text(ref.category, margin + 3, yPos + 6);
+    yPos += 15;
+
+    ref.links.forEach((link) => {
+      yPos = checkPageBreak(10, yPos);
+      doc.setTextColor(colors.secondary);
+      doc.text('•', margin + 8, yPos);
+      doc.setTextColor(colors.primary);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8);
+      const linkLines = doc.splitTextToSize(link, contentWidth - 20);
+      doc.text(linkLines, margin + 13, yPos);
+      yPos += linkLines.length * 3.5 + 2;
+    });
+    yPos += 8;
+  });
+
+  // ===== SECTION 11: WCAG 2.2 ACCESSIBILITY =====
+  debugLog('Section', 'Starting Section 11: WCAG 2.2');
+  addNewPage();
+  yPos = 35;
+
+  doc.setFillColor('#10B981');
+  doc.rect(margin, yPos, contentWidth, 12, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.text('11. WCAG 2.2 Accessibility Standards', margin + 5, yPos + 8);
+
+  yPos += 20;
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+
+  const wcagIntro = 'Web Content Accessibility Guidelines (WCAG) 2.2 introduced new success criteria to improve accessibility for users with disabilities. All applications should strive for at least AA compliance.';
+  const wcagLines = doc.splitTextToSize(wcagIntro, contentWidth - 10);
+  doc.text(wcagLines, margin + 5, yPos);
+  yPos += wcagLines.length * 5 + 10;
+
+  // Level A Requirements
+  yPos = checkPageBreak(30, yPos);
+  doc.setFillColor(colors.light);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Level A (Minimum)', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const levelA = [
+    'All non-text content has text alternatives (alt text for images)',
+    'Captions provided for all prerecorded audio content',
+    'Content can be presented in different ways without losing information',
+    'Color is not used as the only visual means of conveying information',
+    'All functionality available from keyboard',
+    'Users can control time limits on content',
+    'Content does not cause seizures (no flashing more than 3 times per second)',
+  ];
+
+  levelA.forEach((item) => {
+    yPos = checkPageBreak(10, yPos);
+    doc.setTextColor('#10B981');
+    doc.text('✓', margin + 8, yPos);
+    doc.setTextColor(colors.dark);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    const itemLines = doc.splitTextToSize(item, contentWidth - 20);
+    doc.text(itemLines, margin + 13, yPos);
+    yPos += itemLines.length * 4 + 2;
+  });
+
+  yPos += 5;
+
+  // Level AA Requirements
+  yPos = checkPageBreak(30, yPos);
+  doc.setFillColor(colors.light);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Level AA (Recommended)', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const levelAA = [
+    'Captions for all live audio content',
+    'Text contrast ratio of at least 4.5:1',
+    'Text can be resized up to 200% without loss of functionality',
+    'Images of text are avoided (use actual text when possible)',
+    'Multiple ways to navigate to pages (search, sitemap, menu)',
+    'Headings and labels are descriptive',
+    'Focus visible on keyboard navigation',
+    'WCAG 2.2 NEW: Focus Not Obscured (Minimum) - focus indicators never completely hidden',
+    'WCAG 2.2 NEW: Dragging Movements - all drag operations have single-pointer alternatives',
+    'WCAG 2.2 NEW: Target Size (Minimum) - touch targets minimum 24×24px',
+    'WCAG 2.2 NEW: Accessible Authentication - no cognitive function tests for auth',
+  ];
+
+  levelAA.forEach((item) => {
+    yPos = checkPageBreak(10, yPos);
+    doc.setTextColor('#10B981');
+    doc.text('✓', margin + 8, yPos);
+    doc.setTextColor(colors.dark);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    const itemLines = doc.splitTextToSize(item, contentWidth - 20);
+    doc.text(itemLines, margin + 13, yPos);
+    yPos += itemLines.length * 4 + 2;
+  });
+
+  yPos += 10;
+
+  // WCAG 2.2 New Features Summary
+  yPos = checkPageBreak(50, yPos);
+  doc.setFillColor('#DBEAFE');
+  doc.rect(margin, yPos, contentWidth, 50, 'F');
+  doc.setFillColor('#3B82F6');
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.text('WCAG 2.2 New Success Criteria (2023)', margin + 3, yPos + 6);
+  yPos += 15;
+
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'normal');
+
+  const wcag22New = [
+    '2.4.11 Focus Not Obscured (Minimum) - Level AA',
+    '2.4.12 Focus Not Obscured (Enhanced) - Level AAA',
+    '2.5.7 Dragging Movements - Level AA',
+    '2.5.8 Target Size (Minimum) - Level AA',
+    '3.2.6 Consistent Help - Level A',
+    '3.3.7 Redundant Entry - Level A',
+    '3.3.8 Accessible Authentication (Minimum) - Level AA',
+    '3.3.9 Accessible Authentication (Enhanced) - Level AAA',
+  ];
+
+  wcag22New.forEach((criterion) => {
+    yPos = checkPageBreak(8, yPos);
+    doc.setTextColor('#3B82F6');
+    doc.text('•', margin + 8, yPos);
+    doc.setTextColor(colors.dark);
+    doc.setFontSize(8);
+    doc.text(criterion, margin + 13, yPos);
+    yPos += 5;
+  });
+
+  // Key Takeaway Box
+  yPos = checkPageBreak(30, yPos);
+  yPos += 5;
+  doc.setFillColor('#FEF3C7');
+  doc.rect(margin, yPos, contentWidth, 25, 'F');
+  doc.setDrawColor('#F59E0B');
+  doc.setLineWidth(0.5);
+  doc.rect(margin, yPos, contentWidth, 25);
+
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor('#92400E');
+  doc.text('Key Takeaway', margin + 5, yPos + 6);
+
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor('#78350F');
+  const takeaway = 'Accessibility is not optional. Build it into your development process from the start. Use automated testing tools (jest-axe, axe-core), conduct manual keyboard navigation tests, and involve users with disabilities in your testing process. AGENTS.md should include your accessibility standards to ensure AI-generated code meets compliance requirements.';
+  const takeawayLines = doc.splitTextToSize(takeaway, contentWidth - 10);
+  doc.text(takeawayLines, margin + 5, yPos + 12);
+
+  // ===== SECTION 12: CODE PUPPY =====
+  debugLog('Section', 'Starting Section 12: Code Puppy');
+  addNewPage();
+  yPos = 35;
+
+  doc.setFillColor(colors.accent3);
+  doc.rect(margin, yPos, contentWidth, 12, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.text('12. Code Puppy - AI-Powered CLI Tool', margin + 5, yPos + 8);
+
+  yPos += 20;
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+
+  const codePuppyIntro = 'Code Puppy is a primary AI-powered CLI tool for code generation, understanding, and multi-model orchestration. It supports the AGENTS.md standard and provides an interactive interface for working with multiple AI models simultaneously.';
+  const codePuppyIntroLines = doc.splitTextToSize(codePuppyIntro, contentWidth - 10);
+  doc.text(codePuppyIntroLines, margin + 5, yPos);
+  yPos += codePuppyIntroLines.length * 5 + 10;
+
+  // What is Code Puppy?
+  yPos = checkPageBreak(40, yPos);
+  doc.setFillColor(colors.light);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('What is Code Puppy?', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const puppyPurpose = [
+    { label: 'Purpose', text: 'Primary CLI training tool for engineering teams' },
+    { label: 'Type', text: 'Interactive command-line interface' },
+    { label: 'License', text: 'MIT License (Open Source)' },
+  ];
+
+  puppyPurpose.forEach((item) => {
+    yPos = checkPageBreak(8, yPos);
+    doc.setTextColor(colors.accent3);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.text(`${item.label}:`, margin + 8, yPos);
+    doc.setTextColor(colors.dark);
+    doc.setFont('helvetica', 'normal');
+    doc.text(item.text, margin + 35, yPos);
+    yPos += 6;
+  });
+
+  yPos += 5;
+
+  // Installation
+  yPos = checkPageBreak(50, yPos);
+  doc.setFillColor(colors.primary);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Installation', margin + 3, yPos + 6);
+  yPos += 15;
+
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Requirements:', margin + 5, yPos);
+  yPos += 6;
+
+  const requirements = [
+    'Python 3.11 or higher',
+    'pip (Python package manager)',
+    'API keys for AI models (OpenAI, Gemini, Cerebras, Anthropic)',
+  ];
+
+  requirements.forEach((req) => {
+    yPos = checkPageBreak(6, yPos);
+    doc.setTextColor(colors.accent1);
+    doc.text('✓', margin + 8, yPos);
+    doc.setTextColor(colors.dark);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.text(req, margin + 13, yPos);
+    yPos += 5;
+  });
+
+  yPos += 8;
+  yPos = checkPageBreak(25, yPos);
+  doc.setFillColor(colors.light);
+  doc.rect(margin, yPos, contentWidth, 20, 'F');
+  doc.setFont('courier', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(colors.dark);
+  const installCommands = [
+    '# Install via pip',
+    'pip install code-puppy',
+    '',
+    '# Verify installation',
+    'code-puppy --version',
+  ];
+  installCommands.forEach((line, index) => {
+    doc.text(line, margin + 5, yPos + (index * 3.5));
+  });
+  yPos += installCommands.length * 3.5 + 5;
+
+  // Key Features
+  yPos = checkPageBreak(60, yPos);
+  doc.setFillColor(colors.accent1);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Key Features', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const features = [
+    'Multi-Language Code Generation: Python, JavaScript, TypeScript, C++, Go, Rust, and more',
+    'Interactive CLI Interface: Conversational mode for iterative development',
+    'Round-Robin Model Distribution: Automatically distribute requests across multiple AI models',
+    'Customizable Agent System: Define custom agents with Python or JSON',
+    'AGENTS.md Support: Automatically reads and follows AGENTS.md instructions',
+    'Code Quality Enforcement: Built-in quality principles enforced across all generated code',
+  ];
+
+  features.forEach((feature) => {
+    yPos = checkPageBreak(12, yPos);
+    doc.setTextColor(colors.accent1);
+    doc.text('•', margin + 8, yPos);
+    doc.setTextColor(colors.dark);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    const featureLines = doc.splitTextToSize(feature, contentWidth - 20);
+    doc.text(featureLines, margin + 13, yPos);
+    yPos += featureLines.length * 4 + 3;
+  });
+
+  // Usage Examples
+  yPos = checkPageBreak(50, yPos);
+  doc.setFillColor(colors.secondary);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Usage Examples', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const usageExamples = [
+    {
+      title: 'Interactive Mode (Recommended for Training)',
+      code: [
+        '# Start interactive session',
+        'code-puppy --interactive',
+        '',
+        '# In the interactive shell:',
+        '> write me a Python hello world program',
+        '> explain how async/await works in JavaScript',
+      ],
+    },
+    {
+      title: 'Direct Task Execution',
+      code: [
+        '# Execute a specific task',
+        'code-puppy "write me a C++ hello world program"',
+        '',
+        '# Generate and execute in one command',
+        'code-puppy "create a Node.js Express server"',
+      ],
+    },
+  ];
+
+  usageExamples.forEach((example) => {
+    yPos = checkPageBreak(30, yPos);
+    doc.setTextColor(colors.dark);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.text(example.title, margin + 5, yPos);
+    yPos += 8;
+
+    yPos = checkPageBreak(example.code.length * 3.5 + 5, yPos);
+    doc.setFillColor(colors.light);
+    doc.rect(margin, yPos, contentWidth, example.code.length * 3.5, 'F');
+    doc.setFont('courier', 'normal');
+    doc.setFontSize(7);
+    example.code.forEach((line, index) => {
+      doc.text(line, margin + 5, yPos + (index * 3.5));
+    });
+    yPos += example.code.length * 3.5 + 5;
+  });
+
+  // Interactive Commands
+  yPos = checkPageBreak(40, yPos);
+  doc.setFillColor(colors.accent2);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Interactive Commands', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const commands = [
+    { cmd: '/agent', desc: 'Check current agent or switch to a different agent configuration' },
+    { cmd: '/truncate <N>', desc: 'Manage message history by truncating to last N messages' },
+    { cmd: '/mcp', desc: 'Manage Model Context Protocol (MCP) servers for extended capabilities' },
+    { cmd: '/exit or /quit', desc: 'Exit the interactive session' },
+  ];
+
+  commands.forEach((command) => {
+    yPos = checkPageBreak(12, yPos);
+    doc.setTextColor(colors.accent2);
+    doc.setFont('courier', 'bold');
+    doc.setFontSize(8);
+    doc.text(command.cmd, margin + 8, yPos);
+    yPos += 5;
+    doc.setTextColor(colors.dark);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    const descLines = doc.splitTextToSize(command.desc, contentWidth - 20);
+    doc.text(descLines, margin + 13, yPos);
+    yPos += descLines.length * 4 + 3;
+  });
+
+  // Configuration
+  yPos = checkPageBreak(50, yPos);
+  doc.setFillColor(colors.accent4);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Configuration', margin + 3, yPos + 6);
+  yPos += 15;
+
+  doc.setTextColor(colors.dark);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9);
+  doc.text('Environment Variables (API Keys):', margin + 5, yPos);
+  yPos += 8;
+
+  yPos = checkPageBreak(35, yPos);
+  doc.setFillColor(colors.light);
+  doc.rect(margin, yPos, contentWidth, 30, 'F');
+  doc.setFont('courier', 'normal');
+  doc.setFontSize(7);
+  const envVars = [
+    '# OpenAI (GPT-4, GPT-3.5)',
+    'export OPENAI_API_KEY=your_openai_key',
+    '',
+    '# Google Gemini',
+    'export GEMINI_API_KEY=your_gemini_key',
+    '',
+    '# Anthropic Claude',
+    'export ANTHROPIC_API_KEY=your_anthropic_key',
+  ];
+  envVars.forEach((line, index) => {
+    doc.text(line, margin + 5, yPos + (index * 3.5));
+  });
+  yPos += envVars.length * 3.5 + 5;
+
+  // Supported AI Models
+  yPos = checkPageBreak(40, yPos);
+  doc.setFillColor(colors.accent5);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Supported AI Models', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const models = [
+    { provider: 'OpenAI', models: 'GPT-4, GPT-3.5 Turbo, Custom models' },
+    { provider: 'Google', models: 'Gemini Pro, Gemini Flash, Gemini models' },
+    { provider: 'Anthropic', models: 'Claude 3 Opus, Claude 3 Sonnet, Claude 3 Haiku' },
+    { provider: 'Cerebras', models: 'Fast inference, Custom models' },
+    { provider: 'Round-Robin', models: 'Auto-distribute, Load balancing, Cost optimization' },
+  ];
+
+  models.forEach((model) => {
+    yPos = checkPageBreak(10, yPos);
+    doc.setTextColor(colors.accent5);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.text(model.provider, margin + 8, yPos);
+    yPos += 5;
+    doc.setTextColor(colors.dark);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    const modelLines = doc.splitTextToSize(model.models, contentWidth - 20);
+    doc.text(modelLines, margin + 13, yPos);
+    yPos += modelLines.length * 4 + 3;
+  });
+
+  // Getting Started Guide
+  yPos = checkPageBreak(50, yPos);
+  doc.setFillColor(colors.primary);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Getting Started Guide', margin + 3, yPos + 6);
+  yPos += 15;
+
+  const steps = [
+    'Install Code Puppy: Follow installation instructions above for your OS',
+    'Set up API Keys: Export your AI model API keys as environment variables',
+    'Start Interactive Mode: Run code-puppy --interactive to begin',
+    'Try Example Tasks: Start with simple tasks like "write hello world in Python"',
+    'Explore Advanced Features: Use custom agents, multi-model distribution, and AGENTS.md integration',
+  ];
+
+  steps.forEach((step, index) => {
+    yPos = checkPageBreak(12, yPos);
+    doc.setFillColor(colors.primary);
+    doc.circle(margin + 8, yPos + 2, 3, 'F');
+    doc.setTextColor(colors.white);
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'bold');
+    doc.text(`${index + 1}`, margin + 8, yPos + 3, { align: 'center' });
+
+    doc.setTextColor(colors.dark);
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'normal');
+    const stepLines = doc.splitTextToSize(step, contentWidth - 25);
+    doc.text(stepLines, margin + 15, yPos + 3);
+    yPos += stepLines.length * 4 + 5;
+  });
+
+  // ===== SECTION 13: MY FILES =====
+  debugLog('Section', 'Starting Section 13: My Files');
+  addNewPage();
+  yPos = 35;
+
+  doc.setFillColor(colors.accent4);
+  doc.rect(margin, yPos, contentWidth, 12, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.text('13. Project Documentation - AGENTS.md & README.md', margin + 5, yPos + 8);
+
+  yPos += 20;
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+
+  const myFilesIntro = 'This section showcases the actual AGENTS.md and README.md files from this project, demonstrating real-world implementation of the AGENTS.md standard for AI agent collaboration and human-readable documentation.';
+  const myFilesIntroLines = doc.splitTextToSize(myFilesIntro, contentWidth - 10);
+  doc.text(myFilesIntroLines, margin + 5, yPos);
+  yPos += myFilesIntroLines.length * 5 + 10;
+
+  // AGENTS.md Section
+  yPos = checkPageBreak(50, yPos);
+  doc.setFillColor(colors.primary);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'bold');
+  doc.text('AGENTS.md - AI Agent Instructions', margin + 3, yPos + 6);
+  yPos += 15;
+
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'italic');
+  doc.text('File Location: ~/Projects/agents-md-demo/AGENTS.md', margin + 5, yPos);
+  yPos += 6;
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.text('Version: 1.0.0 | Last Updated: 2025-10-07 | Framework: AGENTS.md Standard', margin + 5, yPos);
+  yPos += 10;
+
+  const agentsHighlights = [
+    {
+      title: 'Project Overview',
+      items: [
+        'Modern full-stack application with enterprise-grade standards',
+        'Tech Stack: React 18 + TypeScript + Vite + Fastify + PostgreSQL',
+        '80%+ test coverage requirement',
+        'WCAG 2.2 AA accessibility compliance',
+        'Supported by 20+ AI tools (Copilot, Cursor, Claude Code, etc.)',
+      ],
+    },
+    {
+      title: 'Code Style Guidelines',
+      items: [
+        'TypeScript strict mode enabled (no any types)',
+        'Functional components with hooks (no class components)',
+        'All user inputs validated with Zod schemas',
+        'No mock data in code (use database seed files)',
+        'Environment variables for all configuration',
+      ],
+    },
+    {
+      title: 'Security Rules',
+      items: [
+        'No secrets in code (environment variables only)',
+        'Input validation with Zod for all endpoints',
+        'Prisma ORM prevents SQL injection',
+        'JWT authentication with expiration',
+        'Password hashing with bcrypt (10+ rounds)',
+      ],
+    },
+    {
+      title: 'Testing Requirements',
+      items: [
+        '80%+ code coverage mandatory',
+        'Unit tests for business logic',
+        'Component tests with React Testing Library',
+        'Integration tests for API endpoints',
+        'Accessibility tests with jest-axe',
+      ],
+    },
+  ];
+
+  agentsHighlights.forEach((section) => {
+    yPos = checkPageBreak(40, yPos);
+    doc.setTextColor(colors.primary);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.text(section.title, margin + 5, yPos);
+    yPos += 7;
+
+    section.items.forEach((item) => {
+      yPos = checkPageBreak(8, yPos);
+      doc.setTextColor(colors.accent1);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8);
+      doc.text('✓', margin + 8, yPos);
+      doc.setTextColor(colors.dark);
+      const itemLines = doc.splitTextToSize(item, contentWidth - 20);
+      doc.text(itemLines, margin + 13, yPos);
+      yPos += itemLines.length * 4 + 2;
+    });
+    yPos += 5;
+  });
+
+  // README.md Section
+  yPos = checkPageBreak(50, yPos);
+  doc.setFillColor(colors.accent1);
+  doc.rect(margin, yPos, contentWidth, 8, 'F');
+  doc.setTextColor(colors.white);
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'bold');
+  doc.text('README.md - Human Documentation', margin + 3, yPos + 6);
+  yPos += 15;
+
+  doc.setTextColor(colors.dark);
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'italic');
+  doc.text('File Location: ~/Projects/agents-md-demo/README.md', margin + 5, yPos);
+  yPos += 6;
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.text('Project: AGENTS.md Framework Demo | License: MIT | WCAG 2.2 AA Compliant', margin + 5, yPos);
+  yPos += 10;
+
+  const readmeHighlights = [
+    {
+      title: 'Features',
+      items: [
+        'Beautiful UI - Modern, responsive design with Tailwind CSS',
+        'Accessible - WCAG 2.2 Level AA compliant',
+        'Secure - Input validation, authentication, security best practices',
+        'Fast - Optimized build with Vite, fast API with Fastify',
+        'Tested - Comprehensive test coverage with Vitest',
+        'Well-Documented - AGENTS.md for AI agents, README for humans',
+      ],
+    },
+    {
+      title: 'Quick Start Commands',
+      items: [
+        'git clone <repo-url> && cd agents-md-demo',
+        'npm install',
+        'cp .env.example .env (configure environment)',
+        'npm run db:migrate && npm run db:seed',
+        'npm run dev:all (starts frontend on :5175, backend on :5176)',
+      ],
+    },
+    {
+      title: 'Available Scripts',
+      items: [
+        'npm run dev:all - Start both frontend and backend',
+        'npm run build - Build for production',
+        'npm test - Run all tests with coverage',
+        'npm run lint - Check code quality',
+        'npm run db:studio - Open database GUI',
+      ],
+    },
+    {
+      title: 'Performance Targets',
+      items: [
+        'First Contentful Paint (FCP): < 1.8s',
+        'Largest Contentful Paint (LCP): < 2.5s',
+        'Bundle size: < 250KB gzipped',
+        'Lighthouse score: ≥90 (all categories)',
+        'Test coverage: ≥80%',
+      ],
+    },
+  ];
+
+  readmeHighlights.forEach((section) => {
+    yPos = checkPageBreak(40, yPos);
+    doc.setTextColor(colors.accent1);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.text(section.title, margin + 5, yPos);
+    yPos += 7;
+
+    section.items.forEach((item) => {
+      yPos = checkPageBreak(8, yPos);
+      doc.setTextColor(colors.accent2);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8);
+      doc.text('•', margin + 8, yPos);
+      doc.setTextColor(colors.dark);
+      const itemLines = doc.splitTextToSize(item, contentWidth - 20);
+      doc.text(itemLines, margin + 13, yPos);
+      yPos += itemLines.length * 4 + 2;
+    });
+    yPos += 5;
+  });
+
+  // Key Takeaway
+  yPos = checkPageBreak(30, yPos);
+  doc.setFillColor('#DBEAFE');
+  doc.rect(margin, yPos, contentWidth, 30, 'F');
+  doc.setDrawColor('#3B82F6');
+  doc.setLineWidth(0.5);
+  doc.rect(margin, yPos, contentWidth, 30);
+
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor('#1E40AF');
+  doc.text('Key Takeaway', margin + 5, yPos + 6);
+
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor('#1E3A8A');
+  const filesTakeaway = 'The AGENTS.md file provides structured instructions for AI agents (code style, testing, security), while README.md offers human-readable documentation (setup, features, commands). Together, they ensure consistent behavior across 20+ AI tools and enable effective team collaboration. Both files are living documents that evolve with the project.';
+  const filesTakeawayLines = doc.splitTextToSize(filesTakeaway, contentWidth - 10);
+  doc.text(filesTakeawayLines, margin + 5, yPos + 12);
+
+  // Add footer to last page
+  addFooter();
+
+  debugLog('Complete', `PDF generation complete. Total pages: ${currentPage}`);
+  // Save the PDF
+  doc.save('AGENTS-md-Training-Guide.pdf');
+  debugLog('Complete', 'PDF saved successfully as AGENTS-md-Training-Guide.pdf');
+}

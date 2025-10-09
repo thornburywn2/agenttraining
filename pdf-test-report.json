@@ -1,0 +1,218 @@
+{
+  "startTime": 1759984639834,
+  "endTime": 1759984639945,
+  "duration": 111,
+  "logs": [
+    {
+      "timestamp": 2,
+      "type": "log",
+      "message": "[PDF Debug] Init: Starting PDF generation "
+    },
+    {
+      "timestamp": 5,
+      "type": "log",
+      "message": "[PDF Debug] Init: PDF dimensions {\n  \"pageWidth\": 210.0015555555555,\n  \"pageHeight\": 297.0000833333333,\n  \"margin\": 15,\n  \"contentWidth\": 180.0015555555555\n}"
+    },
+    {
+      "timestamp": 6,
+      "type": "log",
+      "message": "[PDF Debug] Section: Creating cover page "
+    },
+    {
+      "timestamp": 25,
+      "type": "log",
+      "message": "[PDF Debug] Section: Creating Table of Contents "
+    },
+    {
+      "timestamp": 25,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 2 "
+    },
+    {
+      "timestamp": 38,
+      "type": "log",
+      "message": "[PDF Debug] Section: Starting Section 1: Foundational Concepts "
+    },
+    {
+      "timestamp": 38,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 3 "
+    },
+    {
+      "timestamp": 44,
+      "type": "log",
+      "message": "[PDF Debug] Page: Page break needed at Y=246, needed space=70 "
+    },
+    {
+      "timestamp": 45,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 4 "
+    },
+    {
+      "timestamp": 63,
+      "type": "log",
+      "message": "[PDF Debug] Page: Page break needed at Y=270.77388888888885, needed space=60 "
+    },
+    {
+      "timestamp": 64,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 5 "
+    },
+    {
+      "timestamp": 72,
+      "type": "log",
+      "message": "[PDF Debug] Page: Page break needed at Y=254.49902777777777, needed space=50 "
+    },
+    {
+      "timestamp": 72,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 6 "
+    },
+    {
+      "timestamp": 75,
+      "type": "log",
+      "message": "[PDF Debug] Section: Starting Section 2: What is AGENTS.md "
+    },
+    {
+      "timestamp": 75,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 7 "
+    },
+    {
+      "timestamp": 77,
+      "type": "log",
+      "message": "[PDF Debug] Page: Page break needed at Y=257, needed space=50 "
+    },
+    {
+      "timestamp": 77,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 8 "
+    },
+    {
+      "timestamp": 79,
+      "type": "log",
+      "message": "[PDF Debug] Section: Starting Section 3: File Structure "
+    },
+    {
+      "timestamp": 79,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 9 "
+    },
+    {
+      "timestamp": 83,
+      "type": "log",
+      "message": "[PDF Debug] Section: Starting Section 4: Tech Stacks "
+    },
+    {
+      "timestamp": 83,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 10 "
+    },
+    {
+      "timestamp": 96,
+      "type": "log",
+      "message": "[PDF Debug] Section: Starting Section 5: AI Examples "
+    },
+    {
+      "timestamp": 97,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 11 "
+    },
+    {
+      "timestamp": 98,
+      "type": "log",
+      "message": "[PDF Debug] Page: Page break needed at Y=269, needed space=10 "
+    },
+    {
+      "timestamp": 98,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 12 "
+    },
+    {
+      "timestamp": 98,
+      "type": "log",
+      "message": "[PDF Debug] Section: Starting Section 6: AI Patterns "
+    },
+    {
+      "timestamp": 98,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 13 "
+    },
+    {
+      "timestamp": 99,
+      "type": "log",
+      "message": "[PDF Debug] Section: Starting Section 7: MCP Servers "
+    },
+    {
+      "timestamp": 100,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 14 "
+    },
+    {
+      "timestamp": 100,
+      "type": "log",
+      "message": "[PDF Debug] Section: Starting Section 8: AI Solutions "
+    },
+    {
+      "timestamp": 101,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 15 "
+    },
+    {
+      "timestamp": 101,
+      "type": "log",
+      "message": "[PDF Debug] Section: Starting Section 9: References "
+    },
+    {
+      "timestamp": 102,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 16 "
+    },
+    {
+      "timestamp": 103,
+      "type": "log",
+      "message": "[PDF Debug] Section: Starting Section 10: WCAG 2.2 "
+    },
+    {
+      "timestamp": 103,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 17 "
+    },
+    {
+      "timestamp": 104,
+      "type": "log",
+      "message": "[PDF Debug] Page: Page break needed at Y=228, needed space=50 "
+    },
+    {
+      "timestamp": 104,
+      "type": "log",
+      "message": "[PDF Debug] Page: Added new page 18 "
+    },
+    {
+      "timestamp": 105,
+      "type": "log",
+      "message": "[PDF Debug] Complete: PDF generation complete. Total pages: 18 "
+    },
+    {
+      "timestamp": 111,
+      "type": "log",
+      "message": "[PDF Debug] Complete: PDF saved successfully as AGENTS-md-Training-Guide.pdf "
+    }
+  ],
+  "sections": [
+    "Foundational Concepts ",
+    "What is AGENTS.md ",
+    "File Structure ",
+    "Tech Stacks ",
+    "AI Examples ",
+    "AI Patterns ",
+    "MCP Servers ",
+    "AI Solutions ",
+    "References ",
+    "WCAG 2.2 "
+  ],
+  "pages": 18,
+  "errors": [],
+  "warnings": [],
+  "success": true
+}
